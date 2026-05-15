@@ -1,0 +1,118 @@
+/* ============================================================
+   tokens.css — Evka pečie design tokeny
+   ↳ TU MENÍŠ FARBY, FONTY, VEĽKOSTI, TIEŇE
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Lato:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap');
+
+:root {
+  /* ----------------------------------------------------------
+     FARBY — päť-farebný brand systém
+     ---------------------------------------------------------- */
+
+  /* Papier — krémové pozadia */
+  --paper:       #FAF4EC;   /* hlavné pozadie stránky */
+  --paper-soft:  #FEFAF3;   /* svetlejšie plochy, karty */
+  --paper-deep:  #F0E5CF;   /* teplejší panel, hover stav */
+  --paper-line:  #E6D8BD;   /* jemné oddeľovače a rámčeky */
+
+  /* Atrament — tmavomodrý text */
+  --ink:         #003049;   /* primárny text */
+  --ink-soft:    #1E4860;   /* sekundárne nadpisy */
+  --ink-mute:    #5B7180;   /* tlmený text, popisky */
+
+  /* Maroon — primárna akčná farba */
+  --maroon:      #780000;   /* tlačidlá, linky, brand akcent */
+  --maroon-deep: #5A0000;   /* stlačený stav, visited */
+  --maroon-tint: #C97070;   /* disabled / soft variant */
+
+  /* Vermillion — červený akcent */
+  --vermillion:       #C1121F;
+  --vermillion-tint:  #E6747D;
+
+  /* Bluet — chladný modrý akcent */
+  --bluet:       #669BBC;
+  --bluet-tint:  #A4C2D5;
+  --bluet-deep:  #3E7090;
+
+  /* ----------------------------------------------------------
+     ALIASY — slovenské názvy (pre spätnú kompatibilitu)
+     ---------------------------------------------------------- */
+  --maslo:       var(--paper);
+  --smotana:     var(--paper-soft);
+  --cesto:       var(--paper-deep);
+  --pergamen:    var(--paper-line);
+  --popol:       var(--ink-mute);
+  --mak:         var(--ink);
+  --mak-soft:    var(--ink-soft);
+  --lekvar:      var(--maroon);
+  --lekvar-dark: var(--maroon-deep);
+  --lekvar-soft: var(--maroon-tint);
+  --med:         var(--bluet);
+  --med-soft:    var(--bluet-tint);
+  --visna:       var(--vermillion);
+
+  /* ----------------------------------------------------------
+     FONTY
+     ---------------------------------------------------------- */
+  --font-display: 'EB Garamond', 'Garamond', 'Georgia', serif;
+  --font-body:    'Lato', system-ui, -apple-system, Arial, sans-serif;
+  --font-hand:    var(--font-display);   /* kurzívne callouts = Garamond */
+
+  /* ----------------------------------------------------------
+     VEĽKOSTI TEXTU
+     ---------------------------------------------------------- */
+  --fs-hero:    clamp(3rem, 6vw, 5.25rem);
+  --fs-h1:      clamp(2.5rem, 3.8vw, 3.5rem);
+  --fs-h2:      clamp(1.875rem, 2.6vw, 2.375rem);
+  --fs-h3:      1.5rem;     /* 24 px */
+  --fs-h4:      1.25rem;    /* 20 px */
+  --fs-lead:    1.1875rem;  /* 19 px */
+  --fs-body:    1.0625rem;  /* 17 px */
+  --fs-small:   0.9375rem;  /* 15 px */
+  --fs-eyebrow: 0.8125rem;  /* 13 px */
+
+  /* ----------------------------------------------------------
+     MEDZERY — základná jednotka 4 px
+     ---------------------------------------------------------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+
+  /* ----------------------------------------------------------
+     ZAOBLENIE ROHOV
+     ---------------------------------------------------------- */
+  --radius-1:    4px;
+  --radius-2:    10px;
+  --radius-3:    16px;
+  --radius-4:    24px;
+  --radius-pill: 999px;
+
+  /* ----------------------------------------------------------
+     TIEŇE — tri úrovne, tmavomodré tieňovanie
+     ---------------------------------------------------------- */
+  --shadow-1: 0 1px 2px rgba(0,48,73,.10), 0 1px 1px rgba(0,48,73,.05);  /* karty v pokoji */
+  --shadow-2: 0 2px 8px rgba(0,48,73,.12), 0 1px 2px rgba(0,48,73,.06);  /* hover stav */
+  --shadow-3: 0 12px 32px rgba(0,48,73,.20), 0 4px 8px rgba(0,48,73,.08); /* hero / modal */
+
+  /* ----------------------------------------------------------
+     ANIMÁCIE
+     ---------------------------------------------------------- */
+  --ease-settle: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out:    cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-1: 120ms;
+  --dur-2: 240ms;
+  --dur-3: 360ms;
+  --dur-4: 480ms;
+
+  /* ----------------------------------------------------------
+     LAYOUT
+     ---------------------------------------------------------- */
+  --nav-h: 84px;   /* výška navigácie */
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Evka pečie — Tradičné recepty SK/CZ</title>
+  <meta name="description" content="Tradičné recepty zo slovenskej a českej kuchyne, presne tak ako ich poznáme z domu."/>
+
+  <!-- Štýly — najprv tokeny (farby), potom komponenty -->
+  <link rel="stylesheet" href="tokens.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Dáta receptov (plain JS, žiadny JSX) -->
+  <script src="data.js"></script>
+
+  <!-- React 18 + Babel standalone (transformuje JSX v prehliadači) -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+          integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+          crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+          integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+          crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+          integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+          crossorigin="anonymous"></script>
+
+  <!--
+    JSX súbory — PORADIE je dôležité!
+    Každý súbor exportuje komponenty do window.*
+    Neskorší súbor môže používať komponenty z predošlého.
+  -->
+  <script type="text/babel" src="components.jsx"></script>    <!-- ikony, Logo, Button, karty… -->
+  <script type="text/babel" src="home.jsx"></script>           <!-- domovská stránka -->
+  <script type="text/babel" src="recipe.jsx"></script>         <!-- detail receptu -->
+  <script type="text/babel" src="recipes-list.jsx"></script>   <!-- všetky recepty -->
+  <script type="text/babel" src="about.jsx"></script>          <!-- o mne -->
+  <script type="text/babel" src="privacy.jsx"></script>        <!-- ochrana osobných údajov -->
+  <script type="text/babel" src="app.jsx"></script>            <!-- Nav, Footer, App root -->
+</body>
+</html>

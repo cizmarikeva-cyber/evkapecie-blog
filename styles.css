@@ -1,0 +1,814 @@
+/* ============================================================
+   styles.css — Evka pečie štýly komponentov
+   Stavané na tokens.css — farby mení sa tam, nie tu.
+   ============================================================ */
+
+/* RESET & BASE */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg, var(--paper));
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--maslo);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none'%3E%3Cg stroke='%23003049' stroke-width='0.4' opacity='0.10'%3E%3Cpath d='M0 8 H80'/%3E%3Cpath d='M0 24 H80'/%3E%3Cpath d='M0 40 H80'/%3E%3Cpath d='M0 56 H80'/%3E%3Cpath d='M0 72 H80'/%3E%3Cpath d='M8 0 V80'/%3E%3Cpath d='M24 0 V80'/%3E%3Cpath d='M40 0 V80'/%3E%3Cpath d='M56 0 V80'/%3E%3Cpath d='M72 0 V80'/%3E%3C/g%3E%3Cg fill='%23003049' opacity='0.05'%3E%3Ccircle cx='14' cy='20' r='0.8'/%3E%3Ccircle cx='48' cy='6' r='0.6'/%3E%3Ccircle cx='62' cy='34' r='0.7'/%3E%3Ccircle cx='22' cy='50' r='0.5'/%3E%3Ccircle cx='70' cy='62' r='0.6'/%3E%3Ccircle cx='6' cy='68' r='0.5'/%3E%3Ccircle cx='36' cy='74' r='0.7'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+  margin: 0;
+}
+h1 { font-size: var(--fs-h1); line-height: 1.05; }
+h2 { font-size: var(--fs-h2); line-height: 1.2; }
+h3 { font-size: var(--fs-h3); line-height: 1.2; font-weight: 600; }
+h4 { font-size: var(--fs-h4); line-height: 1.2; font-weight: 600; }
+p  { margin: 0; text-wrap: pretty; }
+a  {
+  color: var(--lekvar);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-1) var(--ease-out);
+}
+a:hover { color: var(--lekvar-dark); }
+
+/* ---- container -------------------------------------------------- */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+/* ---- nav -------------------------------------------------------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250,244,236,0.82);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--paper-line);
+}
+.nav-inner { height: var(--nav-h); display: flex; align-items: center; gap: 32px; }
+
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  cursor: pointer; background: none; border: none; padding: 0; color: inherit;
+}
+.nav-brand-mark {
+  width: 44px; height: 44px; border-radius: 999px;
+  background: var(--mak); display: grid; place-items: center;
+  position: relative; flex-shrink: 0;
+}
+.nav-brand-mark span {
+  font-family: var(--font-display); font-style: italic; font-weight: 600;
+  color: var(--maslo); font-size: 28px; letter-spacing: -0.02em;
+  line-height: 1; transform: translateY(1px);
+}
+.nav-brand-mark::after {
+  content: ""; width: 5px; height: 5px; border-radius: 999px;
+  background: var(--lekvar); position: absolute; top: 6px; right: 8px;
+}
+.nav-brand-name {
+  font-family: var(--font-display); font-weight: 700; font-size: 22px;
+  letter-spacing: -0.015em; color: var(--mak); line-height: 1;
+}
+.nav-brand-name em { font-style: italic; color: var(--lekvar); margin-left: 2px; font-weight: 600; }
+.nav-brand-sub {
+  font-family: var(--font-body); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--popol);
+  margin-top: 3px; white-space: nowrap;
+}
+.nav-links { display: flex; gap: 28px; flex: 1; }
+.nav-link {
+  font-family: var(--font-body); font-size: 14.5px; font-weight: 500;
+  color: var(--mak); text-decoration: none;
+  padding: 8px 0; position: relative;
+  transition: color var(--dur-1) var(--ease-out); white-space: nowrap;
+}
+.nav-link:hover { color: var(--lekvar); }
+.nav-link.active { color: var(--lekvar); }
+.nav-link.active::after {
+  content: ""; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--lekvar);
+}
+.nav-search {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 16px; border-radius: 999px;
+  background: var(--smotana); border: 1px solid var(--paper-line);
+  width: 240px; transition: all var(--dur-2) var(--ease-settle);
+}
+.nav-search:focus-within {
+  border-color: var(--mak);
+  box-shadow: 0 0 0 3px rgba(0,48,73,0.10);
+}
+.nav-search input {
+  border: 0; background: transparent; outline: none; flex: 1;
+  font-family: var(--font-body); font-size: 14px; color: var(--mak);
+}
+.nav-search input::placeholder { color: var(--popol); font-style: italic; }
+
+/* ---- tlačidlá --------------------------------------------------- */
+.btn {
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  padding: 12px 24px; border-radius: 10px; border: 1px solid transparent;
+  display: inline-flex; align-items: center; gap: 10px;
+  cursor: pointer; line-height: 1;
+  transition: all var(--dur-2) var(--ease-settle); white-space: nowrap;
+}
+.btn:active { transform: scale(0.985); }
+.btn-primary   { background: var(--lekvar); color: var(--maslo); }
+.btn-primary:hover { background: var(--lekvar-dark); }
+.btn-secondary { background: var(--smotana); color: var(--mak); border-color: var(--mak); }
+.btn-secondary:hover { background: var(--mak); color: var(--maslo); }
+.btn-ghost     { background: transparent; color: var(--mak); }
+.btn-ghost:hover { background: rgba(0,48,73,0.06); }
+.btn-large  { padding: 15px 32px; font-size: 17px; border-radius: 12px; }
+.btn-small  { padding: 8px 16px; font-size: 13px; border-radius: 8px; }
+.btn .arrow { font-family: var(--font-display); font-style: italic; font-weight: 500; }
+
+/* ---- pill ------------------------------------------------------- */
+.pill {
+  font-family: var(--font-body); font-size: 12.5px; font-weight: 500;
+  padding: 5px 12px; border-radius: 999px;
+  border: 1px solid var(--paper-line);
+  background: var(--smotana); color: var(--mak);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.pill .dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+.pill-lekvar, .pill-skorica { background: rgba(120,0,0,0.08); color: var(--maroon); border-color: rgba(120,0,0,0.25); }
+.pill-med, .pill-mata       { background: rgba(102,155,188,0.15); color: var(--bluet-deep); border-color: rgba(102,155,188,0.4); }
+.pill-vermill               { background: rgba(193,18,31,0.10); color: var(--vermillion); border-color: rgba(193,18,31,0.3); }
+.pill-navy                  { background: rgba(0,48,73,0.07); color: var(--ink); border-color: rgba(0,48,73,0.2); }
+.pill-solid                 { background: var(--mak); color: var(--maslo); border-color: var(--mak); }
+
+/* ---- eyebrow ---------------------------------------------------- */
+.eyebrow {
+  font-family: var(--font-body); font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--lekvar);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.eyebrow::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+
+/* ---- hero ------------------------------------------------------- */
+.hero { padding-block: 64px 32px; }
+.hero-inner {
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  gap: 56px; align-items: center;
+}
+.hero-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(3rem, 5.4vw, 4.75rem); line-height: 0.98;
+  letter-spacing: -0.025em; color: var(--mak);
+  font-variation-settings: 'opsz' 72; margin: 0; text-wrap: balance;
+}
+.hero-title em { font-style: italic; font-weight: 500; color: var(--lekvar); display: block; }
+.hero-sub { margin-top: 22px; max-width: 50ch; font-size: 19px; line-height: 1.55; color: var(--mak-soft); }
+.hero-cta { display: flex; gap: 12px; margin-top: 32px; align-items: center; flex-wrap: wrap; }
+.hero-cta .hand-note {
+  font-family: var(--font-display); font-style: italic; font-size: 17px;
+  color: var(--ink-mute); position: relative; padding-left: 22px; white-space: nowrap;
+}
+.hero-cta .hand-note::before {
+  content: "⇖"; position: absolute; left: 0; top: 2px; font-size: 16px; color: var(--ink-mute);
+}
+.hero-image {
+  position: relative; aspect-ratio: 4 / 5;
+  border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-3);
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(255,235,200,0.4), transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(91,26,32,0.2), transparent 60%),
+    linear-gradient(160deg, #A26239 0%, #5B1A20 50%, #2A211B 100%);
+}
+.hero-image .badge {
+  position: absolute; bottom: 20px; left: 20px;
+  background: rgba(253,240,213,0.94); color: var(--ink);
+  padding: 10px 16px; border-radius: 999px;
+  font-family: var(--font-display); font-size: 14px; font-weight: 500; font-style: italic;
+  display: inline-flex; align-items: center; gap: 10px;
+  width: fit-content; max-width: calc(100% - 40px);
+}
+.hero-image .badge b { font-style: normal; font-weight: 700; }
+.hero-image .seal { position: absolute; top: 24px; right: 24px; width: 104px; height: 104px; }
+
+/* ---- section heading -------------------------------------------- */
+.section { padding-block: 64px; }
+.section-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 32px; margin-bottom: 32px;
+}
+.section-title {
+  font-family: var(--font-display); font-size: 38px; font-weight: 700;
+  letter-spacing: -0.015em; line-height: 1.05; color: var(--mak); margin: 8px 0 0;
+}
+.section-title em { font-style: italic; color: var(--lekvar); }
+.section-more {
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  color: var(--mak); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+}
+.section-more .arrow { font-family: var(--font-display); font-style: italic; }
+.section-more:hover { color: var(--lekvar); }
+
+/* ---- sieť receptov ---------------------------------------------- */
+.recipe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.recipe-grid.two  { grid-template-columns: repeat(2, 1fr); }
+.recipe-grid.four { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+.recipe-card {
+  background: var(--smotana); border: 1px solid var(--paper-line);
+  border-radius: 14px; overflow: hidden;
+  display: flex; flex-direction: column; cursor: pointer;
+  transition: transform var(--dur-2) var(--ease-settle), box-shadow var(--dur-2) var(--ease-settle);
+  box-shadow: var(--shadow-1);
+}
+.recipe-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); }
+.recipe-card:hover .recipe-card-img { transform: scale(1.03); }
+.recipe-card-imgwrap { height: 220px; position: relative; overflow: hidden; }
+.recipe-card.compact .recipe-card-imgwrap { height: 160px; }
+.recipe-card-img {
+  position: absolute; inset: 0;
+  transition: transform var(--dur-4) var(--ease-settle);
+}
+.recipe-card .eyebrow-stamp {
+  position: absolute; top: 14px; left: 14px;
+  background: rgba(42,33,27,0.78); color: var(--maslo);
+  padding: 4px 10px; border-radius: 999px;
+  font-family: var(--font-body); font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.recipe-card .heart {
+  position: absolute; top: 12px; right: 12px;
+  width: 36px; height: 36px; border-radius: 999px;
+  background: rgba(246,239,224,0.94);
+  display: grid; place-items: center;
+  color: var(--lekvar); border: 0; cursor: pointer;
+  transition: transform var(--dur-2) var(--ease-settle);
+}
+.recipe-card .heart:hover { transform: scale(1.08); }
+.recipe-card-body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.recipe-card h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 24px; line-height: 1.08; letter-spacing: -0.015em;
+  color: var(--mak); margin: 0;
+}
+.recipe-card.compact h3 { font-size: 20px; }
+.recipe-card h3 em { font-style: italic; color: var(--lekvar); font-weight: 600; }
+.recipe-card-meta {
+  font-family: var(--font-body); font-size: 12.5px;
+  color: var(--popol); display: flex; gap: 10px;
+  font-variant-numeric: tabular-nums; margin-top: auto; flex-wrap: wrap;
+}
+.recipe-card-meta span { white-space: nowrap; }
+.recipe-card-meta span::before { content: "·"; margin-right: 10px; color: var(--pergamen); }
+.recipe-card-meta span:first-child::before { content: none; margin: 0; }
+.recipe-card-meta b { color: var(--mak); font-weight: 600; }
+
+/* ---- pozadia kariet (placeholder namiesto fotiek) --------------- */
+.paint-makovnik { background: radial-gradient(ellipse at 30% 30%, rgba(253,240,213,.30), transparent 55%), linear-gradient(160deg, #003049 0%, #780000 100%); }
+.paint-vianocka { background: radial-gradient(ellipse at 35% 30%, rgba(253,240,213,.45), transparent 60%), linear-gradient(160deg, #669BBC 0%, #780000 100%); }
+.paint-jablka   { background: radial-gradient(ellipse at 30% 30%, rgba(253,240,213,.40), transparent 55%), linear-gradient(160deg, #C1121F 0%, #5A0000 100%); }
+.paint-orechy   { background: radial-gradient(ellipse at 35% 35%, rgba(253,240,213,.30), transparent 55%), linear-gradient(160deg, #003049 0%, #1E4860 100%); }
+.paint-mak      { background: radial-gradient(ellipse at 35% 35%, rgba(253,240,213,.20), transparent 50%), linear-gradient(160deg, #1E4860 0%, #003049 100%); }
+.paint-medovnik { background: radial-gradient(ellipse at 35% 30%, rgba(253,240,213,.45), transparent 60%), linear-gradient(160deg, #C1121F 0%, #780000 100%); }
+.paint-bezlepek { background: radial-gradient(ellipse at 35% 30%, rgba(253,240,213,.40), transparent 55%), linear-gradient(160deg, #669BBC 0%, #003049 100%); }
+.paint-cesnek   { background: radial-gradient(ellipse at 35% 30%, rgba(253,240,213,.55), transparent 60%), linear-gradient(160deg, #F5E3B8 0%, #780000 100%); }
+
+/* ---- kategórie (strip) ------------------------------------------ */
+.cat-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.cat-tile {
+  background: var(--smotana); border: 1px solid var(--paper-line);
+  border-radius: 12px; padding: 22px 16px;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  cursor: pointer; transition: all var(--dur-2) var(--ease-settle);
+}
+.cat-tile:hover { background: var(--cesto); border-color: var(--pergamen); }
+.cat-tile .gloss {
+  width: 56px; height: 56px; border-radius: 999px;
+  display: grid; place-items: center;
+  background: var(--maslo); border: 1px solid var(--paper-line);
+}
+.cat-tile .gloss svg { width: 28px; height: 28px; color: var(--mak); }
+.cat-tile .name { font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--mak); }
+.cat-tile .cnt  { font-family: var(--font-body); font-size: 11px; color: var(--popol); font-variant-numeric: tabular-nums; }
+
+/* ---- newsletter ------------------------------------------------- */
+.newsletter {
+  background: var(--mak); color: var(--maslo);
+  border-radius: 24px; padding: 64px 56px;
+  position: relative; overflow: hidden;
+}
+.newsletter::before {
+  content: ""; position: absolute; inset: 12px;
+  border: 1px solid rgba(246,239,224,0.18); border-radius: 18px; pointer-events: none;
+}
+.newsletter-inner {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px;
+  align-items: center; position: relative;
+}
+.newsletter h2 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 44px; line-height: 1.02; letter-spacing: -0.02em;
+  color: var(--maslo); margin: 0;
+}
+.newsletter h2 em { font-style: italic; color: var(--med-soft); }
+.newsletter p { color: rgba(246,239,224,0.78); font-size: 16px; margin: 14px 0 0; max-width: 50ch; line-height: 1.55; }
+.newsletter form { display: flex; gap: 10px; }
+.newsletter input {
+  flex: 1; font-family: var(--font-body); font-size: 15px;
+  padding: 14px 18px; border-radius: 10px;
+  background: rgba(246,239,224,0.06); color: var(--maslo);
+  border: 1px solid rgba(246,239,224,0.2); outline: none;
+}
+.newsletter input::placeholder { color: rgba(246,239,224,0.5); font-style: italic; }
+.newsletter input:focus { border-color: var(--med); }
+.newsletter button {
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  padding: 14px 22px; border-radius: 10px;
+  background: var(--med); color: var(--mak); border: 0;
+  cursor: pointer; transition: all var(--dur-2) var(--ease-settle); white-space: nowrap;
+}
+.newsletter button:hover { background: var(--med-soft); }
+.newsletter-hand {
+  font-family: var(--font-hand); font-style: italic; font-size: 17px;
+  color: rgba(246,239,224,0.65); margin-top: 14px;
+}
+
+/* ---- kolekcie --------------------------------------------------- */
+.collection-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 24px; align-items: stretch; }
+.collection-card {
+  position: relative; border-radius: 14px; overflow: hidden;
+  min-height: 280px; padding: 24px 26px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  color: var(--maslo); cursor: pointer; box-shadow: var(--shadow-1);
+  transition: transform var(--dur-2) var(--ease-settle), box-shadow var(--dur-2) var(--ease-settle);
+}
+.collection-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); }
+.collection-card .eyebrow { color: rgba(246,239,224,0.7); }
+.collection-card .eyebrow::before { background: rgba(246,239,224,0.7); }
+.collection-card h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 30px; line-height: 1.02; letter-spacing: -0.02em;
+  color: var(--maslo); margin: 0; max-width: 14ch; text-wrap: balance;
+}
+.collection-card.large h3 { font-size: 42px; }
+.collection-card .meta {
+  font-family: var(--font-body); font-size: 13px;
+  color: rgba(246,239,224,0.78); display: flex; align-items: center; gap: 14px;
+}
+
+/* ---- footer ----------------------------------------------------- */
+.footer { padding-block: 72px 48px; border-top: 1px solid var(--paper-line); margin-top: 80px; }
+.footer-inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+.footer-col h4 {
+  font-family: var(--font-body); font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--popol); margin: 0 0 14px;
+}
+.footer-col a {
+  display: block; text-decoration: none; color: var(--mak);
+  font-family: var(--font-body); font-size: 14px; padding: 4px 0;
+}
+.footer-col a:hover { color: var(--lekvar); }
+.footer-meta {
+  margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--paper-line);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-body); font-size: 12px; color: var(--popol);
+}
+
+/* ---- stránka receptu -------------------------------------------- */
+.recipe-hero {
+  position: relative; border-radius: 24px; overflow: hidden;
+  height: 460px; margin-block-start: 32px; box-shadow: var(--shadow-3);
+}
+.recipe-hero-paint    { position: absolute; inset: 0; }
+.recipe-hero-overlay  { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(42,33,27,0.7) 100%); }
+.recipe-hero-content  {
+  position: absolute; inset: auto 0 0 0; padding: 48px 56px; color: var(--maslo);
+  display: flex; align-items: end; justify-content: space-between; gap: 32px;
+}
+.recipe-hero-content h1 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2.5rem, 5.4vw, 4.5rem); line-height: 1; letter-spacing: -0.025em;
+  font-variation-settings: 'opsz' 72; color: var(--maslo); margin: 16px 0 0;
+}
+.recipe-hero-content h1 em { font-style: italic; color: var(--med-soft); font-weight: 500; display: block; }
+.recipe-hero-content .eyebrow { color: var(--med-soft); }
+.recipe-hero-content .eyebrow::before { background: var(--med-soft); }
+.recipe-hero-stats { display: flex; gap: 32px; padding-bottom: 4px; }
+.recipe-hero-stats .stat .lbl {
+  font-family: var(--font-body); font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: rgba(246,239,224,0.65);
+}
+.recipe-hero-stats .stat .val {
+  font-family: var(--font-display); font-size: 22px; font-weight: 600;
+  color: var(--maslo); margin-top: 2px; font-variant-numeric: tabular-nums;
+}
+.back {
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--mak); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 0;
+}
+.back:hover { color: var(--lekvar); }
+.recipe-body { display: grid; grid-template-columns: 320px 1fr; gap: 56px; padding-block: 48px; }
+.recipe-side {
+  background: var(--smotana); border: 1px solid var(--paper-line);
+  border-radius: 16px; padding: 28px 28px 24px;
+  position: sticky; top: calc(var(--nav-h) + 24px); align-self: start;
+}
+.recipe-side h4 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 22px; margin: 0 0 16px; color: var(--mak);
+  display: flex; align-items: center; gap: 10px;
+}
+.recipe-side h4::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--pergamen), transparent); }
+.ingredient-group + .ingredient-group { margin-top: 20px; }
+.ingredient-group .grp-name {
+  font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--lekvar); margin-bottom: 8px;
+}
+.ingredient-group ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.ingredient-group li {
+  font-family: var(--font-body); font-size: 14.5px; line-height: 1.45;
+  color: var(--mak); display: flex; gap: 12px;
+  font-variant-numeric: tabular-nums; padding: 3px 0;
+}
+.ingredient-group li b { color: var(--lekvar); font-weight: 600; min-width: 72px; flex-shrink: 0; }
+.recipe-content { max-width: 62ch; }
+.recipe-intro {
+  font-family: var(--font-body); font-size: 19px; line-height: 1.55;
+  color: var(--mak-soft); margin: 0 0 28px;
+}
+.recipe-intro::first-letter {
+  font-family: var(--font-display); font-weight: 700; font-size: 64px;
+  float: left; line-height: 0.9; margin: 6px 12px 0 0; color: var(--lekvar);
+}
+.recipe-content h2 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 30px; letter-spacing: -0.015em; line-height: 1.1; margin: 36px 0 4px; color: var(--mak);
+}
+.recipe-content h2 small {
+  display: block; font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--lekvar); margin-bottom: 4px;
+}
+.steps { list-style: none; counter-reset: stepc; padding: 0; margin: 24px 0 0; display: grid; gap: 24px; }
+.steps li { counter-increment: stepc; display: grid; grid-template-columns: 40px 1fr; gap: 18px; }
+.steps li::before {
+  content: counter(stepc);
+  font-family: var(--font-display); font-weight: 700; font-size: 24px;
+  color: var(--lekvar); line-height: 1; border-bottom: 1.5px solid var(--lekvar);
+  align-self: start; padding-bottom: 4px; text-align: center; font-variant-numeric: tabular-nums;
+}
+.steps li > div { font-family: var(--font-body); font-size: 16.5px; line-height: 1.55; color: var(--mak); }
+.steps li b { font-weight: 600; }
+.tip {
+  background: var(--smotana); border: 1px solid var(--paper-line);
+  border-radius: 16px; padding: 28px 32px 32px; margin: 36px 0; position: relative;
+}
+.tip::before {
+  content: "Evkin tip"; position: absolute; top: -12px; left: 28px;
+  background: var(--lekvar); color: var(--maslo);
+  padding: 5px 14px; border-radius: 999px;
+  font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.tip p { font-family: var(--font-display); font-style: italic; font-size: 26px; line-height: 1.3; color: var(--mak); margin: 0; }
+.tip p em { color: var(--lekvar); }
+.divider { margin: 48px 0; display: flex; justify-content: center; }
+.signature {
+  display: flex; align-items: center; gap: 24px;
+  margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--paper-line);
+}
+.sig-portrait { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.signature .sig-body { font-family: var(--font-body); font-size: 14px; line-height: 1.5; color: var(--mak-soft); }
+.signature .sig-body b { font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--mak); display: block; font-weight: 600; }
+.recipe-actions { display: flex; gap: 10px; margin: 24px 0; align-items: center; flex-wrap: wrap; }
+.recipe-tips {
+  margin: 40px 0;
+  padding: 24px 28px;
+  background: var(--smotana);
+  border-left: 3px solid var(--lekvar);
+  border-radius: 0 10px 10px 0;
+}
+.recipe-tips h4 {
+  font-family: var(--font-display); font-style: italic; font-size: 18px;
+  color: var(--lekvar); margin: 0 0 14px;
+}
+.recipe-tips ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.recipe-tips li {
+  font-family: var(--font-body); font-size: 14px; color: var(--mak);
+  padding-left: 20px; position: relative; line-height: 1.5;
+}
+.recipe-tips li::before { content: "→"; position: absolute; left: 0; color: var(--lekvar); }
+.recipe-reel { margin: 48px 0 0; }
+.recipe-reel .reel-label {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
+  font-family: var(--font-body); font-size: 12px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--popol);
+}
+.recipe-reel .instagram-media { margin: 0 auto !important; }
+
+/* ---- stránka všetkých receptov ---------------------------------- */
+.recipes-list-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2.4rem, 5vw, 3.75rem); line-height: 1.02;
+  letter-spacing: -0.02em; color: var(--mak);
+  margin: 10px 0 0;
+}
+.recipes-list-title em { font-style: italic; color: var(--lekvar); }
+
+/* SEARCH BAR */
+.recipes-search {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 28px;
+  padding: 0 16px;
+  height: 48px;
+  background: var(--smotana);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 12px;
+  max-width: 480px;
+  transition: border-color 0.15s;
+}
+.recipes-search:focus-within {
+  border-color: var(--mak);
+}
+.recipes-search svg { flex-shrink: 0; color: var(--popol); }
+.recipes-search input {
+  flex: 1; border: 0; background: transparent; outline: none;
+  font-family: var(--font-body); font-size: 15px; color: var(--mak);
+}
+.recipes-search input::placeholder { color: var(--popol); font-style: italic; }
+.recipes-search-clear {
+  display: flex; align-items: center;
+  border: 0; background: transparent; padding: 4px;
+  cursor: pointer; color: var(--popol); border-radius: 6px;
+  transition: color 0.12s, background 0.12s;
+}
+.recipes-search-clear:hover { color: var(--mak); background: rgba(0,48,73,0.07); }
+.recipes-search-info {
+  font-family: var(--font-body); font-size: 14px;
+  color: var(--popol); margin: 0 0 20px;
+}
+.recipes-search-info b { color: var(--mak); }
+
+.filter-strip {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 28px; margin-bottom: 36px;
+}
+
+.filter-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 18px; border-radius: 999px;
+  border: 1.5px solid var(--paper-line);
+  background: var(--smotana); color: var(--mak);
+  font-family: var(--font-body); font-size: 13.5px; font-weight: 500;
+  cursor: pointer; transition: all var(--dur-2) var(--ease-settle);
+}
+.filter-pill:not(.active):hover:not(:disabled) {
+  border-color: var(--mak); background: rgba(0,48,73,0.06);
+}
+.filter-pill.active:hover {
+  background: var(--lekvar); border-color: var(--lekvar);
+}
+.filter-pill.active {
+  background: var(--mak); color: var(--maslo); border-color: var(--mak);
+}
+.filter-pill:disabled {
+  opacity: 0.38; cursor: default;
+}
+.filter-pill-count {
+  font-size: 11.5px; font-variant-numeric: tabular-nums; opacity: 0.55;
+}
+.filter-pill.active .filter-pill-count { opacity: 0.7; }
+
+/* ---- Kontaktný formulár ----------------------------------------- */
+.contact-section { padding-top: 64px; border-top: 1px solid var(--paper-line); margin-top: 16px; }
+.contact-form { display: flex; flex-direction: column; gap: 20px; max-width: 600px; }
+.contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.contact-form label { display: flex; flex-direction: column; gap: 6px; }
+.contact-form label span {
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+  color: var(--mak); letter-spacing: 0.04em; text-transform: uppercase;
+}
+.contact-form input, .contact-form textarea {
+  font-family: var(--font-body); font-size: 15px; color: var(--mak);
+  background: var(--smotana); border: 1px solid var(--paper-line);
+  border-radius: 10px; padding: 12px 16px; outline: none;
+  transition: border-color var(--dur-1) var(--ease-out), box-shadow var(--dur-1) var(--ease-out);
+  resize: vertical;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  border-color: var(--lekvar);
+  box-shadow: 0 0 0 3px rgba(120,0,0,0.10);
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--popol); font-style: italic; }
+.contact-required { color: var(--lekvar); font-weight: 700; }
+.contact-field-error { font-family: var(--font-body); font-size: 12px; color: #c0392b; margin-top: 4px; }
+.contact-form input.has-error, .contact-form textarea.has-error {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192,57,43,0.10);
+}
+.contact-consent {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-family: var(--font-body); font-size: 13px; color: var(--mak-soft);
+  line-height: 1.5; cursor: pointer;
+}
+.contact-consent input[type="checkbox"] {
+  width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;
+  accent-color: var(--lekvar); cursor: pointer;
+}
+.contact-consent a { color: var(--lekvar); text-underline-offset: 3px; }
+.contact-error { font-family: var(--font-body); font-size: 14px; color: #c0392b; margin: 0; }
+.contact-success {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+  padding: 32px; background: var(--smotana); border-radius: 16px;
+  border: 1px solid var(--paper-line); max-width: 480px;
+}
+.contact-success h3 { margin: 0; font-size: 22px; }
+.contact-success p { margin: 0; font-family: var(--font-body); font-size: 15px; color: var(--mak-soft); }
+@media (max-width: 600px) {
+  .contact-row { grid-template-columns: 1fr; }
+}
+
+/* ---- Privacy Policy --------------------------------------------- */
+.privacy-body h2 {
+  font-size: 20px; margin: 40px 0 10px;
+  padding-top: 32px; border-top: 1px solid var(--paper-line);
+}
+.privacy-body h3 { font-size: 16px; margin: 24px 0 8px; color: var(--mak); }
+.privacy-body p, .privacy-body li {
+  font-family: var(--font-body); font-size: 15px;
+  line-height: 1.75; color: var(--mak-soft); margin: 0 0 10px;
+}
+.privacy-body ul { padding-left: 20px; margin: 0 0 16px; }
+.privacy-body a { color: var(--lekvar); text-underline-offset: 3px; }
+
+/* ---- Stránkovanie ----------------------------------------------- */
+.pagination {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; margin-top: 56px;
+}
+.pagination-btn {
+  min-width: 40px; height: 40px; padding: 0 8px;
+  border-radius: 8px; border: 1px solid var(--paper-line);
+  background: var(--smotana); color: var(--mak);
+  font-family: var(--font-body); font-size: 14px; font-weight: 500;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all var(--dur-1) var(--ease-out);
+}
+.pagination-btn:hover:not(:disabled) { border-color: var(--lekvar); color: var(--lekvar); }
+.pagination-btn.active { background: var(--lekvar); color: var(--maslo); border-color: var(--lekvar); font-weight: 700; }
+.pagination-btn:disabled { opacity: 0.35; cursor: default; }
+
+/* ---- Mobilné menu ----------------------------------------------- */
+.nav-hamburger {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  background: none; border: none; padding: 0;
+  color: var(--mak); cursor: pointer;
+  border-radius: 8px;
+  transition: background var(--dur-1) var(--ease-out);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.nav-hamburger:hover { background: var(--smotana); }
+
+.nav-mobile {
+  position: fixed; top: var(--nav-h); left: 0; right: 0;
+  z-index: 49;
+  background: rgba(250,244,236,0.97);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--paper-line);
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 16px 24px 24px;
+  animation: slideDown 0.2s var(--ease-settle);
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.nav-mobile .nav-link {
+  font-size: 17px; padding: 12px 0;
+  border-bottom: 1px solid var(--paper-line);
+}
+.nav-mobile .nav-link:last-of-type { border-bottom: none; }
+.nav-mobile-search {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 999px;
+  background: var(--smotana); border: 1px solid var(--paper-line);
+  margin-top: 12px;
+}
+.nav-mobile-search input {
+  border: 0; background: transparent; outline: none; flex: 1;
+  font-family: var(--font-body); font-size: 15px; color: var(--mak);
+}
+.nav-mobile-search input::placeholder { color: var(--popol); font-style: italic; }
+.nav-mobile-search-btn {
+  background: var(--lekvar); border: none; border-radius: 50%;
+  width: 32px; height: 32px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--maslo); cursor: pointer;
+  transition: background var(--dur-1) var(--ease-out);
+}
+.nav-mobile-search-btn:hover { background: var(--mak); }
+
+/* ---- O mne ------------------------------------------------------ */
+.about-hero {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 72px;
+  align-items: center;
+  padding-block: 72px 56px;
+}
+.about-portrait {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+}
+.about-intro {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--mak-soft);
+  margin: 20px 0 0;
+  max-width: 52ch;
+}
+.about-dream {
+  background: var(--lekvar);
+  color: var(--maslo);
+  border-radius: 20px;
+  padding: 40px 48px;
+  margin-block: 48px 64px;
+}
+.about-dream h2 { color: var(--maslo); margin: 0 0 16px; font-size: 26px; }
+.about-dream p { font-family: var(--font-body); font-size: 17px; line-height: 1.65; margin: 0; opacity: 0.88; max-width: 60ch; }
+.about-social {
+  display: flex;
+  gap: 14px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.about-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lekvar);
+  text-decoration: none;
+  border: 1.5px solid var(--lekvar);
+  border-radius: 100px;
+  padding: 8px 18px;
+  transition: background 0.18s, color 0.18s;
+}
+.about-social a:hover { background: var(--lekvar); color: var(--maslo); }
+
+/* ---- responzívny dizajn ----------------------------------------- */
+@media (max-width: 1024px) {
+  .cat-strip { grid-template-columns: repeat(3, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-search { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-image { display: none; }
+  .section-title { font-size: 28px; }
+  .recipe-grid, .recipe-grid.two { grid-template-columns: 1fr; }
+  .recipe-grid.four { grid-template-columns: repeat(2, 1fr); }
+  .collection-grid { grid-template-columns: 1fr; }
+  .newsletter { padding: 40px 24px; }
+  .newsletter-inner { grid-template-columns: 1fr; }
+  .newsletter h2 { font-size: 32px; }
+  .newsletter form { flex-direction: column; }
+  .recipe-body { grid-template-columns: 1fr; gap: 32px; }
+  .recipe-side { position: static; }
+  .recipe-hero-content { flex-direction: column; align-items: start; padding: 32px 24px; }
+  .recipe-hero-stats { gap: 20px; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .about-hero { grid-template-columns: 1fr; gap: 40px; padding-block: 48px 40px; }
+  .about-portrait { max-width: 320px; aspect-ratio: 1 / 1; }
+  .about-dream { padding: 32px 28px; }
+}
+@media (max-width: 480px) {
+  .cat-strip { grid-template-columns: repeat(2, 1fr); }
+  .recipe-grid.four { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .newsletter h2 { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 120ms !important; }
+}
