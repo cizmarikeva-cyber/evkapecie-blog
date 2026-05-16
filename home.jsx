@@ -8,17 +8,10 @@ const Home = ({ onOpenRecipe, onGoRecipes }) => (
     {/* HERO */}
     <section className="container hero">
       <div className="hero-inner">
-        <div>
+        <div className="hero-text-top">
           <Eyebrow>Recept týdne</Eyebrow>
           <h1 className="hero-title" style={{ marginTop: 22 }}
               dangerouslySetInnerHTML={{ __html: FEATURED.title }} />
-          <p className="hero-sub">{FEATURED.intro}</p>
-          <div className="hero-cta">
-            <Button variant="primary" size="large"
-                    onClick={() => onOpenRecipe(FEATURED.slug)}>
-              Zobrazit recept <span className="arrow">→</span>
-            </Button>
-          </div>
         </div>
 
         <div className={`hero-image${!FEATURED.image ? " paint-" + FEATURED.paint : ""}`}
@@ -26,6 +19,16 @@ const Home = ({ onOpenRecipe, onGoRecipes }) => (
              style={{ cursor: "pointer", ...bgImage(FEATURED.image) }}>
           <div className="badge">
             <b>{FEATURED.time}</b> · {FEATURED.servings} · {FEATURED.level}
+          </div>
+        </div>
+
+        <div className="hero-text-bottom">
+          <p className="hero-sub">{FEATURED.intro}</p>
+          <div className="hero-cta">
+            <Button variant="primary" size="large"
+                    onClick={() => onOpenRecipe(FEATURED.slug)}>
+              Zobrazit recept <span className="arrow">→</span>
+            </Button>
           </div>
         </div>
       </div>
