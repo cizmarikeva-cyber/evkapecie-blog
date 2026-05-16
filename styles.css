@@ -159,7 +159,7 @@ a:hover { color: var(--lekvar-dark); }
 .eyebrow::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
 
 /* ---- hero ------------------------------------------------------- */
-.hero { padding-block: 64px 32px; }
+.hero { padding-block: 64px 48px; border-bottom: 1px solid var(--paper-line); }
 .hero-inner {
   display: grid; grid-template-columns: 1.05fr 1fr;
   gap: 56px; align-items: center;
@@ -785,7 +785,7 @@ a:hover { color: var(--lekvar-dark); }
   .nav-search { display: none; }
   .nav-hamburger { display: flex; }
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-image { display: none; }
+  .hero-image { aspect-ratio: 3 / 2; }
   .section-title { font-size: 28px; }
   .recipe-grid, .recipe-grid.two { grid-template-columns: 1fr; }
   .recipe-grid.four { grid-template-columns: repeat(2, 1fr); }
