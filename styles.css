@@ -162,7 +162,7 @@ a:hover { color: var(--lekvar-dark); }
 .hero { padding-block: 64px 48px; border-bottom: 1px solid var(--paper-line); }
 .hero-inner {
   display: grid; grid-template-columns: 1.05fr 1fr;
-  gap: 56px; align-items: start;
+  column-gap: 56px; row-gap: 0; align-items: start;
 }
 .hero-text-top    { grid-column: 1; grid-row: 1; }
 .hero-image       { grid-column: 2; grid-row: 1 / 3; }
@@ -787,8 +787,9 @@ a:hover { color: var(--lekvar-dark); }
   .nav-links { display: none; }
   .nav-search { display: none; }
   .nav-hamburger { display: flex; }
-  .hero-inner { grid-template-columns: 1fr; }
+  .hero-inner { grid-template-columns: 1fr; row-gap: 24px; }
   .hero-text-top, .hero-image, .hero-text-bottom { grid-column: auto; grid-row: auto; }
+  .hero-text-bottom { padding-bottom: 16px; }
   .hero-image { aspect-ratio: 3 / 2; }
   .section-title { font-size: 28px; }
   .recipe-grid, .recipe-grid.two { grid-template-columns: 1fr; }
