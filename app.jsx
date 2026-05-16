@@ -111,15 +111,7 @@ const Footer = ({ onAbout, onRecipesWithCategory, onPrivacy, onContact }) => (
         <a href="#" onClick={(e) => { e.preventDefault(); onContact(); }}>Kontaktujte mě</a>
       </div>
 
-      {/* Sloupec 4: Newsletter */}
-      <div className="footer-col">
-        <h4>Newsletter</h4>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: 13,
-                    color: "var(--popol)", margin: "0 0 10px", lineHeight: 1.5 }}>
-          Jeden recept týdně, žádný spam.
-        </p>
-        <Button variant="secondary" size="small">Přihlásit se</Button>
-      </div>
+      {/* Newsletter — skryté, zatím není připraveno */}
 
     </div>
     <div className="footer-meta">

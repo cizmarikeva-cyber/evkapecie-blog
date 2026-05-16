@@ -10,12 +10,9 @@ const Home = ({ onOpenRecipe, onGoRecipes }) => (
       <div className="hero-inner">
         <div>
           <Eyebrow>Recept týdne</Eyebrow>
-          <h1 className="hero-title" style={{ marginTop: 22 }}>
-            Podplameník <em>s klobásou a nivou</em>
-          </h1>
-          <p className="hero-sub">
-            Třetí díl série o podplameníku bez hnětení patří kombinaci, která vyhrála v anketě – klobása a niva. Musím uznat, že máte výborný vkus, protože tuto verzi jsem pekla rovnou z dvojité dávky. 🤤 Základ zůstává stejný: žádné hnětení, žádná dřina, jen pár přeložení a čas. To těsto je prostě skvělé v tom, jak je jednoduché.
-          </p>
+          <h1 className="hero-title" style={{ marginTop: 22 }}
+              dangerouslySetInnerHTML={{ __html: FEATURED.title }} />
+          <p className="hero-sub">{FEATURED.intro}</p>
           <div className="hero-cta">
             <Button variant="primary" size="large"
                     onClick={() => onOpenRecipe(FEATURED.slug)}>
@@ -66,30 +63,7 @@ const Home = ({ onOpenRecipe, onGoRecipes }) => (
       </div>
     </section>
 
-    {/* NEWSLETTER */}
-    <section className="container">
-      <div className="newsletter">
-        <div className="newsletter-inner">
-          <div>
-            <Eyebrow color="var(--med-soft)">Každou neděli ráno</Eyebrow>
-            <h2 style={{ marginTop: 16 }}>
-              Jeden recept, <em>jeden tip</em>, žádný spam.
-            </h2>
-            <p>
-              Každou neděli vyberu jeden recept, který se hodí přesně na ten týden
-              — sváteční, sezónní, nebo prostě takový, který se snadno povede.
-            </p>
-          </div>
-          <div>
-            <form onSubmit={(e) => e.preventDefault()}>
-              <input placeholder="vas@email.cz" type="email" aria-label="E-mail" />
-              <button type="submit">Přihlásit se</button>
-            </form>
-            <div className="newsletter-hand">— zatím nás je 8 412</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    {/* NEWSLETTER — skryté, zatím není připraveno */}
 
   </main>
 );
