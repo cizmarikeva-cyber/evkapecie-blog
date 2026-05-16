@@ -122,7 +122,7 @@ var RECIPES = [
   },
   {
     slug:       "pirohy",
-    categories: ["Slané", "Vaření"],
+    categories: ["Slané", "Vaření", "Tradiční"],
     title:      "<em>Pirohy</em>",
     time:       "1 h 15 min",
     servings:   "4 porce",
@@ -152,7 +152,7 @@ var RECIPES = [
   },
   {
     slug:       "slane-honzovy-buchty",
-    categories: ["Slané", "Vaření"],
+    categories: ["Slané", "Vaření", "Tradiční"],
     title:      "<em>Slané</em> Honzovy buchty",
     time:       "3 h",
     servings:   "12 ks",
@@ -189,6 +189,16 @@ var RECIPES = [
     level:      "Lehké",
     paint:      "mak",
     image:      "images/brownie.jpeg",
+  },
+  {
+    slug:       "mini-cheesecake",
+    categories: ["Sladké", "Dorty & dezerty"],
+    title:      "Cheesecake <em>s čokoládovou polevou</em>",
+    time:       "1 h + chlazení",
+    servings:   "6–8 porcí",
+    level:      "Středně náročné",
+    paint:      "mak",
+    image:      "images/mini-cheesecake.jpeg",
   },
 ];
 
@@ -891,6 +901,50 @@ var RECIPE_DATA = {
           "V hlubokém talíři vyšlehej vejce s mlékem a vanilkovým cukrem.",
           "Plátky mazance namočte ve směsi z obou stran (nechejte je chvíli nasáknout).",
           "Opékáme na másle dozlatova na středním ohni (cca 2 minuty z každé strany).",
+        ],
+      },
+    ],
+  },
+
+  "mini-cheesecake": {
+    instagram: "",
+    intro: "Mini verze cheesecaku — menší forma, ale plná chuť. Sušenkový základ, krémová náplň ze smetanového sýru a řeckého jogurtu a navrch lesklá čokoládová poleva. Počítej s tím, že cheesecake potřebuje pár hodin v lednici, takže ho připravuj ideálně den předem.",
+    ingredients: [
+      {
+        group: "Základ",
+        items: [
+          { amount: "100 g", name: "máslových sušenek" },
+          { amount: "40 g",  name: "másla" },
+        ],
+      },
+      {
+        group: "Krém",
+        items: [
+          { amount: "200 g", name: "smetanového sýru (např. Philadelphia)" },
+          { amount: "70 g",  name: "krupicového cukru" },
+          { amount: "10 g",  name: "vanilkového cukru" },
+          { amount: "1",     name: "vejce" },
+          { amount: "200 g", name: "řeckého jogurtu" },
+        ],
+      },
+      {
+        group: "Čokoládová poleva",
+        items: [
+          { amount: "50 g",  name: "hořké čokolády 60 %" },
+          { amount: "50 ml", name: "smetany ke šlehání" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "",
+        startAt: 1,
+        items: [
+          "Troubu předehřejeme na 160 °C.",
+          "Sušenky rozmixujeme, smícháme s rozpuštěným máslem a stlačíme na dno dortové formy.",
+          "Smetanový sýr vyšleháme s cukrem, přidáme vejce a pomalu zašleháme. Nakonec přidáme jogurt a nalijeme na připravený sušenkový základ.",
+          "Vložíme do předehřáté trouby a pečeme nejprve 20 minut, poté teplotu snížíme na 150 °C a pečeme dalších 25–30 minut dozlatova. Po vychladnutí dáme na několik hodin do lednice (alespoň na 2 hodiny, klidně i přes noc).",
+          "Když je cheesecake vychlazený, připravíme čokoládovou polevu – smetanu ke šlehání zahřejeme téměř k bodu varu, nalijeme na nasekanou čokoládu, rozmícháme do hladka a rozetřeme na povrch. Ozdobíme ovocem.",
         ],
       },
     ],
