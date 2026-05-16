@@ -178,7 +178,7 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
         <section className="recipe-related" style={{ padding: "72px 0 24px" }}>
           <div className="section-head">
             <div>
-              <Eyebrow>Hodí se k tomu</Eyebrow>
+              <Eyebrow>Z archivu</Eyebrow>
               <h2 className="section-title">Další <em>recepty</em></h2>
             </div>
             <a className="section-more" href="#">Celá kolekce <span className="arrow">→</span></a>

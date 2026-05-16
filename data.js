@@ -8,7 +8,7 @@ var FEATURED = {
   slug:     "podplamennik-s-klobasou-a-nivou",
   categories: ["Slané", "Tradiční"],
   title:    "Podplameník <em>s klobásou a nivou</em>",
-  intro:    "Třetí díl série o podplamenikou bez hnětení patří kombinaci, která vyhrála v anketě – klobása a niva. Tuto verzi jsem pekla rovnou z dvojité dávky. Základ zůstává stejný: žádné hnětení, žádná dřina, jen pár přeložení a čas. To těsto je prostě skvělé v tom, jak je jednoduché.",
+  intro:    "Další díl série o podplameníku patří kombinaci, která vyhrála v anketě – klobása a niva. Tuto verzi jsem pekla rovnou z dvojité dávky. Základ zůstává stejný: žádné hnětení, žádná dřina, jen pár přeložení a čas. To těsto je prostě skvělé v tom, jak je jednoduché.",
   time:     "2 h",
   servings: "6 porcí",
   level:    "Lehké",
@@ -207,7 +207,7 @@ var RECIPE_DATA = {
 
   "podplamennik-s-klobasou-a-nivou": {
     instagram: "https://www.instagram.com/p/DXUUrX6jHJW/",
-    intro: "Třetí díl série o podplamenikou bez hnětení patří kombinaci, která vyhrála v anketě – klobása a niva. Tuto verzi jsem pekla rovnou z dvojité dávky. Základ zůstává stejný: žádné hnětení, žádná dřina, jen pár přeložení a čas. To těsto je prostě skvělé v tom, jak je jednoduché.",
+    intro: "Další díl série o podplameníku patří kombinaci, která vyhrála v anketě na Instagramu – klobása a niva. Tuto verzi jsem pekla rovnou z dvojité dávky. Základ zůstává stejný: žádné hnětení, žádná dřina, jen pár přeložení a čas. To těsto je prostě skvělé v tom, jak je jednoduché.",
     ingredients: [
       {
         group: "Těsto",
@@ -218,7 +218,7 @@ var RECIPE_DATA = {
           { amount: "1 ČL",   name: "cukr" },
           { amount: "2 ČL",   name: "sůl" },
           { amount: "2 PL",   name: "olej" },
-          { amount: "—",      name: "sádlo na vymazání plechu" },
+          { amount: " ",      name: "sádlo na vymazání plechu" },
         ],
       },
       {
@@ -227,7 +227,7 @@ var RECIPE_DATA = {
           { amount: "200 g",  name: "zakysaná smetana" },
           { amount: "200 g",  name: "niva" },
           { amount: "1 ks",   name: "klobása (cca 140 g)" },
-          { amount: "—",      name: "cibule (nemusí být)" },
+          { amount: "1 ks",      name: "cibule (nemusí být)" },
         ],
       },
     ],
