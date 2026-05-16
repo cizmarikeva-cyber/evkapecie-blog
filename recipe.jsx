@@ -181,7 +181,7 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
               <Eyebrow>Z archivu</Eyebrow>
               <h2 className="section-title">Další <em>recepty</em></h2>
             </div>
-            <a className="section-more" href="#">Celá kolekce <span className="arrow">→</span></a>
+            <a className="section-more" href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>Všechny recepty <span className="arrow">→</span></a>
           </div>
           <div className="recipe-grid four">
             {RECIPES.filter(function(r) { return r.slug !== recipe.slug; }).slice(0, 4).map(function(r) {

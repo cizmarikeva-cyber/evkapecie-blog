@@ -180,6 +180,16 @@ var RECIPES = [
     paint:      "vianocka",
     image:      "images/french-toast.jpeg",
   },
+  {
+    slug:       "brownie",
+    categories: ["Sladké", "Rychlé"],
+    title:      "Brownies <em>s vlašskými ořechy</em>",
+    time:       "40 min",
+    servings:   "20 ks",
+    level:      "Lehké",
+    paint:      "mak",
+    image:      "images/brownie.jpeg",
+  },
 ];
 
 /* Kolekce — zobrazují se v sekci "Sezónní kolekce" */
@@ -881,6 +891,45 @@ var RECIPE_DATA = {
           "V hlubokém talíři vyšlehej vejce s mlékem a vanilkovým cukrem.",
           "Plátky mazance namočte ve směsi z obou stran (nechejte je chvíli nasáknout).",
           "Opékáme na másle dozlatova na středním ohni (cca 2 minuty z každé strany).",
+        ],
+      },
+    ],
+  },
+
+  "brownie": {
+    instagram: "",
+    intro: "Brownies jsou u nás doma klasika, kterou peču pořád dokola. Recept je jednoduchý, ale výsledek pokaždé překvapí — uvnitř krémové, nahoře lehce křupavé. Důležité je nepřepéct: špejle má vyjít s několika mokrými drobečky, ne čistá.",
+    ingredients: [
+      {
+        group: "Těsto",
+        items: [
+          { amount: "200 g",   name: "máslo" },
+          { amount: "250 g",   name: "70% čokoláda" },
+          { amount: "150 g",   name: "třtinový cukr" },
+          { amount: "4 ks",    name: "vejce" },
+          { amount: "4 PL",    name: "hladká mouka" },
+          { amount: "2 PL",    name: "kakao" },
+          { amount: "2 hrsti", name: "nasekaných vlašských ořechů" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Příprava",
+        startAt: 1,
+        items: [
+          "Troubu předehřejeme na <b>170 °C</b>.",
+          "Máslo s čokoládou rozpustíme ve vodní lázni. Necháme mírně vychladnout.",
+          "Vejce metličkou krátce smícháme s cukrem, přidáme rozpuštěnou čokoládu s máslem a promícháme. Postupně vmícháme kakao, mouku a nakonec ořechy.",
+        ],
+      },
+      {
+        heading: "Pečení",
+        startAt: 4,
+        items: [
+          "Formu (<b>20×24 cm</b>) vymažeme máslem a vysypeme moukou, nebo vyložíme pečicím papírem. Těsto vlijeme a uhladíme.",
+          "Pečeme na <b>170 °C</b> přibližně <b>20–25 minut</b>. Pozor nepřepéct — špejle má vyjít s několika mokrými drobečky.",
+          "Necháme vychladnout ve formě, poté nakrájíme na čtverce.",
         ],
       },
     ],

@@ -11,8 +11,7 @@ const Privacy = ({ onHome }) => (
         <Icon name="arrowLeft" size={14} stroke={2} /> Zpět na úvod
       </a>
 
-      <Eyebrow>Právní informace</Eyebrow>
-      <h1 style={{ marginTop: 12, marginBottom: 8 }}>Ochrana osobních údajů</h1>
+      <h1 style={{ marginBottom: 8 }}>Ochrana osobních údajů</h1>
       <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--popol)', marginBottom: 40 }}>
         Platné od: 15. května 2026 · Správce: Eva Čižmáriková, <a href="mailto:cizmarik.eva@gmail.com">cizmarik.eva@gmail.com</a>
       </p>

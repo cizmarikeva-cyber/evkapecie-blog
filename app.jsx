@@ -5,7 +5,7 @@
 
 /* ---- Navigace -------------------------------------------------- */
 
-const Nav = ({ activeScreen, onHome, onRecipes, onAbout, searchQuery, onSearch }) => {
+const Nav = ({ activeScreen, onHome, onRecipes, onAbout, onContact, searchQuery, onSearch }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const close = () => setMenuOpen(false);
 
@@ -25,8 +25,8 @@ const Nav = ({ activeScreen, onHome, onRecipes, onAbout, searchQuery, onSearch }
           <nav className="nav-links">
             {navLink("Domů",    "home",    onHome)}
             {navLink("Recepty", "recipes", onRecipes)}
-            <a className="nav-link" href="#">Tipy &amp; techniky</a>
             {navLink("O mně",   "about",   onAbout)}
+            <a className="nav-link" href="#" onClick={(e) => { e.preventDefault(); onContact(); close(); }}>Kontakt</a>
           </nav>
           <div className="nav-search">
             <Icon name="search" size={16} stroke={1.75} />
@@ -55,8 +55,8 @@ const Nav = ({ activeScreen, onHome, onRecipes, onAbout, searchQuery, onSearch }
         <div className="nav-mobile" role="navigation" aria-label="Mobilní menu">
           {navLink("Domů",    "home",    onHome)}
           {navLink("Recepty", "recipes", onRecipes)}
-          <a className="nav-link" href="#" onClick={close}>Tipy &amp; techniky</a>
           {navLink("O mně",   "about",   onAbout)}
+          <a className="nav-link" href="#" onClick={(e) => { e.preventDefault(); onContact(); close(); }}>Kontakt</a>
           <div className="nav-mobile-search">
             <Icon name="search" size={16} stroke={1.75} />
             <input
@@ -107,7 +107,6 @@ const Footer = ({ onAbout, onRecipesWithCategory, onPrivacy, onContact }) => (
       <div className="footer-col">
         <h4>Blog</h4>
         <a href="#" onClick={(e) => { e.preventDefault(); onAbout(); }}>O mně</a>
-        <a href="#">Tipy &amp; techniky</a>
         <a href="#" onClick={(e) => { e.preventDefault(); onContact(); }}>Kontaktujte mě</a>
       </div>
 
@@ -118,8 +117,6 @@ const Footer = ({ onAbout, onRecipesWithCategory, onPrivacy, onContact }) => (
       <span>© 2026 Evka pečie · Tradiční recepty SK/CZ</span>
       <span>
         <a href="#" style={{ color: "inherit" }} onClick={(e) => { e.preventDefault(); onPrivacy(); }}>Ochrana soukromí</a>
-        {" · "}
-        <a href="#" style={{ color: "inherit" }}>Podmínky</a>
       </span>
     </div>
   </footer>
@@ -170,6 +167,7 @@ function App() {
         onHome={goHome}
         onRecipes={goRecipes}
         onAbout={goAbout}
+        onContact={goContact}
         searchQuery={searchQuery}
         onSearch={handleSearch}
       />
@@ -181,7 +179,7 @@ function App() {
         ? <About onGoRecipes={goRecipes} scrollToContact={scrollToContact} onPrivacy={goPrivacy} />
         : screen.name === "privacy"
         ? <Privacy onHome={goHome} />
-        : <Recipe slug={screen.slug} onBack={goHome} onOpenRecipe={openRec} />}
+        : <Recipe slug={screen.slug} onBack={goRecipes} onOpenRecipe={openRec} />}
       <Footer onAbout={goAbout} onRecipesWithCategory={goRecipesWithCategory} onPrivacy={goPrivacy} onContact={goContact} />
     </>
   );

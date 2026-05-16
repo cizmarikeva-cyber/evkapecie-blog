@@ -87,7 +87,7 @@ const ContactForm = ({ onPrivacy }) => {
         />
         {errors.message && <span className="contact-field-error">{errors.message}</span>}
       </label>
-      <label className="contact-consent">
+      <label className="contact-consent" style={{ flexDirection: 'row' }}>
         <input
           type="checkbox"
           checked={consent}
@@ -103,7 +103,7 @@ const ContactForm = ({ onPrivacy }) => {
       {status === 'error' && (
         <p className="contact-error">Něco se pokazilo. Zkus znovu nebo napiš přímo na cizmarik.eva@gmail.com.</p>
       )}
-      <Button variant="primary" size="large" type="submit" disabled={status === 'sending' || !consent}>
+      <Button variant="primary" type="submit" style={{ alignSelf: 'flex-start' }} disabled={status === 'sending' || !consent}>
         {status === 'sending' ? 'Odesílá se…' : 'Odeslat zprávu'}
       </Button>
     </form>
@@ -127,11 +127,28 @@ const About = ({ onGoRecipes, scrollToContact, onPrivacy }) => {
       <section className="container">
         <div className="about-hero">
 
-          <img
-            src="images/portret.jpeg"
-            alt="Eva Čižmáriková — Evka pečie"
-            className="about-portrait"
-          />
+          <div>
+            <img
+              src="images/portret.jpeg"
+              alt="Eva Čižmáriková — Evka pečie"
+              className="about-portrait"
+            />
+            {/* Sociální sítě — pod fotkou */}
+            <div className="about-social" style={{ marginTop: 20 }}>
+              <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">
+                <Icon name="instagram" size={16} stroke={1.6} />
+                Instagram
+              </a>
+              <a href="https://www.tiktok.com/@evkapecie" target="_blank" rel="noopener noreferrer">
+                <Icon name="tiktok" size={16} stroke={1.6} />
+                TikTok
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">
+                <Icon name="facebook" size={16} stroke={1.6} />
+                Facebook
+              </a>
+            </div>
+          </div>
 
           <div>
             <Eyebrow>O mně</Eyebrow>
@@ -151,29 +168,13 @@ const About = ({ onGoRecipes, scrollToContact, onPrivacy }) => {
               Mám pocit, že tradiční koláče se v dnešním rychlém světě trochu ztrácejí. Chci ukázat, že se dají připravit opravdu dobře, tradičně ale i s moderním nádechem. Proto jsem tady a sdílím recepty, které fungují.
             </p>
 
-            {/* Sociální sítě */}
-            <div className="about-social">
-              <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">
-                <Icon name="instagram" size={16} stroke={1.6} />
-                Instagram
-              </a>
-              <a href="https://www.tiktok.com/@evkapecie" target="_blank" rel="noopener noreferrer">
-                <Icon name="tiktok" size={16} stroke={1.6} />
-                TikTok
-              </a>
-              <a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">
-                <Icon name="facebook" size={16} stroke={1.6} />
-                Facebook
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
       {/* KONTAKTNÍ FORMULÁŘ */}
       <section className="container contact-section" id="contact" style={{ paddingBottom: 96 }}>
-        <Eyebrow>Napiš mi</Eyebrow>
-        <h2 style={{ marginTop: 12, marginBottom: 40 }}>
+        <h2 style={{ marginBottom: 40 }}>
           <em>Kontaktujte</em> mě
         </h2>
         <ContactForm onPrivacy={onPrivacy} />

@@ -616,7 +616,7 @@ a:hover { color: var(--lekvar-dark); }
   box-shadow: 0 0 0 3px rgba(192,57,43,0.10);
 }
 .contact-consent {
-  display: flex; align-items: flex-start; gap: 10px;
+  display: flex; flex-direction: row; align-items: flex-start; gap: 10px;
   font-family: var(--font-body); font-size: 13px; color: var(--mak-soft);
   line-height: 1.5; cursor: pointer;
 }
@@ -726,7 +726,7 @@ a:hover { color: var(--lekvar-dark); }
   display: grid;
   grid-template-columns: 420px 1fr;
   gap: 72px;
-  align-items: center;
+  align-items: start;
   padding-block: 72px 56px;
 }
 .about-portrait {
