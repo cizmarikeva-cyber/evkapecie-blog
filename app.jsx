@@ -132,18 +132,34 @@ function App() {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [scrollToContact, setScrollToContact] = React.useState(false);
 
-  const goHome    = () => { setScreen({ name: "home",    slug: null }); setSearchQuery(''); window.scrollTo(0, 0); };
-  const goRecipes = () => { setScreen({ name: "recipes", slug: null, category: null }); window.scrollTo(0, 0); };
-  const goAbout   = () => { setScrollToContact(false); setScreen({ name: "about", slug: null }); window.scrollTo(0, 0); };
-  const goContact = () => { setScrollToContact(true);  setScreen({ name: "about", slug: null }); window.scrollTo(0, 0); };
-  const goPrivacy = () => { setScreen({ name: "privacy", slug: null }); window.scrollTo(0, 0); };
-  const openRec   = (slug) => { setScreen({ name: "recipe", slug });    window.scrollTo(0, 0); };
-  const goRecipesWithCategory = (cat) => { setScreen({ name: "recipes", slug: null, category: cat }); window.scrollTo(0, 0); };
+  const navigate = (newScreen) => {
+    window.history.pushState(newScreen, '');
+    setScreen(newScreen);
+    window.scrollTo(0, 0);
+  };
+
+  React.useEffect(() => {
+    window.history.replaceState({ name: "home", slug: null }, '');
+    const onPop = (e) => {
+      if (e.state) setScreen(e.state);
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  const goHome    = () => { setSearchQuery(''); navigate({ name: "home",    slug: null }); };
+  const goRecipes = () => { navigate({ name: "recipes", slug: null, category: null }); };
+  const goAbout   = () => { setScrollToContact(false); navigate({ name: "about", slug: null }); };
+  const goContact = () => { setScrollToContact(true);  navigate({ name: "about", slug: null }); };
+  const goPrivacy = () => { navigate({ name: "privacy", slug: null }); };
+  const openRec   = (slug) => { navigate({ name: "recipe", slug }); };
+  const goRecipesWithCategory = (cat) => { navigate({ name: "recipes", slug: null, category: cat }); };
 
   const handleSearch = (q) => {
     setSearchQuery(q);
     if (q.trim()) {
-      setScreen({ name: "recipes", slug: null });
+      navigate({ name: "recipes", slug: null });
     }
   };
 
