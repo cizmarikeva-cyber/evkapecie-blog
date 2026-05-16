@@ -1,9 +1,9 @@
 /* ============================================================
-   app.jsx — navigácia, footer a koreňová App komponenta
-   Tu sa riadi navigácia medzi obrazovkami (home ↔ recept)
+   app.jsx — navigace, footer a kořenová App komponenta
+   Zde se řídí navigace mezi obrazovkami (home ↔ recept)
    ============================================================ */
 
-/* ---- Navigácia -------------------------------------------------- */
+/* ---- Navigace -------------------------------------------------- */
 
 const Nav = ({ activeScreen, onHome, onRecipes, onAbout, searchQuery, onSearch }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -23,16 +23,16 @@ const Nav = ({ activeScreen, onHome, onRecipes, onAbout, searchQuery, onSearch }
         <div className="container nav-inner">
           <Logo onClick={() => { onHome(); close(); }} />
           <nav className="nav-links">
-            {navLink("Domov",   "home",    onHome)}
+            {navLink("Domů",    "home",    onHome)}
             {navLink("Recepty", "recipes", onRecipes)}
             <a className="nav-link" href="#">Tipy &amp; techniky</a>
-            {navLink("O mne",   "about",   onAbout)}
+            {navLink("O mně",   "about",   onAbout)}
           </nav>
           <div className="nav-search">
             <Icon name="search" size={16} stroke={1.75} />
             <input
-              placeholder="Hľadať recept…"
-              aria-label="Hľadať recept"
+              placeholder="Hledat recept…"
+              aria-label="Hledat recept"
               value={searchQuery}
               onChange={(e) => onSearch(e.target.value)}
             />
@@ -40,7 +40,7 @@ const Nav = ({ activeScreen, onHome, onRecipes, onAbout, searchQuery, onSearch }
           <button
             className="nav-hamburger"
             onClick={() => setMenuOpen(o => !o)}
-            aria-label={menuOpen ? "Zatvoriť menu" : "Otvoriť menu"}
+            aria-label={menuOpen ? "Zavřít menu" : "Otevřít menu"}
             aria-expanded={menuOpen}
           >
             {menuOpen
@@ -52,16 +52,16 @@ const Nav = ({ activeScreen, onHome, onRecipes, onAbout, searchQuery, onSearch }
       </header>
 
       {menuOpen && (
-        <div className="nav-mobile" role="navigation" aria-label="Mobilné menu">
-          {navLink("Domov",   "home",    onHome)}
+        <div className="nav-mobile" role="navigation" aria-label="Mobilní menu">
+          {navLink("Domů",    "home",    onHome)}
           {navLink("Recepty", "recipes", onRecipes)}
           <a className="nav-link" href="#" onClick={close}>Tipy &amp; techniky</a>
-          {navLink("O mne",   "about",   onAbout)}
+          {navLink("O mně",   "about",   onAbout)}
           <div className="nav-mobile-search">
             <Icon name="search" size={16} stroke={1.75} />
             <input
-              placeholder="Hľadať recept…"
-              aria-label="Hľadať recept"
+              placeholder="Hledat recept…"
+              aria-label="Hledat recept"
               value={searchQuery}
               onChange={(e) => {
                 onSearch(e.target.value);
@@ -72,7 +72,7 @@ const Nav = ({ activeScreen, onHome, onRecipes, onAbout, searchQuery, onSearch }
               }}
             />
             {searchQuery.trim() && (
-              <button className="nav-mobile-search-btn" onClick={close} aria-label="Zobraziť výsledky">
+              <button className="nav-mobile-search-btn" onClick={close} aria-label="Zobrazit výsledky">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </button>
             )}
@@ -89,51 +89,51 @@ const Footer = ({ onAbout, onRecipesWithCategory, onPrivacy, onContact }) => (
   <footer className="container footer">
     <div className="footer-inner">
 
-      {/* Stĺpec 1: iba logo */}
+      {/* Sloupec 1: pouze logo */}
       <div>
         <img src="images/logo.svg" alt="Evka pečie" style={{ height: 68, display: "block" }} />
       </div>
 
-      {/* Stĺpec 2: Recepty — s filtrom kategórie */}
+      {/* Sloupec 2: Recepty — s filtrem kategorie */}
       <div className="footer-col">
         <h4>Recepty</h4>
-        <a href="#" onClick={(e) => { e.preventDefault(); onRecipesWithCategory('Tradičné'); }}>Tradičné</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onRecipesWithCategory('Tradiční'); }}>Tradiční</a>
         <a href="#" onClick={(e) => { e.preventDefault(); onRecipesWithCategory('Sladké'); }}>Sladké</a>
         <a href="#" onClick={(e) => { e.preventDefault(); onRecipesWithCategory('Slané'); }}>Slané</a>
-        <a href="#" onClick={(e) => { e.preventDefault(); onRecipesWithCategory('Rýchle'); }}>Rýchle</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onRecipesWithCategory('Rychlé'); }}>Rychlé</a>
       </div>
 
-      {/* Stĺpec 3: Blog */}
+      {/* Sloupec 3: Blog */}
       <div className="footer-col">
         <h4>Blog</h4>
-        <a href="#" onClick={(e) => { e.preventDefault(); onAbout(); }}>O mne</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onAbout(); }}>O mně</a>
         <a href="#">Tipy &amp; techniky</a>
-        <a href="#" onClick={(e) => { e.preventDefault(); onContact(); }}>Kontaktujte ma</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onContact(); }}>Kontaktujte mě</a>
       </div>
 
-      {/* Stĺpec 4: Newsletter */}
+      {/* Sloupec 4: Newsletter */}
       <div className="footer-col">
         <h4>Newsletter</h4>
         <p style={{ fontFamily: "var(--font-body)", fontSize: 13,
                     color: "var(--popol)", margin: "0 0 10px", lineHeight: 1.5 }}>
-          Jeden recept týždenne, žiadny spam.
+          Jeden recept týdně, žádný spam.
         </p>
-        <Button variant="secondary" size="small">Prihlásiť sa</Button>
+        <Button variant="secondary" size="small">Přihlásit se</Button>
       </div>
 
     </div>
     <div className="footer-meta">
-      <span>© 2026 Evka pečie · Tradičné recepty SK/CZ</span>
+      <span>© 2026 Evka pečie · Tradiční recepty SK/CZ</span>
       <span>
-        <a href="#" style={{ color: "inherit" }} onClick={(e) => { e.preventDefault(); onPrivacy(); }}>Ochrana súkromia</a>
+        <a href="#" style={{ color: "inherit" }} onClick={(e) => { e.preventDefault(); onPrivacy(); }}>Ochrana soukromí</a>
         {" · "}
-        <a href="#" style={{ color: "inherit" }}>Podmienky</a>
+        <a href="#" style={{ color: "inherit" }}>Podmínky</a>
       </span>
     </div>
   </footer>
 );
 
-/* ---- App — riadi navigáciu medzi obrazovkami ------------------- */
+/* ---- App — řídí navigaci mezi obrazovkami ------------------- */
 
 function App() {
   const [screen, setScreen] = React.useState({ name: "home", slug: null });

@@ -11,7 +11,7 @@ const Home = ({ onOpenRecipe, onGoRecipes }) => (
         <div>
           <Eyebrow>Recept týdne</Eyebrow>
           <h1 className="hero-title" style={{ marginTop: 22 }}>
-            Podplameník <em>s klobásou a nívou</em>
+            Podplameník <em>s klobásou a nivou</em>
           </h1>
           <p className="hero-sub">
             Třetí díl série o podplameníku bez hnětení patří kombinaci, která vyhrála v anketě – klobása a niva. Musím uznat, že máte výborný vkus, protože tuto verzi jsem pekla rovnou z dvojité dávky. 🤤 Základ zůstává stejný: žádné hnětení, žádná dřina, jen pár přeložení a čas. To těsto je prostě skvělé v tom, jak je jednoduché.

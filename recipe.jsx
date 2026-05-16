@@ -1,6 +1,6 @@
 /* ============================================================
    recipe.jsx — detail receptu
-   Sekcie: Hero · Suroviny (sidebar) · Postup · Podpis · Ďalšie recepty
+   Sekce: Hero · Suroviny (sidebar) · Postup · Podpis · Další recepty
    ============================================================ */
 
 const Recipe = ({ slug, onBack, onOpenRecipe }) => {
@@ -24,12 +24,12 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
     <main>
       <div className="container" style={{ paddingTop: 24 }}>
 
-        {/* Späť */}
+        {/* Zpět */}
         <a className="back" href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>
-          <Icon name="arrowLeft" size={14} stroke={2} /> Späť na recepty
+          <Icon name="arrowLeft" size={14} stroke={2} /> Zpět na recepty
         </a>
 
-        {/* HERO OBRÁZOK */}
+        {/* HERO OBRÁZEK */}
         <div className="recipe-hero">
           <div className={`recipe-hero-paint${!recipe.image ? " paint-" + recipe.paint : ""}`}
                style={bgImage(recipe.image)} />
@@ -45,18 +45,18 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
                 <div className="val">{recipe.time}</div>
               </div>
               <div className="stat">
-                <div className="lbl">Porcií</div>
+                <div className="lbl">Porcí</div>
                 <div className="val">{recipe.servings}</div>
               </div>
               <div className="stat">
-                <div className="lbl">Náročnosť</div>
+                <div className="lbl">Náročnost</div>
                 <div className="val">{recipe.level}</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* TELO — sidebar + obsah */}
+        {/* TĚLO — sidebar + obsah */}
         <div className="recipe-body">
 
           {/* SIDEBAR: suroviny */}
@@ -81,7 +81,7 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
                 );
               })
             ) : (
-              <p style={{ fontStyle: "italic", color: "var(--popol)" }}>Suroviny čoskoro doplníme…</p>
+              <p style={{ fontStyle: "italic", color: "var(--popol)" }}>Suroviny brzy doplníme…</p>
             )}
           </aside>
 
@@ -91,10 +91,10 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
 
             <div className="recipe-actions">
               <Button variant="ghost" size="small">
-                <Icon name="print" size={14} /> Tlačiť
+                <Icon name="print" size={14} /> Tisknout
               </Button>
               <Button variant="ghost" size="small">
-                <Icon name="share" size={14} /> Zdieľať
+                <Icon name="share" size={14} /> Sdílet
               </Button>
             </div>
 
@@ -122,7 +122,7 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
                 );
               })
             ) : (
-              <p style={{ fontStyle: "italic", color: "var(--popol)", marginTop: 32 }}>Postup čoskoro doplníme…</p>
+              <p style={{ fontStyle: "italic", color: "var(--popol)", marginTop: 32 }}>Postup brzy doplníme…</p>
             )}
 
             {data.tips && (
@@ -148,7 +148,7 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
                   style={{ maxWidth: 500, width: "80%", minWidth: 326, border: "1px solid #dbdbdb", borderRadius: 12 }}
                 >
                   <a href={data.instagram} target="_blank" rel="noopener noreferrer">
-                    Pozrieť video recept na Instagrame →
+                    Zobrazit video recept na Instagramu →
                   </a>
                 </blockquote>
               </div>
@@ -160,20 +160,20 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
               <img src="images/portret2.jpeg" alt="Evka" className="sig-portrait" />
               <div className="sig-body">
                 <b>@evkapecie</b>
-                Ak budeš piecť, pošli mi fotku na Instagram alebo Facebook — najradšej mám tie z prvého pokusu, aj keď sa nezadarí. Môžme sa potom baviť o tom, čo vylepšiť.
+                Když budeš péct, pošli mi fotku na Instagram nebo Facebook — nejradši mám ty z prvního pokusu, i když se nepovede. Pak si můžeme povídat o tom, co vylepšit.
               </div>
             </div>
           </article>
         </div>
 
-        {/* SÚVISIACE RECEPTY */}
+        {/* SOUVISEJÍCÍ RECEPTY */}
         <section style={{ padding: "72px 0 24px" }}>
           <div className="section-head">
             <div>
-              <Eyebrow>Hodí sa k tomu</Eyebrow>
-              <h2 className="section-title">Ďalšie <em>recepty</em></h2>
+              <Eyebrow>Hodí se k tomu</Eyebrow>
+              <h2 className="section-title">Další <em>recepty</em></h2>
             </div>
-            <a className="section-more" href="#">Celá kolekcia <span className="arrow">→</span></a>
+            <a className="section-more" href="#">Celá kolekce <span className="arrow">→</span></a>
           </div>
           <div className="recipe-grid four">
             {RECIPES.filter(function(r) { return r.slug !== recipe.slug; }).slice(0, 4).map(function(r) {

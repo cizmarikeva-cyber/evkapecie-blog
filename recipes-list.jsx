@@ -1,6 +1,6 @@
 /* ============================================================
-   recipes-list.jsx — stránka so všetkými receptami
-   Sekcie: Hlavička · Filter podľa kategórie · Mriežka receptov
+   recipes-list.jsx — stránka se všemi recepty
+   Sekce: Hlavička · Filtr podle kategorie · Mřížka receptů
    ============================================================ */
 
 const PAGE_SIZE = 9;
@@ -12,11 +12,11 @@ const RecipesList = ({ onOpenRecipe, searchQuery = '', initialCategory = null })
   React.useEffect(() => { setActiveCategory(initialCategory); setPage(1); }, [initialCategory]);
   React.useEffect(() => { setPage(1); }, [searchQuery, activeCategory]);
 
-  /* Normalizácia: malé písmená + bez diakritiky */
+  /* Normalizace: malá písmena + bez diakritiky */
   const norm = s =>
     s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
-  /* Prehľadáva názov, kategórie aj suroviny receptu */
+  /* Prohledává název, kategorie i suroviny receptu */
   const matchesQuery = recipe => {
     const q = norm(searchQuery.trim());
     if (!q) return true;
@@ -55,18 +55,18 @@ const RecipesList = ({ onOpenRecipe, searchQuery = '', initialCategory = null })
 
       {/* HLAVIČKA */}
       <section className="container" style={{ paddingTop: 56, paddingBottom: 0 }}>
-        <Eyebrow>Prehľad</Eyebrow>
+        <Eyebrow>Přehled</Eyebrow>
         <h1 className="recipes-list-title">
-          <em>Všetky</em> recepty
+          <em>Všechny</em> recepty
         </h1>
 
-        {/* FILTER PODĽA KATEGÓRIE */}
+        {/* FILTR PODLE KATEGORIE */}
         <div className="filter-strip">
           <button
             className={`filter-pill${activeCategory === null ? ' active' : ''}`}
             onClick={() => setActiveCategory(null)}
           >
-            Všetky
+            Vše
             <span className="filter-pill-count">{RECIPES.length}</span>
           </button>
 
@@ -87,13 +87,13 @@ const RecipesList = ({ onOpenRecipe, searchQuery = '', initialCategory = null })
         </div>
       </section>
 
-      {/* MRIEŽKA RECEPTOV */}
+      {/* MŘÍŽKA RECEPTŮ */}
       <section className="container" style={{ paddingBottom: 96 }}>
         {isSearching && (
           <p className="recipes-search-info">
             {filtered.length > 0
-              ? <>Nájdených <b>{filtered.length}</b> {filtered.length === 1 ? 'recept' : filtered.length < 5 ? 'recepty' : 'receptov'} pre „{searchQuery.trim()}"</>
-              : <>Žiadne výsledky pre „{searchQuery.trim()}"</>
+              ? <>Nalezeno <b>{filtered.length}</b> {filtered.length === 1 ? 'recept' : filtered.length < 5 ? 'recepty' : 'receptů'} pro „{searchQuery.trim()}"</>
+              : <>Žádné výsledky pro „{searchQuery.trim()}"</>
             }
           </p>
         )}
@@ -107,20 +107,20 @@ const RecipesList = ({ onOpenRecipe, searchQuery = '', initialCategory = null })
         ) : (
           <p style={{ color: 'var(--popol)', fontFamily: 'var(--font-body)', fontSize: 16, padding: '32px 0' }}>
             {isSearching
-              ? 'Skús iné slovo alebo zruš filter kategórie.'
-              : 'V tejto kategórii zatiaľ žiadne recepty nie sú.'
+              ? 'Zkus jiné slovo nebo zruš filtr kategorie.'
+              : 'V této kategorii zatím žádné recepty nejsou.'
             }
           </p>
         )}
 
-        {/* STRÁNKOVANIE */}
+        {/* STRÁNKOVÁNÍ */}
         {totalPages > 1 && (
           <div className="pagination">
             <button
               className="pagination-btn"
               onClick={() => goToPage(page - 1)}
               disabled={page === 1}
-              aria-label="Predchádzajúca strana"
+              aria-label="Předchozí strana"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
@@ -141,7 +141,7 @@ const RecipesList = ({ onOpenRecipe, searchQuery = '', initialCategory = null })
               className="pagination-btn"
               onClick={() => goToPage(page + 1)}
               disabled={page === totalPages}
-              aria-label="Nasledujúca strana"
+              aria-label="Následující strana"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M9 18l6-6-6-6"/></svg>
             </button>

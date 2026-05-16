@@ -1,8 +1,8 @@
 /* ============================================================
-   about.jsx — stránka „O mne"
+   about.jsx — stránka „O mně"
    ============================================================ */
 
-/* Nahraď YOUR_FORMSPREE_ID skutočným ID z formspree.io */
+/* Nahraď YOUR_FORMSPREE_ID skutečným ID z formspree.io */
 const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
 
 const ContactForm = ({ onPrivacy }) => {
@@ -19,8 +19,8 @@ const ContactForm = ({ onPrivacy }) => {
   const validate = () => {
     const e = {};
     if (!fields.email.trim()) e.email = 'E-mail je povinný.';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) e.email = 'Zadaj platnú e-mailovú adresu.';
-    if (!fields.message.trim()) e.message = 'Správa je povinná.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) e.email = 'Zadejte platnou e-mailovou adresu.';
+    if (!fields.message.trim()) e.message = 'Zpráva je povinná.';
     return e;
   };
 
@@ -52,8 +52,8 @@ const ContactForm = ({ onPrivacy }) => {
     return (
       <div className="contact-success">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--lekvar)" strokeWidth="2" strokeLinecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
-        <h3>Správa odoslaná!</h3>
-        <p>Ďakujem za správu, ozvem sa čoskoro.</p>
+        <h3>Zpráva odeslána!</h3>
+        <p>Děkuji za zprávu, ozvu se brzy.</p>
       </div>
     );
   }
@@ -62,7 +62,7 @@ const ContactForm = ({ onPrivacy }) => {
     <form className="contact-form" onSubmit={handleSubmit} noValidate>
       <div className="contact-row">
         <label>
-          <span>Meno</span>
+          <span>Jméno</span>
           <input
             type="text"
             value={fields.name} onChange={set('name')}
@@ -79,7 +79,7 @@ const ContactForm = ({ onPrivacy }) => {
         </label>
       </div>
       <label>
-        <span>Správa <span className="contact-required">*</span></span>
+        <span>Zpráva <span className="contact-required">*</span></span>
         <textarea
           rows={5}
           className={errors.message ? 'has-error' : ''}
@@ -94,17 +94,17 @@ const ContactForm = ({ onPrivacy }) => {
           onChange={(e) => setConsent(e.target.checked)}
         />
         <span>
-          Súhlasím so spracovaním osobných údajov v súlade so{' '}
+          Souhlasím se zpracováním osobních údajů v souladu se{' '}
           <a href="#" onClick={(e) => { e.preventDefault(); onPrivacy && onPrivacy(); }}>
-            zásadami ochrany osobných údajov
+            zásadami ochrany osobních údajů
           </a>.
         </span>
       </label>
       {status === 'error' && (
-        <p className="contact-error">Niečo sa pokazilo. Skús znova alebo napíš priamo na cizmarik.eva@gmail.com.</p>
+        <p className="contact-error">Něco se pokazilo. Zkus znovu nebo napiš přímo na cizmarik.eva@gmail.com.</p>
       )}
       <Button variant="primary" size="large" type="submit" disabled={status === 'sending' || !consent}>
-        {status === 'sending' ? 'Odosiela sa…' : 'Odoslať správu'}
+        {status === 'sending' ? 'Odesílá se…' : 'Odeslat zprávu'}
       </Button>
     </form>
   );
@@ -134,37 +134,37 @@ const About = ({ onGoRecipes, scrollToContact, onPrivacy }) => {
           />
 
           <div>
-            <Eyebrow>O mne</Eyebrow>
+            <Eyebrow>O mně</Eyebrow>
             <h1 style={{ marginTop: 16 }}>
-              Ahoj, som <em>Eva</em>
+              Ahoj, jsem <em>Eva</em>
             </h1>
 
             <p className="about-intro">
-              Vyrastala som na Slovensku v rodine, kde sa cez víkend pieklo takmer vždy.
-              Môj vzťah k pečeniu od detstva formovala mamka a obe staré mamy — a ja som
-              pri tom rada stála, pomáhala a ochutnávala. Naučili ma, že na kvalite surovín
-              záleží: maslo je nenahraditeľné, šľahačka má byť vysokopercentná a ovocie
-              zo záhrady chutí úplne inak ako z obchodu. To sú moje základy, od ktorých
-              sa neodkloním.
+              Vyrostla jsem na Slovensku v rodině, kde se o víkendu peklo téměř vždy.
+              Můj vztah k pečení od dětství formovaly mamka a obě babičky — a já jsem
+              u toho ráda stávala, pomáhala a ochutnávala. Naučily mě, že na kvalitě
+              surovin záleží: máslo je nenahraditelné, šlehačka má být vysokoprocentní
+              a ovoce ze zahrady chutná úplně jinak než z obchodu. To jsou moje základy,
+              od kterých se neodkloním.
             </p>
 
             <p className="about-intro" style={{ marginTop: 16 }}>
-              Keď som sa odsťahovala do Českej Republiky, môj záujem o pečenie sa ešte
-              prehĺbil. Inšpirujem sa z rôznych zdrojov — veľa mi dal blog Víkendové pečení,
-              absolvovala som rôzne kurzy a rada skúšam nové chute. Pečiem hlavne tradičné
-              slovenské a české koláče: kysnuté cesto, bábovky, vianočné pečivo (cukroví).
-              Avšak rada to prekladám modernými vecami — takže u mňa nájdete aj recepty
-              na cupcakes či cheesecake, alebo zahraničné dezerty, ktoré som ochutnala
-              na dovolenkách.
+              Když jsem se přestěhovala do České republiky, můj zájem o pečení se ještě
+              prohloubil. Inspiruji se z různých zdrojů — hodně mi dal blog Víkendové
+              pečení, absolvovala jsem různé kurzy a ráda zkouším nové chutě. Peču hlavně
+              tradiční slovenské a české koláče: kynuté těsto, bábovky, vánoční pečivo
+              (cukroví). Ale ráda to prokládám moderními věcmi — takže u mě najdete i
+              recepty na cupcakes nebo cheesecake, nebo zahraniční dezerty, které jsem
+              ochutnala na dovolených.
             </p>
 
             <p className="about-intro" style={{ marginTop: 16 }}>
-              Mám pocit, že tradičné koláče sa v dnešnom rýchlom svete trošku strácajú.
-              Chcem ukázať, že sa dajú pripraviť naozaj dobre, tradične ale aj s moderným
-              nádychom. Preto som tu a zdieľam recepty, ktoré fungujú.
+              Mám pocit, že tradiční koláče se v dnešním rychlém světě trochu ztrácejí.
+              Chci ukázat, že se dají připravit opravdu dobře, tradičně ale i s moderním
+              nádechem. Proto jsem tady a sdílím recepty, které fungují.
             </p>
 
-            {/* Sociálne siete */}
+            {/* Sociální sítě */}
             <div className="about-social">
               <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">
                 <Icon name="instagram" size={16} stroke={1.6} />
@@ -183,11 +183,11 @@ const About = ({ onGoRecipes, scrollToContact, onPrivacy }) => {
         </div>
       </section>
 
-      {/* KONTAKTNÝ FORMULÁR */}
+      {/* KONTAKTNÍ FORMULÁŘ */}
       <section className="container contact-section" id="contact" style={{ paddingBottom: 96 }}>
-        <Eyebrow>Napíš mi</Eyebrow>
+        <Eyebrow>Napiš mi</Eyebrow>
         <h2 style={{ marginTop: 12, marginBottom: 40 }}>
-          <em>Kontaktujte</em> ma
+          <em>Kontaktujte</em> mě
         </h2>
         <ContactForm onPrivacy={onPrivacy} />
       </section>
