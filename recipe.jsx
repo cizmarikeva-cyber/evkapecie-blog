@@ -29,6 +29,11 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
           <Icon name="arrowLeft" size={14} stroke={2} /> Zpět na recepty
         </a>
 
+        {/* NADPIS IBA PRE TLAČ */}
+        <div className="print-title">
+          <div dangerouslySetInnerHTML={{ __html: recipe.title }} />
+        </div>
+
         {/* HERO OBRÁZEK */}
         <div className="recipe-hero">
           <div className={`recipe-hero-paint${!recipe.image ? " paint-" + recipe.paint : ""}`}
@@ -166,8 +171,11 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
           </article>
         </div>
 
+        {/* PATIČKA PRE TLAČ */}
+        <div className="print-footer">evkapecie.cz</div>
+
         {/* SOUVISEJÍCÍ RECEPTY */}
-        <section style={{ padding: "72px 0 24px" }}>
+        <section className="recipe-related" style={{ padding: "72px 0 24px" }}>
           <div className="section-head">
             <div>
               <Eyebrow>Hodí se k tomu</Eyebrow>

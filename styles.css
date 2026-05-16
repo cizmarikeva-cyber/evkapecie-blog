@@ -812,3 +812,65 @@ a:hover { color: var(--lekvar-dark); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 120ms !important; }
 }
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+.print-footer { display: none; }
+.print-title { display: none; }
+
+@media print {
+  /* Skryť navigáciu, footer a tlačidlá */
+  .nav, .footer, .back, .recipe-actions, .recipe-reel,
+  .divider, .signature, .recipe-related { display: none !important; }
+
+  /* Skryť celý hero blok (fotka + gradient) */
+  .recipe-hero { display: none !important; }
+
+  /* Zobraziť print nadpis */
+  .print-title {
+    display: block !important;
+    font-family: var(--font-head);
+    font-size: 28px;
+    color: #000;
+    margin-bottom: 16px;
+  }
+
+  /* Odstrániť vlastné odsadenie recipe-body */
+  .recipe-body { margin-top: 0 !important; padding-top: 0 !important; }
+
+  /* Zarovnanie surovin rovnako ako postup */
+  .recipe-side, .recipe-side ul, .recipe-side li {
+    text-align: left !important;
+  }
+
+  /* Intro skryť */
+  .recipe-intro { display: none !important; }
+
+  /* Body — suroviny nad postup */
+  .recipe-body { display: block !important; }
+  .recipe-side {
+    position: static !important;
+    margin-top: 0 !important;
+    margin-bottom: 16px;
+    border: none !important;
+    border-radius: 0;
+    padding: 0;
+  }
+  .recipe-content { padding: 0 !important; }
+
+  /* Typografia pre tlač */
+  body { font-size: 13px; color: #000; }
+  .steps li { margin-bottom: 8px; }
+
+  /* Patička pre tlač */
+  .print-footer {
+    display: block !important;
+    text-align: center;
+    font-size: 11px;
+    color: #888;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 32px;
+  }
+}
