@@ -140,28 +140,15 @@ const About = ({ onGoRecipes, scrollToContact, onPrivacy }) => {
             </h1>
 
             <p className="about-intro">
-              Vyrostla jsem na Slovensku v rodině, kde se o víkendu peklo téměř vždy.
-              Můj vztah k pečení od dětství formovaly mamka a obě babičky — a já jsem
-              u toho ráda stávala, pomáhala a ochutnávala. Naučily mě, že na kvalitě
-              surovin záleží: máslo je nenahraditelné, šlehačka má být vysokoprocentní
-              a ovoce ze zahrady chutná úplně jinak než z obchodu. To jsou moje základy,
-              od kterých se neodkloním.
+              Vyrůstala jsem na Slovensku v rodině, ve které se obvykle hodně peklo o víkendech. Můj vztah k pečení začal, když jsem byla mladší, a to díky vlivu mé mámy a obou babiček. Bavilo mě sledovat, jak pečou, a samozřejmě jsem chtěla ochutnávat. I díky nim jsem se naučila, že na použitých ingrediencích záleží: máslo se nedá ničím nahradit, šlehačka musí mít co nejvyšší obsah tuku a nikdy nelze srovnávat ovoce ze zahrádky s ovocem, které si koupíte v obchodě. To jsou moje základy, které při pečení používám.
             </p>
 
             <p className="about-intro" style={{ marginTop: 16 }}>
-              Když jsem se přestěhovala do České republiky, můj zájem o pečení se ještě
-              prohloubil. Inspiruji se z různých zdrojů — hodně mi dal blog Víkendové
-              pečení, absolvovala jsem různé kurzy a ráda zkouším nové chutě. Peču hlavně
-              tradiční slovenské a české koláče: kynuté těsto, bábovky, vánoční pečivo
-              (cukroví). Ale ráda to prokládám moderními věcmi — takže u mě najdete i
-              recepty na cupcakes nebo cheesecake, nebo zahraniční dezerty, které jsem
-              ochutnala na dovolených.
+              Můj zájem o pečení se postupně prohluboval po přestěhování do České republiky. K pečení mě inspiruje mnoho zdrojů, například hodně mi dal blog Víkendové pečení. Absolvovala jsem několik kurzů pečení - třeba Minidotríky a Croissants od Olakala - a také ráda experimentuji s novými chutěmi. Počas Covidu jsem se naučila péct i kváskový chleba. Nyní peču nejvíc tradiční slovenské a české koláče; dělám bábovky, kynuté koláče a o Vánocích samozřejmě cukroví a vánočku. Mám rada tradičné pečení, ale ráda to prokládám i moderními věcmi — takže u mě najdete i recepty třeba na mrkvový dort, brownie, nebo dezerty, které jsem ochutnala v zahraničí.
             </p>
 
             <p className="about-intro" style={{ marginTop: 16 }}>
-              Mám pocit, že tradiční koláče se v dnešním rychlém světě trochu ztrácejí.
-              Chci ukázat, že se dají připravit opravdu dobře, tradičně ale i s moderním
-              nádechem. Proto jsem tady a sdílím recepty, které fungují.
+              Mám pocit, že tradiční koláče se v dnešním rychlém světě trochu ztrácejí. Chci ukázat, že se dají připravit opravdu dobře, tradičně ale i s moderním nádechem. Proto jsem tady a sdílím recepty, které fungují.
             </p>
 
             {/* Sociální sítě */}
