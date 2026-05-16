@@ -90,7 +90,7 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
             {data.intro && <p className="recipe-intro">{data.intro}</p>}
 
             <div className="recipe-actions">
-              <Button variant="ghost" size="small">
+              <Button variant="ghost" size="small" onClick={() => window.print()}>
                 <Icon name="print" size={14} /> Tisknout
               </Button>
               <Button variant="ghost" size="small">
