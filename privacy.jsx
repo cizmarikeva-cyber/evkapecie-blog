@@ -13,14 +13,14 @@ const Privacy = ({ onHome }) => (
 
       <h1 style={{ marginBottom: 8 }}>Ochrana osobních údajů</h1>
       <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--popol)', marginBottom: 40 }}>
-        Platné od: 15. května 2026 · Správce: Eva Čižmáriková, <a href="mailto:cizmarik.eva@gmail.com">cizmarik.eva@gmail.com</a>
+        Platné od: 15. května 2026 · Správce: Eva Čižmariková, <a href="mailto:cizmarik.eva@gmail.com">cizmarik.eva@gmail.com</a>
       </p>
 
       <div className="privacy-body">
 
         <h2>1. Úvod</h2>
         <p>
-          Tato stránka (dále „Blog") je osobní kulinářský blog provozovaný Evou Čižmárikovou
+          Tato stránka (dále „Blog") je osobní kulinářský blog provozovaný Evou Čižmarikovou
           (dále „správce"). Respektujeme vaše soukromí a zpracováváme osobní údaje výhradně
           v souladu s Nařízením Evropského parlamentu a Rady (EU) 2016/679 (GDPR) a příslušnými
           vnitrostátními předpisy.
@@ -89,7 +89,19 @@ const Privacy = ({ onHome }) => (
           <li><strong>Zásady ochrany soukromí Meta:</strong> <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">facebook.com/privacy/policy</a></li>
         </ul>
 
-        <h3>3.3 Hostingová platforma</h3>
+        <h3>3.3 Formspree (kontaktní formulář)</h3>
+        <p>
+          Kontaktní formulář odesílá zprávy prostřednictvím služby Formspree. Při odeslání
+          formuláře jsou vaše jméno, e-mailová adresa a obsah zprávy předány na servery
+          Formspree, Inc. Formspree zprávu doručí správci a může ji dočasně uložit.
+        </p>
+        <ul>
+          <li><strong>Provozovatel třetí strany:</strong> Formspree, Inc., USA.</li>
+          <li><strong>Právní základ předání:</strong> standardní smluvní doložky (čl. 46 GDPR).</li>
+          <li><strong>Zásady ochrany soukromí Formspree:</strong> <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">formspree.io/legal/privacy-policy</a></li>
+        </ul>
+
+        <h3>3.4 Hostingová platforma</h3>
         <p>
           Blog je technicky provozován prostřednictvím hostingové platformy, která může
           zpracovávat technické údaje návštěvníků v souladu s vlastními podmínkami.
@@ -161,7 +173,7 @@ const Privacy = ({ onHome }) => (
 
         <h2>10. Kontakt</h2>
         <p>
-          Eva Čižmáriková<br />
+          Eva Čižmariková<br />
           E-mail: <a href="mailto:cizmarik.eva@gmail.com">cizmarik.eva@gmail.com</a><br />
           Instagram: <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">@evkapecie</a>
         </p>
