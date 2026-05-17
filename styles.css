@@ -881,15 +881,31 @@ a:hover { color: var(--lekvar-dark); }
 /* ---- Cookie banner ------------------------------------------------ */
 #cookie-banner {
   position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-  z-index: 1000; width: calc(100% - 48px); max-width: 560px;
+  z-index: 1000; width: calc(100% - 48px); max-width: 600px;
   background: var(--ink); color: var(--paper);
-  border-radius: 14px; padding: 20px 24px;
-  display: flex; align-items: center; gap: 20px;
+  border-radius: 14px; padding: 24px;
+  display: flex; flex-direction: column; gap: 16px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.22);
   font-family: var(--font-body); font-size: 14px; line-height: 1.5;
 }
-#cookie-banner p { margin: 0; flex: 1; }
-.cookie-banner-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-banner-title { display: block; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.cookie-banner-body p { margin: 0; color: rgba(255,255,255,0.82); }
+.cookie-banner-body a { color: var(--med-soft); }
+.cookie-banner-body a:hover { color: var(--paper); }
+#cookie-prefs { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.cookie-pref-row {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: rgba(255,255,255,0.75); cursor: pointer;
+}
+.cookie-pref-row input[type="checkbox"] { width: 15px; height: 15px; flex-shrink: 0; }
+.cookie-pref-row input:disabled { opacity: 0.45; cursor: not-allowed; }
+.cookie-banner-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+#cookie-prefs-btn {
+  background: transparent; color: rgba(255,255,255,0.65);
+  border: none; padding: 0; margin-right: auto;
+  font-family: var(--font-body); font-size: 13px; cursor: pointer; text-decoration: underline;
+}
+#cookie-prefs-btn:hover { color: var(--paper); }
 #cookie-decline {
   background: transparent; color: var(--paper);
   border: 1px solid rgba(255,255,255,0.3);
@@ -899,10 +915,7 @@ a:hover { color: var(--lekvar-dark); }
 #cookie-decline:hover { border-color: rgba(255,255,255,0.7); }
 #cookie-accept {
   background: var(--lekvar); color: var(--paper);
-  border: none; border-radius: 999px; padding: 8px 18px;
+  border: none; border-radius: 999px; padding: 8px 20px;
   font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer;
 }
 #cookie-accept:hover { opacity: 0.88; }
-@media (max-width: 560px) {
-  #cookie-banner { flex-direction: column; align-items: flex-start; gap: 14px; }
-}

@@ -13,11 +13,23 @@
 </head>
 <body>
   <!-- Cookie banner -->
-  <div id="cookie-banner" role="dialog" aria-label="Súhlas s cookies" style="display:none">
-    <p>Na meranie návštevnosti používam Google Analytics. Súhlasíš so zberom cookies?</p>
+  <div id="cookie-banner" role="dialog" aria-label="Souhlas s cookies" style="display:none">
+    <div class="cookie-banner-body">
+      <strong class="cookie-banner-title">Souhlasíte se sběrem cookies?</strong>
+      <p>Používám Google Analytics na sběr cookies pro měření návštěvnosti a také pro to, abych věděla, co rádi pečete. <a id="cookie-more" href="#">Více informací</a></p>
+      <div id="cookie-prefs" style="display:none">
+        <label class="cookie-pref-row">
+          <input type="checkbox" disabled checked /> Nezbytné cookies
+        </label>
+        <label class="cookie-pref-row">
+          <input type="checkbox" id="cookie-analytics-check" checked /> Analytické cookies (Google Analytics)
+        </label>
+      </div>
+    </div>
     <div class="cookie-banner-actions">
-      <button id="cookie-decline">Odmietnuť</button>
-      <button id="cookie-accept">Prijať</button>
+      <button id="cookie-prefs-btn">Zobrazit předvolby</button>
+      <button id="cookie-decline">Odmítnout</button>
+      <button id="cookie-accept">Přijmout vše</button>
     </div>
   </div>
 
