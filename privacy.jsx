@@ -101,7 +101,21 @@ const Privacy = ({ onHome }) => (
           <li><strong>Zásady ochrany soukromí Formspree:</strong> <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">formspree.io/legal/privacy-policy</a></li>
         </ul>
 
-        <h3>3.4 Hostingová platforma</h3>
+        <h3>3.4 Google Analytics</h3>
+        <p>
+          Pokud udělíte souhlas, používám službu Google Analytics 4 k měření návštěvnosti blogu.
+          Google Analytics nastavuje cookies a odesílá anonymizované údaje o návštěvě (navštívené
+          stránky, délka návštěvy, zdroj návštěvy) na servery Google LLC. Souhlas můžete
+          kdykoliv odvolat vymazáním cookies v nastavení prohlížeče.
+        </p>
+        <ul>
+          <li><strong>Právní základ:</strong> souhlas (čl. 6 odst. 1 písm. a) GDPR).</li>
+          <li><strong>Provozovatel třetí strany:</strong> Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.</li>
+          <li><strong>Předávání do USA:</strong> na základě standardních smluvních doložek (čl. 46 GDPR).</li>
+          <li><strong>Zásady ochrany soukromí Google:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a></li>
+        </ul>
+
+        <h3>3.5 Hostingová platforma</h3>
         <p>
           Blog je technicky provozován prostřednictvím hostingové platformy, která může
           zpracovávat technické údaje návštěvníků v souladu s vlastními podmínkami.
@@ -109,9 +123,10 @@ const Privacy = ({ onHome }) => (
 
         <h2>4. Cookies</h2>
         <p>
-          Blog sám o sobě <strong>nenastavuje žádné vlastní cookies</strong>. Cookies mohou nastavovat
-          výhradně třetí strany uvedené v bodě 3 (Google, Meta). Cookies třetích stran
-          můžete spravovat v nastavení svého prohlížeče.
+          Blog používá cookies výhradně prostřednictvím třetích stran uvedených v bodě 3.
+          Analytické cookies (Google Analytics) jsou nastavovány pouze po vašem souhlasu
+          prostřednictvím cookie lišty. Cookies třetích stran (Google, Meta) můžete
+          spravovat nebo smazat v nastavení svého prohlížeče.
         </p>
 
         <h2>5. Příjemci osobních údajů</h2>
