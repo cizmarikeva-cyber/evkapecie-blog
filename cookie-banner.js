@@ -34,10 +34,9 @@
     banner.style.display = 'flex';
   }
 
-  /* Více informací — otvorí privacy stránku */
+  /* Více informací — otvorí privacy stránku, banner zostáva */
   document.getElementById('cookie-more').addEventListener('click', function (e) {
     e.preventDefault();
-    hideBanner();
     navigateToPrivacy();
   });
 
