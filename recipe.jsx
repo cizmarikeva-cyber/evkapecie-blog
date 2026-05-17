@@ -7,6 +7,20 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
   var allRecipes = [FEATURED].concat(RECIPES);
   var recipe = allRecipes.find(function(r) { return r.slug === slug; }) || FEATURED;
   var data = RECIPE_DATA[recipe.slug] || { intro: "", ingredients: [], steps: [] };
+  const [shareLabel, setShareLabel] = React.useState('Sdílet');
+
+  const handleShare = () => {
+    const title = recipe.title.replace(/<[^>]*>/g, '');
+    const url = window.location.href;
+    if (navigator.share) {
+      navigator.share({ title: 'Evka pečie — ' + title, url });
+    } else {
+      navigator.clipboard.writeText(url).then(() => {
+        setShareLabel('Odkaz zkopírován!');
+        setTimeout(() => setShareLabel('Sdílet'), 2500);
+      });
+    }
+  };
 
   React.useEffect(function() {
     if (!data.instagram) return;
@@ -98,8 +112,8 @@ const Recipe = ({ slug, onBack, onOpenRecipe }) => {
               <Button variant="ghost" size="small" onClick={() => window.print()}>
                 <Icon name="print" size={14} /> Tisknout
               </Button>
-              <Button variant="ghost" size="small">
-                <Icon name="share" size={14} /> Sdílet
+              <Button variant="ghost" size="small" onClick={handleShare}>
+                <Icon name="share" size={14} /> {shareLabel}
               </Button>
             </div>
 
