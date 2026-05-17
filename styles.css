@@ -787,9 +787,8 @@ a:hover { color: var(--lekvar-dark); }
   .hero-inner { display: flex; flex-direction: column; gap: 24px; }
   .hero-text { display: contents; }
   .hero-text-top { order: 1; }
-  .hero-image { order: 2; aspect-ratio: 3 / 2; }
+  .hero-image { order: 2; aspect-ratio: 3 / 2; width: 100%; }
   .hero-text-bottom { order: 3; padding-bottom: 16px; }
-  .hero-image { aspect-ratio: 3 / 2; }
   .section-title { font-size: 28px; }
   .recipe-grid, .recipe-grid.two { grid-template-columns: 1fr; }
   .recipe-grid.four { grid-template-columns: repeat(2, 1fr); }
