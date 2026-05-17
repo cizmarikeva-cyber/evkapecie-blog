@@ -877,3 +877,32 @@ a:hover { color: var(--lekvar-dark); }
     margin-top: 32px;
   }
 }
+
+/* ---- Cookie banner ------------------------------------------------ */
+#cookie-banner {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 1000; width: calc(100% - 48px); max-width: 560px;
+  background: var(--ink); color: var(--paper);
+  border-radius: 14px; padding: 20px 24px;
+  display: flex; align-items: center; gap: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+  font-family: var(--font-body); font-size: 14px; line-height: 1.5;
+}
+#cookie-banner p { margin: 0; flex: 1; }
+.cookie-banner-actions { display: flex; gap: 10px; flex-shrink: 0; }
+#cookie-decline {
+  background: transparent; color: var(--paper);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 999px; padding: 8px 18px;
+  font-family: var(--font-body); font-size: 13px; cursor: pointer;
+}
+#cookie-decline:hover { border-color: rgba(255,255,255,0.7); }
+#cookie-accept {
+  background: var(--lekvar); color: var(--paper);
+  border: none; border-radius: 999px; padding: 8px 18px;
+  font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer;
+}
+#cookie-accept:hover { opacity: 0.88; }
+@media (max-width: 560px) {
+  #cookie-banner { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
