@@ -2,112 +2,103 @@
    about.jsx — stránka „O mně"
    ============================================================ */
 
-/* Nahraď YOUR_FORMSPREE_ID skutečným ID z formspree.io */
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+const BrevoContactForm = () => {
+  React.useEffect(() => {
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'cs';
+    window.EMAIL_INVALID_MESSAGE = 'Zadaná adresa je v nesprávném formátu. Zkontrolujte ji prosím.';
+    window.REQUIRED_ERROR_MESSAGE = 'Povinné pole.';
+    window.GENERIC_INVALID_MESSAGE = 'Zadané informace jsou v nesprávném formátu. Zkontrolujte je prosím.';
+    window.INVALID_NUMBER = 'Zadané informace jsou v nesprávném formátu.';
+    window.INVALID_DATE = 'Zadejte prosím platné datum.';
+    window.REQUIRED_MULTISELECT_MESSAGE = 'Vyberte prosím alespoň jednu možnost.';
+    window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
+    window.AUTOHIDE = Boolean(0);
 
-const ContactForm = ({ onPrivacy }) => {
-  const [fields, setFields] = React.useState({ name: '', email: '', message: '' });
-  const [consent, setConsent] = React.useState(false);
-  const [errors, setErrors] = React.useState({});
-  const [status, setStatus] = React.useState('idle'); /* idle | sending | success | error */
-
-  const set = (key) => (e) => {
-    setFields(f => ({ ...f, [key]: e.target.value }));
-    if (errors[key]) setErrors(er => ({ ...er, [key]: null }));
-  };
-
-  const validate = () => {
-    const e = {};
-    if (!fields.email.trim()) e.email = 'E-mail je povinný.';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) e.email = 'Zadejte platnou e-mailovou adresu.';
-    if (!fields.message.trim()) e.message = 'Zpráva je povinná.';
-    return e;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length > 0) { setErrors(errs); return; }
-    setStatus('sending');
-    try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify(fields),
-      });
-      if (res.ok) {
-        setStatus('success');
-        setFields({ name: '', email: '', message: '' });
-        setConsent(false);
-        setErrors({});
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
+    if (!document.getElementById('brevo-form-script')) {
+      const s = document.createElement('script');
+      s.id = 'brevo-form-script';
+      s.src = 'https://sibforms.com/forms/end-form/build/main.js';
+      document.body.appendChild(s);
     }
-  };
+  }, []);
 
-  if (status === 'success') {
-    return (
-      <div className="contact-success">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--lekvar)" strokeWidth="2" strokeLinecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
-        <h3>Zpráva odeslána!</h3>
-        <p>Děkuji za zprávu, ozvu se brzy.</p>
+  const formHtml = `
+    <div id="sib-form-container" class="sib-form-container">
+      <div id="error-message" class="sib-form-message-panel" style="color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:8px;margin-bottom:16px;">
+        <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Něco se pokazilo. Zkuste to znovu prosím.</span></div>
       </div>
-    );
-  }
+      <div id="success-message" class="sib-form-message-panel" style="color:#085229;background-color:#e7faf0;border-color:#13ce66;border-radius:8px;margin-bottom:16px;">
+        <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Vaše zpráva byla odeslána. Ozvu se vám během nejbližších dní!</span></div>
+      </div>
+      <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:left;background-color:transparent;border:none;direction:ltr">
+        <form id="sib-form" method="POST" action="https://1acb54ba.sibforms.com/serve/MUIFAKD3U0KiXEiEo-BAr6I7S_jCK_VThQqYLDbJVV-IP6nxtX1fiDR_g0bg3JpICXn3skPrhPvEQksWmWG588UdXBwYAL7pQUof-f35Yzxm0coeB2U1FrfgWYrGRO3IdJj_gLNh1oEwZw2tA9ARbJuilFRLopcVQeR619KSImXt6AtIUZoysWoIzvH53Fd6Zgmq8G8fmPnEktfzJw==" data-type="subscription">
+          <div style="padding:8px 0">
+            <div class="sib-input sib-form-block">
+              <div class="form__entry entry_block">
+                <div class="form__label-row">
+                  <label class="entry__label" for="EMAIL" data-required="*">E-mail *</label>
+                  <div class="entry__field"><input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" data-required="true" required /></div>
+                </div>
+                <label class="entry__error entry__error--primary"></label>
+              </div>
+            </div>
+          </div>
+          <div style="padding:8px 0">
+            <div class="sib-input sib-form-block">
+              <div class="form__entry entry_block">
+                <div class="form__label-row">
+                  <label class="entry__label" for="FIRSTNAME">Jméno</label>
+                  <div class="entry__field"><input class="input" maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" /></div>
+                </div>
+                <label class="entry__error entry__error--primary"></label>
+              </div>
+            </div>
+          </div>
+          <div style="padding:8px 0">
+            <div class="sib-input sib-form-block">
+              <div class="form__entry entry_block">
+                <div class="form__label-row">
+                  <label class="entry__label" for="LASTNAME" data-required="*">Zpráva *</label>
+                  <div class="entry__field"><textarea rows="5" class="input" maxlength="500" id="LASTNAME" name="LASTNAME" autocomplete="off" data-required="true" required></textarea></div>
+                </div>
+                <label class="entry__error entry__error--primary"></label>
+              </div>
+            </div>
+          </div>
+          <div style="padding:8px 0">
+            <div class="sib-optin sib-form-block">
+              <div class="form__entry entry_mcq">
+                <div class="form__label-row">
+                  <div class="entry__choice">
+                    <label>
+                      <input type="checkbox" class="input_replaced" value="1" id="GDPR_CONSENT" name="GDPR_CONSENT" />
+                      <span class="checkbox checkbox_tick_positive"></span>
+                      <span>Souhlasím se zpracováním osobních údajů dle zásad ochrany osobních údajů.</span>
+                    </label>
+                  </div>
+                </div>
+                <label class="entry__error entry__error--primary"></label>
+              </div>
+            </div>
+          </div>
+          <div style="padding:4px 0 12px;font-size:12px;color:#687484;">
+            Ke zpracování formuláře používám <a href="https://www.brevo.com" rel="nofollow">Brevo</a>. Odesláním souhlasíte s přenosem dat dle jejich <a href="https://www.brevo.com/en/legal/privacypolicy/" rel="nofollow" target="_blank">zásad ochrany soukromí</a>.
+          </div>
+          <div style="padding:8px 0;text-align:left">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+              <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.010z" /></svg>
+              Odeslat zprávu
+            </button>
+          </div>
+          <input type="text" name="email_address_check" value="" class="input--hidden" />
+          <input type="hidden" name="locale" value="cs" />
+        </form>
+      </div>
+    </div>
+  `;
 
-  return (
-    <form className="contact-form" onSubmit={handleSubmit} noValidate>
-      <div className="contact-row">
-        <label>
-          <span>Jméno</span>
-          <input
-            type="text"
-            value={fields.name} onChange={set('name')}
-          />
-        </label>
-        <label>
-          <span>E-mail <span className="contact-required">*</span></span>
-          <input
-            type="email"
-            className={errors.email ? 'has-error' : ''}
-            value={fields.email} onChange={set('email')}
-          />
-          {errors.email && <span className="contact-field-error">{errors.email}</span>}
-        </label>
-      </div>
-      <label>
-        <span>Zpráva <span className="contact-required">*</span></span>
-        <textarea
-          rows={5}
-          className={errors.message ? 'has-error' : ''}
-          value={fields.message} onChange={set('message')}
-        />
-        {errors.message && <span className="contact-field-error">{errors.message}</span>}
-      </label>
-      <label className="contact-consent" style={{ flexDirection: 'row' }}>
-        <input
-          type="checkbox"
-          checked={consent}
-          onChange={(e) => setConsent(e.target.checked)}
-        />
-        <span>
-          Souhlasím se zpracováním osobních údajů v souladu se{' '}
-          <a href="#" onClick={(e) => { e.preventDefault(); onPrivacy && onPrivacy(); }}>
-            zásadami ochrany osobních údajů
-          </a>.
-        </span>
-      </label>
-      {status === 'error' && (
-        <p className="contact-error">Něco se pokazilo. Zkus znovu nebo napiš přímo na cizmarik.eva@gmail.com.</p>
-      )}
-      <Button variant="primary" type="submit" style={{ alignSelf: 'flex-start' }} disabled={status === 'sending' || !consent}>
-        {status === 'sending' ? 'Odesílá se…' : 'Odeslat zprávu'}
-      </Button>
-    </form>
-  );
+  return <div className="brevo-form-wrap" dangerouslySetInnerHTML={{ __html: formHtml }} />;
 };
 
 const About = ({ onGoRecipes, scrollToContact, onPrivacy }) => {
@@ -175,7 +166,7 @@ const About = ({ onGoRecipes, scrollToContact, onPrivacy }) => {
         <h2 style={{ marginBottom: 40 }}>
           <em>Kontaktujte</em> mě
         </h2>
-        <ContactForm onPrivacy={onPrivacy} />
+        <BrevoContactForm />
       </section>
 
     </main>

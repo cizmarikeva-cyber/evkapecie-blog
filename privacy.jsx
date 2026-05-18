@@ -89,16 +89,16 @@ const Privacy = ({ onHome }) => (
           <li><strong>Zásady ochrany soukromí Meta:</strong> <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">facebook.com/privacy/policy</a></li>
         </ul>
 
-        <h3>3.3 Formspree (kontaktní formulář)</h3>
+        <h3>3.3 Brevo (kontaktní formulář)</h3>
         <p>
-          Kontaktní formulář odesílá zprávy prostřednictvím služby Formspree. Při odeslání
+          Kontaktní formulář odesílá zprávy prostřednictvím služby Brevo. Při odeslání
           formuláře jsou vaše jméno, e-mailová adresa a obsah zprávy předány na servery
-          Formspree, Inc. Formspree zprávu doručí správci a může ji dočasně uložit.
+          Brevo SAS. Brevo zprávu doručí správci a může ji dočasně uložit.
         </p>
         <ul>
-          <li><strong>Provozovatel třetí strany:</strong> Formspree, Inc., USA.</li>
+          <li><strong>Provozovatel třetí strany:</strong> Brevo SAS, 7 rue de Madrid, 75008 Paříž, Francie.</li>
           <li><strong>Právní základ předání:</strong> standardní smluvní doložky (čl. 46 GDPR).</li>
-          <li><strong>Zásady ochrany soukromí Formspree:</strong> <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">formspree.io/legal/privacy-policy</a></li>
+          <li><strong>Zásady ochrany soukromí Brevo:</strong> <a href="https://www.brevo.com/en/legal/privacypolicy/" target="_blank" rel="noopener noreferrer">brevo.com/legal/privacypolicy</a></li>
         </ul>
 
         <h3>3.4 Google Analytics</h3>
