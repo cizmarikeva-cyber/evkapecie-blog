@@ -127,48 +127,48 @@ const About = ({ onGoRecipes, scrollToContact, onPrivacy }) => {
       <section className="container">
         <div className="about-hero">
 
-          <div>
-            <img
-              src="images/portret.jpeg"
-              alt="Eva Čižmáriková — Evka pečie"
-              className="about-portrait"
-            />
-            {/* Sociální sítě — pod fotkou */}
-            <div className="about-social" style={{ marginTop: 20 }}>
-              <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">
-                <Icon name="instagram" size={16} stroke={1.6} />
-                Instagram
-              </a>
-              <a href="https://www.tiktok.com/@evkapecie" target="_blank" rel="noopener noreferrer">
-                <Icon name="tiktok" size={16} stroke={1.6} />
-                TikTok
-              </a>
-              <a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">
-                <Icon name="facebook" size={16} stroke={1.6} />
-                Facebook
-              </a>
-            </div>
-          </div>
-
-          <div>
+          <div className="about-title">
             <Eyebrow>O mně</Eyebrow>
             <h1 style={{ marginTop: 16 }}>
               Ahoj, jsem <em>Eva</em>
             </h1>
+          </div>
 
+          <div className="about-portrait-wrap">
+            <img
+              src="images/portret.jpeg"
+              alt="Eva Čižmariková — Evka pečie"
+              className="about-portrait"
+            />
+          </div>
+
+          <div className="about-social">
+            <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">
+              <Icon name="instagram" size={16} stroke={1.6} />
+              Instagram
+            </a>
+            <a href="https://www.tiktok.com/@evkapecie" target="_blank" rel="noopener noreferrer">
+              <Icon name="tiktok" size={16} stroke={1.6} />
+              TikTok
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">
+              <Icon name="facebook" size={16} stroke={1.6} />
+              Facebook
+            </a>
+          </div>
+
+          <div className="about-text">
             <p className="about-intro">
               Vyrůstala jsem na Slovensku a u nás doma se obvykle hodně peklo o víkendech. Můj vztah k pečení tedy začal už v dětství, a to díky vlivu mé mámy a obou babiček. Bavilo mě sledovat, jak pečou, pomáhat a samozřejmě ochutnávat. I díky nim jsem se naučila, že na použitých ingrediencích záleží: máslo se nedá ničím nahradit, šlehačka musí být vysokoprocentní a že nelze srovnávat ovoce ze zahrádky s ovocem z obchodu. To jsou moje základy, od kterých se neodkloním.
             </p>
-
             <p className="about-intro" style={{ marginTop: 16 }}>
               Po přestěhování do Česka se můj zájem o pečení se postupně prohluboval. K pečení mě inspiruje mnoho zdrojů, například hodně mi dal blog Víkendové pečení, absolvovala jsem i několik kurzů pečení - třeba Minidotríky a Croissants od Olakala - a také ráda experimentuji s novými chutěmi. Počas Covidu jsem se naučila péct i kváskový chleba. Nyní peču nejvíc tradiční slovenské a české koláče; dělám bábovky, kynuté koláče a o Vánocích samozřejmě cukroví a vánočku. Ráda to občas prokládám i moderními věcmi — takže u mě najdete i recepty třeba na mrkvový dort, brownie, nebo dezerty, které jsem ochutnala v zahraničí.
             </p>
-
             <p className="about-intro" style={{ marginTop: 16 }}>
               Mám pocit, že tradiční koláče se v dnešním rychlém světě trochu ztrácejí. Chci ukázat, že se dají připravit opravdu dobře, tradičně ale i s moderním nádechem. Proto jsem tady a sdílím recepty, které fungují.
             </p>
-
           </div>
+
         </div>
       </section>
 

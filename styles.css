@@ -725,10 +725,18 @@ a:hover { color: var(--lekvar-dark); }
 .about-hero {
   display: grid;
   grid-template-columns: 420px 1fr;
-  gap: 72px;
+  grid-template-areas:
+    "portrait title"
+    "social   text";
+  column-gap: 72px;
+  row-gap: 20px;
   align-items: start;
   padding-block: 72px 56px;
 }
+.about-title        { grid-area: title; }
+.about-portrait-wrap { grid-area: portrait; }
+.about-social       { grid-area: social; }
+.about-text         { grid-area: text; }
 .about-portrait {
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -802,8 +810,12 @@ a:hover { color: var(--lekvar-dark); }
   .recipe-hero-content { flex-direction: column; align-items: start; padding: 32px 24px; }
   .recipe-hero-stats { gap: 20px; }
   .section-head { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .about-hero { grid-template-columns: 1fr; gap: 40px; padding-block: 48px 40px; }
-  .about-portrait { max-width: 320px; aspect-ratio: 1 / 1; }
+  .about-hero { display: flex; flex-direction: column; gap: 24px; padding-block: 48px 40px; }
+  .about-title { order: 1; }
+  .about-portrait-wrap { order: 2; }
+  .about-social { order: 3; }
+  .about-text { order: 4; }
+  .about-portrait { max-width: 100%; aspect-ratio: 3 / 4; }
   .about-dream { padding: 32px 28px; }
 }
 @media (max-width: 480px) {
