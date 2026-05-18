@@ -140,11 +140,7 @@ const About = ({ onGoRecipes, scrollToContact, onPrivacy }) => {
                 <Icon name="instagram" size={16} stroke={1.6} />
                 Instagram
               </a>
-              <a href="https://www.tiktok.com/@evkapecie" target="_blank" rel="noopener noreferrer">
-                <Icon name="tiktok" size={16} stroke={1.6} />
-                TikTok
-              </a>
-              <a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">
+<a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">
                 <Icon name="facebook" size={16} stroke={1.6} />
                 Facebook
               </a>
