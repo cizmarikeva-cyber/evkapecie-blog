@@ -5,15 +5,15 @@
 
 /* Recept týdne — zobrazuje se v hero sekci */
 var FEATURED = {
-  slug:     "podplamennik-s-klobasou-a-nivou",
-  categories: ["Slané", "Tradiční"],
-  title:    "Podplameník <em>s klobásou a nivou</em>",
-  intro:    "Další díl série o podplameníku patří kombinaci, která vyhrála v anketě – klobása a niva. Tuto verzi jsem pekla rovnou z dvojité dávky. Základ zůstává stejný: žádné hnětení, žádná dřina, jen pár přeložení a čas. To těsto je prostě skvělé v tom, jak je jednoduché.",
-  time:     "2 h",
-  servings: "6 porcí",
-  level:    "Lehké",
-  paint:    "cesnek",                              /* záložní gradient pokud není fotka */
-  image:    "images/podplamennik-s-klobasou-a-nivou.jpeg",
+  slug:     "kynuty-kolac-s-tvarohem-a-boruvkami",
+  categories: ["Sladké", "Tradiční"],
+  title:    "Kynutý koláč <em>s tvarohem a borůvkami</em>",
+  intro:    "Znáte Kus koláče v Praze? Tenhle recept je moje domácí varianta jejich borůvkového koláče — upečená na plech. Minimum těsta, maximum náplně. Tvaroh je krémový, borůvky šťavnaté a máslová drobenka nahoře mu dodáva nezaměnitelnou chuť.",
+  time:     "2 h 30 min",
+  servings: "1 plech 30×40 cm",
+  level:    "Středně náročné",
+  paint:    "mak",
+  image:    "images/kynuty-kolac-s-tvarohem-a-boruvkami.jpeg",
 };
 
 /* Seznam receptů — každý se zobrazí jako karta
@@ -21,6 +21,17 @@ var FEATURED = {
    categories: pole, recept může patřit do více kategorií             */
 var RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:       "kynuty-kolac-s-tvarohem-a-boruvkami",
+    featured:   true,
+    categories: ["Sladké", "Tradiční"],
+    title:      "Kynutý koláč <em>s tvarohem a borůvkami</em>",
+    time:       "2 h 30 min",
+    servings:   "1 plech 30×40 cm",
+    level:      "Středně náročné",
+    paint:      "mak",
+    image:      "images/kynuty-kolac-s-tvarohem-a-boruvkami.jpeg",
+  },
   {
     slug:       "podplamennik-s-rajcinami",
     featured:   true,
@@ -224,6 +235,78 @@ var CATEGORIES = [
    Každý recept je klíčovaný podle slug.
    Recepty bez dat mají prázdná pole — na stránce se zobrazí "brzy doplníme". */
 var RECIPE_DATA = {
+
+  "kynuty-kolac-s-tvarohem-a-boruvkami": {
+    intro: "Znáte Kus koláče v Praze? Tenhle recept je moje domácí varianta jejich borůvkového koláče — upečená na plech. Minimum těsta, maximum náplně. Tvaroh je krémový, borůvky šťavnaté a máslová drobenka nahoře mu dodáva nezaměnitelnou chuť.",
+    ingredients: [
+      {
+        group: "Těsto",
+        items: [
+          { amount: "220 g",   name: "hladká mouka" },
+          { amount: "90 ml",   name: "vlažné mléko" },
+          { amount: "10 g",    name: "droždí" },
+          { amount: "1 ks",    name: "vejce" },
+          { amount: "20 g",    name: "cukr krupice" },
+          { amount: "1/2 ČL",  name: "sůl (2 g)" },
+          { amount: "35 g",    name: "změklé máslo" },
+        ],
+      },
+      {
+        group: "Tvarohová náplň",
+        items: [
+          { amount: "250 g",   name: "plnotučný tvaroh (bez hrudek)" },
+          { amount: "200 g",   name: "zakysaná smetana" },
+          { amount: "50 g",    name: "cukr krupice" },
+          { amount: "1 ks",    name: "žloutek" },
+          { amount: " ",       name: "kůra z půlky bio citronu" },
+          { amount: " ",       name: "špetka vanilky" },
+        ],
+      },
+      {
+        group: "Na vrch",
+        items: [
+          { amount: "300 g",   name: "mražené borůvky" },
+        ],
+      },
+      {
+        group: "Drobenka",
+        items: [
+          { amount: "45 g",    name: "hladká mouka" },
+          { amount: "30 g",    name: "máslo" },
+          { amount: "30 g",    name: "cukr krupice" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Kynuté těsto",
+        startAt: 1,
+        items: [
+          "Všechny suroviny <b>kromě másla</b> smíchej a hněť cca <b>5 minut</b>. Pak postupně přidávej změklé máslo a hnět dalších <b>5–7 minut</b>.",
+          "Přikryj a nechej kynout, dokud těsto <b>nezdvojnásobí objem</b>.",
+        ],
+      },
+      {
+        heading: "Drobenka a náplň",
+        startAt: 3,
+        items: [
+          "Mouku, máslo a cukr rychle smíchej prsty na drobenku. Odlož do chladu.",
+          "Všechny suroviny na tvarohovou náplň smíchej metličkou dohladka.",
+        ],
+      },
+      {
+        heading: "Sestavení a pečení",
+        startAt: 5,
+        items: [
+          "Vykynuté těsto rozválej na velikost plechu <b>30×40 cm</b>. Pomocí válečku ho přenes na plech vystlaný pečicím papírem.",
+          "Na vrch natři tvarohovou náplň až po okraje, rozlož borůvky a posyp drobenkou.",
+          "Nechej ještě <b>20 minut</b> kynout na plechu.",
+          "Peč na <b>200 °C</b> po dobu <b>15–20 minut</b>. Ihned po vytažení z trouby potři ještě horký koláč rozpuštěným máslem.",
+          "Krájet až po <b>úplném vychladnutí</b>.",
+        ],
+      },
+    ],
+  },
 
   "podplamennik-s-klobasou-a-nivou": {
     instagram: "https://www.instagram.com/p/DXUUrX6jHJW/",

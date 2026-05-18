@@ -21,6 +21,64 @@ const BrevoContactForm = () => {
       s.src = 'https://sibforms.com/forms/end-form/build/main.js';
       document.body.appendChild(s);
     }
+
+    const handleSubmit = (e) => {
+      const form = document.getElementById('sib-form');
+      if (!form || !form.contains(e.target) && e.target !== form) return;
+
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      const checkbox = document.getElementById('GDPR_CONSENT');
+      if (checkbox && !checkbox.checked) {
+        let errEl = document.getElementById('gdpr-error');
+        if (!errEl) {
+          errEl = document.createElement('label');
+          errEl.id = 'gdpr-error';
+          errEl.className = 'entry__error entry__error--primary';
+          errEl.style.display = 'block';
+          errEl.textContent = 'Prosím, potvrďte souhlas se zpracováním osobních údajů.';
+          checkbox.closest('.form__entry').appendChild(errEl);
+        }
+        errEl.style.display = 'block';
+        return;
+      }
+
+      const gdprErr = document.getElementById('gdpr-error');
+      if (gdprErr) gdprErr.style.display = 'none';
+
+      const successEl = document.getElementById('success-message');
+      const errorEl   = document.getElementById('error-message');
+      if (successEl) successEl.style.display = 'none';
+      if (errorEl)   errorEl.style.display   = 'none';
+
+      const data = new FormData(form);
+      fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' })
+        .then(() => {
+          if (successEl) successEl.style.display = 'block';
+          form.reset();
+        })
+        .catch(() => {
+          if (errorEl) errorEl.style.display = 'block';
+        });
+    };
+
+    const handlePrivacyLink = (e) => {
+      const link = e.target.closest('[data-navigate="privacy"]');
+      if (!link) return;
+      e.preventDefault();
+      const state = { name: 'privacy', slug: null };
+      window.history.pushState(state, '');
+      window.dispatchEvent(new PopStateEvent('popstate', { state }));
+    };
+
+    document.addEventListener('submit', handleSubmit, true);
+    document.addEventListener('click', handlePrivacyLink);
+
+    return () => {
+      document.removeEventListener('submit', handleSubmit, true);
+      document.removeEventListener('click', handlePrivacyLink);
+    };
   }, []);
 
   const formHtml = `
@@ -37,7 +95,7 @@ const BrevoContactForm = () => {
             <div class="sib-input sib-form-block">
               <div class="form__entry entry_block">
                 <div class="form__label-row">
-                  <label class="entry__label" for="EMAIL" data-required="*">E-mail *</label>
+                  <label class="entry__label" for="EMAIL" data-required="*">E-mail</label>
                   <div class="entry__field"><input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" data-required="true" required /></div>
                 </div>
                 <label class="entry__error entry__error--primary"></label>
@@ -59,8 +117,8 @@ const BrevoContactForm = () => {
             <div class="sib-input sib-form-block">
               <div class="form__entry entry_block">
                 <div class="form__label-row">
-                  <label class="entry__label" for="LASTNAME" data-required="*">Zpráva *</label>
-                  <div class="entry__field"><textarea rows="5" class="input" maxlength="500" id="LASTNAME" name="LASTNAME" autocomplete="off" data-required="true" required></textarea></div>
+                  <label class="entry__label" for="LASTNAME" data-required="*">Zpráva</label>
+                  <div class="entry__field"><textarea rows="7" class="input" maxlength="2000" id="LASTNAME" name="LASTNAME" autocomplete="off" data-required="true" required></textarea></div>
                 </div>
                 <label class="entry__error entry__error--primary"></label>
               </div>
@@ -74,7 +132,7 @@ const BrevoContactForm = () => {
                     <label>
                       <input type="checkbox" class="input_replaced" value="1" id="GDPR_CONSENT" name="GDPR_CONSENT" />
                       <span class="checkbox checkbox_tick_positive"></span>
-                      <span>Souhlasím se zpracováním osobních údajů dle zásad ochrany osobních údajů.</span>
+                      <span>Souhlasím se zpracováním osobních údajů dle <a href="#" data-navigate="privacy" style="color:inherit;text-decoration:underline;">zásad ochrany osobních údajů</a>.</span>
                     </label>
                   </div>
                 </div>
