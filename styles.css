@@ -725,18 +725,12 @@ a:hover { color: var(--lekvar-dark); }
 .about-hero {
   display: grid;
   grid-template-columns: 420px 1fr;
-  grid-template-areas:
-    "portrait title"
-    "social   text";
   column-gap: 72px;
-  row-gap: 20px;
   align-items: start;
   padding-block: 72px 56px;
 }
-.about-title        { grid-area: title; }
-.about-portrait-wrap { grid-area: portrait; }
-.about-social       { grid-area: social; }
-.about-text         { grid-area: text; }
+.about-col-left  { display: flex; flex-direction: column; gap: 20px; }
+.about-col-right { display: flex; flex-direction: column; }
 .about-portrait {
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -811,6 +805,7 @@ a:hover { color: var(--lekvar-dark); }
   .recipe-hero-stats { gap: 20px; }
   .section-head { flex-direction: column; align-items: flex-start; gap: 12px; }
   .about-hero { display: flex; flex-direction: column; gap: 24px; padding-block: 48px 40px; }
+  .about-col-left, .about-col-right { display: contents; }
   .about-title { order: 1; }
   .about-portrait-wrap { order: 2; }
   .about-social { order: 3; }
