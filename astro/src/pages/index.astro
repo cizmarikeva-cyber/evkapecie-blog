@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+import { FEATURED, RECIPES } from '../data/recipes.js';
+
+const featuredRecipes = RECIPES.filter(r => r.featured);
+const popularRecipes = RECIPES.filter(r => r.popular);
+---
+
+<BaseLayout
+  title="Evka pečie — Tradičné recepty SK/CZ"
+  description="Tradičné recepty zo slovenskej a českej kuchyne, presne tak ako ich poznáme z domu."
+  activeNav="home"
+>
+
+  <!-- HERO -->
+  <section class="container hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-text-top">
+          <div class="eyebrow">Recept týdne</div>
+          <h1 class="hero-title" style="margin-top:22px" set:html={FEATURED.title} />
+        </div>
+        <div class="hero-text-bottom">
+          <p class="hero-sub">{FEATURED.intro}</p>
+          <div class="hero-cta">
+            <a href={`/recept/${FEATURED.slug}`} class="btn btn-primary btn-large">
+              Zobrazit recept <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href={`/recept/${FEATURED.slug}`}
+         class={`hero-image${!FEATURED.image ? ' paint-' + FEATURED.paint : ''}`}
+         style={FEATURED.image ? `background-image:url(/${FEATURED.image});background-size:cover;background-position:center;` : ''}>
+        <div class="badge">
+          <b>{FEATURED.time}</b> · {FEATURED.servings} · {FEATURED.level}
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- NEJNOVĚJŠÍ RECEPTY -->
+  <section class="container section">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Aktuálně</div>
+        <h2 class="section-title"><em>Nejnovější</em> recepty</h2>
+      </div>
+      <a class="section-more" href="/recepty">Všechny recepty <span class="arrow">→</span></a>
+    </div>
+    <div class="recipe-grid">
+      {featuredRecipes.map(r => <RecipeCard recipe={r} />)}
+    </div>
+  </section>
+
+  <!-- NEJOBLÍBENĚJŠÍ RECEPTY -->
+  <section class="container section" style="padding-top:16px">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Z archivu</div>
+        <h2 class="section-title"><em>Nejoblíbenější</em> recepty</h2>
+      </div>
+      <a class="section-more" href="/recepty">Všechny recepty <span class="arrow">→</span></a>
+    </div>
+    <div class="recipe-grid">
+      {popularRecipes.map(r => <RecipeCard recipe={r} />)}
+    </div>
+  </section>
+
+</BaseLayout>

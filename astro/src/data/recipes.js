@@ -1,10 +1,8 @@
-/* ============================================================
-   data.js — Evka pečie obsah receptů
-   ↳ ZDE MĚNÍŠ TEXTY, RECEPTY, KATEGORIE
-   ============================================================ */
+// ============================================================
+// recipes.js — data receptů (převedeno z data.js)
+// ============================================================
 
-/* Recept týdne — zobrazuje se v hero sekci */
-var FEATURED = {
+export const FEATURED = {
   slug:     "kynuty-kolac-s-tvarohem-a-boruvkami",
   categories: ["Sladké", "Tradiční"],
   title:    "Kynutý koláč <em>s tvarohem a borůvkami</em>",
@@ -16,10 +14,7 @@ var FEATURED = {
   image:    "images/kynuty-kolac-s-tvarohem-a-boruvkami.jpeg",
 };
 
-/* Seznam receptů — každý se zobrazí jako karta
-   paint: mak | vianocka | jablka | orechy | medovnik | bezlepek | cesnek
-   categories: pole, recept může patřit do více kategorií             */
-var RECIPES = [
+export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
   {
     slug:       "kynuty-kolac-s-tvarohem-a-boruvkami",
@@ -211,15 +206,7 @@ var RECIPES = [
   },
 ];
 
-/* Kolekce — zobrazují se v sekci "Sezónní kolekce" */
-/* var COLLECTIONS = [
-  { paint: "vianocka", eyebrow: "Zimní svátky",  title: "Vánoce u babičky",               count: 24, large: true },
-  { paint: "jablka",   eyebrow: "Podzim",         title: "Štrúdly, záviny, koláče",        count: 18, large: false },
-  { paint: "bezlepek", eyebrow: "Pro každého",    title: "Bezlepkově bez kompromisů",      count: 31, large: false },
-]; */
-
-/* Kategorie (strip pod hero sekcí) */
-var CATEGORIES = [
+export const CATEGORIES = [
   { icon: "wheat",  name: "Slané",          count: 4 },
   { icon: "cake",   name: "Sladké",         count: 4 },
   { icon: "bread",  name: "Tradiční",       count: 5 },
@@ -229,10 +216,7 @@ var CATEGORIES = [
   { icon: "pot",    name: "Vaření",          count: 0 },
 ];
 
-/* Detailní data receptů — suroviny, kroky, intro
-   Každý recept je klíčovaný podle slug.
-   Recepty bez dat mají prázdná pole — na stránce se zobrazí "brzy doplníme". */
-var RECIPE_DATA = {
+export const RECIPE_DATA = {
 
   "kynuty-kolac-s-tvarohem-a-boruvkami": {
     intro: "Znáte Kus koláče v Praze? Tenhle recept je moje domácí varianta jejich borůvkového koláče — upečená na plech. Minimum těsta, maximum náplně. Tvaroh je krémový, borůvky šťavnaté a máslová drobenka nahoře mu dodáva nezaměnitelnou chuť.",
@@ -328,7 +312,7 @@ var RECIPE_DATA = {
           { amount: "200 g",  name: "zakysaná smetana" },
           { amount: "200 g",  name: "niva" },
           { amount: "1 ks",   name: "klobása (cca 140 g)" },
-          { amount: "1 ks",      name: "cibule (nemusí být)" },
+          { amount: "1 ks",   name: "cibule (nemusí být)" },
         ],
       },
     ],
@@ -495,7 +479,7 @@ var RECIPE_DATA = {
           { amount: "35 g",   name: "hladká mouka" },
           { amount: "4 ks",   name: "žloutky" },
           { amount: "1–2 ks", name: "tyčinky celé skořice" },
-          { amount: "3-4 plátky",      name: "kůra z citronu" },
+          { amount: "3-4 plátky", name: "kůra z citronu" },
         ],
       },
     ],
@@ -600,7 +584,7 @@ var RECIPE_DATA = {
           { amount: "250 g",  name: "mascarpone" },
           { amount: "200 ml", name: "40% smetany ke šlehání" },
           { amount: "1",      name: "vanilkový cukr" },
-          { amount: "1-2 PL",   name: "moučkového cukru" },
+          { amount: "1-2 PL", name: "moučkového cukru" },
         ],
       },
     ],
@@ -726,7 +710,7 @@ var RECIPE_DATA = {
           { amount: "20 g",  name: "prolisovaného česneku" },
           { amount: "40 g",  name: "změklého másla" },
           { amount: "60 g",  name: "smetanového sýru (např. Philadelphia)" },
-          { amount: "1/2 ČL",     name: "sůl (podle chuti)" },
+          { amount: "1/2 ČL", name: "sůl (podle chuti)" },
         ],
       },
       {
@@ -843,7 +827,7 @@ var RECIPE_DATA = {
           { amount: "20 g",   name: "másla" },
           { amount: "300 g",  name: "uvařeného kuřecího masa (použila jsem maso z vývaru)" },
           { amount: "2",      name: "jarní cibulky" },
-          { amount: "100 g",      name: "cheddar nakrájený na 12 kostiček" },
+          { amount: "100 g",  name: "cheddar nakrájený na 12 kostiček" },
         ],
       },
       {
@@ -865,10 +849,10 @@ var RECIPE_DATA = {
         startAt: 1,
         items: [
           "Připravíme si <b>barbecue omáčku</b>: na oleji orestujeme velmi jemně nakrájenou cibuli, osolíme.",
-          "Zalijeme vývarem a vaříme, dokud se zcela nevypaří.", 
-          "Přidáme koření a minutu restujeme.", 
+          "Zalijeme vývarem a vaříme, dokud se zcela nevypaří.",
+          "Přidáme koření a minutu restujeme.",
           "Přidáme hustý protlak, sójovou omáčku, zarestujeme a pak přidáme řídký protlak.",
-          "Zredukujeme a nakonec přidáme máslo a natrhané maso.", 
+          "Zredukujeme a nakonec přidáme máslo a natrhané maso.",
           "Po vychladnutí přidáme jarní cibulku.",
         ],
       },
@@ -893,7 +877,7 @@ var RECIPE_DATA = {
         items: [
           { amount: "2",         name: "vejce" },
           { amount: "100 g",     name: "krupicového cukru" },
-          { amount: "90g",    name: "oleje" },
+          { amount: "90g",       name: "oleje" },
           { amount: "60 g",      name: "celozrnné hladké špaldové mouky" },
           { amount: "100 g",     name: "hladké špaldové mouky" },
           { amount: "1 lžička",  name: "jedlé sody" },
@@ -957,9 +941,9 @@ var RECIPE_DATA = {
         heading: "",
         startAt: 1,
         items: [
-          "Troubu předehřej na 160 °C, plech vyložte pečicím papírem.", 
-          "V míse smíchej mandlovou mouku a cukr, pak přidej bílky a jestli chceš, i pár kapek mandlového extraktu.", 
-          "Vše dobře promíchej (nešlehat) — vznikne lepivá hmota.", 
+          "Troubu předehřej na 160 °C, plech vyložte pečicím papírem.",
+          "V míse smíchej mandlovou mouku a cukr, pak přidej bílky a jestli chceš, i pár kapek mandlového extraktu.",
+          "Vše dobře promíchej (nešlehat) — vznikne lepivá hmota.",
           "Nachystej si nádobu s vodou. Před tvarováním každé kuličky si <b>namoč ruce do vody</b> — těsto se díky tomu nebude lepit.",
           "Peč 20–25 minut, dokud nezačnou jemně praskat.",
           "Čokoládu rozpusti ve vodní lázni, přimíchej olej a vychladlé kuličky v ní obaluj. Ozdobte plátky mandlí.",
@@ -1080,5 +1064,4 @@ var RECIPE_DATA = {
       },
     ],
   },
-
 };

@@ -1,0 +1,37 @@
+---
+export interface Props {
+  recipe: {
+    slug: string;
+    title: string;
+    categories: string[];
+    time: string;
+    servings: string;
+    level: string;
+    paint?: string;
+    image?: string;
+  };
+  compact?: boolean;
+}
+
+const { recipe, compact = false } = Astro.props;
+
+const imgStyle = recipe.image
+  ? `background-image:url(/${recipe.image});background-size:cover;background-position:center;`
+  : '';
+const paintClass = !recipe.image ? ` paint-${recipe.paint}` : '';
+---
+
+<a class={`recipe-card${compact ? ' compact' : ''}`} href={`/recept/${recipe.slug}`}>
+  <div class="recipe-card-imgwrap">
+    <div class={`recipe-card-img${paintClass}`} style={imgStyle}></div>
+    <span class="eyebrow-stamp">{recipe.categories[0]}</span>
+  </div>
+  <div class="recipe-card-body">
+    <h3 set:html={recipe.title} />
+    <div class="recipe-card-meta">
+      <span><b>{recipe.time}</b></span>
+      <span><b>{recipe.servings}</b></span>
+      <span>{recipe.level}</span>
+    </div>
+  </div>
+</a>

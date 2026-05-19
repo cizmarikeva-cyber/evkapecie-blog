@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { RECIPES, CATEGORIES } from '../../data/recipes.js';
+
+const PAGE_SIZE = 9;
+---
+
+<BaseLayout
+  title="Všechny recepty — Evka pečie"
+  description="Přehled všech receptů na tradičné slovenské a české pečení od Evky."
+  activeNav="recipes"
+>
+
+  <!-- HLAVIČKA -->
+  <section class="container" style="padding-top:56px;padding-bottom:0">
+    <div class="eyebrow">Přehled</div>
+    <h1 class="recipes-list-title">
+      <em>Všechny</em> recepty
+    </h1>
+
+    <!-- FILTR -->
+    <div class="filter-strip" id="filter-strip">
+      <button class="filter-pill active" data-category="">
+        Vše
+        <span class="filter-pill-count">{RECIPES.length}</span>
+      </button>
+      {CATEGORIES.map(cat => {
+        const count = RECIPES.filter(r => r.categories.includes(cat.name)).length;
+        return (
+          <button
+            class={`filter-pill${count === 0 ? ' disabled' : ''}`}
+            data-category={cat.name}
+            disabled={count === 0}
+          >
+            {cat.name}
+            <span class="filter-pill-count">{count}</span>
+          </button>
+        );
+      })}
+    </div>
+
+    <p class="recipes-search-info" id="search-info" style="display:none;margin-top:16px"></p>
+  </section>
+
+  <!-- MŘÍŽKA RECEPTŮ -->
+  <section class="container" style="padding-bottom:96px;padding-top:32px">
+    <div class="recipe-grid" id="recipes-grid">
+      {RECIPES.map(r => (
+        <div class="recipe-card-wrap"
+             data-categories={JSON.stringify(r.categories)}
+             data-title={r.title.replace(/<[^>]+>/g, '').toLowerCase()}
+             data-slug={r.slug}>
+          <RecipeCard recipe={r} />
+        </div>
+      ))}
+    </div>
+    <div id="no-results" style="display:none;padding:32px 0;display:none;flex-direction:column;gap:16px;align-items:flex-start">
+      <p style="color:var(--popol);font-family:var(--font-body);font-size:16px;margin:0">Žádné recepty neodpovídají hledání.</p>
+      <button id="clear-search-btn" class="btn btn-secondary btn-small">Zobrazit všechny recepty</button>
+    </div>
+
+    <!-- STRÁNKOVANIE -->
+    <div id="pagination" style="display:none;justify-content:center;align-items:center;gap:8px;margin-top:48px;flex-wrap:wrap"></div>
+  </section>
+
+</BaseLayout>
+
+<script define:vars={{ PAGE_SIZE }}>
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  let activeCategory = params.get('kategoria') || '';
+  const initialQuery = params.get('q') || '';
+  let currentPage = 1;
+
+  const filterBtns = document.querySelectorAll('#filter-strip .filter-pill');
+  const allCards = Array.from(document.querySelectorAll('.recipe-card-wrap'));
+  const searchInfo = document.getElementById('search-info');
+  const noResults = document.getElementById('no-results');
+  const pagination = document.getElementById('pagination');
+
+  function norm(s) {
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  }
+
+  function getQuery() {
+    const navInput = document.getElementById('nav-search-input');
+    return navInput ? norm(navInput.value.trim()) : norm(initialQuery);
+  }
+
+  function getVisible() {
+    const q = getQuery();
+    return allCards.filter(wrap => {
+      const cats = JSON.parse(wrap.dataset.categories || '[]');
+      const title = wrap.dataset.title || '';
+      const slug = wrap.dataset.slug || '';
+      const catMatch = !activeCategory || cats.includes(activeCategory);
+      const qMatch = !q || norm(title).includes(q) || norm(slug).includes(q) || cats.some(c => norm(c).includes(q));
+      return catMatch && qMatch;
+    });
+  }
+
+  function renderPage() {
+    const visible = getVisible();
+    const q = getQuery();
+    const totalPages = Math.ceil(visible.length / PAGE_SIZE);
+    if (currentPage > totalPages) currentPage = 1;
+
+    allCards.forEach(c => c.style.display = 'none');
+    const start = (currentPage - 1) * PAGE_SIZE;
+    visible.slice(start, start + PAGE_SIZE).forEach(c => c.style.display = '');
+
+    noResults.style.display = visible.length === 0 ? 'flex' : 'none';
+
+    // Search info
+    if (q) {
+      searchInfo.style.display = '';
+      searchInfo.innerHTML = visible.length > 0
+        ? `Nalezeno <b>${visible.length}</b> ${visible.length === 1 ? 'recept' : visible.length < 5 ? 'recepty' : 'receptů'}`
+        : `Žádné výsledky`;
+    } else {
+      searchInfo.style.display = 'none';
+    }
+
+    // Pagination
+    if (totalPages <= 1) {
+      pagination.style.display = 'none';
+      return;
+    }
+    pagination.style.display = 'flex';
+    pagination.innerHTML = '';
+
+    const btn = (label, page, disabled, active) => {
+      const el = document.createElement('button');
+      el.textContent = label;
+      el.className = 'filter-pill' + (active ? ' active' : '') + (disabled ? ' disabled' : '');
+      el.disabled = disabled;
+      if (!disabled && !active) el.addEventListener('click', () => { currentPage = page; renderPage(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      return el;
+    };
+
+    pagination.appendChild(btn('←', currentPage - 1, currentPage === 1, false));
+    for (let i = 1; i <= totalPages; i++) {
+      pagination.appendChild(btn(String(i), i, false, i === currentPage));
+    }
+    pagination.appendChild(btn('→', currentPage + 1, currentPage === totalPages, false));
+  }
+
+  // Category filter buttons
+  filterBtns.forEach(btn => {
+    const cat = btn.dataset.category || '';
+    if (cat === activeCategory) {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    btn.addEventListener('click', () => {
+      if (btn.disabled) return;
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCategory = btn.dataset.category || '';
+      // Vymazať search pri kliku na filter
+      const navInput = document.getElementById('nav-search-input');
+      const mobileInput = document.getElementById('nav-mobile-search-input');
+      if (navInput) navInput.value = '';
+      if (mobileInput) mobileInput.value = '';
+      currentPage = 1;
+      renderPage();
+    });
+  });
+
+  // Nav search input (live filter)
+  const navInput = document.getElementById('nav-search-input');
+  if (navInput) {
+    if (initialQuery) navInput.value = initialQuery;
+    navInput.addEventListener('input', () => {
+      if (navInput.value.trim()) {
+        activeCategory = '';
+        filterBtns.forEach(b => b.classList.toggle('active', b.dataset.category === ''));
+      }
+      currentPage = 1;
+      renderPage();
+    });
+  }
+
+  // Clear search button
+  const clearSearchBtn = document.getElementById('clear-search-btn');
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', () => {
+      const navInput = document.getElementById('nav-search-input');
+      const mobileInput = document.getElementById('nav-mobile-search-input');
+      if (navInput) navInput.value = '';
+      if (mobileInput) mobileInput.value = '';
+      currentPage = 1;
+      renderPage();
+    });
+  }
+
+  renderPage();
+})();
+</script>

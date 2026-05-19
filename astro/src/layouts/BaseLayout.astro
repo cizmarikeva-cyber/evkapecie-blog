@@ -1,0 +1,198 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  schemaOrg?: object;
+  activeNav?: string;
+}
+
+const {
+  title,
+  description = 'Tradičné recepty zo slovenskej a českej kuchyne, presne tak ako ich poznáme z domu.',
+  image,
+  schemaOrg,
+  activeNav = '',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, 'https://evkapecie.cz').href;
+---
+
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  {image && <meta property="og:image" content={`https://evkapecie.cz/${image}`} />}
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Evka pečie" />
+
+  <link rel="icon" href="/images/logo-small.svg" type="image/svg+xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  <!-- Štýly -->
+  <link rel="stylesheet" href="/tokens.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
+
+  {schemaOrg && (
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+  )}
+</head>
+<body>
+
+  <!-- Cookie banner -->
+  <div id="cookie-banner" role="dialog" aria-label="Souhlas s cookies" style="display:none">
+    <div class="cookie-banner-body">
+      <strong class="cookie-banner-title">Souhlasíte se sběrem cookies?</strong>
+      <p>Používám Google Analytics na sběr cookies pro měření návštěvnosti a také pro to, abych věděla, co rádi pečete. <a id="cookie-more" href="/ochrana-soukromi">Více informací</a></p>
+      <div id="cookie-prefs" style="display:none">
+        <label class="cookie-pref-row">
+          <input type="checkbox" disabled checked /> Nezbytné cookies
+        </label>
+        <label class="cookie-pref-row">
+          <input type="checkbox" id="cookie-analytics-check" checked /> Analytické cookies (Google Analytics)
+        </label>
+      </div>
+    </div>
+    <div class="cookie-banner-actions">
+      <button id="cookie-prefs-btn">Zobrazit předvolby</button>
+      <button id="cookie-decline">Odmítnout</button>
+      <button id="cookie-accept">Přijmout vše</button>
+    </div>
+  </div>
+
+  <!-- Navigace -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-brand" aria-label="Evka pečie — domov">
+        <img src="/images/logo.svg" alt="Evka pečie" height="68" />
+      </a>
+      <nav class="nav-links">
+        <a class={`nav-link${activeNav === 'home' ? ' active' : ''}`} href="/">Domů</a>
+        <a class={`nav-link${activeNav === 'recipes' ? ' active' : ''}`} href="/recepty">Recepty</a>
+        <a class={`nav-link${activeNav === 'about' ? ' active' : ''}`} href="/o-mne">O mně</a>
+        <a class="nav-link" href="/o-mne#contact">Kontakt</a>
+      </nav>
+      <div class="nav-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input id="nav-search-input" type="search" placeholder="Hledat recept…" aria-label="Hledat recept" autocomplete="off" />
+      </div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Otevřít menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="7" x2="21" y2="7"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="17" x2="21" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobilní menu -->
+  <div class="nav-mobile" id="nav-mobile" style="display:none" role="navigation" aria-label="Mobilní menu">
+    <div class="nav-mobile-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="nav-mobile-search-input" type="search" placeholder="Hledat recept…" aria-label="Hledat recept" autocomplete="off" />
+      <button class="nav-mobile-search-btn" id="nav-mobile-search-btn" aria-label="Hledat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+    <a class={`nav-link${activeNav === 'home' ? ' active' : ''}`} href="/">Domů</a>
+    <a class={`nav-link${activeNav === 'recipes' ? ' active' : ''}`} href="/recepty">Recepty</a>
+    <a class={`nav-link${activeNav === 'about' ? ' active' : ''}`} href="/o-mne">O mně</a>
+    <a class="nav-link" href="/o-mne#contact">Kontakt</a>
+  </div>
+
+  <!-- Obsah stránky -->
+  <slot />
+
+  <!-- Footer -->
+  <footer class="container footer">
+    <div class="footer-inner">
+      <div>
+        <img src="/images/logo.svg" alt="Evka pečie" style="height:68px;display:block" />
+      </div>
+      <div class="footer-col">
+        <h4>Recepty</h4>
+        <a href="/recepty?kategoria=Tradi%C4%8Dn%C3%AD">Tradiční</a>
+        <a href="/recepty?kategoria=Sladk%C3%A9">Sladké</a>
+        <a href="/recepty?kategoria=Slan%C3%A9">Slané</a>
+        <a href="/recepty?kategoria=Rychl%C3%A9">Rychlé</a>
+      </div>
+      <div class="footer-col">
+        <h4>Blog</h4>
+        <a href="/o-mne">O mně</a>
+        <a href="/o-mne#contact">Kontaktujte mě</a>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 Evka pečie · Tradiční recepty SK/CZ</span>
+      <span>
+        <a href="/ochrana-soukromi" style="color:inherit">Ochrana soukromí</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="/cookie-banner.js" is:inline></script>
+  <script>
+    // Mobile hamburger menu
+    const hamburger = document.getElementById('nav-hamburger');
+    const mobileMenu = document.getElementById('nav-mobile');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileMenu.style.display !== 'none';
+        mobileMenu.style.display = isOpen ? 'none' : 'flex';
+        hamburger.setAttribute('aria-expanded', String(!isOpen));
+      });
+    }
+
+    // Mobile search
+    const mobileSearchInput = document.getElementById('nav-mobile-search-input');
+    const mobileSearchBtn = document.getElementById('nav-mobile-search-btn');
+    const doMobileSearch = () => {
+      const val = mobileSearchInput.value.trim();
+      if (val.length >= 3) {
+        window.location.href = '/recepty?q=' + encodeURIComponent(val);
+      }
+    };
+    if (mobileSearchBtn) mobileSearchBtn.addEventListener('click', doMobileSearch);
+    if (mobileSearchInput) {
+      mobileSearchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') doMobileSearch();
+      });
+    }
+
+    // Nav search
+    const navSearch = document.getElementById('nav-search-input');
+    if (navSearch) {
+      const onReceptyPage = window.location.pathname.startsWith('/recepty');
+
+      let navSearchTimer;
+      navSearch.addEventListener('input', () => {
+        clearTimeout(navSearchTimer);
+        const val = navSearch.value.trim();
+        if (!onReceptyPage && val.length >= 3) {
+          navSearchTimer = setTimeout(() => {
+            window.location.href = '/recepty?q=' + encodeURIComponent(val);
+          }, 400);
+        }
+        // On /recepty page the recepty script listens directly to nav-search-input
+      });
+      navSearch.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !onReceptyPage) {
+          const val = navSearch.value.trim();
+          if (val.length >= 3) {
+            window.location.href = '/recepty?q=' + encodeURIComponent(val);
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
