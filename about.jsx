@@ -118,7 +118,7 @@ const BrevoContactForm = () => {
               <div class="form__entry entry_block">
                 <div class="form__label-row">
                   <label class="entry__label" for="LASTNAME" data-required="*">Zpráva</label>
-                  <div class="entry__field"><textarea rows="7" class="input" maxlength="2000" id="LASTNAME" name="LASTNAME" autocomplete="off" data-required="true" required></textarea></div>
+                  <div class="entry__field"><textarea rows="7" class="input" maxlength="255" id="LASTNAME" name="LASTNAME" autocomplete="off" data-required="true" required></textarea></div>
                 </div>
                 <label class="entry__error entry__error--primary"></label>
               </div>
