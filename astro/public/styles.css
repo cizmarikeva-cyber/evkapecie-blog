@@ -121,9 +121,10 @@ a:hover { color: var(--lekvar-dark); }
   font-family: var(--font-body); font-size: 15px; font-weight: 600;
   padding: 12px 24px; border-radius: 10px; border: 1px solid transparent;
   display: inline-flex; align-items: center; gap: 10px;
-  cursor: pointer; line-height: 1;
+  cursor: pointer; line-height: 1; text-decoration: none;
   transition: all var(--dur-2) var(--ease-settle); white-space: nowrap;
 }
+.btn:hover { color: inherit; }
 .btn:active { transform: scale(0.985); }
 .btn-primary   { background: var(--lekvar); color: var(--maslo); }
 .btn-primary:hover { background: var(--lekvar-dark); }
@@ -957,3 +958,14 @@ a:hover { color: var(--lekvar-dark); }
   font-family: var(--font-body); font-size: 13px; font-weight: 600; cursor: pointer;
 }
 #cookie-accept:hover { opacity: 0.88; }
+
+/* ---- Astro migration: anchor tag overrides ------------------- */
+a.recipe-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+}
+a.hero-image {
+  text-decoration: none;
+  display: block;
+}

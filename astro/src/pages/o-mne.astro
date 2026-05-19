@@ -1,0 +1,230 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="O mně — Evka pečie"
+  description="Ahoj, jsem Eva — amatérská pekárka z Brna. Sdílím tradičné slovenské a české recepty na pečení."
+  activeNav="about"
+>
+
+  <main>
+
+    <!-- HERO — portrét + úvod -->
+    <section class="container">
+      <div class="about-hero">
+
+        <div class="about-col-left">
+          <div class="about-portrait-wrap">
+            <img
+              src="/images/portret.jpeg"
+              alt="Eva Čižmariková — Evka pečie"
+              class="about-portrait"
+            />
+          </div>
+          <div class="about-social">
+            <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>
+              </svg>
+              Instagram
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+
+        <div class="about-col-right">
+          <div class="about-title">
+            <div class="eyebrow">O mně</div>
+            <h1 style="margin-top:16px">
+              Ahoj, jsem <em>Eva</em>
+            </h1>
+          </div>
+          <div class="about-text">
+            <p class="about-intro">
+              Vyrůstala jsem na Slovensku a u nás doma se obvykle hodně peklo o víkendech. Můj vztah k pečení tedy začal už v dětství, a to díky vlivu mé mámy a obou babiček. Bavilo mě sledovat, jak pečou, pomáhat a samozřejmě ochutnávat. I díky nim jsem se naučila, že na použitých ingrediencích záleží: máslo se nedá ničím nahradit, šlehačka musí být vysokoprocentní a že nelze srovnávat ovoce ze zahrádky s ovocem z obchodu. To jsou moje základy, od kterých se neodkloním.
+            </p>
+            <p class="about-intro" style="margin-top:16px">
+              Po přestěhování do Česka se můj zájem o pečení se postupně prohluboval. K pečení mě inspiruje mnoho zdrojů, například hodně mi dal blog Víkendové pečení, absolvovala jsem i několik kurzů pečení - třeba Minidotríky a Croissants od Olakala - a také ráda experimentuji s novými chutěmi. Počas Covidu jsem se naučila péct i kváskový chleba. Nyní peču nejvíc tradiční slovenské a české koláče; dělám bábovky, kynuté koláče a o Vánocích samozřejmě cukroví a vánočku. Ráda to občas prokládám i moderními věcmi — takže u mě najdete i recepty třeba na mrkvový dort, brownie, nebo dezerty, které jsem ochutnala v zahraničí.
+            </p>
+            <p class="about-intro" style="margin-top:16px">
+              Mám pocit, že tradiční koláče se v dnešním rychlém světě trochu ztrácejí. Chci ukázat, že se dají připravit opravdu dobře, tradičně ale i s moderním nádechem. Proto jsem tady a sdílím recepty, které fungují.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- KONTAKTNÍ FORMULÁŘ -->
+    <section class="container contact-section" id="contact" style="padding-bottom:96px">
+      <h2 style="margin-bottom:40px">
+        <em>Kontaktujte</em> mě
+      </h2>
+
+      <div class="brevo-form-wrap">
+        <div id="sib-form-container" class="sib-form-container">
+          <div id="error-message" class="sib-form-message-panel" style="color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:8px;margin-bottom:16px;display:none">
+            <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Něco se pokazilo. Zkuste to znovu prosím.</span></div>
+          </div>
+          <div id="success-message" class="sib-form-message-panel" style="color:#085229;background-color:#e7faf0;border-color:#13ce66;border-radius:8px;margin-bottom:16px;display:none">
+            <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Vaše zpráva byla odeslána. Ozvu se vám během nejbližších dní!</span></div>
+          </div>
+          <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:left;background-color:transparent;border:none;direction:ltr">
+            <form id="sib-form" method="POST" action="https://1acb54ba.sibforms.com/serve/MUIFAKD3U0KiXEiEo-BAr6I7S_jCK_VThQqYLDbJVV-IP6nxtX1fiDR_g0bg3JpICXn3skPrhPvEQksWmWG588UdXBwYAL7pQUof-f35Yzxm0coeB2U1FrfgWYrGRO3IdJj_gLNh1oEwZw2tA9ARbJuilFRLopcVQeR619KSImXt6AtIUZoysWoIzvH53Fd6Zgmq8G8fmPnEktfzJw==" data-type="subscription">
+              <div style="padding:8px 0">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <label class="entry__label" for="EMAIL" data-required="*">E-mail</label>
+                      <div class="entry__field"><input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" data-required="true" required /></div>
+                    </div>
+                    <label id="email-error" style="display:none;color:#c0392b;font-family:var(--font-body);font-size:13px;margin-top:6px">Zadejte prosím e-mailovou adresu.</label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:8px 0">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <label class="entry__label" for="FIRSTNAME">Jméno</label>
+                      <div class="entry__field"><input class="input" maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" /></div>
+                    </div>
+                    <label class="entry__error entry__error--primary"></label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:8px 0">
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <label class="entry__label" for="LASTNAME" data-required="*">Zpráva</label>
+                      <div class="entry__field"><textarea rows="7" class="input" maxlength="255" id="LASTNAME" name="LASTNAME" autocomplete="off" data-required="true" required></textarea></div>
+                    </div>
+                    <label id="message-error" style="display:none;color:#c0392b;font-family:var(--font-body);font-size:13px;margin-top:6px">Zadejte prosím zprávu.</label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:8px 0">
+                <div class="sib-optin sib-form-block">
+                  <div class="form__entry entry_mcq">
+                    <div class="form__label-row">
+                      <div class="entry__choice">
+                        <label>
+                          <input type="checkbox" class="input_replaced" value="1" id="GDPR_CONSENT" name="GDPR_CONSENT" />
+                          <span class="checkbox checkbox_tick_positive"></span>
+                          <span>Souhlasím se zpracováním osobních údajů dle <a href="/ochrana-soukromi" style="color:inherit;text-decoration:underline;">zásad ochrany osobních údajů</a>.</span>
+                        </label>
+                      </div>
+                    </div>
+                    <label id="gdpr-error" style="display:none;color:#c0392b;font-family:var(--font-body);font-size:13px;margin-top:6px">Prosím, potvrďte souhlas se zpracováním osobních údajů.</label>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:4px 0 12px;font-size:12px;color:#687484;">
+                Ke zpracování formuláře používám <a href="https://www.brevo.com" rel="nofollow">Brevo</a>. Odesláním souhlasíte s přenosem dat dle jejich <a href="https://www.brevo.com/en/legal/privacypolicy/" rel="nofollow" target="_blank">zásad ochrany soukromí</a>.
+              </div>
+              <div style="padding:8px 0;text-align:left">
+                <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                  Odeslat zprávu
+                </button>
+              </div>
+              <input type="text" name="email_address_check" value="" class="input--hidden" />
+              <input type="hidden" name="locale" value="cs" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Brevo form init
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'cs';
+    window.EMAIL_INVALID_MESSAGE = 'Zadaná adresa je v nesprávném formátu. Zkontrolujte ji prosím.';
+    window.REQUIRED_ERROR_MESSAGE = 'Povinné pole.';
+    window.GENERIC_INVALID_MESSAGE = 'Zadané informace jsou v nesprávném formátu. Zkontrolujte je prosím.';
+    window.INVALID_NUMBER = 'Zadané informace jsou v nesprávném formátu.';
+    window.INVALID_DATE = 'Zadejte prosím platné datum.';
+    window.REQUIRED_MULTISELECT_MESSAGE = 'Vyberte prosím alespoň jednu možnost.';
+    window.AUTOHIDE = Boolean(0);
+
+    // Load Brevo script
+    const s = document.createElement('script');
+    s.src = 'https://sibforms.com/forms/end-form/build/main.js';
+    document.body.appendChild(s);
+
+    // Intercept form submit
+    document.addEventListener('submit', function(e) {
+      const form = document.getElementById('sib-form');
+      if (!form || !form.contains(e.target) && e.target !== form) return;
+
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      const emailEl   = document.getElementById('EMAIL');
+      const messageEl = document.getElementById('LASTNAME');
+      const checkbox  = document.getElementById('GDPR_CONSENT');
+      const emailErr   = document.getElementById('email-error');
+      const messageErr = document.getElementById('message-error');
+      const gdprErr    = document.getElementById('gdpr-error');
+
+      let valid = true;
+
+      if (!emailEl || !emailEl.value.trim()) {
+        if (emailErr) emailErr.style.display = 'block';
+        valid = false;
+      } else {
+        if (emailErr) emailErr.style.display = 'none';
+      }
+
+      if (!messageEl || !messageEl.value.trim()) {
+        if (messageErr) messageErr.style.display = 'block';
+        valid = false;
+      } else {
+        if (messageErr) messageErr.style.display = 'none';
+      }
+
+      if (!checkbox || !checkbox.checked) {
+        if (gdprErr) gdprErr.style.display = 'block';
+        valid = false;
+      } else {
+        if (gdprErr) gdprErr.style.display = 'none';
+      }
+
+      if (!valid) return;
+
+      const successEl = document.getElementById('success-message');
+      const errorEl = document.getElementById('error-message');
+      if (successEl) successEl.style.display = 'none';
+      if (errorEl) errorEl.style.display = 'none';
+
+      const data = new FormData(form);
+      fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' })
+        .then(() => {
+          if (successEl) successEl.style.display = 'block';
+          form.reset();
+        })
+        .catch(() => {
+          if (errorEl) errorEl.style.display = 'block';
+        });
+    }, true);
+
+    // Scroll to contact if hash
+    if (window.location.hash === '#contact') {
+      setTimeout(() => {
+        const el = document.getElementById('contact');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    }
+  </script>
+
+</BaseLayout>

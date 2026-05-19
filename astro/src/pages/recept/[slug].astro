@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { RECIPES, RECIPE_DATA, FEATURED } from '../../data/recipes.js';
+
+export function getStaticPaths() {
+  return RECIPES.map(recipe => ({
+    params: { slug: recipe.slug },
+    props: { recipe },
+  }));
+}
+
+const { recipe } = Astro.props;
+const data = RECIPE_DATA[recipe.slug] || { intro: '', ingredients: [], steps: [] };
+
+const titlePlain = recipe.title.replace(/<[^>]+>/g, '');
+const pageTitle = `${titlePlain} — Evka pečie`;
+const description = data.intro
+  ? data.intro.slice(0, 160)
+  : `Recept na ${titlePlain} — tradičné slovenské a české pečenie od Evky.`;
+
+const relatedRecipes = RECIPES.filter(r => r.slug !== recipe.slug).slice(0, 4);
+
+// Schema.org Recipe structured data
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'Recipe',
+  name: titlePlain,
+  description: description,
+  author: {
+    '@type': 'Person',
+    name: 'Eva Čižmariková',
+    url: 'https://evkapecie.cz/o-mne',
+  },
+  image: recipe.image ? `https://evkapecie.cz/${recipe.image}` : undefined,
+  prepTime: recipe.time ? `PT${recipe.time}` : undefined,
+  recipeYield: recipe.servings || undefined,
+  recipeCategory: recipe.categories?.[0] || undefined,
+  difficulty: recipe.level || undefined,
+  recipeIngredient: data.ingredients?.flatMap(g => g.items.map(i => `${i.amount} ${i.name}`.trim())) ?? [],
+  recipeInstructions: data.steps?.flatMap(s => s.items.map((step, idx) => ({
+    '@type': 'HowToStep',
+    position: (s.startAt || 1) + idx,
+    text: step.replace(/<[^>]+>/g, ''),
+  }))) ?? [],
+};
+
+const imgStyle = recipe.image
+  ? `background-image:url(/${recipe.image});background-size:cover;background-position:center;`
+  : '';
+const paintClass = !recipe.image ? ` paint-${recipe.paint}` : '';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  image={recipe.image}
+  schemaOrg={schemaOrg}
+  activeNav="recipes"
+>
+
+  <main>
+    <div class="container" style="padding-top:24px">
+
+      <!-- Zpět -->
+      <a class="back" href="/recepty">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12H3"/><path d="m11 19-8-7 8-7"/>
+        </svg>
+        Zpět na recepty
+      </a>
+
+      <!-- HERO OBRÁZEK -->
+      <div class="recipe-hero">
+        <div class={`recipe-hero-paint${paintClass}`} style={imgStyle}></div>
+        <div class="recipe-hero-overlay"></div>
+        <div class="recipe-hero-content">
+          <div>
+            <div class="eyebrow" style="color:var(--med-soft)">
+              {recipe.categories.join(' · ')}
+            </div>
+            <h1 set:html={recipe.title} />
+          </div>
+          <div class="recipe-hero-stats">
+            <div class="stat">
+              <div class="lbl">Čas</div>
+              <div class="val">{recipe.time}</div>
+            </div>
+            <div class="stat">
+              <div class="lbl">Porcí</div>
+              <div class="val">{recipe.servings}</div>
+            </div>
+            <div class="stat">
+              <div class="lbl">Náročnost</div>
+              <div class="val">{recipe.level}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TĚLO — sidebar + obsah -->
+      <div class="recipe-body">
+
+        <!-- SIDEBAR: suroviny -->
+        <aside class="recipe-side">
+          <h4>Suroviny</h4>
+          {data.ingredients && data.ingredients.length > 0 ? (
+            data.ingredients.map(group => (
+              <div class="ingredient-group">
+                {group.group && <div class="grp-name">{group.group}</div>}
+                <ul>
+                  {group.items.map(item => (
+                    <li>
+                      <b>{item.amount}</b>
+                      <span>{item.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          ) : (
+            <p style="font-style:italic;color:var(--popol)">Suroviny brzy doplníme…</p>
+          )}
+        </aside>
+
+        <!-- OBSAH: úvod, postup, podpis -->
+        <article class="recipe-content">
+          {data.intro && <p class="recipe-intro">{data.intro}</p>}
+
+          <div class="recipe-actions">
+            <button class="btn btn-ghost btn-small" onclick="window.print()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 9V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4"/><rect x="6" y="14" width="12" height="7" rx="1"/><path d="M4 14h16v-4H4z"/>
+              </svg>
+              Tisknout
+            </button>
+            <button class="btn btn-ghost btn-small" id="share-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                <path d="m8.6 13.5 6.8 4"/><path d="m15.4 6.5-6.8 4"/>
+              </svg>
+              <span id="share-label">Sdílet</span>
+            </button>
+          </div>
+
+          {data.steps && data.steps.length > 0 ? (
+            data.steps.map(section => (
+              <>
+                <h2>
+                  <small>
+                    {section.items.length === 1
+                      ? `Krok ${section.startAt}`
+                      : `Kroky ${section.startAt}–${section.startAt + section.items.length - 1}`}
+                  </small>
+                  {section.heading}
+                </h2>
+                <ol class="steps" start={section.startAt}>
+                  {section.items.map(step => (
+                    <li>
+                      <div set:html={step} />
+                    </li>
+                  ))}
+                </ol>
+              </>
+            ))
+          ) : (
+            <p style="font-style:italic;color:var(--popol);margin-top:32px">Postup brzy doplníme…</p>
+          )}
+
+          {data.tips && (
+            <div class="recipe-tips">
+              <h4>{data.tips.heading}</h4>
+              <ul>
+                {data.tips.items.map(tip => <li>{tip}</li>)}
+              </ul>
+            </div>
+          )}
+
+          {data.instagram && (
+            <div class="recipe-reel">
+              <div class="reel-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>
+                </svg>
+                Video recept
+              </div>
+              <blockquote
+                class="instagram-media"
+                data-instgrm-permalink={data.instagram}
+                data-instgrm-version="14"
+                style="max-width:500px;width:80%;min-width:326px;border:1px solid #dbdbdb;border-radius:12px"
+              >
+                <a href={data.instagram} target="_blank" rel="noopener noreferrer">
+                  Zobrazit video recept na Instagramu →
+                </a>
+              </blockquote>
+            </div>
+          )}
+
+          <!-- Flourish divider -->
+          <div class="divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 24" fill="none"
+                 role="img" aria-hidden="true" style="width:240px;opacity:0.85">
+              <g stroke="#5B7180" stroke-width="1.25" stroke-linecap="round" fill="none">
+                <path d="M10 12 q40 -10 60 0 t60 -2"/>
+                <path d="M230 10 q40 12 60 2 t60 -2"/>
+                <path d="M50 7 q4 -4 8 -1"/><path d="M86 14 q4 4 8 1"/>
+                <path d="M114 7 q4 -4 8 -1"/><path d="M260 14 q4 4 8 1"/>
+                <path d="M294 7 q4 -4 8 -1"/><path d="M324 14 q4 4 8 1"/>
+              </g>
+              <g transform="translate(180 12)" fill="#780000">
+                <path d="M0 -8 L2.4 -2.4 L8 0 L2.4 2.4 L0 8 L-2.4 2.4 L-8 0 L-2.4 -2.4 Z"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="signature">
+            <img src="/images/portret2.jpeg" alt="Evka" class="sig-portrait" />
+            <div class="sig-body">
+              <b>@evkapecie</b>
+              Když budeš péct, pošli mi fotku na Instagram nebo Facebook — nejradši mám ty z prvního pokusu, i když se nepovede. Pak si můžeme povídat o tom, co vylepšit.
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- PATIČKA PRE TLAČ -->
+      <div class="print-footer">evkapecie.cz</div>
+
+      <!-- SOUVISEJÍCÍ RECEPTY -->
+      <section class="recipe-related" style="padding:72px 0 24px">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Z archivu</div>
+            <h2 class="section-title">Další <em>recepty</em></h2>
+          </div>
+          <a class="section-more" href="/recepty">Všechny recepty <span class="arrow">→</span></a>
+        </div>
+        <div class="recipe-grid four">
+          {relatedRecipes.map(r => <RecipeCard recipe={r} compact />)}
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  {data.instagram && (
+    <script async src="https://www.instagram.com/embed.js"></script>
+  )}
+
+  <script>
+    const shareBtn = document.getElementById('share-btn');
+    const shareLabel = document.getElementById('share-label');
+    if (shareBtn && shareLabel) {
+      shareBtn.addEventListener('click', () => {
+        const title = document.title;
+        const url = window.location.href;
+        if (navigator.share) {
+          navigator.share({ title: 'Evka pečie — ' + title, url });
+        } else {
+          navigator.clipboard.writeText(url).then(() => {
+            shareLabel.textContent = 'Odkaz zkopírován!';
+            setTimeout(() => { shareLabel.textContent = 'Sdílet'; }, 2500);
+          });
+        }
+      });
+    }
+  </script>
+
+</BaseLayout>
