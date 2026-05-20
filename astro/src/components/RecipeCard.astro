@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 export interface Props {
   recipe: {
     slug: string;
@@ -13,17 +15,28 @@ export interface Props {
   compact?: boolean;
 }
 
-const { recipe, compact = false } = Astro.props;
+const imageModules = import.meta.glob('/src/assets/images/*.{jpg,jpeg,png,webp}', { eager: true });
 
-const imgStyle = recipe.image
-  ? `background-image:url(/${recipe.image});background-size:cover;background-position:center;`
-  : '';
+const { recipe, compact = false } = Astro.props;
 const paintClass = !recipe.image ? ` paint-${recipe.paint}` : '';
+const imgKey = recipe.image ? `/src/assets/images/${recipe.image.split('/').pop()}` : null;
+const imgModule = imgKey ? imageModules[imgKey] : null;
 ---
 
 <a class={`recipe-card${compact ? ' compact' : ''}`} href={`/recept/${recipe.slug}`}>
   <div class="recipe-card-imgwrap">
-    <div class={`recipe-card-img${paintClass}`} style={imgStyle}></div>
+    <div class={`recipe-card-img${paintClass}`}>
+      {imgModule && (
+        <Image
+          src={imgModule.default}
+          alt={recipe.title.replace(/<[^>]+>/g, '')}
+          width={600}
+          height={400}
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"
+          loading="lazy"
+        />
+      )}
+    </div>
     <span class="eyebrow-stamp">{recipe.categories[0]}</span>
   </div>
   <div class="recipe-card-body">
