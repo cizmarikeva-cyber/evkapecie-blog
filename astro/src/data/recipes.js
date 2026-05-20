@@ -283,7 +283,7 @@ export const RECIPE_DATA = {
           "Vykynuté těsto rozválej na velikost plechu <b>30×40 cm</b>. Pomocí válečku ho přenes na plech vystlaný pečicím papírem.",
           "Na vrch natři tvarohovou náplň až po okraje, rozlož borůvky a posyp drobenkou.",
           "Nechej ještě <b>20 minut</b> kynout na plechu.",
-          "Peč na <b>200 °C</b> po dobu <b>15–20 minut</b>. Ihned po vytažení z trouby potři ještě horký koláč rozpuštěným máslem.",
+          "Peč na <b>200 °C</b> po dobu <b>18–20 minut</b>. Ihned po vytažení z trouby potři ještě horký koláč rozpuštěným máslem.",
           "Krájet až po <b>úplném vychladnutí</b>.",
         ],
       },
