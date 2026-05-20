@@ -71,7 +71,14 @@ const PAGE_SIZE = 9;
   const params = new URLSearchParams(window.location.search);
   let activeCategory = params.get('kategoria') || '';
   const initialQuery = params.get('q') || '';
-  let currentPage = 1;
+  let currentPage = parseInt(params.get('page') || '1', 10) || 1;
+
+  function updateUrl() {
+    const p = new URLSearchParams(window.location.search);
+    if (currentPage > 1) p.set('page', currentPage); else p.delete('page');
+    const qs = p.toString();
+    history.replaceState(null, '', qs ? '?' + qs : window.location.pathname);
+  }
 
   const filterBtns = document.querySelectorAll('#filter-strip .filter-pill');
   const allCards = Array.from(document.querySelectorAll('.recipe-card-wrap'));
@@ -135,7 +142,7 @@ const PAGE_SIZE = 9;
       el.textContent = label;
       el.className = 'filter-pill' + (active ? ' active' : '') + (disabled ? ' disabled' : '');
       el.disabled = disabled;
-      if (!disabled && !active) el.addEventListener('click', () => { currentPage = page; renderPage(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+      if (!disabled && !active) el.addEventListener('click', () => { currentPage = page; updateUrl(); renderPage(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
       return el;
     };
 
@@ -164,6 +171,7 @@ const PAGE_SIZE = 9;
       if (navInput) navInput.value = '';
       if (mobileInput) mobileInput.value = '';
       currentPage = 1;
+      updateUrl();
       renderPage();
     });
   });
@@ -178,6 +186,7 @@ const PAGE_SIZE = 9;
         filterBtns.forEach(b => b.classList.toggle('active', b.dataset.category === ''));
       }
       currentPage = 1;
+      updateUrl();
       renderPage();
     });
   }
@@ -191,6 +200,7 @@ const PAGE_SIZE = 9;
       if (navInput) navInput.value = '';
       if (mobileInput) mobileInput.value = '';
       currentPage = 1;
+      updateUrl();
       renderPage();
     });
   }
