@@ -161,14 +161,16 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
           {data.steps && data.steps.length > 0 ? (
             data.steps.map(section => (
               <>
-                <h2>
-                  <small>
-                    {section.items.length === 1
-                      ? `Krok ${section.startAt}`
-                      : `Kroky ${section.startAt}–${section.startAt + section.items.length - 1}`}
-                  </small>
-                  {section.heading}
-                </h2>
+                {section.heading && (
+                  <h2>
+                    <small>
+                      {section.items.length === 1
+                        ? `Krok ${section.startAt}`
+                        : `Kroky ${section.startAt}–${section.startAt + section.items.length - 1}`}
+                    </small>
+                    {section.heading}
+                  </h2>
+                )}
                 <ol class="steps" start={section.startAt}>
                   {section.items.map(step => (
                     <li>

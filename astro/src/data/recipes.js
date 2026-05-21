@@ -4,12 +4,12 @@
 
 export const FEATURED = {
   slug:       "makovo-marhulovy-kolac",
-  categories: ["Sladké", "Tradiční"],
-  title:      "Makovo-marhuľový koláč <em>s cheesecake vrstvou</em>",
-  intro:      "Tenhle koláč vznikl jako záchranná akce pro zavařeniny z minulé sezóny — a byl tak dobrý, že se z toho stala tradice.",
+  categories: ["Sladké", "Rychlé"],
+  title:      "Makovo-meruňkový koláč <em>s cheesecake vrstvou</em>",
+  intro:      "Tenhle koláč je supr způsob jak spotřebovat zavařeniny z minulé sezóny — a byl tak dobrý, že jsem ho určitě nedělala naposled.",
   time:       "1 h 15 min",
   servings:   "1 plech 24×20 cm",
-  level:      "Středně náročné",
+  level:      "Lehké",
   paint:      "mak",
   image:      "images/makovo-marhulovy-kolac.jpeg",
 };
@@ -19,11 +19,11 @@ export const RECIPES = [
   {
     slug:       "makovo-marhulovy-kolac",
     featured:   true,
-    categories: ["Sladké", "Tradiční"],
-    title:      "Makovo-marhuľový koláč <em>s cheesecake vrstvou</em>",
+    categories: ["Sladké", "Rychlé"],
+    title:      "Makovo-meruňkový koláč <em>s cheesecake vrstvou</em>",
     time:       "1 h 15 min",
     servings:   "1 plech 24×20 cm",
-    level:      "Středně náročné",
+    level:      "Lehké",
     paint:      "mak",
     image:      "images/makovo-marhulovy-kolac.jpeg",
   },
@@ -229,7 +229,7 @@ export const CATEGORIES = [
 export const RECIPE_DATA = {
 
   "makovo-marhulovy-kolac": {
-    intro: "Tenhle koláč vznikl jako záchranná akce pro zavařeniny z minulé sezóny — a byl tak dobrý, že se z toho stala tradice. Těsto je nadýchané díky sněhu z bílků, cream cheese náplň ho drží vláčné a kyselé meruňky nahoře celý koláč krásně odlehčí. Recept je na menší plech 24×20 cm — akorát na víkend pro dvě osoby nebo jako menší pohostění pro návštěvu.",
+    intro: "Tenhle koláč je supr způsob jak spotřebovat zavařeniny z minulé sezóny — a byl tak dobrý, že jsem ho určitě nedělala naposled. Těsto je nadýchané díky sněhu z bílků, cream cheese náplň ho drží vláčné a kyselé meruňky nahoře chuť krásně vyvažují. Recept je na menší plech 24×20 cm — akorát na víkend pro 2-3 osoby, nebo jako menší pohoštění pro nedělní návštěvu.",
     ingredients: [
       {
         group: "Těsto",
@@ -257,35 +257,23 @@ export const RECIPE_DATA = {
       {
         group: "Na vrch",
         items: [
-          { amount: "2 skleničky", name: "zavařených meruněk a broskví (nebo jiné kyselejší ovoce — švestky, višně)" },
+          { amount: "2 malé skleničky (300 ml)", name: "zavařených meruněk a broskví (nebo jiné kyselejší ovoce)" },
         ],
       },
     ],
     steps: [
       {
-        heading: "Těsto",
+        heading: "",
         startAt: 1,
         items: [
           "Žloutky vyšleháme s moučkovým cukrem do světlé pěny. Přidáme vanilku, olej a vlažnou vodu a promícháme.",
           "Vmícháme mouku smíchanou s práškem do pečiva.",
           "Z bílků vyšleháme tuhý sníh a zlehka ho vmícháme do těsta.",
           "<b>Dvě třetiny těsta</b> vylijeme na plech vyložený pečicím papírem. Do zbylé třetiny vmícháme mletý mák.",
-        ],
-      },
-      {
-        heading: "Cream cheese náplň",
-        startAt: 5,
-        items: [
-          "Smícháme krémový sýr, krupicový cukr, vanilku, vejce a jogurt dohladka.",
-        ],
-      },
-      {
-        heading: "Sestavení a pečení",
-        startAt: 6,
-        items: [
+          "V misce smícháme krémový sýr, cukr, vanilku, vejce a jogurt dohladka.",
           "Cream cheese náplň a makové těsto střídavě přidáváme po lžičkách na bílé těsto na plechu.",
           "Na vrch rovnoměrně rozložíme zavařené ovoce.",
-          "Pečeme na <b>180 °C</b> po dobu <b>35–40 minut</b>. Koláč je vlhčí, takže to trvá déle — propečení zkontrolujeme špejlí v místech, kde je těsto, ne v náplni.",
+          "Pečeme na <b>180 °C</b> po dobu <b>35–40 minut</b>. Propečení zkontrolujeme špejlí v místech, kde je těsto (ne v místě s ovocem nebo náplní).",
         ],
       },
     ],
@@ -293,7 +281,7 @@ export const RECIPE_DATA = {
       heading: "Tipy",
       items: [
         "Kyselejší ovoce (meruňky, švestky, višně) funguje lépe než sladké — pěkně vyváží sladkost cream cheese náplně.",
-        "Cream cheese náplně může trochu zbýt — to nevadí, použila jsem méně, ale celou dávku klidně spotřebujete taky.",
+        "Cream cheese náplně se zdá být hodně. Zbyly mě asi 3 lžíce, ale po pečení jsem zjistila, že jsem mohla klidně spotřebovat celou dávku (jen je pak potřeba koláč péct o 3–4 minuty déle).",
       ],
     },
   },
