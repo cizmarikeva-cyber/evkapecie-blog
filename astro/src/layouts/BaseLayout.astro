@@ -15,7 +15,8 @@ const {
   activeNav = '',
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, 'https://evkapecie.cz').href;
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
+const canonical = new URL(pathname, 'https://evkapecie.cz').href;
 ---
 
 <!doctype html>
