@@ -288,6 +288,7 @@ export const RECIPE_DATA = {
   },
 
   "kynuty-kolac-s-tvarohem-a-boruvkami": {
+    instagram: "https://www.instagram.com/p/DYmnUyWMIUM/",
     intro: "Znáte Kus koláče v Praze? Tenhle recept je moje domácí varianta jejich borůvkového koláče — upečená na plech. Minimum těsta, maximum náplně. Tvaroh je krémový, borůvky šťavnaté a máslová drobenka nahoře mu dodáva nezaměnitelnou chuť.",
     ingredients: [
       {
