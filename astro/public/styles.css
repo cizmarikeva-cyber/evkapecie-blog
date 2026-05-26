@@ -127,7 +127,7 @@ a:hover { color: var(--lekvar-dark); }
 .btn:hover { color: inherit; }
 .btn:active { transform: scale(0.985); }
 .btn-primary   { background: var(--lekvar); color: var(--maslo); }
-.btn-primary:hover { background: var(--lekvar-dark); }
+.btn-primary:hover { background: var(--lekvar-dark); color: var(--maslo); }
 .btn-secondary { background: var(--smotana); color: var(--mak); border-color: var(--mak); }
 .btn-secondary:hover { background: var(--mak); color: var(--maslo); }
 .btn-ghost     { background: transparent; color: var(--mak); }

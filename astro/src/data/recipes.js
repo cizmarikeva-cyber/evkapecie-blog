@@ -3,19 +3,30 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:     "kynuty-kolac-s-tvarohem-a-boruvkami",
-  categories: ["Sladké", "Tradiční"],
-  title:    "Kynutý koláč <em>s tvarohem a borůvkami</em>",
-  intro:    "Znáte Kus koláče v Praze? Tenhle recept je moje domácí varianta jejich borůvkového koláče — upečená na plech. Minimum těsta, maximum náplně. Tvaroh je krémový, borůvky šťavnaté a máslová drobenka nahoře mu dodáva nezaměnitelnou chuť.",
-  time:     "2 h",
-  servings: "1 plech 30×40 cm",
-  level:    "Středně náročné",
-  paint:    "mak",
-  image:    "images/kynuty-kolac-s-tvarohem-a-boruvkami.jpeg",
+  slug:       "makovo-marhulovy-kolac",
+  categories: ["Sladké", "Rychlé"],
+  title:      "Makovo-meruňkový koláč <em>s cheesecake vrstvou</em>",
+  intro:      "Tenhle koláč je supr způsob jak spotřebovat zavařeniny z minulé sezóny — a byl tak dobrý, že jsem ho určitě nedělala naposled. Těsto je nadýchané díky sněhu z bílků, cream cheese náplň ho drží vláčné a kyselé meruňky nahoře chuť krásně vyvažují.",
+  time:       "1 h 15 min",
+  servings:   "1 plech 24×20 cm",
+  level:      "Lehké",
+  paint:      "mak",
+  image:      "images/makovo-marhulovy-kolac.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:       "makovo-marhulovy-kolac",
+    featured:   true,
+    categories: ["Sladké", "Rychlé"],
+    title:      "Makovo-meruňkový koláč <em>s cheesecake vrstvou</em>",
+    time:       "1 h 15 min",
+    servings:   "1 plech 24×20 cm",
+    level:      "Lehké",
+    paint:      "mak",
+    image:      "images/makovo-marhulovy-kolac.jpeg",
+  },
   {
     slug:       "kynuty-kolac-s-tvarohem-a-boruvkami",
     featured:   true,
@@ -40,7 +51,6 @@ export const RECIPES = [
   },
   {
     slug:       "pirohy",
-    featured:   true,
     categories: ["Slané", "Vaření", "Tradiční"],
     title:      "Brynzové <em>pirohy</em>",
     time:       "1 h 15 min",
@@ -217,6 +227,65 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "makovo-marhulovy-kolac": {
+    intro: "Tenhle koláč je supr způsob jak spotřebovat zavařeniny z minulé sezóny — a byl tak dobrý, že jsem ho určitě nedělala naposled. Těsto je nadýchané díky sněhu z bílků, cream cheese náplň ho drží vláčné a kyselé meruňky nahoře chuť krásně vyvažují. Recept je na menší plech 24×20 cm — akorát na víkend pro 2-3 osoby, nebo jako menší pohoštění pro nedělní návštěvu.",
+    ingredients: [
+      {
+        group: "Těsto",
+        items: [
+          { amount: "3 ks",   name: "vejce (oddělit žloutky od bílků)" },
+          { amount: "100 g",  name: "moučkový cukr" },
+          { amount: " ",      name: "špetka vanilky" },
+          { amount: "50 g",   name: "olej" },
+          { amount: "70 g",   name: "vlažná voda" },
+          { amount: "150 g",  name: "polohrubá mouka" },
+          { amount: "6 g",    name: "prášek do pečiva" },
+          { amount: "3 PL",   name: "mletý mák" },
+        ],
+      },
+      {
+        group: "Cream cheese náplň",
+        items: [
+          { amount: "150 g",  name: "krémový sýr (žervé nebo Philadelphia)" },
+          { amount: "60 g",   name: "krupicový cukr" },
+          { amount: " ",      name: "špetka vanilky" },
+          { amount: "1 ks",   name: "malé vejce" },
+          { amount: "100 g",  name: "bílý jogurt (použila jsem Hollandia)" },
+        ],
+      },
+      {
+        group: "Na vrch",
+        items: [
+          { amount: "2 malé skleničky (300 ml)", name: "zavařených meruněk a broskví (nebo jiné kyselejší ovoce)" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "",
+        startAt: 1,
+        items: [
+          "Žloutky vyšleháme s moučkovým cukrem do světlé pěny. Přidáme vanilku, olej a vlažnou vodu a promícháme.",
+          "Vmícháme mouku smíchanou s práškem do pečiva.",
+          "Z bílků vyšleháme tuhý sníh a zlehka ho vmícháme do těsta.",
+          "<b>Dvě třetiny těsta</b> vylijeme na plech vyložený pečicím papírem. Do zbylé třetiny vmícháme mletý mák.",
+          "V misce smícháme krémový sýr, cukr, vanilku, vejce a jogurt dohladka.",
+          "Cream cheese náplň a makové těsto střídavě přidáváme po lžičkách na bílé těsto na plechu.",
+          "Na vrch rovnoměrně rozložíme zavařené ovoce.",
+          "Pečeme na <b>175 °C</b> po dobu <b>40–45 minut</b>. Propečení zkontrolujeme špejlí v místech, kde je těsto (ne v místě s ovocem nebo náplní).",
+          "Koláč krájejte až po úplném vychladnutí.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Kyselejší ovoce (meruňky, švestky, višně) funguje lépe než sladké — pěkně vyváží sladkost cream cheese náplně.",
+        "Cream cheese náplně se zdá být hodně. Zbyly mě asi 3 lžíce, ale po pečení jsem zjistila, že jsem mohla klidně spotřebovat celou dávku.",
+      ],
+    },
+  },
 
   "kynuty-kolac-s-tvarohem-a-boruvkami": {
     intro: "Znáte Kus koláče v Praze? Tenhle recept je moje domácí varianta jejich borůvkového koláče — upečená na plech. Minimum těsta, maximum náplně. Tvaroh je krémový, borůvky šťavnaté a máslová drobenka nahoře mu dodáva nezaměnitelnou chuť.",
