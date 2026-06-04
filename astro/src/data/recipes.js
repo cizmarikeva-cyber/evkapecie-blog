@@ -3,19 +3,30 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "makovo-marhulovy-kolac",
-  categories: ["Sladké", "Rychlé"],
-  title:      "Makovo-meruňkový koláč <em>s cheesecake vrstvou</em>",
-  intro:      "Tenhle koláč je supr způsob jak spotřebovat zavařeniny z minulé sezóny — a byl tak dobrý, že jsem ho určitě nedělala naposled. Těsto je nadýchané díky sněhu z bílků, cream cheese náplň ho drží vláčné a kyselé meruňky nahoře chuť krásně vyvažují.",
-  time:       "1 h 15 min",
-  servings:   "1 plech 24×20 cm",
-  level:      "Lehké",
-  paint:      "mak",
-  image:      "images/makovo-marhulovy-kolac.jpeg",
+  slug:       "hamburgerove-housky",
+  categories: ["Slané"],
+  title:      "Hamburgerové <em>housky</em>",
+  intro:      "Znáš to – zakousneš se do burgru a houska se ti rozpadne. Na tyhle domácí housky jsem použila jeden trik, díky kterému zůstanou měkké až do druhého dne. Základ je asijská technika tang zhong. Funguje tak, že část mouky se předvaří s mlékem, a teprve pak se vmíchá do těsta, čímž se v těstu váže víc vody. Výsledek: housky, které jsou vláčné ještě druhý den a nerozpadnou se pod náplní.",
+  time:       "2 h 30 min",
+  servings:   "12 ks",
+  level:      "Středně náročné",
+  paint:      "cesnek",
+  image:      "images/hamburgerove-housky.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:       "hamburgerove-housky",
+    featured:   true,
+    categories: ["Slané"],
+    title:      "Hamburgerové <em>housky</em>",
+    time:       "2 h 30 min",
+    servings:   "12 ks",
+    level:      "Středně náročné",
+    paint:      "cesnek",
+    image:      "images/hamburgerove-housky.jpeg",
+  },
   {
     slug:       "makovo-marhulovy-kolac",
     featured:   true,
@@ -40,7 +51,6 @@ export const RECIPES = [
   },
   {
     slug:       "pastel-de-nata",
-    featured:   true,
     categories: ["Sladké"],
     title:      "Pastel <em>de nata</em>",
     time:       "2 h",
@@ -227,6 +237,57 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "hamburgerove-housky": {
+    intro: "Znáš to – zakousneš se do burgru a houska se ti rozpadne. Na tyhle domácí housky jsem použila jeden trik, díky kterému zůstanou měkké až do druhého dne.\n\nZáklad je asijská technika tang zhong. Funguje tak, že část mouky se předvaří s mlékem, a teprve pak se vmíchá do těsta, čímž se v těstu váže víc vody. Výsledek: housky, které jsou vláčné ještě druhý den a nerozpadnou se pod náplní.",
+    ingredients: [
+      {
+        group: "Těsto (na 12 ks)",
+        items: [
+          { amount: "530 g",    name: "hladké mouky" },
+          { amount: "340 ml",   name: "mléka" },
+          { amount: "1 kostka", name: "čerstvého droždí" },
+          { amount: "40 g",     name: "krupicového cukru" },
+          { amount: "12 g",     name: "soli" },
+          { amount: "2 ks",     name: "vejce" },
+          { amount: "1 ks",     name: "žloutek" },
+          { amount: "75 g",     name: "másla" },
+        ],
+      },
+      {
+        group: "Na vrch",
+        items: [
+          { amount: "1 ks", name: "vejce" },
+          { amount: " ",    name: "sezamová semínka na posypání" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "",
+        startAt: 1,
+        items: [
+          "Pro nejlepší výsledek musí mít všechny suroviny <b>pokojovou teplotu</b>.",
+          "Rozdrobíme droždí s částí cukru, rozmícháme lžící, přidáme trochu mouky a zalijeme vlažným mlékem (max 40 °C). Necháme <b>10 minut</b> <b>stát</b>.",
+          "V rendlíku smícháme část mouky s mlékem. Zahříváme na středním plameni za stálého míchání, dokud se nevytvoří hustá pasta — tang zhong. Jde to docela rychle. Dáme na talíř vychladnout.",
+          "Smícháme zbývající mouku, cukr a sůl. Přidáme vejce, žloutek, vykynutý kvásek a vychladlý tang zhong. Hněteme v robotu s hnětacím hákem přibližně <b>5 minut</b>. Pak přidáváme máslo nakrájené na kousky a hněteme, dokud se úplně nevstřebá. Vznikne hladké těsto.",
+          "Těsto v míse zakryjeme vlhkou utěrkou a necháme cca <b>1 hodinu</b> kynout, dokud nezdvojnásobí objem.",
+          "Vykynuté těsto rozdělíme na <b>12 stejných dílů (cca 90 g)</b>. Každý tvarujeme do kuličky — těsto přitlačíme (nebo plácneme) o pracovní plochu, aby sme vytlačili vzduch. Okraje postupně překládáme ke středu, otočíme a pohybem dlaně po pracovní ploše tvarujeme do hladké koule.",
+          "Housky položíme na plech s pečícím papírem (<b>6 ks na jeden plech</b>). Přikryjeme otočeným plechem a necháme <b>kynout</b> <b>45–60 minut</b>, až zdvojnásobí objem.",
+          "Troubu předehřejeme na <b>190 °C</b> (bez horkovzduchu). Vejce rozšleháme vidličkou, potřeme housky a posypeme sezamem.",
+          "<b>Pečeme</b> <b>18–20 minut</b> dozlatova a necháme vychladnout na mřížce.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Housky lze zamrazit, takže se nebojte udělat větší dávku.",
+        "Pokud při kynutí nemáte větší plech na zakrytí (jako já), můžete housky 1–2x během kynutí potřít vodou (dobře funguje i rozprašovač). Jde o to, aby jejich povrch během kynutí nevyschl — a tohle splní účel stejně dobře.",
+      ],
+    },
+    inspiration: "Inspirace — Kuchařka pro dceru",
+  },
 
   "makovo-marhulovy-kolac": {
     intro: "Tenhle koláč je supr způsob jak spotřebovat zavařeniny z minulé sezóny — a byl tak dobrý, že jsem ho určitě nedělala naposled. Těsto je nadýchané díky sněhu z bílků, cream cheese náplň ho drží vláčné a kyselé meruňky nahoře chuť krásně vyvažují. Recept je na menší plech 24×20 cm — akorát na víkend pro 2-3 osoby, nebo jako menší pohoštění pro nedělní návštěvu.",

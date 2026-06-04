@@ -193,6 +193,10 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
             </div>
           )}
 
+          {data.inspiration && (
+            <p style="font-size:0.8rem;color:var(--popol);margin-top:16px">{data.inspiration}</p>
+          )}
+
           {data.instagram && (
             <div class="recipe-reel">
               <div class="reel-label">
