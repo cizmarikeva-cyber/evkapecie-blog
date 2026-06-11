@@ -3,19 +3,30 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "hamburgerove-housky",
-  categories: ["Slané"],
-  title:      "Hamburgerové <em>housky</em>",
-  intro:      "Znáš to – zakousneš se do burgru a houska se ti rozpadne. Na tyhle domácí housky jsem použila jeden trik, díky kterému zůstanou měkké až do druhého dne. Základ je asijská technika tang zhong. Funguje tak, že část mouky se předvaří s mlékem, a teprve pak se vmíchá do těsta, čímž se v těstu váže víc vody. Výsledek: housky, které jsou vláčné ještě druhý den a nerozpadnou se pod náplní.",
-  time:       "2 h 30 min",
-  servings:   "12 ks",
+  slug:       "tresnovy-strudl",
+  categories: ["Sladké", "Tradiční"],
+  title:      "Třešňový štrúdl <em>z taženého těsta</em>",
+  intro:      "Třešňový štrúdl z taženého těsta je jednodušší než vypadá. Díky pár pravidlům se těsto nepotrhá: stačí použít vlažnou vodu, přidat kapku octu a nechat těsto ještě hodinku odpočívat.",
+  time:       "1 h 45 min",
+  servings:   "6–8 porcí",
   level:      "Středně náročné",
-  paint:      "cesnek",
-  image:      "images/hamburgerove-housky.jpeg",
+  paint:      "jablka",
+  image:      "images/tresnovy-strudl.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:       "tresnovy-strudl",
+    featured:   true,
+    categories: ["Sladké", "Tradiční"],
+    title:      "Třešňový štrúdl <em>z taženého těsta</em>",
+    time:       "2 h",
+    servings:   "6–8 porcí",
+    level:      "Středně náročné",
+    paint:      "jablka",
+    image:      "images/tresnovy-strudl.jpeg",
+  },
   {
     slug:       "hamburgerove-housky",
     featured:   true,
@@ -40,7 +51,6 @@ export const RECIPES = [
   },
   {
     slug:       "kynuty-kolac-s-tvarohem-a-boruvkami",
-    featured:   true,
     categories: ["Sladké", "Tradiční"],
     title:      "Kynutý koláč <em>s tvarohem a borůvkami</em>",
     time:       "2 h",
@@ -238,7 +248,59 @@ export const CATEGORIES = [
 
 export const RECIPE_DATA = {
 
+  "tresnovy-strudl": {
+    intro: "Třešňový štrúdl z taženého těsta je jednodušší než vypadá. Díky pár pravidlům se těsto nepotrhá: stačí použít vlažnou vodu, přidat kapku octu a nechat těsto ještě hodinku odpočívat. Tři věci a těsto bude krásně poddajné.\n\nOcet a vlažná voda pomáhají, aby se s těstem líp pracovalo. Nejdůležitější je ale delší doba hnětení a nechat ho aspoň hodinu odpočívat. Během odpočinku mouka nasaje vodu a těsto se uvolní, takže se dá mnohem snáz vytáhnout na tenký plát bez trhání.",
+    ingredients: [
+      {
+        group: "Tažené těsto",
+        items: [
+          { amount: "150 g",  name: "hladké mouky" },
+          { amount: "75 g",   name: "vlažné vody" },
+          { amount: "1/2 ČL", name: "octu" },
+          { amount: "1 PL",   name: "oleje" },
+          { amount: " ",      name: "špetka soli" },
+        ],
+      },
+      {
+        group: "Náplň",
+        items: [
+          { amount: "30 g",  name: "másla" },
+          { amount: "5 PL",  name: "strouhanky" },
+          { amount: "60 g",  name: "krupicového cukru" },
+          { amount: "1 ČL",  name: "skořice" },
+          { amount: " ",     name: "špetka vanilky nebo vanilkový cukr" },
+          { amount: "500 g", name: "třešní (váha je s pecičkami, před použitím vypeckovat)" },
+          { amount: " ",     name: "rozpuštěné máslo na potření" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "",
+        startAt: 1,
+        items: [
+          "Ocet smícháme s vodou, pak přidáme ke zbylým surovinám a těsto ručně hněteme asi <b>8–10 minut</b>. Přeložíme do misky, přikryjeme a necháme <b>hodinu odpočívat</b> při pokojové teplotě.",
+          "Na pánvi orestujeme strouhanku na másle dozlatova a necháme vychladnout. Vychladlou strouhanku smícháme s cukrem, skořicí a vanilkou.",
+          "Ubrus posypeme moukou, těsto nejdřív trochu rozválíme a pak vytahujeme od středu k okrajům, dokud není tenké.",
+          "Vytažené těsto potřeme rozpuštěným máslem a posypeme strouhankou.",
+          "Na strouhanku rozprostřeme vypeckované třešně.",
+          "Celé těsto potřeme rozpuštěným máslem a pomocí ubrusu postupně zarolujeme.",
+          "Štrúdl přeložíme na plech vyložený papírem na pečení, propíchneme špejlí asi na 8 místech a potřeme máslem. Pečeme na <b>180 °C</b> asi <b>30–35 minut</b>.",
+          "Po upečení ještě horký štrúdl potřeme rozpuštěným máslem.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Strouhanku nech před smícháním s cukrem úplně vychladnout, v teplé by se cukr rozpustil.",
+        "Ubrus pořádně posyp moukou, těsto mírně rozválej a tahej od středu ven — nejdřív přes ruce a potom ke krajům stolu",
+      ],
+    },
+  },
+
   "hamburgerove-housky": {
+    instagram: "https://www.instagram.com/p/DZKye5es_WL/",
     intro: "Znáš to – zakousneš se do burgru a houska se ti rozpadne. Na tyhle domácí housky jsem použila jeden trik, díky kterému zůstanou měkké až do druhého dne.\n\nZáklad je asijská technika tang zhong. Funguje tak, že část mouky se předvaří s mlékem, a teprve pak se vmíchá do těsta, čímž se v těstu váže víc vody. Výsledek: housky, které jsou vláčné ještě druhý den a nerozpadnou se pod náplní.",
     ingredients: [
       {
@@ -290,6 +352,7 @@ export const RECIPE_DATA = {
   },
 
   "makovo-marhulovy-kolac": {
+    instagram: "https://www.instagram.com/p/DY2LO1dsMHn/",
     intro: "Tenhle koláč je supr způsob jak spotřebovat zavařeniny z minulé sezóny — a byl tak dobrý, že jsem ho určitě nedělala naposled. Těsto je nadýchané díky sněhu z bílků, cream cheese náplň ho drží vláčné a kyselé meruňky nahoře chuť krásně vyvažují. Recept je na menší plech 24×20 cm — akorát na víkend pro 2-3 osoby, nebo jako menší pohoštění pro nedělní návštěvu.",
     ingredients: [
       {
