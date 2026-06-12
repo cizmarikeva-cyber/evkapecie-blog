@@ -249,6 +249,7 @@ export const CATEGORIES = [
 export const RECIPE_DATA = {
 
   "tresnovy-strudl": {
+    instagram: "https://www.instagram.com/p/DZc2-MiM6BV/",
     intro: "Třešňový štrúdl z taženého těsta je jednodušší než vypadá. Díky pár pravidlům se těsto nepotrhá: stačí použít vlažnou vodu, přidat kapku octu a nechat těsto ještě hodinku odpočívat. Tři věci a těsto bude krásně poddajné.\n\nOcet a vlažná voda pomáhají, aby se s těstem líp pracovalo. Nejdůležitější je ale delší doba hnětení a nechat ho aspoň hodinu odpočívat. Během odpočinku mouka nasaje vodu a těsto se uvolní, takže se dá mnohem snáz vytáhnout na tenký plát bez trhání.",
     ingredients: [
       {
