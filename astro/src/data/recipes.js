@@ -3,19 +3,30 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "tresnovy-strudl",
-  categories: ["Sladké", "Tradiční"],
-  title:      "Třešňový štrúdl <em>z taženého těsta</em>",
-  intro:      "Třešňový štrúdl z taženého těsta je jednodušší než vypadá. Díky pár pravidlům se těsto nepotrhá: stačí použít vlažnou vodu, přidat kapku octu a nechat těsto ještě hodinku odpočívat.",
-  time:       "1 h 45 min",
-  servings:   "6–8 porcí",
+  slug:       "skvarkove-pagace",
+  categories: ["Slané", "Tradiční"],
+  title:      "Škvarkové <em>pagáče</em>",
+  intro:      "Pozor na tyto škvarkové pagáče, jsou extrémně dobré. Za večer jich klidně sníš deset a ani si toho nevšimneš. U nás na jižním Slovensku nesmí chybět na žádné oslavě. Jsou voňavé a krásně vrstvené, já jsem ty vrstvy jako malá oddělovala a jedla jednu po druhé. Postup je sice trochu pracnější, ale výsledek za to stojí!",
+  time:       "3 h",
+  servings:   "cca 50 ks",
   level:      "Středně náročné",
-  paint:      "jablka",
-  image:      "images/tresnovy-strudl.jpeg",
+  paint:      "cesnek",
+  image:      "images/skvarkove-pagace.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:       "skvarkove-pagace",
+    featured:   true,
+    categories: ["Slané", "Tradiční"],
+    title:      "Škvarkové <em>pagáče</em>",
+    time:       "3 h",
+    servings:   "cca 50 ks",
+    level:      "Středně náročné",
+    paint:      "cesnek",
+    image:      "images/skvarkove-pagace.jpeg",
+  },
   {
     slug:       "tresnovy-strudl",
     featured:   true,
@@ -40,7 +51,6 @@ export const RECIPES = [
   },
   {
     slug:       "makovo-marhulovy-kolac",
-    featured:   true,
     categories: ["Sladké", "Rychlé"],
     title:      "Makovo-meruňkový koláč <em>s cheesecake vrstvou</em>",
     time:       "1 h 15 min",
@@ -247,6 +257,65 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "skvarkove-pagace": {
+    instagram: "https://www.instagram.com/reel/DZu7nyrMVEM/",
+    intro: "Pozor na tyto škvarkové pagáče — jsou extrémně dobré. Za večer jich klidně sníš deset a ani si toho nevšimneš. U nás na jižním Slovensku nesmí chybět na žádné oslavě.\n\nJsou voňavé a krásně vrstvené — já jsem ty vrstvy jako malá oddělovala a jedla jednu po druhé. Postup je sice trochu pracnější, ale výsledek za to stojí!",
+    ingredients: [
+      {
+        group: "Těsto",
+        items: [
+          { amount: "500 g",  name: "polohrubá mouka" },
+          { amount: "400 ml", name: "mléko" },
+          { amount: "42 g",   name: "čerstvé droždí (1 kostka)" },
+          { amount: "1 ČL",   name: "krupicový cukr" },
+          { amount: "1 ČL",   name: "sůl" },
+          { amount: "80 g",   name: "olej" },
+        ],
+      },
+      {
+        group: "Náplň",
+        items: [
+          { amount: "125 g",  name: "vepřové sádlo" },
+          { amount: "1",      name: "žloutek" },
+          { amount: "½ ČL",   name: "sůl" },
+          { amount: "250 g",  name: "škvarky" },
+        ],
+      },
+      {
+        group: "Na vrch",
+        items: [
+          { amount: "1",   name: "vejce" },
+          { amount: " ",   name: "hrubá sůl, kmín" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "",
+        startAt: 1,
+        items: [
+          "Připravíme kvásek: polovinu vlažného mléka smícháme s cukrem a droždím a necháme vzejít asi <b>10 minut</b>.",
+          "Kvásek přidáme ke zbytku surovin na těsto a ručně nebo v robotu vypracujeme hladké těsto. Přikryjeme a necháme kynout, dokud zdvojnásobí objem.",
+          "Připravíme náplň: smícháme povolené sádlo, žloutek a sůl dohladka.",
+          "Škvarky nasekáme zvlášť na malé kousky.",
+          "Vykynuté těsto přesuneme na dobře pomoučenou desku a rozválíme přibližně na velikost <b>40×50 cm</b>.",
+          "Potřeme náplní a posypeme nasekanými škvarkami. Přeložíme nejprve svisle na třetiny, pak shora a zdola k půlce a pak znovu na půlku. Přikryjeme a necháme <b>15 minut</b> odpočívat.",
+          "Rozválíme a znovu přeložíme — celkem <b>překlady zopakujeme 3×</b>.",
+          "Při posledním válení rozválíme těsto na výšku <b>1,5 cm</b> a vykrajujeme pagáče (použila jsem vykrajovátko o průměru <b>4 cm</b>). Přesuneme na plech s pečicím papírem a necháme ještě <b>10–15 minut</b> kynout na plechu.",
+          "Potřeme rozšlehaným vejcem, posypeme solí a/nebo kmínem a pečeme při <b>220 °C</b> přibližně <b>15 minut</b> dozlatova.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Z tohoto množství mi vyšly skoro 3 plechy pagáčů.",
+        "Odřezky těsta můžete buď upéct tak jak jsou, nebo je znovu spracovat a vyválet na další pagáče (ty jsou pak ale hutnější a bez vrstev). Mně víc chutnají ty odřezky, i když nejsou tak hezké.",
+        "Škvarky je lepší sekat ručně nebo mixérem na puls, ne rozmixovat úplně najemno, pagáče mají díky nim zajímavější texturu.",
+      ],
+    },
+  },
 
   "tresnovy-strudl": {
     instagram: "https://www.instagram.com/p/DZc2-MiM6BV/",
