@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "skvarkove-pagace",
-  categories: ["Slané", "Tradiční"],
-  title:      "Škvarkové <em>pagáče</em>",
-  intro:      "Pozor na tyto škvarkové pagáče, jsou extrémně dobré. Za večer jich klidně sníš deset a ani si toho nevšimneš. U nás na jižním Slovensku nesmí chybět na žádné oslavě. Jsou voňavé a krásně vrstvené, já jsem ty vrstvy jako malá oddělovala a jedla jednu po druhé. Postup je sice trochu pracnější, ale výsledek za to stojí!",
-  time:       "3 h",
-  servings:   "cca 50 ks",
-  level:      "Středně náročné",
-  paint:      "cesnek",
-  image:      "images/skvarkove-pagace.jpeg",
+  slug:       "cokoladove-muffiny-z-cervene-repy",
+  categories: ["Sladké", "Rychlé"],
+  title:      "Čokoládové muffiny <em>z červené řepy</em>",
+  intro:      "Čokoládové muffiny jsou moje záchrana, když koupím celé balení červené řepy a pak nevím co s ní. Řepu v nich vůbec neucítíte, je cítit jenom čokoláda, a jsou krásně šťavnaté a vláčné.",
+  time:       "40 min",
+  servings:   "12 ks",
+  level:      "Lehké",
+  paint:      "mak",
+  image:      "images/cokoladove-muffiny-z-cervene-repy.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "cokoladove-muffiny-z-cervene-repy",
+    featured:    true,
+    categories:  ["Sladké", "Rychlé"],
+    title:       "Čokoládové muffiny <em>z červené řepy</em>",
+    time:        "40 min",
+    servings:    "12 ks",
+    level:       "Lehké",
+    paint:       "mak",
+    image:       "images/cokoladove-muffiny-z-cervene-repy.jpeg",
+    detailImage: "images/cokoladove-muffiny-z-cervene-repy-detail.jpeg",
+  },
   {
     slug:       "skvarkove-pagace",
     featured:   true,
@@ -40,7 +52,6 @@ export const RECIPES = [
   },
   {
     slug:       "hamburgerove-housky",
-    featured:   true,
     categories: ["Slané"],
     title:      "Hamburgerové <em>housky</em>",
     time:       "2 h 30 min",
@@ -257,6 +268,51 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "cokoladove-muffiny-z-cervene-repy": {
+    intro: "Čokoládové muffiny jsou moje záchrana, když koupím celé balení červené řepy a pak nevím co s ní. Řepu v nich vůbec neucítíte, je cítit jenom čokoláda, a jsou krásně šťavnaté a vláčné.",
+    ingredients: [
+      {
+        group: "Těsto",
+        items: [
+          { amount: "200 g",   name: "uvařené červené řepy" },
+          { amount: "2 ks",    name: "vejce" },
+          { amount: "80 g",    name: "oleje" },
+          { amount: "135 g",   name: "kefíru" },
+          { amount: "110 g",   name: "cukru" },
+          { amount: "150 g",   name: "hladké mouky" },
+          { amount: "40 g",    name: "kakaa" },
+          { amount: " ",       name: "špetka soli" },
+          { amount: "1/2 ČL",  name: "jedlé sody" },
+          { amount: "1 ČL",    name: "prášku do pečiva" },
+          { amount: "80 g",    name: "hořké čokolády" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "",
+        startAt: 1,
+        items: [
+          "Všechny suroviny vyndáme z lednice aspoň <b>hodinu před přípravou</b>, ať mají <b>pokojovou teplotu</b>. Je to důležité, jinak se těsto může srazit.",
+          "Troubu předehřejeme na <b>175 °C</b>.",
+          "Řepu a vejce do hladka rozmixujeme. Potom přidáme olej, cukr a kefír a znovu krátce rozmixujeme.",
+          "Ve větší míse smícháme suché ingredience: mouku, kakao, sůl, sodu a prášek do pečiva.",
+          "Přilijeme tekutou směs a vše důkladně promícháme. Vznikne řidší těsto.",
+          "Čokoládu nasekáme, asi <b>čtvrtinu</b> si odložíme na posypání a zbytek vmícháme do těsta.",
+          "Formu na muffiny vyložíme košíčky a naběračkou nebo lžící rozdělíme těsto. Já jsem použila asi <b>2 lžíce</b> těsta na jeden muffin.",
+          "Vrch posypeme zbylou čokoládou. Vložíme do vyhřáté trouby a pečeme <b>20 minut</b>.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Všechny suroviny musí mít pokojovou teplotu. Vyndej je z lednice aspoň hodinu předem, jinak se těsto srazí.",
+        "Nezapomeň si čtvrtinu čokolády odložit na vrch, vypadá to líp a hezky to křupne 😍",
+      ],
+    },
+  },
 
   "skvarkove-pagace": {
     instagram: "https://www.instagram.com/reel/DZu7nyrMVEM/",

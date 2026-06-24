@@ -17,6 +17,9 @@ export function getStaticPaths() {
 const { recipe } = Astro.props;
 const data = RECIPE_DATA[recipe.slug] || { intro: '', ingredients: [], steps: [] };
 
+// Detail môže mať vlastnú fotku (detailImage). Ak nie je, použije sa kartová (image).
+const detailImage = recipe.detailImage || recipe.image;
+
 const titlePlain = recipe.title.replace(/<[^>]+>/g, '');
 const pageTitle = `${titlePlain} — Evka pečie`;
 const description = data.intro
@@ -36,7 +39,7 @@ const schemaOrg = {
     name: 'Eva Čižmariková',
     url: 'https://evkapecie.cz/o-mne',
   },
-  image: recipe.image ? `https://evkapecie.cz/${recipe.image}` : undefined,
+  image: detailImage ? `https://evkapecie.cz/${detailImage}` : undefined,
   prepTime: recipe.time ? `PT${recipe.time}` : undefined,
   recipeYield: recipe.servings || undefined,
   recipeCategory: recipe.categories?.[0] || undefined,
@@ -49,15 +52,15 @@ const schemaOrg = {
   }))) ?? [],
 };
 
-const paintClass = !recipe.image ? ` paint-${recipe.paint}` : '';
-const imgKey = recipe.image ? `/src/assets/images/${recipe.image.split('/').pop()}` : null;
+const paintClass = !detailImage ? ` paint-${recipe.paint}` : '';
+const imgKey = detailImage ? `/src/assets/images/${detailImage.split('/').pop()}` : null;
 const imgModule = imgKey ? imageModules[imgKey] : null;
 ---
 
 <BaseLayout
   title={pageTitle}
   description={description}
-  image={recipe.image}
+  image={detailImage}
   schemaOrg={schemaOrg}
   activeNav="recipes"
 >
