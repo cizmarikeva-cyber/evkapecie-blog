@@ -286,7 +286,7 @@ export const RECIPE_DATA = {
       {
         group: "Těsto",
         items: [
-          { amount: "270 g",   name: "mouky" },
+          { amount: "270 g",   name: "hladké mouky" },
           { amount: "105 ml",  name: "mléka" },
           { amount: "10 g",    name: "čerstvého droždí" },
           { amount: "1 ks",    name: "vejce" },
