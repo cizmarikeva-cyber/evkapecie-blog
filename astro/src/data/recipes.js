@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "cokoladove-muffiny-z-cervene-repy",
-  categories: ["Sladké", "Rychlé"],
-  title:      "Čokoládové muffiny <em>z červené řepy</em>",
-  intro:      "Čokoládové muffiny jsou moje záchrana, když koupím celé balení červené řepy a pak nevím co s ní. Řepu v nich vůbec neucítíte, je cítit jenom čokoláda, a jsou krásně šťavnaté a vláčné.",
-  time:       "40 min",
+  slug:       "honzovy-buchty",
+  categories: ["Sladké", "Tradiční"],
+  title:      "Honzovy buchty <em>s povidly</em>",
+  intro:      "Honzovy buchty jsou česká klasika - vláčné, nadýchané a přitom jednoduché. Na náplň jsem teď použila svou nejoblíbenější kombinaci, domácí švestková povidla, skořici a na zahuštění ještě rozdrcené piškoty. Tady se zařiďte podle konzistence vašich povidel. Když jsou řidší, přidejte piškoty, a naopak když jsou moc husté, přidejte rum nebo trochu vody na zředění. Výsledná náplň musí být něco mezi tím.",
+  time:       "2 h 30 min",
   servings:   "12 ks",
-  level:      "Lehké",
-  paint:      "mak",
-  image:      "images/cokoladove-muffiny-z-cervene-repy.jpeg",
+  level:      "Středně náročné",
+  paint:      "vianocka",
+  image:      "images/honzovy-buchty.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "honzovy-buchty",
+    featured:    true,
+    categories:  ["Sladké", "Tradiční"],
+    title:       "Honzovy buchty <em>s povidly</em>",
+    time:        "2 h 30 min",
+    servings:    "12 ks",
+    level:       "Středně náročné",
+    paint:       "vianocka",
+    image:       "images/honzovy-buchty.jpeg",
+    detailImage: "images/honzovy-buchty-detail.jpeg",
+  },
   {
     slug:        "cokoladove-muffiny-z-cervene-repy",
     featured:    true,
@@ -41,7 +53,6 @@ export const RECIPES = [
   },
   {
     slug:       "tresnovy-strudl",
-    featured:   true,
     categories: ["Sladké", "Tradiční"],
     title:      "Třešňový štrúdl <em>z taženého těsta</em>",
     time:       "2 h",
@@ -149,7 +160,7 @@ export const RECIPES = [
     categories: ["Tradiční", "Sladké"],
     title:      "Honzovy buchty <em>s tvarohem</em>",
     time:       "2 h 30 min",
-    servings:   "12 ks",
+    servings:   "18 ks",
     level:      "Středně náročné",
     paint:      "cesnek",
     image:      "images/honzovy-buchty-s-tvarohom.jpeg",
@@ -268,6 +279,53 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "honzovy-buchty": {
+    intro: "Honzovy buchty jsou česká klasika - vláčné, nadýchané a přitom jednoduché. Na náplň jsem teď použila svou nejoblíbenější kombinaci, domácí švestková povidla, skořici a na zahuštění ještě rozdrcené piškoty. Tady se zařiďte podle konzistence vašich povidel. Když jsou řidší, přidejte piškoty, a naopak když jsou moc husté, přidejte rum nebo trochu vody na zředění. Výsledná náplň musí být něco mezi tím.",
+    ingredients: [
+      {
+        group: "Těsto",
+        items: [
+          { amount: "270 g",   name: "mouky" },
+          { amount: "105 ml",  name: "mléka" },
+          { amount: "10 g",    name: "čerstvého droždí" },
+          { amount: "1 ks",    name: "vejce" },
+          { amount: "25 g",    name: "cukru" },
+          { amount: "1 g",     name: "soli" },
+          { amount: "40 g",    name: "másla" },
+        ],
+      },
+      {
+        group: "Náplň",
+        items: [
+          { amount: "300 g",   name: "švestkových povidel" },
+          { amount: "20 g",    name: "rozmixovaných piškotů" },
+          { amount: "1/2 ČL",  name: "skořice" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "",
+        startAt: 1,
+        items: [
+          "Všechno kromě másla a soli smícháme a zpracujeme těsto. Asi po <b>5 minutách</b> přidáme máslo i sůl a zpracujeme do hladkého těsta. Dohromady hnětení trvá <b>zhruba 10 minut</b> v robotu, ručně o něco déle.",
+          "Těsto necháme zakryté vykynout při pokojové teplotě, dokud nezdvojnásobí objem, <b>zhruba 40 minut</b>.",
+          "Povidla smícháme s rozmixovanými piškoty a skořicí a náplň si připravíme podle konzistence povidel.",
+          "Vykynuté těsto rozdělíme na <b>12 stejných kousků</b> a plníme náplní. Buchty klademe na plech vymazaný máslem a necháme je ještě pod utěrkou vykynout <b>zhruba 20 minut</b>.",
+          "Potřeme rozpuštěným máslem a pečeme na <b>175 °C zhruba 40 minut</b>. Je potřeba hlídat, každá trouba peče jinak.",
+          "Po upečení ještě horké buchty potřeme máslem a posypeme cukrem.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Konzistenci náplně řiďte podle svých povidel. Piškoty ji zahustí, rum nebo voda naopak zředí.",
+        "Časy kynutí i pečení berte orientačně a řiďte se hlavně tím, jak těsto a buchty vypadají. Kynutí v teplejší místnosti trvá míň, a naopak pokud je chladno, může trvat i déle.",
+      ],
+    },
+  },
 
   "cokoladove-muffiny-z-cervene-repy": {
     intro: "Čokoládové muffiny jsou moje záchrana, když koupím celé balení červené řepy a pak nevím co s ní. Řepu v nich vůbec neucítíte, je cítit jenom čokoláda, a jsou krásně šťavnaté a vláčné.",
