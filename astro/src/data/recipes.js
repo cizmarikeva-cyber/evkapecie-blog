@@ -290,7 +290,7 @@ export const RECIPE_DATA = {
           { amount: "105 ml",  name: "mléka" },
           { amount: "10 g",    name: "čerstvého droždí" },
           { amount: "1 ks",    name: "vejce" },
-          { amount: "25 g",    name: "cukru" },
+          { amount: "25 g",    name: "cukru krupice" },
           { amount: "1 g",     name: "soli" },
           { amount: "40 g",    name: "másla" },
         ],
