@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "honzovy-buchty",
-  categories: ["Sladké", "Tradiční"],
-  title:      "Honzovy buchty <em>s povidly</em>",
-  intro:      "Honzovy buchty jsou česká klasika - vláčné, nadýchané a přitom jednoduché. Na náplň jsem teď použila svou nejoblíbenější kombinaci, domácí švestková povidla, skořici a na zahuštění ještě rozdrcené piškoty. Tady se zařiďte podle konzistence vašich povidel. Když jsou řidší, přidejte piškoty, a naopak když jsou moc husté, přidejte rum nebo trochu vody na zředění. Výsledná náplň musí být něco mezi tím.",
-  time:       "2 h 30 min",
-  servings:   "12 ks",
-  level:      "Středně náročné",
-  paint:      "vianocka",
-  image:      "images/honzovy-buchty.jpeg",
+  slug:       "bananova-strecha",
+  categories: ["Sladké", "Rychlé"],
+  title:      "Banánová <em>střecha</em>",
+  intro:      "Banánová střecha - nepečený retro dezert z BeBe sušenek, tvarohového krému a banánu, přelitý čokoládou. Pamatuješ si ho taky z dětství? Já jsem ji upřímně nejedla už dobrých 20 let, byl to pro mně zapomenutý recept, ale stálo za to si ho připomenout. I když skládání může vypadat komplikovaně, není to nic složitého. Alobal s tím pomůže a hlavně, nic se nepeče. Nejlepší je na druhý den, když se nechá odležet v lednici.",
+  time:       "30 min + chlazení",
+  servings:   "8–10 porcí",
+  level:      "Lehké",
+  paint:      "medovnik",
+  image:      "images/bananova-strecha.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "bananova-strecha",
+    featured:    true,
+    categories:  ["Sladké", "Rychlé"],
+    title:       "Banánová <em>střecha</em>",
+    time:        "30 min + chlazení",
+    servings:    "8–10 porcí",
+    level:       "Lehké",
+    paint:       "medovnik",
+    image:       "images/bananova-strecha.jpeg",
+    detailImage: "images/bananova-strecha-detail.jpeg",
+  },
   {
     slug:        "honzovy-buchty",
     featured:    true,
@@ -39,17 +51,6 @@ export const RECIPES = [
     paint:       "mak",
     image:       "images/cokoladove-muffiny-z-cervene-repy.jpeg",
     detailImage: "images/cokoladove-muffiny-z-cervene-repy-detail.jpeg",
-  },
-  {
-    slug:       "skvarkove-pagace",
-    featured:   true,
-    categories: ["Slané", "Tradiční"],
-    title:      "Škvarkové <em>pagáče</em>",
-    time:       "3 h",
-    servings:   "cca 50 ks",
-    level:      "Středně náročné",
-    paint:      "cesnek",
-    image:      "images/skvarkove-pagace.jpeg",
   },
   {
     slug:       "tresnovy-strudl",
@@ -133,6 +134,17 @@ export const RECIPES = [
   },
   /* ---- Nejoblíbenější (popular: true) ---------------------------- */
   {
+    slug:       "skvarkove-pagace",
+    popular:    true,
+    categories: ["Slané", "Tradiční"],
+    title:      "Škvarkové <em>pagáče</em>",
+    time:       "3 h",
+    servings:   "cca 50 ks",
+    level:      "Středně náročné",
+    paint:      "cesnek",
+    image:      "images/skvarkove-pagace.jpeg",
+  },
+  {
     slug:       "podplamennik-s-klobasou-a-nivou",
     popular:    true,
     categories: ["Slané", "Tradiční"],
@@ -156,7 +168,6 @@ export const RECIPES = [
   },
   {
     slug:       "honzovy-buchty-s-tvarohom",
-    popular:    true,
     categories: ["Tradiční", "Sladké"],
     title:      "Honzovy buchty <em>s tvarohem</em>",
     time:       "2 h 30 min",
@@ -280,7 +291,60 @@ export const CATEGORIES = [
 
 export const RECIPE_DATA = {
 
+  "bananova-strecha": {
+    date: "8. 7. 2026",
+    intro: "Banánová střecha - nepečený retro dezert z BeBe sušenek, tvarohového krému a banánu, přelitý čokoládou. Pamatuješ si ho taky z dětství? Já jsem ji upřímně nejedla už dobrých 20 let, byl to pro mně zapomenutý recept, ale stálo za to si ho připomenout. I když skládání může vypadat komplikovaně, není to nic složitého. Alobal s tím pomůže a hlavně, nic se nepeče. Nejlepší je na druhý den, když se nechá odležet v lednici.",
+    ingredients: [
+      {
+        group: "",
+        items: [
+          { amount: "1",          name: "banán" },
+          { amount: "půl balíku", name: "kakaových BeBe sušenek" },
+          { amount: "půl balíku", name: "světlých BeBe sušenek" },
+          { amount: " ",          name: "alobal" },
+        ],
+      },
+      {
+        group: "Krém",
+        items: [
+          { amount: "80 g",  name: "změklé máslo" },
+          { amount: "250 g", name: "tvaroh měkký polotučný" },
+          { amount: "50 g",  name: "moučkový cukr" },
+          { amount: "1",     name: "vanilkový cukr" },
+        ],
+      },
+      {
+        group: "Poleva",
+        items: [
+          { amount: "80 g", name: "hořká čokoláda" },
+          { amount: "10 g", name: "olej" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "",
+        startAt: 1,
+        items: [
+          "Změklé máslo vyšleháme s cukrem. Potom vmícháme tvaroh.",
+          "Na alobal naskládáme sušenky (3x4), natřeme tenkou vrstvu krému a na to další vrstvu sušenek. Trochu krému si odložíme na natření povrchu střechy, zbytek rozetřeme na sušenky a doprostřed položíme banán.",
+          "Pomocí alobalu k sobě opatrně přiklopíme boční strany střechy. Na sušenky moc netlačíme, jen je opatrně vytvarujeme tak, aby tvořily rovnoměrný tvar střechy.",
+          "Střechu ještě shora potřeme tenkou vrstvou zbylého krému a dáme do lednice aspoň na hodinu.",
+          "Po vychlazení rozpustíme čokoládu s olejem, střechu jí rovnoměrně potřeme a dáme ještě zchladit na půl hodiny.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Střecha je nejlepší na druhý den, když se nechá odležet v lednici.",
+        "Při prvním natření krému se mohou sušenky klouzat, proto je dobré je po okrajích podepřít například příborovými nožíky.",
+      ],
+    },
+  },
+
   "honzovy-buchty": {
+    instagram: "https://www.instagram.com/p/DaXPhh_MwjS/",
     intro: "Honzovy buchty jsou česká klasika - vláčné, nadýchané a přitom jednoduché. Na náplň jsem teď použila svou nejoblíbenější kombinaci, domácí švestková povidla, skořici a na zahuštění ještě rozdrcené piškoty. Tady se zařiďte podle konzistence vašich povidel. Když jsou řidší, přidejte piškoty, a naopak když jsou moc husté, přidejte rum nebo trochu vody na zředění. Výsledná náplň musí být něco mezi tím.",
     ingredients: [
       {

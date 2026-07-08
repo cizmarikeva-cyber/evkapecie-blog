@@ -143,6 +143,7 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
 
         <!-- OBSAH: úvod, postup, podpis -->
         <article class="recipe-content">
+          {data.date && <p class="recipe-date">{data.date}</p>}
           {data.intro && <p class="recipe-intro">{data.intro}</p>}
 
           <div class="recipe-actions">
