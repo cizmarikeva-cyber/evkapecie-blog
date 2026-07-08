@@ -344,6 +344,7 @@ export const RECIPE_DATA = {
   },
 
   "honzovy-buchty": {
+    date: "1. 7. 2026",
     instagram: "https://www.instagram.com/p/DaXPhh_MwjS/",
     intro: "Honzovy buchty jsou česká klasika - vláčné, nadýchané a přitom jednoduché. Na náplň jsem teď použila svou nejoblíbenější kombinaci, domácí švestková povidla, skořici a na zahuštění ještě rozdrcené piškoty. Tady se zařiďte podle konzistence vašich povidel. Když jsou řidší, přidejte piškoty, a naopak když jsou moc husté, přidejte rum nebo trochu vody na zředění. Výsledná náplň musí být něco mezi tím.",
     ingredients: [
@@ -392,6 +393,7 @@ export const RECIPE_DATA = {
   },
 
   "cokoladove-muffiny-z-cervene-repy": {
+    date: "24. 6. 2026",
     intro: "Čokoládové muffiny jsou moje záchrana, když koupím celé balení červené řepy a pak nevím co s ní. Řepu v nich vůbec neucítíte, je cítit jenom čokoláda, a jsou krásně šťavnaté a vláčné.",
     ingredients: [
       {
@@ -437,6 +439,7 @@ export const RECIPE_DATA = {
   },
 
   "skvarkove-pagace": {
+    date: "17. 6. 2026",
     instagram: "https://www.instagram.com/reel/DZu7nyrMVEM/",
     intro: "Pozor na tyto škvarkové pagáče — jsou extrémně dobré. Za večer jich klidně sníš deset a ani si toho nevšimneš. U nás na jižním Slovensku nesmí chybět na žádné oslavě.\n\nJsou voňavé a krásně vrstvené — já jsem ty vrstvy jako malá oddělovala a jedla jednu po druhé. Postup je sice trochu pracnější, ale výsledek za to stojí!",
     ingredients: [
@@ -496,6 +499,7 @@ export const RECIPE_DATA = {
   },
 
   "tresnovy-strudl": {
+    date: "10. 6. 2026",
     instagram: "https://www.instagram.com/p/DZc2-MiM6BV/",
     intro: "Třešňový štrúdl z taženého těsta je jednodušší než vypadá. Díky pár pravidlům se těsto nepotrhá: stačí použít vlažnou vodu, přidat kapku octu a nechat těsto ještě hodinku odpočívat. Tři věci a těsto bude krásně poddajné.\n\nOcet a vlažná voda pomáhají, aby se s těstem líp pracovalo. Nejdůležitější je ale delší doba hnětení a nechat ho aspoň hodinu odpočívat. Během odpočinku mouka nasaje vodu a těsto se uvolní, takže se dá mnohem snáz vytáhnout na tenký plát bez trhání.",
     ingredients: [
@@ -548,6 +552,7 @@ export const RECIPE_DATA = {
   },
 
   "hamburgerove-housky": {
+    date: "3. 6. 2026",
     instagram: "https://www.instagram.com/p/DZKye5es_WL/",
     intro: "Znáš to – zakousneš se do burgru a houska se ti rozpadne. Na tyhle domácí housky jsem použila jeden trik, díky kterému zůstanou měkké až do druhého dne.\n\nZáklad je asijská technika tang zhong. Funguje tak, že část mouky se předvaří s mlékem, a teprve pak se vmíchá do těsta, čímž se v těstu váže víc vody. Výsledek: housky, které jsou vláčné ještě druhý den a nerozpadnou se pod náplní.",
     ingredients: [
@@ -600,6 +605,7 @@ export const RECIPE_DATA = {
   },
 
   "makovo-marhulovy-kolac": {
+    date: "28. 5. 2026",
     instagram: "https://www.instagram.com/p/DY2LO1dsMHn/",
     intro: "Tenhle koláč je supr způsob jak spotřebovat zavařeniny z minulé sezóny — a byl tak dobrý, že jsem ho určitě nedělala naposled. Těsto je nadýchané díky sněhu z bílků, cream cheese náplň ho drží vláčné a kyselé meruňky nahoře chuť krásně vyvažují. Recept je na menší plech 24×20 cm — akorát na víkend pro 2-3 osoby, nebo jako menší pohoštění pro nedělní návštěvu.",
     ingredients: [
@@ -660,6 +666,7 @@ export const RECIPE_DATA = {
   },
 
   "kynuty-kolac-s-tvarohem-a-boruvkami": {
+    date: "21. 5. 2026",
     instagram: "https://www.instagram.com/p/DYmnUyWMIUM/",
     intro: "Znáte Kus koláče v Praze? Tenhle recept je moje domácí varianta jejich borůvkového koláče — upečená na plech. Minimum těsta, maximum náplně. Tvaroh je krémový, borůvky šťavnaté a máslová drobenka nahoře mu dodáva nezaměnitelnou chuť.",
     ingredients: [
@@ -733,6 +740,7 @@ export const RECIPE_DATA = {
   },
 
   "podplamennik-s-klobasou-a-nivou": {
+    date: "20. 5. 2026",
     instagram: "https://www.instagram.com/p/DXUUrX6jHJW/",
     intro: "Další díl série o podplameníku patří kombinaci, která vyhrála v anketě na Instagramu – klobása a niva. Tuto verzi jsem pekla rovnou z dvojité dávky. Základ zůstává stejný: žádné hnětení, žádná dřina, jen pár přeložení a čas. To těsto je prostě skvělé v tom, jak je jednoduché.",
     ingredients: [
@@ -789,6 +797,7 @@ export const RECIPE_DATA = {
   },
 
   "podplamennik-bryndza-udene": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DW9DBrSDFq9/",
     intro: "Křupavé těsto, které nepotřebuje žádné hnětení, a na vrchu kombinace, která je pro mě naprostou klasikou — brynza, zakysaná smetana a uzené maso. Těsto stačí jenom přeložit, dát mu čas, a ono se mezitím samo vypracuje.",
     ingredients: [
@@ -845,6 +854,7 @@ export const RECIPE_DATA = {
   },
 
   "podplamennik-s-rajcinami": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DXCZyLRDB8r/",
     intro: "Chtěla jsem upéct podplameník s rajčaty a rozmarýnem, ale připomíná spíš focacciu. Upřímně — je to ještě podplameník, nebo už focaccia? 🤔 Jsem zvědaná na tvůj názor.",
     ingredients: [
@@ -899,6 +909,7 @@ export const RECIPE_DATA = {
   },
 
   "pastel-de-nata": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DYU2d27ssgv/",
     intro: "Pastel de nata jsem poprvé ochutnala na dovolené v Portugalsku, a od té doby jsem je chtěla zkusit doma. Tak jsem si je konečně udělala. Dvakrát, protože první pokus nevyšel 😅 Recept je na 12 ks a těsto je falešné listové — mnohem jednodušší než klasické. Na pečení nepotřebuješ speciální formičky, postačí plech na muffiny.",
     ingredients: [
@@ -966,6 +977,7 @@ export const RECIPE_DATA = {
   },
 
   "lemon-curd": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DWmGKPlMGDd/",
     intro: "Tento citronový krém má mnohem víc využití, než se může zdát. Hodí se třeba jako náplň do palačinek a dortů, do tartaletek nebo lineckého cukroví, nebo jako topping na lívance či cheesecake 💛 Fun fact: Lemon curd pochází z Anglie a už v 19. století se podával během odpoledního čaje – původně jako pomazánka na pečivo místo marmelády.",
     ingredients: [
@@ -992,6 +1004,7 @@ export const RECIPE_DATA = {
   },
 
   "machova-torta": {
+    date: "15. 5. 2026",
     instagram: null,
     intro: "Jarní mechový mini dort. Základem jsou dva korpusy — jeden čokoládový a druhý zelený ze špenátu. Náplň tvoří mascarpone krém se šlehačkou, a celý dort se pak obalí v drobech ze zeleného korpusu. Ozdobit ho můžeš ovocem, já jsem použila hooodně malin - ale skvělý by byli třeba i jahody nebo borůvky nebo rybíz.",
     ingredients: [
@@ -1058,6 +1071,7 @@ export const RECIPE_DATA = {
   },
 
   "linecke-vajicka": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DWjd8_3MbxR/",
     intro: "",
     ingredients: [
@@ -1094,6 +1108,7 @@ export const RECIPE_DATA = {
   },
 
   "pirohy": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DYPmmAIMVZs/",
     intro: "Tyto brynzové pirohy mě naučila vařit tchýně z východního Slovenska, a jí zase její tchýně. Těsto je z uvařených brambor, takže je krásně vláčné a moc dobře se s ním pracuje. Klíčem k úspěchu je kvalitní brynza, která je v Česku bohužel těžko dostupná, ale po tolika letech už jsem našla pár spolehlivých zdrojů, kde ji seženu. Pokud bys chtěla vědět, kde, napiš mi na Instagramu.",
     ingredients: [
@@ -1132,6 +1147,7 @@ export const RECIPE_DATA = {
   },
 
   "syrove-tycinky": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DXcDeZGMvJ0/",
     intro: "",
     ingredients: [
@@ -1183,6 +1199,7 @@ export const RECIPE_DATA = {
   },
 
   "honzovy-buchty-s-tvarohom": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DXzCnWlMScD/",
     intro: "",
     ingredients: [
@@ -1225,6 +1242,7 @@ export const RECIPE_DATA = {
   },
 
   "coko-datlove-gulicky": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DXrhY1VMMbQ/",
     intro: "",
     ingredients: [
@@ -1252,6 +1270,7 @@ export const RECIPE_DATA = {
   },
 
   "slane-honzovy-buchty": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DX9tWd4s8xt/",
     intro: "",
     ingredients: [
@@ -1311,6 +1330,7 @@ export const RECIPE_DATA = {
   },
 
   "mrkvovy-kolac": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DYFO-SAMc0k/",
     intro: "Receptů na mrkváč je hodně, toto je má oblíbená varianta. Peču ji pravidelně v různých formách - jako cupcakes, mini dortík nebo jako rychlou buchtu na plech. Inspirace: vikendovepeceni.cz",
     ingredients: [
@@ -1358,6 +1378,7 @@ export const RECIPE_DATA = {
   },
 
   "coko-gulicky-z-bielkov": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DW4MXn4jGGq/",
     intro: "Tyto kuličky dělám nejradši, když chci využít bílky, které zbyly z pečení. Jsou jednoduché na přípravu, a chutí trochu připomínají Mozartovy koule. Pokud chceš, aby byly kuličky opravdu intenzivně mandlové, přidej do těsta pár kapek mandlového extraktu — ale není to nutné, chuť bude i tak výrazná.",
     ingredients: [
@@ -1395,6 +1416,7 @@ export const RECIPE_DATA = {
   },
 
   "french-toast": {
+    date: "15. 5. 2026",
     instagram: "https://www.instagram.com/p/DWrNb3JstVp/",
     intro: "Luxusní brunch z mazance nebo třeba i vánočky za 10 minut.",
     ingredients: [
@@ -1425,6 +1447,7 @@ export const RECIPE_DATA = {
   },
 
   "mini-cheesecake": {
+    date: "15. 5. 2026",
     instagram: "",
     intro: "Mini verze cheesecaku — menší forma, ale plná chuť. Sušenkový základ, krémová náplň ze smetanového sýru a řeckého jogurtu a navrch lesklá čokoládová poleva. Počítej s tím, že cheesecake potřebuje pár hodin v lednici, takže ho připravuj ideálně den předem.",
     ingredients: [
@@ -1469,6 +1492,7 @@ export const RECIPE_DATA = {
   },
 
   "brownie": {
+    date: "15. 5. 2026",
     instagram: "",
     intro: "Brownies jsou u nás doma klasika, kterou peču pořád dokola. Recept je jednoduchý, ale výsledek pokaždé překvapí — uvnitř krémové, nahoře lehce křupavé. Důležité je nepřepéct: špejle má vyjít s několika mokrými drobečky, ne čistá.",
     ingredients: [
