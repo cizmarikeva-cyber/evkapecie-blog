@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "bananova-strecha",
-  categories: ["Sladké", "Rychlé"],
-  title:      "Banánová <em>střecha</em>",
-  intro:      "Banánová střecha - nepečený retro dezert z BeBe sušenek, tvarohového krému a banánu, přelitý čokoládou. Pamatuješ si ho taky z dětství? Já jsem ji upřímně nejedla už dobrých 20 let, byl to pro mně zapomenutý recept, ale stálo za to si ho připomenout. I když skládání může vypadat komplikovaně, není to nic složitého. Alobal s tím pomůže a hlavně, nic se nepeče. Nejlepší je na druhý den, když se nechá odležet v lednici.",
-  time:       "30 min + chlazení",
-  servings:   "8–10 porcí",
+  slug:       "merunkovy-kolac-s-drobenkou",
+  categories: ["Sladké", "Tradiční"],
+  title:      "Meruňkový koláč <em>s drobenkou</em>",
+  intro:      "Kynutý meruňkový koláč s drobenkou - klasika, která chutná jako léto u babičky. Kombinace vláčného těsta, šťavnatých meruněk a skořicové drobenky je přesně to, po čem sáhnu, když dostanu od rodičů meruňky. Místo meruněk se budou skvěle hodit i švestky nebo višně.",
+  time:       "1 h 45 min",
+  servings:   "1 plech 30×40 cm",
   level:      "Lehké",
-  paint:      "medovnik",
-  image:      "images/bananova-strecha.jpeg",
+  paint:      "jablka",
+  image:      "images/merunkovy-kolac-s-drobenkou.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "merunkovy-kolac-s-drobenkou",
+    featured:    true,
+    categories:  ["Sladké", "Tradiční"],
+    title:       "Meruňkový koláč <em>s drobenkou</em>",
+    time:        "1 h 45 min",
+    servings:    "1 plech 30×40 cm",
+    level:       "Lehké",
+    paint:       "jablka",
+    image:       "images/merunkovy-kolac-s-drobenkou.jpeg",
+    detailImage: "images/merunkovy-kolac-s-drobenkou-detail.jpeg",
+  },
   {
     slug:        "bananova-strecha",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "cokoladove-muffiny-z-cervene-repy",
-    featured:    true,
     categories:  ["Sladké", "Rychlé"],
     title:       "Čokoládové muffiny <em>z červené řepy</em>",
     time:        "40 min",
@@ -291,8 +302,69 @@ export const CATEGORIES = [
 
 export const RECIPE_DATA = {
 
+  "merunkovy-kolac-s-drobenkou": {
+    date: "14. 7. 2026",
+    intro: "Kynutý meruňkový koláč s drobenkou - klasika, která chutná jako léto u babičky. Kombinace vláčného těsta, šťavnatých meruněk a skořicové drobenky je přesně to, po čem sáhnu, když dostanu od rodičů meruňky. Místo meruněk se budou skvěle hodit i švestky nebo višně.",
+    ingredients: [
+      {
+        group: "Těsto",
+        items: [
+          { amount: "300 g", name: "hladké mouky" },
+          { amount: "30 g",  name: "cukru krupice" },
+          { amount: "15 g",  name: "čerstvého droždí" },
+          { amount: "2 g",   name: "soli" },
+          { amount: "165 g", name: "mléka" },
+          { amount: "35 g",  name: "másla" },
+        ],
+      },
+      {
+        group: "Na vrch",
+        items: [
+          { amount: "400–500 g", name: "meruněk nakrájených na půlky" },
+        ],
+      },
+      {
+        group: "Skořicová drobenka",
+        items: [
+          { amount: "60 g",  name: "másla" },
+          { amount: "70 g",  name: "cukru krupice" },
+          { amount: "80 g",  name: "hladké mouky" },
+          { amount: "20 g",  name: "vanilkového cukru" },
+          { amount: "1 ČL",  name: "skořice" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Těsto",
+        startAt: 1,
+        items: [
+          "Všechno kromě másla smícháme dohromady a hněteme. Asi po <b>5 minutách</b> přidáme změklé máslo a hněteme ještě, dokud se nezapracuje.",
+          "Těsto přikryjeme a necháme vykynout, přibližně <b>45–60 minut</b>.",
+        ],
+      },
+      {
+        heading: "Drobenka",
+        startAt: 3,
+        items: [
+          "Máslo, cukr krupici, mouku, vanilkový cukr a skořici spolu vypracujeme na drobenku.",
+        ],
+      },
+      {
+        heading: "Pečení",
+        startAt: 4,
+        items: [
+          "Vykynuté těsto rozválíme a rozprostřeme na plech, poklademe meruňkami nakrájenými na půlky a posypeme drobenkou.",
+          "Necháme na plechu kynout ještě přibližně <b>30 minut</b>.",
+          "Pečeme na <b>220 °C</b> zhruba <b>20–25 minut</b>.",
+        ],
+      },
+    ],
+  },
+
   "bananova-strecha": {
     date: "8. 7. 2026",
+    instagram: "https://www.instagram.com/p/DaicDRWstKU/",
     intro: "Banánová střecha - nepečený retro dezert z BeBe sušenek, tvarohového krému a banánu, přelitý čokoládou. Pamatuješ si ho taky z dětství? Já jsem ji upřímně nejedla už dobrých 20 let, byl to pro mně zapomenutý recept, ale stálo za to si ho připomenout. I když skládání může vypadat komplikovaně, není to nic složitého. Alobal s tím pomůže a hlavně, nic se nepeče. Nejlepší je na druhý den, když se nechá odležet v lednici.",
     ingredients: [
       {
