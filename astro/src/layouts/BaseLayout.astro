@@ -51,13 +51,13 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
 <body>
 
   <!-- Cookie banner -->
-  <div id="cookie-banner" role="dialog" aria-label="Souhlas s cookies" style="display:none">
+  <div id="cookie-banner" role="dialog" aria-label="Súhlas s cookies" style="display:none">
     <div class="cookie-banner-body">
-      <strong class="cookie-banner-title">Souhlasíte se sběrem cookies?</strong>
-      <p>Používám Google Analytics na sběr cookies pro měření návštěvnosti a také pro to, abych věděla, co rádi pečete. <a id="cookie-more" href="/ochrana-soukromi">Více informací</a></p>
+      <strong class="cookie-banner-title">Súhlasíš so zberom cookies?</strong>
+      <p>Používam Google Analytics na zber štatistík o návštevnosti webu a tiež na to, aby som vedela, čo pečiete najradšej. <a id="cookie-more" href="/ochrana-soukromi">Viac informácií</a></p>
       <div id="cookie-prefs" style="display:none">
         <label class="cookie-pref-row">
-          <input type="checkbox" disabled checked /> Nezbytné cookies
+          <input type="checkbox" disabled checked /> Nevyhnutné cookies
         </label>
         <label class="cookie-pref-row">
           <input type="checkbox" id="cookie-analytics-check" checked /> Analytické cookies (Google Analytics)
@@ -65,9 +65,9 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
       </div>
     </div>
     <div class="cookie-banner-actions">
-      <button id="cookie-prefs-btn">Zobrazit předvolby</button>
-      <button id="cookie-decline">Odmítnout</button>
-      <button id="cookie-accept">Přijmout vše</button>
+      <button id="cookie-prefs-btn">Zobraziť predvoľby</button>
+      <button id="cookie-decline">Odmietnuť</button>
+      <button id="cookie-accept">Prijať všetko</button>
     </div>
   </div>
 
@@ -78,16 +78,16 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
         <img src="/images/logo.svg" alt="Evka pečie" height="68" />
       </a>
       <nav class="nav-links">
-        <a class={`nav-link${activeNav === 'home' ? ' active' : ''}`} href="/">Domů</a>
+        <a class={`nav-link${activeNav === 'home' ? ' active' : ''}`} href="/">Domov</a>
         <a class={`nav-link${activeNav === 'recipes' ? ' active' : ''}`} href="/recepty">Recepty</a>
-        <a class={`nav-link${activeNav === 'about' ? ' active' : ''}`} href="/o-mne">O mně</a>
+        <a class={`nav-link${activeNav === 'about' ? ' active' : ''}`} href="/o-mne">O mne</a>
         <a class="nav-link" href="/o-mne#contact">Kontakt</a>
       </nav>
       <div class="nav-search">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input id="nav-search-input" type="search" placeholder="Hledat recept…" aria-label="Hledat recept" autocomplete="off" />
+        <input id="nav-search-input" type="search" placeholder="Hľadať recept…" aria-label="Hľadať recept" autocomplete="off" />
       </div>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Otevřít menu" aria-expanded="false">
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Otvoriť menu" aria-expanded="false">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="3" y1="7" x2="21" y2="7"/>
           <line x1="3" y1="12" x2="21" y2="12"/>
@@ -98,17 +98,17 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
   </header>
 
   <!-- Mobilní menu -->
-  <div class="nav-mobile" id="nav-mobile" style="display:none" role="navigation" aria-label="Mobilní menu">
+  <div class="nav-mobile" id="nav-mobile" style="display:none" role="navigation" aria-label="Mobilné menu">
     <div class="nav-mobile-search">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input id="nav-mobile-search-input" type="search" placeholder="Hledat recept…" aria-label="Hledat recept" autocomplete="off" />
-      <button class="nav-mobile-search-btn" id="nav-mobile-search-btn" aria-label="Hledat">
+      <input id="nav-mobile-search-input" type="search" placeholder="Hľadať recept…" aria-label="Hľadať recept" autocomplete="off" />
+      <button class="nav-mobile-search-btn" id="nav-mobile-search-btn" aria-label="Hľadať">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </button>
     </div>
-    <a class={`nav-link${activeNav === 'home' ? ' active' : ''}`} href="/">Domů</a>
+    <a class={`nav-link${activeNav === 'home' ? ' active' : ''}`} href="/">Domov</a>
     <a class={`nav-link${activeNav === 'recipes' ? ' active' : ''}`} href="/recepty">Recepty</a>
-    <a class={`nav-link${activeNav === 'about' ? ' active' : ''}`} href="/o-mne">O mně</a>
+    <a class={`nav-link${activeNav === 'about' ? ' active' : ''}`} href="/o-mne">O mne</a>
     <a class="nav-link" href="/o-mne#contact">Kontakt</a>
   </div>
 
@@ -123,21 +123,21 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
       </div>
       <div class="footer-col">
         <h4>Recepty</h4>
-        <a href="/recepty?kategoria=Tradi%C4%8Dn%C3%AD">Tradiční</a>
+        <a href="/recepty?kategoria=Tradi%C4%8Dn%C3%A9">Tradičné</a>
         <a href="/recepty?kategoria=Sladk%C3%A9">Sladké</a>
         <a href="/recepty?kategoria=Slan%C3%A9">Slané</a>
-        <a href="/recepty?kategoria=Rychl%C3%A9">Rychlé</a>
+        <a href="/recepty?kategoria=R%C3%BDchle">Rýchle</a>
       </div>
       <div class="footer-col">
         <h4>Blog</h4>
-        <a href="/o-mne">O mně</a>
-        <a href="/o-mne#contact">Kontaktujte mě</a>
+        <a href="/o-mne">O mne</a>
+        <a href="/o-mne#contact">Kontaktujte ma</a>
       </div>
     </div>
     <div class="footer-meta">
-      <span>© 2026 Evka pečie · Tradiční recepty SK/CZ</span>
+      <span>© 2026 Evka pečie · Tradičné recepty SK/CZ</span>
       <span>
-        <a href="/ochrana-soukromi" style="color:inherit">Ochrana soukromí</a>
+        <a href="/ochrana-soukromi" style="color:inherit">Ochrana súkromia</a>
       </span>
     </div>
   </footer>

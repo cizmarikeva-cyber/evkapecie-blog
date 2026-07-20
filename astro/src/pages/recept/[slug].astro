@@ -73,7 +73,7 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12H3"/><path d="m11 19-8-7 8-7"/>
         </svg>
-        Zpět na recepty
+        Späť na recepty
       </a>
 
       <!-- HERO OBRÁZEK -->
@@ -105,11 +105,11 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
               <div class="val">{recipe.time}</div>
             </div>
             <div class="stat">
-              <div class="lbl">Porcí</div>
+              <div class="lbl">Porcií</div>
               <div class="val">{recipe.servings}</div>
             </div>
             <div class="stat">
-              <div class="lbl">Náročnost</div>
+              <div class="lbl">Náročnosť</div>
               <div class="val">{recipe.level}</div>
             </div>
           </div>
@@ -137,7 +137,7 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
               </div>
             ))
           ) : (
-            <p style="font-style:italic;color:var(--popol)">Suroviny brzy doplníme…</p>
+            <p style="font-style:italic;color:var(--popol)">Suroviny čoskoro doplním…</p>
           )}
         </aside>
 
@@ -151,14 +151,14 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 9V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4"/><rect x="6" y="14" width="12" height="7" rx="1"/><path d="M4 14h16v-4H4z"/>
               </svg>
-              Tisknout
+              Vytlačiť
             </button>
             <button class="btn btn-ghost btn-small" id="share-btn">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
                 <path d="m8.6 13.5 6.8 4"/><path d="m15.4 6.5-6.8 4"/>
               </svg>
-              <span id="share-label">Sdílet</span>
+              <span id="share-label">Zdieľať</span>
             </button>
           </div>
 
@@ -185,7 +185,7 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
               </>
             ))
           ) : (
-            <p style="font-style:italic;color:var(--popol);margin-top:32px">Postup brzy doplníme…</p>
+            <p style="font-style:italic;color:var(--popol);margin-top:32px">Postup čoskoro doplním…</p>
           )}
 
           {data.tips && (
@@ -217,7 +217,7 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
                 style="max-width:500px;width:80%;min-width:326px;border:1px solid #dbdbdb;border-radius:12px"
               >
                 <a href={data.instagram} target="_blank" rel="noopener noreferrer">
-                  Zobrazit video recept na Instagramu →
+                  Zobraziť video recept na Instagrame →
                 </a>
               </blockquote>
             </div>
@@ -244,7 +244,7 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
             <Image src={portret2Img} alt="Evka" class="sig-portrait" width={192} height={192} />
             <div class="sig-body">
               <b>@evkapecie</b>
-              Když budeš péct, pošli mi fotku na Instagram nebo Facebook — nejradši mám ty z prvního pokusu, i když se nepovede. Pak si můžeme povídat o tom, co vylepšit.
+              Keď budeš piecť, pošli mi fotku na Instagram alebo Facebook. Všetko si čítam a vaše správy ma vždy potešia.
             </div>
           </div>
         </article>
@@ -257,10 +257,10 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
       <section class="recipe-related" style="padding:72px 0 24px">
         <div class="section-head">
           <div>
-            <div class="eyebrow">Z archivu</div>
-            <h2 class="section-title">Další <em>recepty</em></h2>
+            <div class="eyebrow">Z archívu</div>
+            <h2 class="section-title">Ďalšie <em>recepty</em></h2>
           </div>
-          <a class="section-more" href="/recepty">Všechny recepty <span class="arrow">→</span></a>
+          <a class="section-more" href="/recepty">Všetky recepty <span class="arrow">→</span></a>
         </div>
         <div class="recipe-grid four">
           {relatedRecipes.map(r => <RecipeCard recipe={r} compact />)}
@@ -282,11 +282,11 @@ const imgModule = imgKey ? imageModules[imgKey] : null;
         const title = document.title;
         const url = window.location.href;
         if (navigator.share) {
-          navigator.share({ title: 'Evka pečie — ' + title, url });
+          navigator.share({ title: 'Evka pečie: ' + title, url });
         } else {
           navigator.clipboard.writeText(url).then(() => {
-            shareLabel.textContent = 'Odkaz zkopírován!';
-            setTimeout(() => { shareLabel.textContent = 'Sdílet'; }, 2500);
+            shareLabel.textContent = 'Odkaz skopírovaný!';
+            setTimeout(() => { shareLabel.textContent = 'Zdieľať'; }, 2500);
           });
         }
       });

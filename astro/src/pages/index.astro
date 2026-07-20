@@ -23,14 +23,14 @@ const heroImgModule = heroImgKey ? imageModules[heroImgKey] : null;
     <div class="hero-inner">
       <div class="hero-text">
         <div class="hero-text-top">
-          <div class="eyebrow">Recept týdne</div>
+          <div class="eyebrow">Recept týždňa</div>
           <h1 class="hero-title" style="margin-top:22px" set:html={FEATURED.title} />
         </div>
         <div class="hero-text-bottom">
           <p class="hero-sub">{FEATURED.intro}</p>
           <div class="hero-cta">
             <a href={`/recept/${FEATURED.slug}`} class="btn btn-primary btn-large">
-              Zobrazit recept <span class="arrow">→</span>
+              Zobraziť recept <span class="arrow">→</span>
             </a>
           </div>
         </div>
@@ -60,10 +60,10 @@ const heroImgModule = heroImgKey ? imageModules[heroImgKey] : null;
   <section class="container section">
     <div class="section-head">
       <div>
-        <div class="eyebrow">Aktuálně</div>
-        <h2 class="section-title"><em>Nejnovější</em> recepty</h2>
+        <div class="eyebrow">Aktuálne</div>
+        <h2 class="section-title"><em>Najnovšie</em> recepty</h2>
       </div>
-      <a class="section-more" href="/recepty">Všechny recepty <span class="arrow">→</span></a>
+      <a class="section-more" href="/recepty">Všetky recepty <span class="arrow">→</span></a>
     </div>
     <div class="recipe-grid">
       {featuredRecipes.map(r => <RecipeCard recipe={r} />)}
@@ -74,10 +74,10 @@ const heroImgModule = heroImgKey ? imageModules[heroImgKey] : null;
   <section class="container section" style="padding-top:16px">
     <div class="section-head">
       <div>
-        <div class="eyebrow">Z archivu</div>
-        <h2 class="section-title"><em>Nejoblíbenější</em> recepty</h2>
+        <div class="eyebrow">Z archívu</div>
+        <h2 class="section-title"><em>Najobľúbenejšie</em> recepty</h2>
       </div>
-      <a class="section-more" href="/recepty">Všechny recepty <span class="arrow">→</span></a>
+      <a class="section-more" href="/recepty">Všetky recepty <span class="arrow">→</span></a>
     </div>
     <div class="recipe-grid">
       {popularRecipes.map(r => <RecipeCard recipe={r} />)}
