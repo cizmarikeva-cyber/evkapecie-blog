@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "merunkovy-kolac-s-drobenkou",
-  categories: ["Sladké", "Tradiční"],
-  title:      "Meruňkový koláč <em>s drobenkou</em>",
-  intro:      "Kynutý meruňkový koláč s drobenkou - klasika, která chutná jako léto u babičky. Kombinace vláčného těsta, šťavnatých meruněk a skořicové drobenky je přesně to, po čem sáhnu, když dostanu od rodičů meruňky. Místo meruněk se budou skvěle hodit i švestky nebo višně.",
-  time:       "1 h 45 min",
-  servings:   "1 plech 30×40 cm",
+  slug:       "tiramisu",
+  categories: ["Sladké", "Rychlé"],
+  title:      "Tiramisu",
+  intro:      "Tiramisu je klasický taliansky dezert, ktorý veľa ľudí odradí jednou vecou, surovými vajíčkami v kréme. Mne to vadilo tiež, preto som ich vyšľahala s cukrom nad parou. Vďaka tomuto kroku sú tepelne upravené a krém je navyše hustejší a krémovejší. K tomu piškóty namočené v silnej káve, kakaová vrstva navrchu, a máš luxusný dezert bez zapínania rúry. Príprava ti zaberie len pol hodinu, a najťažší krok je vydržať, kým sa vychladí a chute sa prepoja. Tak poďme na to!",
+  time:       "30 min + chladenie",
+  servings:   "3-4 porcie",
   level:      "Lehké",
-  paint:      "jablka",
-  image:      "images/merunkovy-kolac-s-drobenkou.jpeg",
+  paint:      "medovnik",
+  image:      "images/tiramisu.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "tiramisu",
+    featured:    true,
+    categories:  ["Sladké", "Rychlé"],
+    title:       "Tiramisu",
+    time:        "30 min + chladenie",
+    servings:    "3-4 porcie",
+    level:       "Lehké",
+    paint:       "medovnik",
+    image:       "images/tiramisu.jpeg",
+    detailImage: "images/tiramisu-detail.jpeg",
+  },
   {
     slug:        "merunkovy-kolac-s-drobenkou",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "honzovy-buchty",
-    featured:    true,
     categories:  ["Sladké", "Tradiční"],
     title:       "Honzovy buchty <em>s povidly</em>",
     time:        "2 h 30 min",
@@ -301,6 +312,45 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "tiramisu": {
+    date: "20. 7. 2026",
+    intro: "Tiramisu je klasický taliansky dezert, ktorý veľa ľudí odradí jednou vecou, surovými vajíčkami v kréme. Mne to vadilo tiež, preto som ich vyšľahala s cukrom nad parou. Vďaka tomuto kroku sú tepelne upravené a krém je navyše hustejší a krémovejší. K tomu piškóty namočené v silnej káve, kakaová vrstva navrchu, a máš luxusný dezert bez zapínania rúry. Príprava ti zaberie len pol hodinu, a najťažší krok je vydržať, kým sa vychladí a chute sa prepoja. Tak poďme na to!",
+    ingredients: [
+      {
+        group: null,
+        items: [
+          { amount: "2",              name: "vajcia" },
+          { amount: "1",              name: "žĺtok" },
+          { amount: "80 g",           name: "práškového cukru" },
+          { amount: "250 g",          name: "mascarpone" },
+          { amount: "100 g",          name: "dlhých piškót" },
+          { amount: "130 až 150 ml",  name: "silnej kávy" },
+          { amount: " ",              name: "kakao na posypanie" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "",
+        startAt: 1,
+        items: [
+          "Vajcia, žĺtok a cukor vyšľaháme nad parou na teplotu <b>70 °C</b>. Ak nemáš teplomer, riaď sa podľa konzistencie a času, krém zbledne a zhustne, a trvá to <b>5 až 10 minút</b>.",
+          "Zmes preložíme do inej misky a necháme vychladnúť. Medzitým si pripravíme silnú kávu.",
+          "Do vychladnutých vajec zašľaháme mascarpone.",
+          "Každú piškótu namočíme do kávy a uložíme na dno sklenenej nádoby (do IKEA krabičky vojde presne toto množstvo).",
+          "Na piškóty natrieme polovicu náplne, znova naukladáme druhú vrstvu namočených piškót, na ne dáme zvyšok náplne a posypeme kakaom.",
+          "Hotové tiramisu necháme v chladničke odpočívať aspoň <b>2 hodiny</b>, ideálne cez noc, aby sa chute prepojili.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Teplomer na 70 °C nie je nutnosť, ale výrazne pomáha trafiť správny moment, keď je zmes už bezpečná a krém pekne zhustne.",
+      ],
+    },
+  },
 
   "merunkovy-kolac-s-drobenkou": {
     date: "14. 7. 2026",
