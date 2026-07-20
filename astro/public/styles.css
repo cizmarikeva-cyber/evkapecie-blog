@@ -973,3 +973,75 @@ a.hero-image {
   text-decoration: none;
   display: block;
 }
+
+/* ---- landing "e-book zdarma" -------------------------------- */
+.ebook-hero { padding-block: 64px 48px; }
+.ebook-hero-inner {
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  column-gap: 64px; align-items: center;
+}
+.ebook-title {
+  font-family: var(--font-display); font-weight: 700;
+  letter-spacing: -0.02em; margin-top: 16px;
+}
+.ebook-title em { font-style: italic; font-weight: 500; color: var(--lekvar); }
+.ebook-lead {
+  margin-top: 18px; max-width: 52ch;
+  font-size: var(--fs-lead); line-height: 1.6; color: var(--mak-soft);
+}
+.ebook-hero-btn { margin-top: 32px; }
+.ebook-hero-img {
+  width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
+  border-radius: var(--radius-4); box-shadow: var(--shadow-3);
+}
+.ebook-content { padding-block: 24px 64px; }
+.ebook-h2 em { font-style: italic; color: var(--lekvar); }
+.ebook-list {
+  list-style: none; padding: 0; margin: 32px 0 0;
+  display: grid; gap: 18px; max-width: 760px;
+}
+.ebook-list li {
+  position: relative; padding-left: 30px;
+  font-size: var(--fs-body); line-height: 1.6; color: var(--mak-soft);
+}
+.ebook-list li::before {
+  content: ""; position: absolute; left: 0; top: 10px;
+  width: 8px; height: 8px; border-radius: 999px; background: var(--lekvar);
+}
+.ebook-list strong { color: var(--mak); font-weight: 600; }
+.ebook-form-section { padding-bottom: 96px; }
+.ebook-form-section .newsletter-inner {
+  grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+}
+.ebook-form-note { padding: 4px 0 12px; font-size: 12px; color: rgba(246,239,224,0.6); }
+.ebook-form-note a { color: rgba(246,239,224,0.85); }
+
+/* Brevo formulář uvnitř tmavého bloku .newsletter */
+.newsletter .brevo-form-wrap { max-width: 100%; }
+.newsletter #sib-form { display: block; }
+.newsletter #sib-form .entry__field { width: 100%; }
+.newsletter #sib-form .entry__label { color: var(--maslo) !important; }
+.newsletter #sib-form .input {
+  background: rgba(246,239,224,0.06) !important;
+  border-color: rgba(246,239,224,0.2) !important;
+  color: var(--maslo) !important;
+}
+.newsletter #sib-form .input::placeholder { color: rgba(246,239,224,0.5) !important; }
+.newsletter #sib-form .input:focus {
+  border-color: var(--med) !important;
+  box-shadow: 0 0 0 3px rgba(102,155,188,0.18) !important;
+}
+.newsletter #sib-form .sib-optin span { color: rgba(246,239,224,0.78); font-size: 13px; }
+.newsletter #sib-form .sib-optin a { color: var(--maslo); text-decoration: underline; }
+.newsletter #sib-form .sib-form-block__button {
+  background-color: var(--med) !important; color: var(--mak) !important;
+}
+.newsletter #sib-form .sib-form-block__button:hover { background-color: var(--med-soft) !important; }
+
+@media (max-width: 768px) {
+  .ebook-form-section .newsletter-inner { grid-template-columns: 1fr; gap: 28px; }
+  .ebook-hero-inner { display: flex; flex-direction: column; gap: 28px; }
+  .ebook-hero-media { order: -1; }
+  .ebook-hero-img { aspect-ratio: 3 / 2; }
+  .ebook-form-section { padding-bottom: 64px; }
+}

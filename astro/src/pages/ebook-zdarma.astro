@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import ebookImg from '../assets/images/kynuty-kolac-s-tvarohem-a-boruvkami.jpeg';
+
+// Adresa z atributu action formuláře v Brevo (Formuláře → tvůj formulář → Sdílet → HTML kód).
+const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
+---
+
+<BaseLayout
+  title="Jedno těsto, 3 koláče — e-book zdarma | Evka pečie"
+  description="Stáhni si zdarma e-book s jedním základním kynutým těstem, ze kterého upečeš tři různé koláče. Postup krok za krokem a rady, co dělat, když se něco nedaří."
+>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="container ebook-hero">
+      <div class="ebook-hero-inner">
+
+        <div class="ebook-hero-text">
+          <div class="eyebrow">E-book zdarma</div>
+          <h1 class="ebook-title">Jedno těsto, <em>3 koláče</em></h1>
+          <p class="ebook-lead">
+            Kynuté těsto je moje srdcovka a peču ho pořád dokola. Za ty roky jsem si z toho odnesla jednu věc: nepotřebuješ dvacet receptů, potřebuješ jedno těsto, které ti spolehlivě vyjde.
+          </p>
+          <p class="ebook-lead">
+            V e-booku ti ho dám celé, krok za krokem, a ukážu, jak z něj upečeš tři různé koláče. Jedno těsto, které se naučíš, a tři výsledky, které z něj dostaneš.
+          </p>
+          <a class="btn btn-primary btn-large ebook-hero-btn" href="#formular">
+            Chci e-book zdarma <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="ebook-hero-media">
+          <Image
+            src={ebookImg}
+            alt="Kynutý koláč upečený podle základního těsta z e-booku"
+            class="ebook-hero-img"
+            width={720}
+            height={720}
+          />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CO V NĚM NAJDEŠ -->
+    <section class="container ebook-content">
+      <h2 class="ebook-h2">Co v něm <em>najdeš</em></h2>
+      <ul class="ebook-list">
+        <li>
+          <strong>Základní kynuté těsto krok za krokem.</strong>
+          Přesné gramy, přesné časy a místa, kde se vyplatí nespěchat.
+        </li>
+        <li>
+          <strong>Tři koláče z toho samého těsta:</strong>
+          slimáky, čokoládový závin a TŘETÍ RECEPT (doplnit).
+        </li>
+        <li>
+          <strong>Co se může pokazit a co s tím.</strong>
+          Proč těsto někdy nekyne, proč závin praská a jak tomu příště předejít.
+        </li>
+        <li>
+          <strong>Tipy, na které jsem přišla postupně.</strong>
+          Maličkosti, které na výsledku dělají největší rozdíl.
+        </li>
+      </ul>
+    </section>
+
+    <!-- FORMULÁŘ -->
+    <section class="container ebook-form-section" id="formular">
+      <div class="newsletter">
+        <div class="newsletter-inner">
+
+          <div>
+            <h2>Kam ti ho mám <em>poslat</em>?</h2>
+            <p>
+              Napiš mi e-mail a pošlu ti ho hned. Posílám z něj potom i recepty a tipy k pečení, odhlásit se můžeš kdykoliv jedním kliknutím.
+            </p>
+            <p class="newsletter-hand">Zdarma, bez podmínek.</p>
+          </div>
+
+          <div class="brevo-form-wrap">
+            <div id="sib-form-container" class="sib-form-container">
+              <div id="error-message" class="sib-form-message-panel" style="color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:8px;margin-bottom:16px;display:none">
+                <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Něco se pokazilo. Zkuste to prosím znovu.</span></div>
+              </div>
+              <div id="success-message" class="sib-form-message-panel" style="color:#085229;background-color:#e7faf0;border-color:#13ce66;border-radius:8px;margin-bottom:16px;display:none">
+                <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Skoro hotovo. Poslala jsem vám potvrzovací e-mail, klikněte v něm na odkaz a e-book dorazí hned potom. Kdyby nic nechodilo, mrkněte prosím do spamu.</span></div>
+              </div>
+              <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:left;background-color:transparent;border:none;direction:ltr">
+                <form id="sib-form" method="POST" action={BREVO_FORM_ACTION} data-type="subscription">
+                  <div style="padding:8px 0">
+                    <div class="sib-input sib-form-block">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row">
+                          <label class="entry__label" for="EMAIL" data-required="*">E-mail</label>
+                          <div class="entry__field"><input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="email" value="" data-required="true" required /></div>
+                        </div>
+                        <label id="email-error" style="display:none;color:#ffb4b4;font-family:var(--font-body);font-size:13px;margin-top:6px">Zadejte prosím e-mailovou adresu.</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding:8px 0">
+                    <div class="sib-input sib-form-block">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row">
+                          <label class="entry__label" for="FIRSTNAME">Jméno</label>
+                          <div class="entry__field"><input class="input" maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="given-name" /></div>
+                        </div>
+                        <label class="entry__error entry__error--primary"></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding:8px 0">
+                    <div class="sib-optin sib-form-block">
+                      <div class="form__entry entry_mcq">
+                        <div class="form__label-row">
+                          <div class="entry__choice">
+                            <label>
+                              <input type="checkbox" class="input_replaced" value="1" id="GDPR_CONSENT" name="GDPR_CONSENT" />
+                              <span class="checkbox checkbox_tick_positive"></span>
+                              <span>Souhlasím se zasíláním e-mailů a zpracováním osobních údajů dle <a href="/ochrana-soukromi">zásad ochrany osobních údajů</a>.</span>
+                            </label>
+                          </div>
+                        </div>
+                        <label id="gdpr-error" style="display:none;color:#ffb4b4;font-family:var(--font-body);font-size:13px;margin-top:6px">Prosím, potvrďte souhlas se zpracováním osobních údajů.</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ebook-form-note">
+                    Ke zpracování formuláře používám <a href="https://www.brevo.com" rel="nofollow">Brevo</a>. Odesláním souhlasíte s přenosem dat dle jejich <a href="https://www.brevo.com/en/legal/privacypolicy/" rel="nofollow" target="_blank">zásad ochrany soukromí</a>.
+                  </div>
+                  <div style="padding:8px 0;text-align:left">
+                    <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                      Poslat mi e-book
+                    </button>
+                  </div>
+                  <input type="text" name="email_address_check" value="" class="input--hidden" />
+                  <input type="hidden" name="locale" value="cs" />
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Brevo form init
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'cs';
+    window.EMAIL_INVALID_MESSAGE = 'Zadaná adresa je v nesprávném formátu. Zkontrolujte ji prosím.';
+    window.REQUIRED_ERROR_MESSAGE = 'Povinné pole.';
+    window.GENERIC_INVALID_MESSAGE = 'Zadané informace jsou v nesprávném formátu. Zkontrolujte je prosím.';
+    window.INVALID_NUMBER = 'Zadané informace jsou v nesprávném formátu.';
+    window.INVALID_DATE = 'Zadejte prosím platné datum.';
+    window.REQUIRED_MULTISELECT_MESSAGE = 'Vyberte prosím alespoň jednu možnost.';
+    window.AUTOHIDE = Boolean(0);
+
+    // Load Brevo script
+    const s = document.createElement('script');
+    s.src = 'https://sibforms.com/forms/end-form/build/main.js';
+    document.body.appendChild(s);
+
+    // Intercept form submit
+    document.addEventListener('submit', function(e) {
+      const form = document.getElementById('sib-form');
+      if (!form || !form.contains(e.target) && e.target !== form) return;
+
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      const emailEl  = document.getElementById('EMAIL');
+      const checkbox = document.getElementById('GDPR_CONSENT');
+      const emailErr = document.getElementById('email-error');
+      const gdprErr  = document.getElementById('gdpr-error');
+
+      let valid = true;
+
+      if (!emailEl || !emailEl.value.trim()) {
+        if (emailErr) emailErr.style.display = 'block';
+        valid = false;
+      } else {
+        if (emailErr) emailErr.style.display = 'none';
+      }
+
+      if (!checkbox || !checkbox.checked) {
+        if (gdprErr) gdprErr.style.display = 'block';
+        valid = false;
+      } else {
+        if (gdprErr) gdprErr.style.display = 'none';
+      }
+
+      if (!valid) return;
+
+      const successEl = document.getElementById('success-message');
+      const errorEl = document.getElementById('error-message');
+      if (successEl) successEl.style.display = 'none';
+      if (errorEl) errorEl.style.display = 'none';
+
+      const data = new FormData(form);
+      fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' })
+        .then(() => {
+          if (successEl) successEl.style.display = 'block';
+          form.reset();
+        })
+        .catch(() => {
+          if (errorEl) errorEl.style.display = 'block';
+        });
+    }, true);
+  </script>
+
+</BaseLayout>
