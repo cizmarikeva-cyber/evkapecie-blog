@@ -12,14 +12,14 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
   description="Stáhni si zdarma e-book s jedním základním kynutým těstem, ze kterého upečeš tři různé koláče. Postup krok za krokem a rady, co dělat, když se něco nedaří."
 >
 
-  <main>
+  <main class="ebook-main">
 
     <!-- HERO -->
     <section class="container ebook-hero">
       <div class="ebook-hero-inner">
 
         <div class="ebook-hero-text">
-          <div class="eyebrow">E-book zdarma</div>
+          <div class="eyebrow ebook-eyebrow">E-book zdarma</div>
           <h1 class="ebook-title">Jedno těsto, <em>3 koláče</em></h1>
           <p class="ebook-lead">
             Kynuté těsto je moje srdcovka a peču ho pořád dokola. Za ty roky jsem si z toho odnesla jednu věc: nepotřebuješ dvacet receptů, potřebuješ jedno těsto, které ti spolehlivě vyjde.
@@ -27,9 +27,6 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
           <p class="ebook-lead">
             V e-booku ti ho dám celé, krok za krokem, a ukážu, jak z něj upečeš tři různé koláče. Jedno těsto, které se naučíš, a tři výsledky, které z něj dostaneš.
           </p>
-          <a class="btn btn-primary btn-large ebook-hero-btn" href="#formular">
-            Chci e-book zdarma <span class="arrow">→</span>
-          </a>
         </div>
 
         <div class="ebook-hero-media">
@@ -74,11 +71,7 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
         <div class="newsletter-inner">
 
           <div>
-            <h2>Kam ti ho mám <em>poslat</em>?</h2>
-            <p>
-              Napiš mi e-mail a pošlu ti ho hned. Posílám z něj potom i recepty a tipy k pečení, odhlásit se můžeš kdykoliv jedním kliknutím.
-            </p>
-            <p class="newsletter-hand">Zdarma, bez podmínek.</p>
+            <h2>Email, na ktorý ti ho pošlem:</h2>
           </div>
 
           <div class="brevo-form-wrap">
@@ -132,9 +125,9 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
                   <div class="ebook-form-note">
                     Ke zpracování formuláře používám <a href="https://www.brevo.com" rel="nofollow">Brevo</a>. Odesláním souhlasíte s přenosem dat dle jejich <a href="https://www.brevo.com/en/legal/privacypolicy/" rel="nofollow" target="_blank">zásad ochrany soukromí</a>.
                   </div>
-                  <div style="padding:8px 0;text-align:left">
+                  <div style="padding:8px 0;text-align:center">
                     <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
-                      Poslat mi e-book
+                      Pošli mi e-book
                     </button>
                   </div>
                   <input type="text" name="email_address_check" value="" class="input--hidden" />

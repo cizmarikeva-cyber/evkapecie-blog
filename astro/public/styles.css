@@ -129,7 +129,7 @@ a:hover { color: var(--lekvar-dark); }
 .btn-primary   { background: var(--lekvar); color: var(--maslo); }
 .btn-primary:hover { background: var(--lekvar-dark); color: var(--maslo); }
 .btn-secondary { background: var(--smotana); color: var(--mak); border-color: var(--mak); }
-.btn-secondary:hover { background: var(--mak); color: var(--maslo); }
+.btn-secondary:hover { background: var(--smotana); color: var(--mak); opacity: 0.8; }
 .btn-ghost     { background: transparent; color: var(--mak); }
 .btn-ghost:hover { background: rgba(0,48,73,0.06); }
 .btn-large  { padding: 15px 32px; font-size: 17px; border-radius: 12px; }
@@ -989,13 +989,12 @@ a.hero-image {
   margin-top: 18px; max-width: 52ch;
   font-size: var(--fs-lead); line-height: 1.6; color: var(--mak-soft);
 }
-.ebook-hero-btn { margin-top: 32px; }
 .ebook-hero-img {
   width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
   border-radius: var(--radius-4); box-shadow: var(--shadow-3);
 }
 .ebook-content { padding-block: 24px 64px; }
-.ebook-h2 em { font-style: italic; color: var(--lekvar); }
+.ebook-h2 em { font-style: normal; color: var(--lekvar); }
 .ebook-list {
   list-style: none; padding: 0; margin: 32px 0 0;
   display: grid; gap: 18px; max-width: 760px;
@@ -1033,15 +1032,50 @@ a.hero-image {
 }
 .newsletter #sib-form .sib-optin span { color: rgba(246,239,224,0.78); font-size: 13px; }
 .newsletter #sib-form .sib-optin a { color: var(--maslo); text-decoration: underline; }
+.newsletter #sib-form .sib-form-block { padding-left: 0 !important; }
 .newsletter #sib-form .sib-form-block__button {
-  background-color: var(--med) !important; color: var(--mak) !important;
+  background-color: var(--smotana) !important; color: var(--mak) !important;
+  border: 1px solid var(--mak) !important;
 }
-.newsletter #sib-form .sib-form-block__button:hover { background-color: var(--med-soft) !important; }
+.newsletter #sib-form .sib-form-block__button:hover { opacity: 0.8 !important; }
 
 @media (max-width: 768px) {
   .ebook-form-section .newsletter-inner { grid-template-columns: 1fr; gap: 28px; }
-  .ebook-hero-inner { display: flex; flex-direction: column; gap: 28px; }
-  .ebook-hero-media { order: -1; }
-  .ebook-hero-img { aspect-ratio: 3 / 2; }
-  .ebook-form-section { padding-bottom: 64px; }
+  .ebook-hero-img { aspect-ratio: 4 / 5; }
+  .ebook-form-section { padding-bottom: 40px; order: 3; }
+
+  /* Mobilné poradie: nadpis, obrázok, formulár, text. Rozbaľ hero obaly
+     na priame flex položky .ebook-main, aby sa dali radiť cez order. */
+  .ebook-main { display: flex; flex-direction: column; padding-top: 40px; }
+  .ebook-hero, .ebook-hero-inner, .ebook-hero-text { display: contents; }
+
+  .ebook-eyebrow, .ebook-title, .ebook-lead, .ebook-hero-media { padding-inline: 20px; }
+
+  .ebook-eyebrow    { order: 1; }
+  .ebook-title      { order: 1; }
+  .ebook-hero-media { order: 2; margin-top: 40px; }
+  .ebook-form-section { margin-top: 40px; }
+  .ebook-lead       { order: 4; }
+  .ebook-lead:first-of-type { margin-top: 0; }
+  .ebook-content    { order: 4; padding-block: 24px 40px; }
+}
+
+/* Desktop only, nedotýka sa mobilnej verzie (media query nižšie 769px nikdy nesplní). */
+@media (min-width: 769px) {
+  .ebook-form-section .newsletter-inner {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .newsletter h2 { text-align: center; white-space: nowrap; }
+
+  .newsletter #sib-form .sib-input.sib-form-block,
+  .newsletter #sib-form .sib-optin.sib-form-block,
+  .ebook-form-note {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ebook-list { max-width: none; }
 }
