@@ -8,7 +8,7 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
 ---
 
 <BaseLayout
-  title="Jedno těsto, 3 koláče — e-book zdarma | Evka pečie"
+  title="Jedno cesto, 3 koláče — e-book zdarma | Evka pečie"
   description="Stáhni si zdarma e-book s jedním základním kynutým těstem, ze kterého upečeš tři různé koláče. Postup krok za krokem a rady, co dělat, když se něco nedaří."
 >
 
@@ -20,19 +20,22 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
 
         <div class="ebook-hero-text">
           <div class="eyebrow ebook-eyebrow">E-book zdarma</div>
-          <h1 class="ebook-title">Jedno těsto, <em>3 koláče</em></h1>
+          <h1 class="ebook-title">Jedno cesto, <em>3 koláče</em></h1>
           <p class="ebook-lead">
-            Kynuté těsto je moje srdcovka a peču ho pořád dokola. Za ty roky jsem si z toho odnesla jednu věc: nepotřebuješ dvacet receptů, potřebuješ jedno těsto, které ti spolehlivě vyjde.
+            Na kysnutom ceste ma baví jeho všestrannosť. Z jedného základného cesta sa dajú upiecť koláče, buchty aj slané pečivo.
           </p>
           <p class="ebook-lead">
-            V e-booku ti ho dám celé, krok za krokem, a ukážu, jak z něj upečeš tři různé koláče. Jedno těsto, které se naučíš, a tři výsledky, které z něj dostaneš.
+            Za tie roky, čo pečiem, som sa naučila jednu vec: na dobré domáce pečenie netreba desiatky receptov. Stačí mať jeden spoľahlivý recept na cesto, ktorý funguje, a z neho sa dá tvoriť nespočetné množstvo dobrôt rôznych tvarov a chutí.
+          </p>
+          <p class="ebook-lead">
+            V tomto e-booku ti dám presný recept na moje overené kysnuté cesto, s postupom krok za krokom, a ukážem ti, ako sa z neho dajú upiecť tri úplne iné koláče.
           </p>
         </div>
 
         <div class="ebook-hero-media">
           <Image
             src={ebookImg}
-            alt="Kynutý koláč upečený podle základního těsta z e-booku"
+            alt="Kysnutý koláč upečený podľa základného cesta z e-booku"
             class="ebook-hero-img"
             width={720}
             height={720}
@@ -40,29 +43,6 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
         </div>
 
       </div>
-    </section>
-
-    <!-- CO V NĚM NAJDEŠ -->
-    <section class="container ebook-content">
-      <h2 class="ebook-h2">Co v něm <em>najdeš</em></h2>
-      <ul class="ebook-list">
-        <li>
-          <strong>Základní kynuté těsto krok za krokem.</strong>
-          Přesné gramy, přesné časy a místa, kde se vyplatí nespěchat.
-        </li>
-        <li>
-          <strong>Tři koláče z toho samého těsta:</strong>
-          slimáky, čokoládový závin a TŘETÍ RECEPT (doplnit).
-        </li>
-        <li>
-          <strong>Co se může pokazit a co s tím.</strong>
-          Proč těsto někdy nekyne, proč závin praská a jak tomu příště předejít.
-        </li>
-        <li>
-          <strong>Tipy, na které jsem přišla postupně.</strong>
-          Maličkosti, které na výsledku dělají největší rozdíl.
-        </li>
-      </ul>
     </section>
 
     <!-- FORMULÁŘ -->
@@ -77,10 +57,10 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
           <div class="brevo-form-wrap">
             <div id="sib-form-container" class="sib-form-container">
               <div id="error-message" class="sib-form-message-panel" style="color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:8px;margin-bottom:16px;display:none">
-                <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Něco se pokazilo. Zkuste to prosím znovu.</span></div>
+                <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Niečo sa pokazilo. Skúste to prosím znovu.</span></div>
               </div>
               <div id="success-message" class="sib-form-message-panel" style="color:#085229;background-color:#e7faf0;border-color:#13ce66;border-radius:8px;margin-bottom:16px;display:none">
-                <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Skoro hotovo. Poslala jsem vám potvrzovací e-mail, klikněte v něm na odkaz a e-book dorazí hned potom. Kdyby nic nechodilo, mrkněte prosím do spamu.</span></div>
+                <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Skoro hotovo. Poslala som ti potvrdzovací e-mail, klikni v ňom na odkaz a e-book dorazí hneď potom. Keby nič nechodilo, skontroluj prosím aj spam.</span></div>
               </div>
               <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:left;background-color:transparent;border:none;direction:ltr">
                 <form id="sib-form" method="POST" action={BREVO_FORM_ACTION} data-type="subscription">
@@ -91,7 +71,7 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
                           <label class="entry__label" for="EMAIL" data-required="*">E-mail</label>
                           <div class="entry__field"><input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="email" value="" data-required="true" required /></div>
                         </div>
-                        <label id="email-error" style="display:none;color:#ffb4b4;font-family:var(--font-body);font-size:13px;margin-top:6px">Zadejte prosím e-mailovou adresu.</label>
+                        <label id="email-error" style="display:none;color:#ffb4b4;font-family:var(--font-body);font-size:13px;margin-top:6px">Zadajte prosím e-mailovú adresu.</label>
                       </div>
                     </div>
                   </div>
@@ -99,7 +79,7 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
                     <div class="sib-input sib-form-block">
                       <div class="form__entry entry_block">
                         <div class="form__label-row">
-                          <label class="entry__label" for="FIRSTNAME">Jméno</label>
+                          <label class="entry__label" for="FIRSTNAME">Meno</label>
                           <div class="entry__field"><input class="input" maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="given-name" /></div>
                         </div>
                         <label class="entry__error entry__error--primary"></label>
@@ -114,16 +94,16 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
                             <label>
                               <input type="checkbox" class="input_replaced" value="1" id="GDPR_CONSENT" name="GDPR_CONSENT" />
                               <span class="checkbox checkbox_tick_positive"></span>
-                              <span>Souhlasím se zasíláním e-mailů a zpracováním osobních údajů dle <a href="/ochrana-soukromi">zásad ochrany osobních údajů</a>.</span>
+                              <span>Súhlasím so zasielaním e-mailov a spracovaním osobných údajov podľa <a href="/ochrana-soukromi">zásad ochrany osobných údajov</a>.</span>
                             </label>
                           </div>
                         </div>
-                        <label id="gdpr-error" style="display:none;color:#ffb4b4;font-family:var(--font-body);font-size:13px;margin-top:6px">Prosím, potvrďte souhlas se zpracováním osobních údajů.</label>
+                        <label id="gdpr-error" style="display:none;color:#ffb4b4;font-family:var(--font-body);font-size:13px;margin-top:6px">Prosím, potvrďte súhlas so spracovaním osobných údajov.</label>
                       </div>
                     </div>
                   </div>
                   <div class="ebook-form-note">
-                    Ke zpracování formuláře používám <a href="https://www.brevo.com" rel="nofollow">Brevo</a>. Odesláním souhlasíte s přenosem dat dle jejich <a href="https://www.brevo.com/en/legal/privacypolicy/" rel="nofollow" target="_blank">zásad ochrany soukromí</a>.
+                    Na spracovanie formulára používam <a href="https://www.brevo.com" rel="nofollow">Brevo</a>. Odoslaním súhlasíte s prenosom dát podľa ich <a href="https://www.brevo.com/en/legal/privacypolicy/" rel="nofollow" target="_blank">zásad ochrany súkromia</a>.
                   </div>
                   <div style="padding:8px 0;text-align:center">
                     <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
@@ -139,6 +119,30 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
 
         </div>
       </div>
+    </section>
+
+    <!-- ČO NÁJDEŠ V E-BOOKU -->
+    <section class="container ebook-content">
+      <h2 class="ebook-h2">Čo nájdeš v e-booku</h2>
+      <ul class="ebook-list">
+        <li>
+          <strong>Recept na základné kysnuté cesto</strong>, presné gramáže, časy a tipy na čo si dávať pozor.
+        </li>
+        <li>
+          <strong>Recepty na tri koláče z tohto cesta:</strong>
+          <ul class="ebook-sublist">
+            <li>Čučoriedkové rolky</li>
+            <li>Tvarohové koláče s višňami a drobenkou</li>
+            <li>Kakaová babka s orechmi</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Čo sa môže pokaziť a čo s tým.</strong>
+        </li>
+        <li>
+          <strong>Tipy, ako si uľahčiť prácu</strong>, na ktoré som prišla postupne počas rokov pečenia.
+        </li>
+      </ul>
     </section>
 
   </main>

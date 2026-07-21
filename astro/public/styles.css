@@ -987,14 +987,13 @@ a.hero-image {
 .ebook-title em { font-style: italic; font-weight: 500; color: var(--lekvar); }
 .ebook-lead {
   margin-top: 18px; max-width: 52ch;
-  font-size: var(--fs-lead); line-height: 1.6; color: var(--mak-soft);
+  font-size: 19px; line-height: 1.6; color: var(--mak-soft);
 }
 .ebook-hero-img {
   width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
   border-radius: var(--radius-4); box-shadow: var(--shadow-3);
 }
 .ebook-content { padding-block: 24px 64px; }
-.ebook-h2 em { font-style: normal; color: var(--lekvar); }
 .ebook-list {
   list-style: none; padding: 0; margin: 32px 0 0;
   display: grid; gap: 18px; max-width: 760px;
@@ -1008,6 +1007,14 @@ a.hero-image {
   width: 8px; height: 8px; border-radius: 999px; background: var(--lekvar);
 }
 .ebook-list strong { color: var(--mak); font-weight: 600; }
+.ebook-sublist {
+  list-style: none; padding: 0; margin: 10px 0 0;
+  display: grid; gap: 6px;
+}
+.ebook-list .ebook-sublist li { padding-left: 22px; }
+.ebook-list .ebook-sublist li::before {
+  top: 11px; width: 5px; height: 5px; background: var(--lekvar-soft);
+}
 .ebook-form-section { padding-bottom: 96px; }
 .ebook-form-section .newsletter-inner {
   grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
@@ -1057,7 +1064,7 @@ a.hero-image {
   .ebook-form-section { margin-top: 40px; }
   .ebook-lead       { order: 4; }
   .ebook-lead:first-of-type { margin-top: 0; }
-  .ebook-content    { order: 4; padding-block: 24px 40px; }
+  .ebook-content    { order: 5; padding-block: 24px 40px; }
 }
 
 /* Desktop only, nedotýka sa mobilnej verzie (media query nižšie 769px nikdy nesplní). */
