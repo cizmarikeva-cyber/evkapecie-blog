@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import ebookImg from '../assets/images/kynuty-kolac-s-tvarohem-a-boruvkami.jpeg';
 
 // Adresa z atributu action formuláře v Brevo (Formuláře → tvůj formulář → Sdílet → HTML kód).
-const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
+const BREVO_FORM_ACTION = 'https://1acb54ba.sibforms.com/serve/MUIFAINQ2H7ikGuWmxx3MJUkkQIcx2Ylj523b5q80QjOFLMUGduI0jvQYsZmCeKwD4321vFqTVmI4ECJNiG2w-wbqSFQ3KrV9RIUHXqvFLBjeuKbhl7NlHBRRtQSVQi6Hzu9BNfHmHORx6uHUSzH8BvmghT581AqWsOXVuzWNnDayUNKSxJaN4_lIeBUS2Mwh0C6imoOZAik2Ix0Qw==';
 ---
 
 <BaseLayout
@@ -92,7 +92,7 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
                         <div class="form__label-row">
                           <div class="entry__choice">
                             <label>
-                              <input type="checkbox" class="input_replaced" value="1" id="GDPR_CONSENT" name="GDPR_CONSENT" />
+                              <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" />
                               <span class="checkbox checkbox_tick_positive"></span>
                               <span>Súhlasím so zasielaním e-mailov a spracovaním osobných údajov podľa <a href="/ochrana-soukromi">zásad ochrany osobných údajov</a>.</span>
                             </label>
@@ -102,8 +102,9 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
                       </div>
                     </div>
                   </div>
-                  <div class="ebook-form-note">
-                    Na spracovanie formulára používam <a href="https://www.brevo.com" rel="nofollow">Brevo</a>. Odoslaním súhlasíte s prenosom dát podľa ich <a href="https://www.brevo.com/en/legal/privacypolicy/" rel="nofollow" target="_blank">zásad ochrany súkromia</a>.
+                  <div style="padding:8px 0;max-width:484px;margin:0 auto;display:flex;flex-direction:column;align-items:center">
+                    <div class="g-recaptcha" data-sitekey="6Lcl6WctAAAAAOnBjRGmpls-v4NVphgXsEjDIKJM" data-theme="dark"></div>
+                    <label id="captcha-error" style="display:none;color:#ffb4b4;font-family:var(--font-body);font-size:13px;margin-top:6px;text-align:center">Potvrďte prosím, že nie ste robot.</label>
                   </div>
                   <div style="padding:8px 0;text-align:center">
                     <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
@@ -164,6 +165,13 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
     s.src = 'https://sibforms.com/forms/end-form/build/main.js';
     document.body.appendChild(s);
 
+    // Load Google reCAPTCHA
+    const rc = document.createElement('script');
+    rc.src = 'https://www.google.com/recaptcha/api.js?hl=sk';
+    rc.async = true;
+    rc.defer = true;
+    document.body.appendChild(rc);
+
     // Intercept form submit
     document.addEventListener('submit', function(e) {
       const form = document.getElementById('sib-form');
@@ -173,7 +181,7 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
       e.stopImmediatePropagation();
 
       const emailEl  = document.getElementById('EMAIL');
-      const checkbox = document.getElementById('GDPR_CONSENT');
+      const checkbox = document.getElementById('OPT_IN');
       const emailErr = document.getElementById('email-error');
       const gdprErr  = document.getElementById('gdpr-error');
 
@@ -191,6 +199,14 @@ const BREVO_FORM_ACTION = 'DOPLNIT_ADRESU_FORMULARE_Z_BREVO';
         valid = false;
       } else {
         if (gdprErr) gdprErr.style.display = 'none';
+      }
+
+      const captchaErr = document.getElementById('captcha-error');
+      if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse() === '') {
+        if (captchaErr) captchaErr.style.display = 'block';
+        valid = false;
+      } else {
+        if (captchaErr) captchaErr.style.display = 'none';
       }
 
       if (!valid) return;
