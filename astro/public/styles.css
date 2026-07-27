@@ -990,7 +990,7 @@ a.hero-image {
   font-size: 19px; line-height: 1.6; color: var(--mak-soft);
 }
 .ebook-hero-img {
-  width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
+  width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
   border-radius: var(--radius-4); box-shadow: var(--shadow-3);
 }
 .ebook-content { padding-block: 24px 64px; }
@@ -1059,7 +1059,13 @@ a.hero-image {
   .ebook-eyebrow, .ebook-title, .ebook-lead, .ebook-hero-media { padding-inline: 20px; }
 
   .ebook-eyebrow    { order: 1; }
-  .ebook-title      { order: 1; }
+  /* Nadpis na mobile vizuálne skrytý (názov je v obrázku), ale ostáva v DOM
+     pre SEO a čítačky obrazovky. */
+  .ebook-title {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
   .ebook-hero-media { order: 2; margin-top: 40px; }
   .ebook-form-section { margin-top: 40px; }
   .ebook-lead       { order: 4; }
