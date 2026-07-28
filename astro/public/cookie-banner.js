@@ -45,7 +45,7 @@
     prefsBtn.addEventListener('click', function () {
       var open = prefs.style.display !== 'none';
       prefs.style.display = open ? 'none' : 'block';
-      prefsBtn.textContent = open ? 'Zobrazit předvolby' : 'Skrýt předvolby';
+      prefsBtn.textContent = open ? 'Zobraziť predvoľby' : 'Skryť predvoľby';
     });
   }
 

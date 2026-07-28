@@ -7,22 +7,22 @@ const PAGE_SIZE = 9;
 ---
 
 <BaseLayout
-  title="Všechny recepty — Evka pečie"
-  description="Přehled všech receptů na tradičné slovenské a české pečení od Evky."
+  title="Všetky recepty — Evka pečie"
+  description="Prehľad všetkých receptov na tradičné slovenské a české pečenie od Evky."
   activeNav="recipes"
 >
 
   <!-- HLAVIČKA -->
   <section class="container" style="padding-top:56px;padding-bottom:0">
-    <div class="eyebrow">Přehled</div>
+    <div class="eyebrow">Prehľad</div>
     <h1 class="recipes-list-title">
-      <em>Všechny</em> recepty
+      <em>Všetky</em> recepty
     </h1>
 
     <!-- FILTR -->
     <div class="filter-strip" id="filter-strip">
       <button class="filter-pill active" data-category="">
-        Vše
+        Všetko
         <span class="filter-pill-count">{RECIPES.length}</span>
       </button>
       {CATEGORIES.map(cat => {
@@ -56,8 +56,8 @@ const PAGE_SIZE = 9;
       ))}
     </div>
     <div id="no-results" style="display:none;padding:32px 0;display:none;flex-direction:column;gap:16px;align-items:flex-start">
-      <p style="color:var(--popol);font-family:var(--font-body);font-size:16px;margin:0">Žádné recepty neodpovídají hledání.</p>
-      <button id="clear-search-btn" class="btn btn-secondary btn-small">Zobrazit všechny recepty</button>
+      <p style="color:var(--popol);font-family:var(--font-body);font-size:16px;margin:0">Žiadne recepty nezodpovedajú hľadaniu.</p>
+      <button id="clear-search-btn" class="btn btn-secondary btn-small">Zobraziť všetky recepty</button>
     </div>
 
     <!-- STRÁNKOVANIE -->
@@ -123,8 +123,8 @@ const PAGE_SIZE = 9;
     if (q) {
       searchInfo.style.display = '';
       searchInfo.innerHTML = visible.length > 0
-        ? `Nalezeno <b>${visible.length}</b> ${visible.length === 1 ? 'recept' : visible.length < 5 ? 'recepty' : 'receptů'}`
-        : `Žádné výsledky`;
+        ? `Nájdených <b>${visible.length}</b> ${visible.length === 1 ? 'recept' : visible.length < 5 ? 'recepty' : 'receptov'}`
+        : `Žiadne výsledky`;
     } else {
       searchInfo.style.display = 'none';
     }
