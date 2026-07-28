@@ -60,7 +60,7 @@ const BREVO_FORM_ACTION = 'https://1acb54ba.sibforms.com/serve/MUIFAINQ2H7ikGuWm
                 <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Niečo sa pokazilo. Skúste to prosím znovu.</span></div>
               </div>
               <div id="success-message" class="sib-form-message-panel" style="color:#085229;background-color:#e7faf0;border-color:#13ce66;border-radius:8px;margin-bottom:16px;display:none">
-                <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Skoro hotovo. Poslala som ti potvrdzovací e-mail, klikni v ňom na odkaz a e-book dorazí hneď potom. Keby nič nechodilo, skontroluj prosím aj spam.</span></div>
+                <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text"><strong>Skoro hotovo!</strong> Na <strong id="success-email"></strong> som ti poslala potvrdzovací e-mail. Klikni v ňom na odkaz a e-book ti dorazí hneď.<br /><br />Ak ho nevidíš, pozri sa aj medzi <strong>reklamy</strong> a do <strong>spamu</strong>.</span></div>
               </div>
               <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:left;background-color:transparent;border:none;direction:ltr">
                 <form id="sib-form" method="POST" action={BREVO_FORM_ACTION} data-type="subscription">
@@ -214,6 +214,8 @@ const BREVO_FORM_ACTION = 'https://1acb54ba.sibforms.com/serve/MUIFAINQ2H7ikGuWm
       const data = new FormData(form);
       fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' })
         .then(() => {
+          const emailOut = document.getElementById('success-email');
+          if (emailOut && emailEl) emailOut.textContent = emailEl.value.trim();
           if (successEl) successEl.style.display = 'block';
           form.reset();
         })
