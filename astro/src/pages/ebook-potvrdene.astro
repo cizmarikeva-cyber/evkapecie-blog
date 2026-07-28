@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Hotovo, potvrdené | Evka pečie"
+  description="Ďakujem za potvrdenie. E-book Jedno cesto, 3 koláče ti letí do schránky."
+>
+  <main class="confirm">
+    <h1 class="confirm-title">Hotovo, potvrdené.</h1>
+
+    <p class="confirm-lead">E-book ti letí do schránky, o chvíľu ho tam máš.</p>
+
+    <p class="confirm-note">
+      Ak ho hneď nevidíš, pozri sa aj medzi reklamy alebo do spamu. A najistejšie je pridať si
+      <a href="mailto:eva@evkapecie.cz">eva@evkapecie.cz</a> medzi kontakty, potom ti už nič neujde.
+    </p>
+
+    <p class="confirm-small">Túto stránku môžeš teraz zatvoriť.</p>
+  </main>
+
+  <style>
+    .confirm {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 96px 32px 120px;
+      text-align: center;
+    }
+    .confirm-title {
+      font-family: var(--font-display);
+      color: var(--ink);
+      font-size: clamp(2.25rem, 5vw, 3rem);
+      line-height: 1.1;
+      margin: 0 0 24px;
+    }
+    .confirm-lead {
+      font-family: var(--font-body);
+      font-size: 20px;
+      line-height: 1.55;
+      color: var(--ink);
+      margin: 0 0 20px;
+    }
+    .confirm-note {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      margin: 0 0 44px;
+    }
+    .confirm-note a {
+      color: var(--maroon);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .confirm-small {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--ink-mute);
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .confirm {
+        padding: 56px 20px 72px;
+      }
+    }
+  </style>
+</BaseLayout>
