@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "tiramisu",
-  categories: ["Sladké", "Rýchle"],
-  title:      "Tiramisu",
-  intro:      "Tiramisu je klasický taliansky dezert, ktorý veľa ľudí odradí jednou vecou, surovými vajíčkami v kréme. Mne to vadilo tiež, preto som ich vyšľahala s cukrom nad parou. Vďaka tomuto kroku sú tepelne upravené a krém je navyše hustejší a krémovejší. K tomu piškóty namočené v silnej káve, kakaová vrstva navrchu, a máš luxusný dezert bez zapínania rúry. Príprava ti zaberie len pol hodinu, a najťažší krok je vydržať, kým sa vychladí a chute sa prepoja. Tak poďme na to!",
+  slug:       "panna-cotta-s-lemon-curd",
+  categories: ["Sladké", "Rýchle", "Torty & dezerty"],
+  title:      "Panna cotta <em>s lemon curd</em>",
+  intro:      "Panna cotta s lemon curdom je na tieto horúce letné dni ideál, lebo netreba zapínať rúru a príprava trvá doslova pár minút. Musím sa priznať - roky som si myslela, že je len nudný puding, ale včera som ju skúsila a z tej chuti som unesená. Ak ju pripravíš dnes, zajtra ráno si poďakuješ!",
   time:       "30 min + chladenie",
-  servings:   "3-4 porcie",
+  servings:   "14 pohárikov",
   level:      "Ľahké",
-  paint:      "medovnik",
-  image:      "images/tiramisu.jpeg",
+  paint:      "cesnek",
+  image:      "images/panna-cotta-s-lemon-curd.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "panna-cotta-s-lemon-curd",
+    featured:    true,
+    categories:  ["Sladké", "Rýchle", "Torty & dezerty"],
+    title:       "Panna cotta <em>s lemon curd</em>",
+    time:        "30 min + chladenie",
+    servings:    "14 pohárikov",
+    level:       "Ľahké",
+    paint:       "cesnek",
+    image:       "images/panna-cotta-s-lemon-curd.jpeg",
+    detailImage: "images/panna-cotta-s-lemon-curd-detail.jpeg",
+  },
   {
     slug:        "tiramisu",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "bananova-strecha",
-    featured:    true,
     categories:  ["Sladké", "Rýchle"],
     title:       "Banánová <em>střecha</em>",
     time:        "30 min + chlazení",
@@ -313,8 +324,71 @@ export const CATEGORIES = [
 
 export const RECIPE_DATA = {
 
+  "panna-cotta-s-lemon-curd": {
+    date: "2. 8. 2026",
+    instagram: "https://www.instagram.com/p/DbfnpulMOur/",
+    intro: "Panna cotta s lemon curdom je na tieto horúce letné dni ideál, lebo netreba zapínať rúru a príprava trvá doslova pár minút. Musím sa priznať - roky som si myslela, že je len nudný puding, ale včera som ju skúsila a z tej chuti som unesená. Ak ju pripravíš dnes, zajtra ráno si poďakuješ!",
+    ingredients: [
+      {
+        group: "Panna cotta",
+        items: [
+          { amount: "10 g",   name: "plátkovej želatíny" },
+          { amount: "100 ml", name: "mlieka" },
+          { amount: "900 ml", name: "smotany na šľahanie min. 33 %" },
+          { amount: "100 g",  name: "práškového cukru" },
+          { amount: "1 lyžička", name: "vanilkového extraktu" },
+        ],
+      },
+      {
+        group: "Lemon curd",
+        items: [
+          { amount: "3",      name: "žĺtky" },
+          { amount: "60 g",   name: "krupicového cukru" },
+          { amount: "60 ml",  name: "citrónovej šťavy" },
+          { amount: "15 ml",  name: "vody" },
+          { amount: " ",      name: "kôra z 1 bio citróna" },
+          { amount: "45 g",   name: "masla" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Panna cotta",
+        startAt: 1,
+        items: [
+          "Želatínu necháme <b>5 – 10 minút</b> nabobtnať v studenej vode.",
+          "V hrnci zohrejeme smotanu s mliekom, cukrom a vanilkou takmer do bodu varu.",
+          "Nabobtnanú želatínu vyžmýkame, dáme do čistej misky, nalejeme na ňu časť zohriatej zmesi a miešame pár sekúnd, kým sa nerozpustí. Potom zmiešame so zvyškom tekutej zmesi.",
+          "Nalejeme do pohárikov mierne pod okraj. Ja som použila poháriky <b>120 ml</b> a do každého naliala <b>75 g</b> zmesi. Necháme stuhnúť v chladničke aspoň <b>4 hodiny</b>, ideálne cez noc.",
+        ],
+      },
+      {
+        heading: "Lemon curd",
+        startAt: 5,
+        items: [
+          "Zmiešame všetky ingrediencie okrem masla a zohrievame vo vodnom kúpeli na <b>70 °C</b>, kým hmota nezhustne. Precedíme (nepovinné), necháme trochu vychladnúť a nakoniec vmiešame maslo.",
+        ],
+      },
+      {
+        heading: "Dokončenie",
+        startAt: 6,
+        items: [
+          "Cukrárskym vreckom nanesieme lemon curd na vrch stuhnutej panna cotty a ozdobíme čerstvými malinami.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Panna cottu je najlepšie priprav deň vopred, alebo aspoň 4 hodiny pred plánovaným servírovaním.",
+        "Želatína sa nesmie variť, preto ju zmiešaj so smotanou až keď smotanu odstavíš z ohrevu.",
+      ],
+    },
+  },
+
   "tiramisu": {
     date: "20. 7. 2026",
+    instagram: "https://www.instagram.com/p/DbI3MEXMbfP/",
     intro: "Tiramisu je klasický taliansky dezert, ktorý veľa ľudí odradí jednou vecou, surovými vajíčkami v kréme. Mne to vadilo tiež, preto som ich vyšľahala s cukrom nad parou. Vďaka tomuto kroku sú tepelne upravené a krém je navyše hustejší a krémovejší. K tomu piškóty namočené v silnej káve, kakaová vrstva navrchu, a máš luxusný dezert bez zapínania rúry. Príprava ti zaberie len pol hodinu, a najťažší krok je vydržať, kým sa vychladí a chute sa prepoja. Tak poďme na to!",
     ingredients: [
       {
