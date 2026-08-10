@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "panna-cotta-se-slanym-karamelem",
-  categories: ["Sladké", "Rýchle", "Torty & dezerty"],
-  title:      "Panna cotta <em>so slaným karamelom</em>",
-  intro:      "Panna cotta so slaným karamelom je rýchly letný dezert bez pečenia. Dlho som si myslela, že je len obyčajný puding, ale je to vyššia liga. Jej veľmi jemnú, smotanovú chuť dopĺňa výrazný a hustý slaný karamel. Netreba zapínať rúru, stačí zohriať smotanu, zmiešať s cukrom a želatínou, naliať do pohárikov a nechať stuhnúť v chladničke. Priprav ju večer a ráno si poďakuješ!",
-  time:       "30 min + chladenie",
-  servings:   "14 pohárikov",
-  level:      "Ľahké",
+  slug:       "brownies-s-cokoladovym-kremem",
+  categories: ["Sladké", "Torty & dezerty"],
+  title:      "Brownies <em>s čokoládovým krémom</em>",
+  intro:      "Brownies s čokoládovým krémom som piekla na svadbu a niektorí hostia ich označili za závislosť. Rozhodne nie sú diétne, ale sú neuveriteľne dobré. Krém je z čokolády a smotany, musí však poriadne vychladnúť, aby sa dobre vyšľahal, preto ho priprav pár hodín vopred. Cesto je hotové raz-dva a najkritickejší bod je pečenie - radšej ich vyber o dve minúty skôr ako neskôr, aby zostali vláčne.",
+  time:       "45 min + chladenie krému",
+  servings:   "20 ks",
+  level:      "Stredne náročné",
   paint:      "medovnik",
-  image:      "images/panna-cotta-se-slanym-karamelem.jpeg",
+  image:      "images/brownies-s-cokoladovym-kremem.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "brownies-s-cokoladovym-kremem",
+    featured:    true,
+    categories:  ["Sladké", "Torty & dezerty"],
+    title:       "Brownies <em>s čokoládovým krémom</em>",
+    time:        "45 min + chladenie krému",
+    servings:    "20 ks",
+    level:       "Stredne náročné",
+    paint:       "medovnik",
+    image:       "images/brownies-s-cokoladovym-kremem.jpeg",
+    detailImage: "images/brownies-s-cokoladovym-kremem-detail.jpeg",
+  },
   {
     slug:        "panna-cotta-se-slanym-karamelem",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "tiramisu",
-    featured:    true,
     categories:  ["Sladké", "Rýchle"],
     title:       "Tiramisu",
     time:        "30 min + chladenie",
@@ -334,6 +345,74 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "brownies-s-cokoladovym-kremem": {
+    date: "10. 8. 2026",
+    instagram: "https://www.instagram.com/p/Db3bZvos-Ls/",
+    intro: "Brownies s čokoládovým krémom som piekla na svadbu a niektorí hostia ich označili za závislosť. Rozhodne nie sú diétne, ale sú neuveriteľne dobré. Krém je z čokolády a smotany, musí však poriadne vychladnúť, aby sa dobre vyšľahal, preto ho priprav pár hodín vopred. Cesto je hotové raz-dva a najkritickejší bod je pečenie - radšej ich vyber o dve minúty skôr ako neskôr, aby zostali vláčne.",
+    ingredients: [
+      {
+        group: "Cesto",
+        items: [
+          { amount: "200 g", name: "masla" },
+          { amount: "250 g", name: "70% čokolády" },
+          { amount: "150 g", name: "trstinový cukor" },
+          { amount: "4",     name: "vajcia" },
+          { amount: "40 g",  name: "hl. múky" },
+          { amount: "20 g",  name: "kakaa" },
+        ],
+      },
+      {
+        group: "Krém",
+        items: [
+          { amount: "350 g", name: "smotany na šľahanie 33 %" },
+          { amount: "120 g", name: "horkej čokolády 55–60 %" },
+        ],
+      },
+      {
+        group: null,
+        items: [
+          { amount: " ", name: "ovocie na ozdobu" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Krém (pripraviť vopred)",
+        startAt: 1,
+        items: [
+          "Polovicu smotany zohrejeme takmer k bodu varu.",
+          "Nalejeme na čokoládu, premiešame a pomocou tyčového mixéra vytvoríme hladkú emulziu. Prilejeme zvyšnú smotanu a znova premixujeme.",
+          "Prikryjeme fóliou priamo na tekutinu a necháme v chladničke odležať, najlepšie cez noc, alebo minimálne <b>2 hodiny</b>.",
+        ],
+      },
+      {
+        heading: "Cesto",
+        startAt: 4,
+        items: [
+          "Maslo s čokoládou rozpustíme vo vodnom kúpeli.",
+          "Vajcia vymiešame s cukrom, pridáme rozpustenú čokoládu s maslom a zmiešame.",
+          "Vmiešame kakao a múku.",
+          "Vylejeme na plech s papierom na pečenie, ja som použila plech cca <b>24×20 cm</b>. Pečieme na <b>170 °C</b> cca <b>20 – 25 minút</b>, pozor neprepiecť.",
+          "Necháme vychladnúť a potom nakrájame na malé štvorčeky (cca <b>4×4 cm</b>).",
+        ],
+      },
+      {
+        heading: "Dokončenie",
+        startAt: 9,
+        items: [
+          "Odležanú ganache pozvoľna pri nižšej rýchlosti vyšľaháme a nanesieme na brownies.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Pre dlhšiu trvanlivosť krému (napríklad ak pečieš na oslavu, kde bude koláč niekoľko hodín vyložený na stole), môžeš pridať glukózový sirup a želatínu. Na toto množstvo som použila 20 g glukózového sirupu a 2,2 g plátkovej želatíny, ktoré som pridala do zohriatej smotany. Na domáce pečenie to však netreba, výsledok chutí rovnako.",
+        "Ak nemáš zdobiacu špičku, brownies po vychladnutí len potri vyšľahaným krémom.",
+      ],
+    },
+  },
 
   "panna-cotta-se-slanym-karamelem": {
     date: "10. 8. 2026",
