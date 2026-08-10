@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "panna-cotta-s-lemon-curd",
+  slug:       "panna-cotta-se-slanym-karamelem",
   categories: ["Sladké", "Rýchle", "Torty & dezerty"],
-  title:      "Panna cotta <em>s lemon curd</em>",
-  intro:      "Panna cotta s lemon curdom je na tieto horúce letné dni ideál, lebo netreba zapínať rúru a príprava trvá doslova pár minút. Musím sa priznať - roky som si myslela, že je len nudný puding, ale včera som ju skúsila a z tej chuti som unesená. Ak ju pripravíš dnes, zajtra ráno si poďakuješ!",
+  title:      "Panna cotta <em>so slaným karamelom</em>",
+  intro:      "Panna cotta so slaným karamelom je rýchly letný dezert bez pečenia. Dlho som si myslela, že je len obyčajný puding, ale je to vyššia liga. Jej veľmi jemnú, smotanovú chuť dopĺňa výrazný a hustý slaný karamel. Netreba zapínať rúru, stačí zohriať smotanu, zmiešať s cukrom a želatínou, naliať do pohárikov a nechať stuhnúť v chladničke. Priprav ju večer a ráno si poďakuješ!",
   time:       "30 min + chladenie",
   servings:   "14 pohárikov",
   level:      "Ľahké",
-  paint:      "cesnek",
-  image:      "images/panna-cotta-s-lemon-curd.jpeg",
+  paint:      "medovnik",
+  image:      "images/panna-cotta-se-slanym-karamelem.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "panna-cotta-se-slanym-karamelem",
+    featured:    true,
+    categories:  ["Sladké", "Rýchle", "Torty & dezerty"],
+    title:       "Panna cotta <em>so slaným karamelom</em>",
+    time:        "30 min + chladenie",
+    servings:    "14 pohárikov",
+    level:       "Ľahké",
+    paint:       "medovnik",
+    image:       "images/panna-cotta-se-slanym-karamelem.jpeg",
+    detailImage: "images/panna-cotta-se-slanym-karamelem-detail.jpeg",
+  },
   {
     slug:        "panna-cotta-s-lemon-curd",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "merunkovy-kolac-s-drobenkou",
-    featured:    true,
     categories:  ["Sladké", "Tradičné"],
     title:       "Meruňkový koláč <em>s drobenkou</em>",
     time:        "1 h 45 min",
@@ -323,6 +334,74 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "panna-cotta-se-slanym-karamelem": {
+    date: "10. 8. 2026",
+    instagram: "https://www.instagram.com/p/DbtBYfYslVG/",
+    intro: "Panna cotta so slaným karamelom je rýchly letný dezert bez pečenia. Dlho som si myslela, že je len obyčajný puding, ale je to vyššia liga. Jej veľmi jemnú, smotanovú chuť dopĺňa výrazný a hustý slaný karamel. Netreba zapínať rúru, stačí zohriať smotanu, zmiešať s cukrom a želatínou, naliať do pohárikov a nechať stuhnúť v chladničke. Priprav ju večer a ráno si poďakuješ!",
+    ingredients: [
+      {
+        group: "Panna cotta",
+        items: [
+          { amount: "10 g",      name: "plátkovej želatíny" },
+          { amount: "100 ml",    name: "studeného mlieka" },
+          { amount: "900 ml",    name: "smotany na šľahanie min. 33 %" },
+          { amount: "70 g",      name: "práškového cukru" },
+          { amount: "1 lyžička", name: "vanilkového extraktu" },
+        ],
+      },
+      {
+        group: "Slaný karamel",
+        items: [
+          { amount: "100 g", name: "kryštálového cukru" },
+          { amount: "70 g",  name: "smotany na šľahanie 33 %" },
+          { amount: "45 g",  name: "masla" },
+          { amount: "1,5 g", name: "soli" },
+        ],
+      },
+      {
+        group: null,
+        items: [
+          { amount: " ", name: "strúhaná biela čokoláda alebo mandľové plátky na ozdobu" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Panna cotta",
+        startAt: 1,
+        items: [
+          "Želatínu necháme <b>5 – 10 minút</b> nabobtnať v studenej vode.",
+          "V hrnci zohrejeme smotanu s mliekom, cukrom a vanilkou takmer do bodu varu.",
+          "Nabobtnanú želatínu vyžmýkame, dáme do čistej misky, nalejeme na ňu časť zohriatej zmesi a miešame pár sekúnd, kým sa nerozpustí. Potom zmiešame so zvyškom tekutej zmesi.",
+          "Nalejeme do pohárikov mierne pod okraj. Ja som použila poháriky <b>120 ml</b> a do každého naliala <b>75 g</b> zmesi. Necháme stuhnúť v chladničke aspoň <b>4 hodiny</b>, ideálne cez noc.",
+        ],
+      },
+      {
+        heading: "Slaný karamel",
+        startAt: 5,
+        items: [
+          "Cukor necháme vo vyššom hrnci roztopiť na karamel.",
+          "Pridáme horúcu smotanu a miešame. Pozor na tento krok, karamel môže začať prudko vrieť, preto ho treba pripravovať vo <b>vyššom hrnci</b>.",
+          "Keď sa smotana spojí s karamelom, odstavíme z ohňa, pridáme soľ a maslo a miešame, kým sa všetko spojí do hladkej emulzie. Necháme vychladnúť.",
+        ],
+      },
+      {
+        heading: "Dokončenie",
+        startAt: 8,
+        items: [
+          "Cukrárskym vreckom nanesieme karamel na vrch stuhnutej panna cotty a ozdobíme strúhanou bielou čokoládou alebo mandľovými plátkami.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Karamel po pridaní horúcej smotany môže začať prudko vrieť, preto ho pripravuj vo vyššom hrnci.",
+        "Želatína sa nesmie variť, preto ju zmiešaj so smotanou až keď smotanu odstavíš z ohrevu.",
+      ],
+    },
+  },
 
   "panna-cotta-s-lemon-curd": {
     date: "2. 8. 2026",
