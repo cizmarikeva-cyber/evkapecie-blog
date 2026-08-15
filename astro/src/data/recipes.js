@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "brownies-s-cokoladovym-kremem",
+  slug:       "malinove-tartaletky-s-bilou-cokoladou",
   categories: ["Sladké", "Torty & dezerty"],
-  title:      "Brownies <em>s čokoládovým krémom</em>",
-  intro:      "Brownies s čokoládovým krémom som piekla na svadbu a niektorí hostia ich označili za závislosť. Rozhodne nie sú diétne, ale sú neuveriteľne dobré. Krém je z čokolády a smotany, musí však poriadne vychladnúť, aby sa dobre vyšľahal, preto ho priprav pár hodín vopred. Cesto je hotové raz-dva a najkritickejší bod je pečenie - radšej ich vyber o dve minúty skôr ako neskôr, aby zostali vláčne.",
-  time:       "45 min + chladenie krému",
+  title:      "Malinové tartaletky <em>s bielou čokoládou</em>",
+  intro:      "Malinové tartaletky s bielou čokoládou sú ďalší zo série dezertov na sladký bar. Základom je krehké cesto, svieža malinová náplň a ganache z bielej čokolády. Trikom pri náplni je použiť akurátne množstvo želatíny, tak aby netiekla, ale nebola ani príliš tuhá. V recepte nájdeš presné množstvá. Navrch ide zamatová poleva z dvoch ingrediencií: horúca smotana a kvalitná biela čokoláda. Potom už len ozdobiť, nechať stuhnúť a je to. Na blogu nájdeš aj ďalšie recepty na sladký bar, nabudúce nás čakajú ešte karamelové tartaletky a orechové rezy.",
+  time:       "4 h",
   servings:   "20 ks",
-  level:      "Stredne náročné",
-  paint:      "medovnik",
-  image:      "images/brownies-s-cokoladovym-kremem.jpeg",
+  level:      "Náročné",
+  paint:      "mak",
+  image:      "images/malinove-tartaletky-s-bilou-cokoladou.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "malinove-tartaletky-s-bilou-cokoladou",
+    featured:    true,
+    categories:  ["Sladké", "Torty & dezerty"],
+    title:       "Malinové tartaletky <em>s bielou čokoládou</em>",
+    time:        "4 h",
+    servings:    "20 ks",
+    level:       "Náročné",
+    paint:       "mak",
+    image:       "images/malinove-tartaletky-s-bilou-cokoladou.jpeg",
+    detailImage: "images/malinove-tartaletky-s-bilou-cokoladou-detail.jpeg",
+  },
   {
     slug:        "brownies-s-cokoladovym-kremem",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "panna-cotta-s-lemon-curd",
-    featured:    true,
     categories:  ["Sladké", "Rýchle", "Torty & dezerty"],
     title:       "Panna cotta <em>s lemon curd</em>",
     time:        "30 min + chladenie",
@@ -345,6 +356,74 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "malinove-tartaletky-s-bilou-cokoladou": {
+    date: "14. 8. 2026",
+    instagram: "https://www.instagram.com/p/DcBZcBasKfn/",
+    intro: "Malinové tartaletky s bielou čokoládou sú ďalší zo série dezertov na sladký bar. Základom je krehké cesto, svieža malinová náplň a ganache z bielej čokolády. Trikom pri náplni je použiť akurátne množstvo želatíny, tak aby netiekla, ale nebola ani príliš tuhá. V recepte nájdeš presné množstvá. Navrch ide zamatová poleva z dvoch ingrediencií: horúca smotana a kvalitná biela čokoláda. Potom už len ozdobiť, nechať stuhnúť a je to. Na blogu nájdeš aj ďalšie recepty na sladký bar, nabudúce nás čakajú ešte karamelové tartaletky a orechové rezy.",
+    ingredients: [
+      {
+        group: "Cesto (na 20 ks malých 5 cm korpusov)",
+        items: [
+          { amount: "125 g", name: "hladká múka" },
+          { amount: "75 g",  name: "studené maslo" },
+          { amount: "40 g",  name: "práškový cukor" },
+          { amount: "25 g",  name: "mandľová múka" },
+          { amount: "20 g",  name: "vajec (pol rozšľahaného vajca)" },
+          { amount: " ",     name: "štipka soli" },
+        ],
+      },
+      {
+        group: "Malinová náplň",
+        items: [
+          { amount: "350 g", name: "mrazené maliny" },
+          { amount: "35 g",  name: "kryštálový cukor" },
+          { amount: "3",     name: "plátky želatíny" },
+        ],
+      },
+      {
+        group: "Ganache z bielej čokolády",
+        items: [
+          { amount: "150 g", name: "biela čokoláda" },
+          { amount: "75 ml", name: "smotana na šľahanie 33 %" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Cesto",
+        startAt: 1,
+        items: [
+          "Okrem surovín si priprav:<ul><li>perforovanú podložku na pečenie</li><li>perforované ráfky na tartaletky</li><li>papier na pečenie</li><li>koliesko na pizzu</li><li>pravítko</li><li>ostrý nôž</li></ul>",
+          "Múku, soľ a studené maslo spracujeme do drobenky. Vmiešame mandľovú múku a cukor, potom vajce a spojíme do cesta. Pracujeme rýchlo, aby sa zbytočne nezahrievalo.",
+          "Predtvarujeme do obdĺžnika, zabalíme do potravinovej fólie a dáme do chladničky aspoň na <b>2 hodiny</b>.",
+          "Vychladené cesto vyváľame medzi 2 papiermi na pečenie na hrúbku <b>2–3 mm</b>. Takto dáme stuhnúť do chladničky, prípadne do mrazničky.",
+          "Pomocou pravítka a kolieska na pizzu odrežeme z cesta pásiky, ktoré budú tvoriť okraje. Ráfikom vykrojíme dno tartaletky a necháme ho v ráfiku. Prúžok cesta vložíme do ráfika a zarovnáme.",
+          "Vidličkou zľahka pritlačíme okraj tartaletky ku dnu a dno párkrát prepichneme. Ostrým nožom skrojíme prečnievajúce okraje.",
+          "Dáme do mrazničky na <b>30 minút</b>.",
+          "Rúru predhrejeme na <b>175 °C</b> bez ventilátora. Vychladené tartaletky premiestnime na perforovanú podložku a pečieme <b>15–20 minút</b> dozlatista.",
+        ],
+      },
+      {
+        heading: "Náplne",
+        startAt: 9,
+        items: [
+          "Kým sa tartaletky pečú, maliny uvaríme s cukrom a trochou vody (cca pol deci). Želatínu vložíme do misky so studenou vodou a necháme nabobtnať asi <b>10 minút</b>.",
+          "Uvarené maliny prepasírujeme, znova zohrejeme, odstavíme z ohňa a vmiešame namočené plátky želatíny. Necháme vychladnúť na izbovú teplotu a až potom plníme tartaletky, ktoré následne dáme stuhnúť do chladničky (cca na <b>2 hodiny</b>).",
+          "Po stuhnutí malinovej náplne si pripravíme ganache z bielej čokolády: zohrejeme smotanu takmer do bodu varu. Odstavíme z ohňa, nalejeme na čokoládu a vymiešame dohladka. Môžeme rozšľahať tyčovým mixérom. Následne ňou naplníme tartaletky až po vrch.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "S cestom pracuj rýchlo, aby sa maslo príliš nezahrialo. Ak sa začne lepiť, vráť ho na chvíľu do chladničky.",
+        "Malinovú náplň nechaj pred plnením vychladnúť na izbovú teplotu. Horúca náplň by cesto rozmočila.",
+        "Ganache na tartaletky nanášaj až potom, ako malinová náplň stuhne.",
+      ],
+    },
+    inspiration: "Inšpiráciou a sprievodkyňou na recept na cesto mi bola Míša Landová z vikendovepeceni.cz.",
+  },
 
   "brownies-s-cokoladovym-kremem": {
     date: "10. 8. 2026",

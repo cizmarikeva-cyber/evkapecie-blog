@@ -465,15 +465,18 @@ a:hover { color: var(--lekvar-dark); }
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--lekvar); margin-bottom: 4px;
 }
 .steps { list-style: none; counter-reset: stepc; padding: 0; margin: 24px 0 0; display: grid; gap: 24px; }
-.steps li { counter-increment: stepc; display: grid; grid-template-columns: 40px 1fr; gap: 18px; }
-.steps li::before {
+.steps > li { counter-increment: stepc; display: grid; grid-template-columns: 40px 1fr; gap: 18px; }
+.steps > li::before {
   content: counter(stepc);
   font-family: var(--font-display); font-weight: 700; font-size: 24px;
   color: var(--lekvar); line-height: 1; border-bottom: 1.5px solid var(--lekvar);
   align-self: start; padding-bottom: 4px; text-align: center; font-variant-numeric: tabular-nums;
 }
-.steps li > div { font-family: var(--font-body); font-size: 16.5px; line-height: 1.55; color: var(--mak); }
+.steps > li > div { font-family: var(--font-body); font-size: 16.5px; line-height: 1.55; color: var(--mak); }
 .steps li b { font-weight: 600; }
+/* odrážkový zoznam vnorený priamo v kroku (napr. zoznam pomôcok) */
+.steps li ul { list-style: disc; margin: 8px 0 0; padding-left: 20px; }
+.steps li ul li { margin-bottom: 4px; }
 .tip {
   background: var(--smotana); border: 1px solid var(--paper-line);
   border-radius: 16px; padding: 28px 32px 32px; margin: 36px 0; position: relative;
@@ -907,7 +910,7 @@ a:hover { color: var(--lekvar-dark); }
 
   /* Typografia pre tlač */
   body { font-size: 13px; color: #000; }
-  .steps li { margin-bottom: 8px; }
+  .steps > li { margin-bottom: 8px; }
 
   /* Patička pre tlač */
   .print-footer {
