@@ -1,22 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const EBOOK_PDF = '/ebook/jedno-cesto-3-kolace.pdf';
 ---
 
 <BaseLayout
   title="Hotovo, potvrdené | Evka pečie"
-  description="Ďakujem za potvrdenie. E-book Jedno cesto, 3 koláče ti letí do schránky."
+  description="Ďakujem za potvrdenie. Tu si stiahneš e-book Jedno cesto, 3 koláče."
 >
   <main class="confirm">
     <h1 class="confirm-title">Hotovo, potvrdené.</h1>
 
-    <p class="confirm-lead">E-book ti letí do schránky, o chvíľu ho tam máš.</p>
+    <p class="confirm-lead">Tu je tvoj e-book. Môžeš začať piecť!</p>
+
+    <a class="btn btn-primary btn-large confirm-cta" href={EBOOK_PDF} download>
+      Stiahnuť e-book
+    </a>
+    <p class="confirm-filemeta">PDF, 21 MB</p>
 
     <p class="confirm-note">
-      Ak ho hneď nevidíš, pozri sa aj medzi reklamy alebo do spamu. A najistejšie je pridať si
+      Poslala som ti ho aj e-mailom, takže ho máš odložený aj tam. Keby ti e-mail nechodil,
+      pozri sa medzi reklamy alebo do spamu. Najistejšie je pridať si
       <a href="mailto:eva@evkapecie.cz">eva@evkapecie.cz</a> medzi kontakty, potom ti už nič neujde.
     </p>
-
-    <p class="confirm-small">Túto stránku môžeš teraz zatvoriť.</p>
   </main>
 
   <style>
@@ -38,25 +44,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       font-size: 20px;
       line-height: 1.55;
       color: var(--ink);
-      margin: 0 0 20px;
+      margin: 0 0 32px;
+    }
+    .confirm-cta {
+      text-decoration: none;
+    }
+    .confirm-filemeta {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--ink-mute);
+      margin: 12px 0 40px;
     }
     .confirm-note {
       font-family: var(--font-body);
       font-size: 17px;
       line-height: 1.65;
       color: var(--ink-soft);
-      margin: 0 0 44px;
+      margin: 0;
     }
     .confirm-note a {
       color: var(--maroon);
       text-decoration: underline;
       text-underline-offset: 3px;
-    }
-    .confirm-small {
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: var(--ink-mute);
-      margin: 0;
     }
     @media (max-width: 768px) {
       .confirm {
