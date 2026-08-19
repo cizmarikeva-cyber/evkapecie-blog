@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Si na zozname | Evka pečie"
+  description="Ďakujem. Keď nový e-book na jeseň vyjde, dozvieš sa to medzi prvými."
+>
+  <main class="confirm">
+    <h1 class="confirm-title">Hotovo, si na zozname.</h1>
+
+    <p class="confirm-lead">
+      Keď nový e-book na jeseň vyjde, dozvieš sa to medzi prvými. A budeš ho mať možnosť
+      získať za zvýhodnenú cenu.
+    </p>
+
+    <a class="btn btn-secondary btn-large confirm-cta" href="/recepty">
+      Prejsť na recepty
+    </a>
+  </main>
+
+  <style>
+    .confirm {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 96px 32px 120px;
+      text-align: center;
+    }
+    .confirm-title {
+      font-family: var(--font-display);
+      color: var(--ink);
+      font-size: clamp(2.25rem, 5vw, 3rem);
+      line-height: 1.1;
+      margin: 0 0 24px;
+    }
+    .confirm-lead {
+      font-family: var(--font-body);
+      font-size: 20px;
+      line-height: 1.55;
+      color: var(--ink);
+      margin: 0 0 32px;
+    }
+    .confirm-cta {
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .confirm {
+        padding: 56px 20px 72px;
+      }
+    }
+  </style>
+</BaseLayout>
