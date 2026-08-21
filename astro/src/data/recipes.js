@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "malinove-tartaletky-s-bilou-cokoladou",
+  slug:       "karamelove-tartaletky-s-horkou-cokoladou",
   categories: ["Sladké", "Torty & dezerty"],
-  title:      "Malinové tartaletky <em>s bielou čokoládou</em>",
-  intro:      "Malinové tartaletky s bielou čokoládou sú ďalší zo série dezertov na sladký bar. Základom je krehké cesto, svieža malinová náplň a ganache z bielej čokolády. Trikom pri náplni je použiť akurátne množstvo želatíny, tak aby netiekla, ale nebola ani príliš tuhá. V recepte nájdeš presné množstvá. Navrch ide zamatová poleva z dvoch ingrediencií: horúca smotana a kvalitná biela čokoláda. Potom už len ozdobiť, nechať stuhnúť a je to. Na blogu nájdeš aj ďalšie recepty na sladký bar, nabudúce nás čakajú ešte karamelové tartaletky a orechové rezy.",
+  title:      "Karamelové tartaletky <em>s horkou čokoládou</em>",
+  intro:      "Tartaletky so slaným karamelom a horkou čokoládou sú ďalší zo série dezertov na sladký bar. Základom je krehké cesto, domáci slaný karamel a ganache z horkej čokolády. Príprava karamelu je jednoduchšia, než vyzerá, len na jednu vec si daj pozor: cukor skaramelizuj vo vyššom hrnci. Keď doň budeš prilievať horúcu smotanu, zmes vypení hore, a vďaka vyššiemu hrncu to nebude po celom sporáku :) Ganache z horkej čokolády pripravíš tiež veľmi jednoducho, je len z dvoch surovín.",
   time:       "4 h",
   servings:   "20 ks",
   level:      "Náročné",
-  paint:      "mak",
-  image:      "images/malinove-tartaletky-s-bilou-cokoladou.jpeg",
+  paint:      "medovnik",
+  image:      "images/karamelove-tartaletky-s-horkou-cokoladou.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "karamelove-tartaletky-s-horkou-cokoladou",
+    featured:    true,
+    categories:  ["Sladké", "Torty & dezerty"],
+    title:       "Karamelové tartaletky <em>s horkou čokoládou</em>",
+    time:        "4 h",
+    servings:    "20 ks",
+    level:       "Náročné",
+    paint:       "medovnik",
+    image:       "images/karamelove-tartaletky-s-horkou-cokoladou.jpeg",
+    detailImage: "images/karamelove-tartaletky-s-horkou-cokoladou-detail.jpeg",
+  },
   {
     slug:        "malinove-tartaletky-s-bilou-cokoladou",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "panna-cotta-se-slanym-karamelem",
-    featured:    true,
     categories:  ["Sladké", "Rýchle", "Torty & dezerty"],
     title:       "Panna cotta <em>so slaným karamelom</em>",
     time:        "30 min + chladenie",
@@ -356,6 +367,73 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "karamelove-tartaletky-s-horkou-cokoladou": {
+    date: "21. 8. 2026",
+    intro: "Tartaletky so slaným karamelom a horkou čokoládou sú ďalší zo série dezertov na sladký bar. Základom je krehké cesto, domáci slaný karamel a ganache z horkej čokolády. Príprava karamelu je jednoduchšia, než vyzerá, len na jednu vec si daj pozor: cukor skaramelizuj vo vyššom hrnci. Keď doň budeš prilievať horúcu smotanu, zmes vypení hore, a vďaka vyššiemu hrncu to nebude po celom sporáku :) Ganache z horkej čokolády pripravíš tiež veľmi jednoducho, je len z dvoch surovín.",
+    ingredients: [
+      {
+        group: "Cesto (na 20 ks malých 5 cm korpusov)",
+        items: [
+          { amount: "125 g", name: "hladká múka" },
+          { amount: "75 g",  name: "studené maslo" },
+          { amount: "40 g",  name: "práškový cukor" },
+          { amount: "25 g",  name: "mandľová múka" },
+          { amount: "20 g",  name: "vajec (pol rozšľahaného vajca)" },
+          { amount: " ",     name: "štipka soli" },
+        ],
+      },
+      {
+        group: "Karamelová náplň",
+        items: [
+          { amount: "200 g", name: "kryštálový cukor" },
+          { amount: "135 g", name: "smotana na šľahanie 33 %" },
+          { amount: "90 g",  name: "maslo" },
+          { amount: "2 g",   name: "soľ" },
+        ],
+      },
+      {
+        group: "Čokoládová ganache",
+        items: [
+          { amount: "100 g", name: "čokoláda 60 %" },
+          { amount: "100 g", name: "smotana na šľahanie 33 %" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Cesto",
+        startAt: 1,
+        items: [
+          "Okrem surovín si priprav:<ul><li>perforovanú podložku na pečenie</li><li>perforované ráfky na tartaletky</li><li>papier na pečenie</li><li>koliesko na pizzu</li><li>pravítko</li><li>ostrý nôž</li></ul>",
+          "Múku, soľ a studené maslo spracujeme do drobenky. Vmiešame mandľovú múku a cukor, potom vajce a spojíme do cesta. Pracujeme rýchlo, aby sa zbytočne nezahrievalo.",
+          "Predtvarujeme do obdĺžnika, zabalíme do potravinovej fólie a dáme do chladničky aspoň na <b>2 hodiny</b>.",
+          "Vychladené cesto rozdelíme na dve časti a každú vyváľame medzi 2 papiermi na pečenie na hrúbku <b>2–3 mm</b>. Takto dáme stuhnúť do chladničky, prípadne do mrazničky.",
+          "Pomocou pravítka a kolieska na pizzu odrežeme z cesta pásiky, ktoré budú tvoriť okraje. Ráfikom vykrojíme dno tartaletky a necháme ho v ráfiku. Prúžok cesta vložíme do ráfika a zarovnáme.",
+          "Vidličkou zľahka pritlačíme okraj tartaletky ku dnu a dno párkrát prepichneme. Ostrým nožom skrojíme prečnievajúce okraje.",
+          "Dáme do mrazničky na <b>30 minút</b>.",
+          "Rúru predhrejeme na <b>175 °C</b> bez ventilátora. Vychladené tartaletky premiestnime na perforovanú podložku a pečieme <b>15–20 minút</b> dozlatista.",
+        ],
+      },
+      {
+        heading: "Náplne",
+        startAt: 9,
+        items: [
+          "Pripravíme slaný karamel: cukor necháme vo vyššom hrnci roztopiť na karamel, kým v ňom nie sú žiadne hrudky cukru. Po častiach pridáme horúcu smotanu (pozor, treba mať vyšší hrniec, aby to nevykypelo) a miešame. Keď sa smotana spojí s karamelom, odstavíme z ohňa, pridáme soľ a maslo a miešame, kým sa všetko spojí do hladkej emulzie.",
+          "Karamel necháme vychladnúť a tartaletky ním plníme pomocou cukrárskej špičky do <b>⅔ výšky</b>, a dáme zachladiť.",
+          "Pripravíme si čokoládovú ganache: smotanu zohrejeme takmer do bodu varu. Odstavíme z ohňa, nalejeme na čokoládu a vymiešame dohladka. Nakoniec rozšľaháme tyčovým mixérom do hladkej emulzie.",
+          "Ganache nanesieme na vrch tartaletky, ktorá je už naplnená karamelom.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "S cestom pracuj rýchlo, aby sa maslo príliš nezahrialo. Ak sa začne lepiť, vráť ho na chvíľu do chladničky.",
+        "Na karamel použi vyšší hrniec, lebo pri prilievaní horúcej smotany zmes vybublinkuje nahor.",
+      ],
+    },
+  },
 
   "malinove-tartaletky-s-bilou-cokoladou": {
     date: "14. 8. 2026",
