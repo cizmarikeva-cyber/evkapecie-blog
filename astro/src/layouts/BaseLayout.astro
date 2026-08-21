@@ -28,7 +28,7 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
 
-  {image && <meta property="og:image" content={`https://evkapecie.cz/${image}`} />}
+  {image && <meta property="og:image" content={new URL(image, 'https://evkapecie.cz').href} />}
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
