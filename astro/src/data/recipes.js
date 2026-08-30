@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "karamelove-tartaletky-s-horkou-cokoladou",
+  slug:       "orechove-rezy-s-karamelovym-kremem",
   categories: ["Sladké", "Torty & dezerty"],
-  title:      "Karamelové tartaletky <em>s horkou čokoládou</em>",
-  intro:      "Tartaletky so slaným karamelom a horkou čokoládou sú ďalší zo série dezertov na sladký bar. Základom je krehké cesto, domáci slaný karamel a ganache z horkej čokolády. Príprava karamelu je jednoduchšia, než vyzerá, len na jednu vec si daj pozor: cukor skaramelizuj vo vyššom hrnci. Keď doň budeš prilievať horúcu smotanu, zmes vypení hore, a vďaka vyššiemu hrncu to nebude po celom sporáku :) Ganache z horkej čokolády pripravíš tiež veľmi jednoducho, je len z dvoch surovín.",
-  time:       "4 h",
+  title:      "Orechové rezy <em>s karamelovým krémom</em>",
+  intro:      "Orechové rezy typu Financier s karamelovým krémom tvoria poslednú časť receptov na sladký bar. Korpus je z hnedého masla a vlašských orechov, navrchu nadýchaný krém zo smotany a slaného karamelu. Vzhľadom trochu pripomína svetlé brownie, a chuťovo je to osvedčená kombinácia, ktorá nesklame. Krém aj cesto sa robia deň vopred, takže pečenie si to naplánuj na dva dni.",
+  time:       "2 h + chladenie cez noc",
   servings:   "20 ks",
-  level:      "Náročné",
+  level:      "Stredne náročné",
   paint:      "medovnik",
-  image:      "images/karamelove-tartaletky-s-horkou-cokoladou.jpeg",
+  image:      "images/orechove-rezy-s-karamelovym-kremem.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "orechove-rezy-s-karamelovym-kremem",
+    featured:    true,
+    categories:  ["Sladké", "Torty & dezerty"],
+    title:       "Orechové rezy <em>s karamelovým krémom</em>",
+    time:        "2 h + chladenie cez noc",
+    servings:    "20 ks",
+    level:       "Stredne náročné",
+    paint:       "medovnik",
+    image:       "images/orechove-rezy-s-karamelovym-kremem.jpeg",
+    detailImage: "images/orechove-rezy-s-karamelovym-kremem-detail.jpeg",
+  },
   {
     slug:        "karamelove-tartaletky-s-horkou-cokoladou",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "brownies-s-cokoladovym-kremem",
-    featured:    true,
     categories:  ["Sladké", "Torty & dezerty"],
     title:       "Brownies <em>s čokoládovým krémom</em>",
     time:        "45 min + chladenie krému",
@@ -367,6 +378,105 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "orechove-rezy-s-karamelovym-kremem": {
+    date: "30. 8. 2026",
+    intro: "Orechové rezy typu Financier s karamelovým krémom tvoria poslednú časť receptov na sladký bar. Korpus je z hnedého masla a vlašských orechov, navrchu nadýchaný krém zo smotany a slaného karamelu. Vzhľadom trochu pripomína svetlé brownie, a chuťovo je to osvedčená kombinácia, ktorá nesklame. Krém aj cesto sa robia deň vopred, takže pečenie si to naplánuj na dva dni.",
+    ingredients: [
+      {
+        group: "Slaný karamel",
+        items: [
+          { amount: "90 g",  name: "kryštálový cukor" },
+          { amount: "25 g",  name: "glukózový sirup" },
+          { amount: "60 g",  name: "smotana 33 %" },
+          { amount: "25 g",  name: "maslo" },
+          { amount: "1,5 g", name: "soľ" },
+        ],
+      },
+      {
+        group: "Karamelový krém",
+        items: [
+          { amount: "250 g", name: "smotana na šľahanie 33 %" },
+          { amount: "150 g", name: "hustý slaný karamel" },
+          { amount: "2,5 g", name: "želatína" },
+          { amount: "4 g",   name: "glukózový sirup" },
+        ],
+      },
+      {
+        group: "Korpus",
+        items: [
+          { amount: "145 g", name: "vlašské orechy (100 g jemne mletých, 45 g nahrubo nasekaných)" },
+          { amount: "110 g", name: "práškový cukor" },
+          { amount: "50 g",  name: "hladká múka" },
+          { amount: "1 g",   name: "soľ" },
+          { amount: "145 g", name: "bielkov (cca 5 bielkov)" },
+          { amount: "150 g", name: "masla, skaramelizovať na hnedé maslo (precediť, vyjde cca 130 g hnedého masla)" },
+          { amount: "3 g",   name: "vanilkový extrakt" },
+        ],
+      },
+      {
+        group: "Na ozdobu",
+        items: [
+          { amount: " ", name: "karamelové chrumky" },
+          { amount: " ", name: "sekané orechy" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Slaný karamel",
+        startAt: 1,
+        items: [
+          "Cukor necháme v hrnci roztopiť na karamel.",
+          "Pridáme horúcu smotanu a miešame, aby sa nevytvorili hrudky.",
+          "Keď sa smotana spojí s karamelom, odstavíme z ohňa, pridáme soľ a maslo a miešame, kým sa všetko spojí do hladkej emulzie.",
+        ],
+      },
+      {
+        heading: "Krém",
+        startAt: 4,
+        items: [
+          "Želatínu necháme napučať v studenej vode.",
+          "Polovicu smotany zohrejeme spolu s glukózovým sirupom takmer do bodu varu. Pridáme hustý slaný karamel a miešame, kým sa vytvorí hladká emulzia.",
+          "Pridáme želatínu a premiešame.",
+          "Po rozpustení želatíny pridáme zvyšnú polovicu studenej smotany.",
+          "Tyčovým mixérom vytvoríme hladkú emulziu.",
+          "Zakryjeme fóliou priamo na povrch a necháme odležať v chladničke <b>cez noc</b>.",
+        ],
+      },
+      {
+        heading: "Cesto",
+        startAt: 10,
+        items: [
+          "Maslo skaramelizujeme na hnedé maslo, scedíme a necháme vychladnúť približne na izbovú teplotu.",
+          "Zmiešame mleté orechy, preosiaty cukor, múku a soľ.",
+          "Bielky len premiešame metličkou, nešľaháme.",
+          "Pridáme bielky, vanilku a hnedé maslo k suchej zmesi a premiešame.",
+          "Vmiešame nasekané orechy.",
+          "Nalejeme do formy vystlanej papierom na pečenie.",
+          "Pečieme pri <b>170 °C</b> približne <b>25–30 minút</b>.",
+          "Cesto po vychladnutí zakryjeme a necháme odležať v chlade <b>minimálne 4 hodiny</b>, ideálne cez noc.",
+        ],
+      },
+      {
+        heading: "Dokončenie",
+        startAt: 18,
+        items: [
+          "Vychladené cesto nakrájame na štvorčeky <b>4x4 cm</b>.",
+          "Vychladený krém pri nízkych otáčkach vyšľaháme (pozor - neprešľahať).",
+          "Pomocou cukrárskej špičky nanesieme na rezy, posypeme karamelovými chrumkami a sekanými orechmi.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Pečenie si naplánuj na dva dni, pretože krém aj korpus potrebujú odležať cez noc.",
+        "Krém sa dá pripraviť aj bez glukózového sirupu a želatíny. Pridávam ich kvôli dlhšej trvanlivosti, ale keď ho robíš na okamžitú konzumáciu, netreba ich.",
+        "Karamel som skúšala aj ako ozdobu navrchu, ale po dni v chladničke sa mi začal roztekať. Ak rezy robíš dopredu, radšej ich posyp len orechami alebo karamelovými chrumkami.",
+      ],
+    },
+  },
 
   "karamelove-tartaletky-s-horkou-cokoladou": {
     date: "21. 8. 2026",
