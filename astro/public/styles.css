@@ -464,7 +464,7 @@ a:hover { color: var(--lekvar-dark); }
   display: block; font-family: var(--font-body); font-size: 11px; font-weight: 700;
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--lekvar); margin-bottom: 4px;
 }
-.steps { list-style: none; counter-reset: stepc; padding: 0; margin: 24px 0 0; display: grid; gap: 24px; }
+.steps { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 24px; }
 .steps > li { counter-increment: stepc; display: grid; grid-template-columns: 40px 1fr; gap: 18px; }
 .steps > li::before {
   content: counter(stepc);

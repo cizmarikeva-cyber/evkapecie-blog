@@ -190,7 +190,7 @@ const paintClass = !detailImage ? ` paint-${recipe.paint}` : '';
                     {section.heading}
                   </h2>
                 )}
-                <ol class="steps" start={section.startAt}>
+                <ol class="steps" start={section.startAt} style={`counter-reset: stepc ${section.startAt - 1}`}>
                   {section.items.map(step => (
                     <li>
                       <div set:html={step} />
