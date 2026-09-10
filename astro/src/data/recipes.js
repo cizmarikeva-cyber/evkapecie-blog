@@ -3,19 +3,43 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "orechove-rezy-s-karamelovym-kremem",
-  categories: ["Sladké", "Torty & dezerty"],
-  title:      "Orechové rezy <em>s karamelovým krémom</em>",
-  intro:      "Orechové rezy typu Financier s karamelovým krémom tvoria poslednú časť receptov na sladký bar. Korpus je z hnedého masla a vlašských orechov, navrchu nadýchaný krém zo smotany a slaného karamelu. Vzhľadom trochu pripomína svetlé brownie, a chuťovo je to osvedčená kombinácia, ktorá nesklame. Krém aj cesto sa robia deň vopred, takže pečenie si to naplánuj na dva dni.",
-  time:       "2 h + chladenie cez noc",
-  servings:   "20 ks",
+  slug:       "skoricove-rolky-s-jablky-a-polevou",
+  categories: ["Sladké", "Sezónne"],
+  title:      "Škoricové rolky <em>s jablkami a polevou</em>",
+  intro:      "Škoricové rolky sú za mňa top koláč na celú jeseň aj zimu. Skúsila som už naozaj veľa receptov, ale pravidelne sa vraciam k tomuto jednému, lebo cesto je mäkkučké (a nie, nie je suché a nedrobí sa!). Ak ich chceš ráno čerstvé, môžeš ich pripraviť už večer, nechať vykysnúť cez noc v chladničke a ráno len upiecť.",
+  time:       "2 h",
+  servings:   "12 ks",
   level:      "Stredne náročné",
-  paint:      "medovnik",
-  image:      "images/orechove-rezy-s-karamelovym-kremem.jpeg",
+  paint:      "jablka",
+  image:      "images/skoricove-rolky-s-jablky-a-polevou.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "skoricove-rolky-s-jablky-a-polevou",
+    featured:    true,
+    categories:  ["Sladké", "Sezónne"],
+    title:       "Škoricové rolky <em>s jablkami a polevou</em>",
+    time:        "2 h",
+    servings:    "12 ks",
+    level:       "Stredne náročné",
+    paint:       "jablka",
+    image:       "images/skoricove-rolky-s-jablky-a-polevou.jpeg",
+    detailImage: "images/skoricove-rolky-s-jablky-a-polevou-detail.jpeg",
+  },
+  {
+    slug:        "slany-cuketovy-kolac",
+    featured:    true,
+    categories:  ["Slané", "Rýchle"],
+    title:       "Slaný <em>cuketový</em> koláč",
+    time:        "1 h",
+    servings:    "1 plech 24×20 cm",
+    level:       "Ľahké",
+    paint:       "cesnek",
+    image:       "images/slany-cuketovy-kolac.jpeg",
+    detailImage: "images/slany-cuketovy-kolac-detail.jpeg",
+  },
   {
     slug:        "orechove-rezy-s-karamelovym-kremem",
     featured:    true,
@@ -30,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "karamelove-tartaletky-s-horkou-cokoladou",
-    featured:    true,
     categories:  ["Sladké", "Torty & dezerty"],
     title:       "Karamelové tartaletky <em>s horkou čokoládou</em>",
     time:        "4 h",
@@ -42,7 +65,6 @@ export const RECIPES = [
   },
   {
     slug:        "malinove-tartaletky-s-bilou-cokoladou",
-    featured:    true,
     categories:  ["Sladké", "Torty & dezerty"],
     title:       "Malinové tartaletky <em>s bielou čokoládou</em>",
     time:        "4 h",
@@ -379,9 +401,125 @@ export const CATEGORIES = [
 
 export const RECIPE_DATA = {
 
+  "skoricove-rolky-s-jablky-a-polevou": {
+    date: "10. 9. 2026",
+    instagram: "https://www.instagram.com/p/DdHESu_sddb/",
+    intro: "Škoricové rolky sú za mňa top koláč na celú jeseň aj zimu. Skúsila som už naozaj veľa receptov, ale pravidelne sa vraciam k tomuto jednému, lebo cesto je mäkkučké (a nie, nie je suché a nedrobí sa!). Ak ich chceš ráno čerstvé, môžeš ich pripraviť už večer, nechať vykysnúť cez noc v chladničke a ráno len upiecť.",
+    ingredients: [
+      {
+        group: "Cesto",
+        items: [
+          { amount: "300 g",  name: "hladkej múky" },
+          { amount: "130 ml", name: "vlažného mlieka" },
+          { amount: "12 g",   name: "čerstvého droždia" },
+          { amount: "1",      name: "vajce" },
+          { amount: "30 g",   name: "cukru krupica" },
+          { amount: "2 g",    name: "soli (cca 1/2 čajovej lyžičky)" },
+          { amount: "40 g",   name: "zmäknutého masla" },
+        ],
+      },
+      {
+        group: "Náplň",
+        items: [
+          { amount: "80 g",      name: "masla" },
+          { amount: "1 lyžička", name: "škorice" },
+          { amount: "75 g",      name: "trstinový cukor" },
+          { amount: "200 g",     name: "očistených jabĺk" },
+        ],
+      },
+      {
+        group: "Poleva",
+        items: [
+          { amount: "50 g",   name: "smotanového syra (napr. Philadelphia)" },
+          { amount: "25 g",   name: "zmäknutého masla" },
+          { amount: "30 g",   name: "práškového cukru" },
+          { amount: "štipka", name: "mletej vanilky" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Cesto",
+        startAt: 1,
+        items: [
+          "Všetky ingrediencie na cesto okrem masla miesime asi <b>5 minút</b>.",
+          "Pridáme zmäknuté maslo a miesime ďalej, kým sa zapracuje.",
+          "Prikryjeme a necháme kysnúť <b>40 až 60 minút</b>, kým zdvojnásobí objem.",
+        ],
+      },
+      {
+        heading: "Náplň a rolovanie",
+        startAt: 4,
+        items: [
+          "Medzitým zmiešame zmäknuté maslo s cukrom a škoricou a jablká nakrájame na tenké plátky.",
+          "Vykysnuté cesto rozvaľkáme na obdĺžnik cca <b>30×40 cm</b>, potrieme náplňou a poukladáme jablká.",
+          "Zrolujeme po dlhšej strane, nakrájame na <b>12 častí</b> a uložíme do vymasteného pekáča <b>24×20 cm</b>. Necháme ešte <b>20 minút</b> vykysnúť pri izbovej teplote.",
+        ],
+      },
+      {
+        heading: "Pečenie a poleva",
+        startAt: 7,
+        items: [
+          "Pečieme na <b>200 °C</b> (horný a dolný ohrev) cca <b>20–25 minút</b>.",
+          "Kým sa pečú, zmiešame ingrediencie na polevu a upečené rolky ňou horúce potrieme.",
+        ],
+      },
+    ],
+    tips: {
+      heading: "Tipy",
+      items: [
+        "Ak ich chceš ráno čerstvé, pekáč po tvarovaní prikry fóliou a vlož do chladničky na noc (cca 8 hodín, pri 6 °C). Ráno ich stačí vložiť do vyhriatej rúry a upiecť.",
+        "Krájam ich niťou, nie nožom. Rez je potom čistejší a nerozrežeš si podložku, ako ja pred pár rokmi :)",
+      ],
+    },
+  },
+
+  "slany-cuketovy-kolac": {
+    date: "10. 9. 2026",
+    instagram: "https://www.instagram.com/p/Dc1KjRTslRq/",
+    intro: "Mám tu jeden praktický a rýchly spôsob, ako spracovať cuketu, keď jej máš doma priveľa. Tento slaný cuketový koláč sa hodí ako ľahšia večera, alebo ako snack pre návštevu, a super k nemu pasuje napríklad kyslá smotana. Ja som mala zrovna žltú cuketu, ale určite môže byť aj klasická zelená. Recept je na menší plech 24×20 cm, na klasický veľký plech môžeš množstvo zdvojnásobiť.",
+    ingredients: [
+      {
+        group: null,
+        items: [
+          { amount: "300 g", name: "očistenej cukety" },
+          { amount: "3",     name: "vajcia" },
+          { amount: "100 g", name: "anglickej slaniny" },
+          { amount: "100 g", name: "nivy" },
+          { amount: "30 g",  name: "oleja" },
+          { amount: "100 g", name: "hladkej múky" },
+          { amount: "1 ČL",  name: "prášku do pečiva" },
+          { amount: "1",     name: "menšia cibuľa" },
+          { amount: "1",     name: "struk cesnaku" },
+          { amount: " ",     name: "čierne korenie" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Cesto",
+        startAt: 1,
+        items: [
+          "Cuketu očistíme a nastrúhame na hrubom strúhadle. Ak má veľa šťavy, jemne vyžmýkame.",
+          "Pridáme vajcia, olej, nahrubo nastrúhanú nivu, nakrájanú slaninu, cibuľku, pretlačený cesnak a čierne korenie a dobre premiešame.",
+          "Nakoniec vmiešame múku zmiešanú s práškom do pečiva.",
+        ],
+      },
+      {
+        heading: "Pečenie",
+        startAt: 4,
+        items: [
+          "Vylejeme na vymastený a múkou vysypaný menší pekáč (<b>24×20 cm</b>).",
+          "Pečieme na <b>175 °C</b> (horný dolný ohrev), <b>40–50 minút</b> do zlatista.",
+          "Podávame s kyslou smotanou.",
+        ],
+      },
+    ],
+  },
+
   "orechove-rezy-s-karamelovym-kremem": {
     date: "30. 8. 2026",
-    intro: "Orechové rezy typu Financier s karamelovým krémom tvoria poslednú časť receptov na sladký bar. Korpus je z hnedého masla a vlašských orechov, navrchu nadýchaný krém zo smotany a slaného karamelu. Vzhľadom trochu pripomína svetlé brownie, a chuťovo je to osvedčená kombinácia, ktorá nesklame. Krém aj cesto sa robia deň vopred, takže pečenie si to naplánuj na dva dni.",
+    intro: "Orechové rezy typu Financier s karamelovým krémom tvoria poslednú časť receptov na sladký bar. Korpus je z hnedého masla a vlašských orechov, navrchu nadýchaný krém zo smotany a slaného karamelu. Vzhľadom trochu pripomína svetlé brownie, a chuťovo je to osvedčená kombinácia, ktorá nesklame. Krém aj cesto sa robia deň vopred, takže pečenie si naplánuj na dva dni.",
     ingredients: [
       {
         group: "Slaný karamel",
