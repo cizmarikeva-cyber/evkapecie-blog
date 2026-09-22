@@ -623,11 +623,11 @@ export const RECIPE_DATA = {
       {
         group: "Cesto (na 20 ks malých 5 cm korpusov)",
         items: [
-          { amount: "125 g", name: "hladká múka" },
-          { amount: "75 g",  name: "studené maslo" },
-          { amount: "40 g",  name: "práškový cukor" },
-          { amount: "25 g",  name: "mandľová múka" },
-          { amount: "20 g",  name: "vajec (pol rozšľahaného vajca)" },
+          { amount: "200 g", name: "hladká múka" },
+          { amount: "120 g", name: "studené maslo" },
+          { amount: "60 g",  name: "práškový cukor" },
+          { amount: "40 g",  name: "mandľová múka" },
+          { amount: "30 g",  name: "vajec (asi polovica rozšľahaného vajca)" },
           { amount: " ",     name: "štipka soli" },
         ],
       },
@@ -691,11 +691,11 @@ export const RECIPE_DATA = {
       {
         group: "Cesto (na 20 ks malých 5 cm korpusov)",
         items: [
-          { amount: "125 g", name: "hladká múka" },
-          { amount: "75 g",  name: "studené maslo" },
-          { amount: "40 g",  name: "práškový cukor" },
-          { amount: "25 g",  name: "mandľová múka" },
-          { amount: "20 g",  name: "vajec (pol rozšľahaného vajca)" },
+          { amount: "200 g", name: "hladká múka" },
+          { amount: "120 g", name: "studené maslo" },
+          { amount: "60 g",  name: "práškový cukor" },
+          { amount: "40 g",  name: "mandľová múka" },
+          { amount: "30 g",  name: "vajec (asi polovica rozšľahaného vajca)" },
           { amount: " ",     name: "štipka soli" },
         ],
       },
