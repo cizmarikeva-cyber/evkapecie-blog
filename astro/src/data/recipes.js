@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "skoricove-rolky-s-jablky-a-polevou",
-  categories: ["Sladké", "Sezónne"],
-  title:      "Škoricové rolky <em>s jablkami a polevou</em>",
-  intro:      "Škoricové rolky sú za mňa top koláč na celú jeseň aj zimu. Skúsila som už naozaj veľa receptov, ale pravidelne sa vraciam k tomuto jednému, lebo cesto je mäkkučké (a nie, nie je suché a nedrobí sa!). Ak ich chceš ráno čerstvé, môžeš ich pripraviť už večer, nechať vykysnúť cez noc v chladničke a ráno len upiecť.",
-  time:       "2 h",
-  servings:   "12 ks",
-  level:      "Stredne náročné",
-  paint:      "jablka",
-  image:      "images/skoricove-rolky-s-jablky-a-polevou.jpeg",
+  slug:       "jak-na-tartaletky",
+  categories: ["Sladké", "Torty & dezerty"],
+  title:      "Ako na <em>tartaletky?</em>",
+  intro:      "Tartaletky z krehkého cesta vyzerajú náročne, ale dá sa to zvládnuť ak dodržíš pár pravidiel. Do tohto článku som spísala môj presný postup, a za mňa najzásadnejšia vec pri práci je teplota (cesto sa nesmie príliš zahrievať), a dobré pomôcky (perforovaná podložka a ráfky). Postup som rozdelila na tri časti tak, ako som ho ukazovala na Instagrame: cesto, tvarovanie, pečenie. Náplň si už potom môžeš vybrať podľa chuti - na mojom blogu nájdeš recepty napríklad na malinové s bielou čokoládou, alebo karamelovo-čokoládové. Z tohto množstva vyjde 20 ks malých (5 cm) alebo 12 ks veľkých (7 cm) tartaletiek.",
+  time:       "4 h",
+  servings:   "20 ks malých (5 cm) alebo 12 veľkých (7 cm)",
+  level:      "Náročné",
+  paint:      "medovnik",
+  image:      "images/jak-na-tartaletky.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "jak-na-tartaletky",
+    featured:    true,
+    categories:  ["Sladké", "Torty & dezerty"],
+    title:       "Ako na <em>tartaletky?</em>",
+    time:        "4 h",
+    servings:    "20 ks malých (5 cm) alebo 12 veľkých (7 cm)",
+    level:       "Náročné",
+    paint:       "medovnik",
+    image:       "images/jak-na-tartaletky.jpeg",
+    detailImage: "images/jak-na-tartaletky-detail.jpeg",
+  },
   {
     slug:        "skoricove-rolky-s-jablky-a-polevou",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "orechove-rezy-s-karamelovym-kremem",
-    featured:    true,
     categories:  ["Sladké", "Torty & dezerty"],
     title:       "Orechové rezy <em>s karamelovým krémom</em>",
     time:        "2 h + chladenie cez noc",
@@ -400,6 +411,71 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "jak-na-tartaletky": {
+    date: "22. 9. 2026",
+    intro: "Tartaletky z krehkého cesta vyzerajú náročne, ale dá sa to zvládnuť ak dodržíš pár pravidiel. Do tohto článku som spísala môj presný postup, a za mňa najzásadnejšia vec pri práci je teplota (cesto sa nesmie príliš zahrievať), a dobré pomôcky (perforovaná podložka a ráfky). Postup som rozdelila na tri časti tak, ako som ho ukazovala na Instagrame: cesto, tvarovanie, pečenie. Náplň si už potom môžeš vybrať podľa chuti - na mojom blogu nájdeš recepty napríklad na malinové s bielou čokoládou, alebo karamelovo-čokoládové. Z tohto množstva vyjde 20 ks malých (5 cm) alebo 12 ks veľkých (7 cm) tartaletiek.",
+    ingredients: [
+      {
+        group: "Cesto",
+        items: [
+          { amount: "200 g", name: "hladkej múky" },
+          { amount: "120 g", name: "studeného masla" },
+          { amount: "60 g",  name: "práškového cukru" },
+          { amount: "40 g",  name: "mandľovej múky" },
+          { amount: "30 g",  name: "vajec (asi polovica rozšľahaného vajca)" },
+          { amount: " ",     name: "štipka soli" },
+        ],
+      },
+      {
+        group: "Pomôcky",
+        items: [
+          { amount: "", name: "perforovaná podložka na pečenie" },
+          { amount: "", name: "perforované ráfky na tartaletky" },
+          { amount: "", name: "papier na pečenie" },
+          { amount: "", name: "plech (taký, ktorý vojde do mrazničky - na chladenie tartaletiek)" },
+          { amount: "", name: "koliesko na pizzu" },
+          { amount: "", name: "pravítko alebo pekárska karta" },
+          { amount: "", name: "ostrý nôž" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Cesto",
+        startAt: 1,
+        items: [
+          "Zo studeného masla, múky, cukru a soli si najprv urobíme drobenku.",
+          "Vmiešame mandľovú múku a soľ, až nakoniec vajce.",
+          "Všetko rýchlo spojíme do jedného celku, aby sa cesto zbytočne nezahrievalo.",
+          "Cesto predtvarujeme a dáme chladiť aspoň na <b>2 hodiny</b>. Vďaka tomu tvaru sa zachladí rovnomernejšie a vaľkanie ide potom rýchlejšie.",
+        ],
+      },
+      {
+        heading: "Tvarovanie",
+        startAt: 5,
+        items: [
+          "Vychladené cesto rozdelíme na polovicu. Jednu časť odložíme naspäť do chladničky (spracujeme ju neskôr).",
+          "Druhú časť rozvaľkáme medzi papiermi na pečenie na <b>2-3 mm</b> a dáme zase chladiť - potrebujeme konzistenciu ako stuhnuté maslo.",
+          "Papiere odlepíme a vykrojíme dno, to necháme v ráfiku.",
+          "Odrežeme pásiky, ktoré poslúžia ako okraje - tu si pomáhame kolieskom na pizzu a pravítkom alebo pekárskou kartou.",
+          "Odrezaným pásikom cesta vyložíme okraje ráfiku. Vidličkou ho pritlačíme ku dnu a dáme na <b>3-4 minúty</b> do mrazničky.",
+          "Ostrým nožom skrojíme okraje, dno pár krát prepichneme vidličkou a tvarovanie je hotové.",
+          "Vytvarované tartaletky dáme pred pečením na <b>polhodinu</b> do mrazničky. Vďaka tomu sú potom krehké a pri pečení si lepšie udržia svoj tvar.",
+        ],
+      },
+      {
+        heading: "Pečenie",
+        startAt: 12,
+        items: [
+          "Kým sa tartaletky chladia, predhrejeme rúru na <b>170 °C</b> (bez ventilátora).",
+          "Vychladené tartaletky preložíme na perforovanú podložku a pečieme do zlatista, v mojej rúre to trvá <b>17-20 minút</b>, ale doporučujem priebežne kontrolovať a riadiť sa podľa farby :)",
+          "Necháme ich trochu vychladnúť a vyberieme z formičiek.",
+          "Plníme až po úplnom vychladnutí.",
+        ],
+      },
+    ],
+  },
 
   "skoricove-rolky-s-jablky-a-polevou": {
     date: "10. 9. 2026",

@@ -144,7 +144,7 @@ const paintClass = !detailImage ? ` paint-${recipe.paint}` : '';
                 <ul>
                   {group.items.map(item => (
                     <li>
-                      <b>{item.amount}</b>
+                      {item.amount && <b>{item.amount}</b>}
                       <span>{item.name}</span>
                     </li>
                   ))}
