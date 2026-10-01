@@ -707,6 +707,47 @@ a:hover { color: var(--lekvar-dark); }
 .pagination-btn.active { background: var(--lekvar); color: var(--maslo); border-color: var(--lekvar); font-weight: 700; }
 .pagination-btn:disabled { opacity: 0.35; cursor: default; }
 
+/* ---- menu E-booky (rozbaľovacie) -------------------------------- */
+.nav-drop { position: relative; display: flex; }
+.nav-drop-btn {
+  background: none; border: 0; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.nav-drop-chev { transition: transform var(--dur-2) var(--ease-settle); }
+.nav-drop.open .nav-drop-chev { transform: rotate(180deg); }
+.nav-drop-menu {
+  position: absolute; top: calc(100% + 14px); left: -20px; z-index: 60;
+  min-width: 0; padding: 8px;
+  background: var(--paper-soft); border: 1px solid var(--paper-line);
+  border-radius: var(--radius-3); box-shadow: var(--shadow-3);
+  display: none; flex-direction: column;
+}
+.nav-drop-menu::before { /* most cez medzeru, aby hover nespadol */
+  content: ""; position: absolute; top: -16px; left: 0; right: 0; height: 16px;
+}
+.nav-drop.open .nav-drop-menu { display: flex; }
+@media (hover: hover) {
+  .nav-drop:hover .nav-drop-menu { display: flex; }
+  .nav-drop:hover .nav-drop-chev { transform: rotate(180deg); }
+}
+.nav-drop-item {
+  font-family: var(--font-body); font-size: 14.5px; font-weight: 500; color: var(--mak);
+  padding: 10px 14px; border-radius: var(--radius-2); text-decoration: none; white-space: nowrap;
+}
+.nav-drop-item:hover { background: var(--paper-deep); color: var(--lekvar); }
+
+/* mobilné menu: E-booky ako rozbaľovacia sekcia */
+.nav-mobile-drop { border-bottom: 1px solid var(--paper-line); }
+.nav-mobile-drop summary {
+  list-style: none; cursor: pointer; border-bottom: none !important;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-mobile-drop summary::-webkit-details-marker { display: none; }
+.nav-mobile-drop summary.active::after { display: none; }
+.nav-mobile-drop[open] .nav-drop-chev { transform: rotate(180deg); }
+.nav-mobile-drop .nav-drop-item { display: block; font-size: 16px; white-space: normal; padding: 8px 0 8px 16px; border-left: 2px solid var(--paper-line); margin-bottom: 8px; border-radius: 0; }
+.nav-mobile-drop .nav-drop-item:hover { background: none; }
+
 /* ---- Mobilné menu ----------------------------------------------- */
 .nav-hamburger {
   display: none;
@@ -1096,3 +1137,198 @@ a.hero-image {
 
   .ebook-list { max-width: none; }
 }
+
+/* ---- landing platený e-book "Jedno cesto, 10 koláčov" ---- */
+.pe-main { padding-bottom: 32px; }
+.pe-section { padding-block: 56px; }
+.pe-narrow > * { max-width: 760px; }
+.pe-h2 { font-size: var(--fs-h2); letter-spacing: -0.015em; }
+.pe-h3 { font-size: 28px; line-height: 1.15; }
+.pe-text { margin-top: 18px; font-size: 18px; line-height: 1.65; color: var(--mak-soft); max-width: 62ch; }
+.pe-sub { margin-top: 12px; }
+
+/* hero */
+.pe-hero {
+  display: grid; grid-template-columns: 1.05fr 1fr; column-gap: 64px;
+  align-items: center; padding-block: 64px 56px; border-bottom: 1px solid var(--paper-line);
+}
+.pe-title {
+  font-size: clamp(2.75rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -0.025em;
+  margin-top: 16px;
+}
+.pe-title em { font-style: italic; font-weight: 500; color: var(--lekvar); display: block; }
+.pe-lead { margin-top: 24px; max-width: 54ch; font-size: 19px; line-height: 1.6; color: var(--mak-soft); }
+.pe-cta { margin-top: 32px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.pe-price-note { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--ink-mute); }
+.pe-hero-media {
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 16px;
+}
+.pe-collage-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  border-radius: var(--radius-3); box-shadow: var(--shadow-2);
+}
+.pe-collage-a { grid-column: 1 / -1; aspect-ratio: 3 / 2; border-radius: var(--radius-4); box-shadow: var(--shadow-3); }
+.pe-collage-b, .pe-collage-c { aspect-ratio: 1 / 1; }
+
+/* citát-callout */
+.pe-tip { margin-top: 32px; }
+
+/* odkaz na free e-book */
+.pe-known {
+  display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: center;
+  background: var(--smotana); border: 1px solid var(--paper-line);
+  border-radius: var(--radius-4); padding: 40px 48px;
+}
+.pe-known-media { display: block; }
+.pe-known-img {
+  width: 100%; height: auto; border-radius: var(--radius-2); box-shadow: var(--shadow-2);
+  transform: rotate(-2deg); transition: transform var(--dur-2) var(--ease-settle);
+}
+.pe-known-media:hover .pe-known-img { transform: rotate(0deg); }
+
+/* mriežka 10 koláčov */
+.pe-grid {
+  list-style: none; padding: 0; margin: 32px 0 0;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px 20px;
+}
+.pe-card { display: flex; flex-direction: column; gap: 12px; }
+.pe-card-media {
+  position: relative; aspect-ratio: 1 / 1; border-radius: var(--radius-3);
+  overflow: hidden; box-shadow: var(--shadow-1);
+}
+.pe-card-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform var(--dur-4) var(--ease-settle);
+}
+.pe-card:hover .pe-card-img { transform: scale(1.04); }
+.pe-card-num {
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(253,240,213,0.94); color: var(--ink);
+  font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 15px;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+}
+.pe-card-name {
+  font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.25; color: var(--mak);
+}
+.pe-hand {
+  margin-top: 32px; font-family: var(--font-display); font-style: italic;
+  font-size: 22px; color: var(--lekvar);
+}
+
+/* dva panely */
+.pe-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.pe-panel {
+  background: var(--smotana); border: 1px solid var(--paper-line);
+  border-radius: var(--radius-4); padding: 36px 40px;
+}
+.pe-panel .pe-text { font-size: 17px; }
+
+/* recenzie */
+.pe-quotes { margin-top: 32px; columns: 3 280px; column-gap: 20px; }
+.pe-quote {
+  break-inside: avoid; margin: 0 0 20px;
+  background: var(--smotana); border: 1px solid var(--paper-line);
+  border-left: 3px solid var(--lekvar);
+  border-radius: var(--radius-3); padding: 22px 24px;
+}
+.pe-quote p {
+  font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.4; color: var(--mak);
+}
+
+/* ponuka + cena */
+.pe-offer-inner {
+  position: relative; display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: start;
+}
+.pe-checks { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; }
+.pe-checks li {
+  position: relative; padding-left: 32px;
+  font-size: 16px; line-height: 1.55; color: rgba(246,239,224,0.8);
+}
+.pe-checks li::before {
+  content: "✓"; position: absolute; left: 0; top: 0;
+  font-weight: 700; color: var(--med-soft);
+}
+.pe-checks strong { color: var(--maslo); font-weight: 600; }
+.pe-price-card {
+  background: var(--maslo); color: var(--mak);
+  border-radius: var(--radius-3); padding: 32px;
+}
+.pe-price-card .pe-price-label {
+  font-family: var(--font-body); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--lekvar);
+}
+.pe-price-card .pe-price { margin-top: 10px; display: flex; align-items: baseline; gap: 14px; }
+.pe-price-now { font-family: var(--font-display); font-weight: 700; font-size: 56px; line-height: 1; color: var(--mak); }
+.pe-price-old { font-family: var(--font-display); font-size: 26px; color: var(--ink-mute); }
+.newsletter .pe-price-text { color: var(--mak-soft); font-size: 15px; margin: 16px 0 24px; }
+.pe-price-card .pe-btn-light { background: var(--lekvar); color: var(--maslo); width: 100%; justify-content: center; }
+.pe-price-card .pe-btn-light:hover { background: var(--lekvar-dark); color: var(--maslo); }
+
+/* pre koho */
+.pe-arrows { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+.pe-arrows li { position: relative; padding-left: 32px; font-size: 18px; line-height: 1.55; color: var(--mak-soft); }
+.pe-arrows li::before {
+  content: "→"; position: absolute; left: 0; top: 0;
+  font-family: var(--font-display); font-weight: 600; color: var(--lekvar);
+}
+.pe-not-for {
+  margin-top: 28px; padding: 20px 24px; border-radius: var(--radius-3);
+  border: 1px dashed var(--paper-line); background: rgba(0,48,73,0.03);
+  font-size: 16px; line-height: 1.6; color: var(--ink-mute);
+}
+
+/* FAQ */
+.pe-faq { margin-top: 24px; border-top: 1px solid var(--paper-line); }
+.pe-faq details { border-bottom: 1px solid var(--paper-line); }
+.pe-faq summary {
+  list-style: none; cursor: pointer; padding: 20px 40px 20px 0; position: relative;
+  font-family: var(--font-display); font-weight: 600; font-size: 21px; color: var(--mak);
+}
+.pe-faq summary::-webkit-details-marker { display: none; }
+.pe-faq summary::after {
+  content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  font-family: var(--font-body); font-weight: 400; font-size: 26px; color: var(--lekvar);
+  transition: transform var(--dur-2) var(--ease-settle);
+}
+.pe-faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+.pe-faq details p { padding: 0 0 22px; font-size: 17px; line-height: 1.65; color: var(--mak-soft); max-width: 62ch; }
+
+/* záver */
+.pe-final { margin: 0; text-align: center; padding: 56px 48px; }
+.pe-final h2 { font-size: var(--fs-h2); }
+.pe-final p { margin: 0 auto; }
+.pe-final-cta { margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.pe-final .pe-btn-light { background: var(--maslo); color: var(--lekvar); }
+.pe-final .pe-btn-light:hover { background: var(--paper-deep); color: var(--lekvar-dark); }
+.pe-final .pe-final-note { font-family: var(--font-display); font-style: italic; font-size: 17px; opacity: 0.8; }
+
+/* kto som */
+.pe-about { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; }
+.pe-about-img {
+  width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover;
+  border-radius: 20px; box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+}
+.pe-signoff { margin-top: 24px; font-family: var(--font-display); font-style: italic; font-size: 26px; color: var(--lekvar); }
+
+@media (max-width: 1024px) {
+  .pe-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .pe-section { padding-block: 40px; }
+  .pe-hero { grid-template-columns: 1fr; row-gap: 32px; padding-block: 40px; }
+  .pe-cta .btn { width: 100%; justify-content: center; }
+  .pe-known { grid-template-columns: 1fr; gap: 28px; padding: 28px 24px; }
+  .pe-known-media { max-width: 180px; }
+  .pe-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 14px; }
+  .pe-card-name { font-size: 16px; }
+  .pe-duo { grid-template-columns: 1fr; }
+  .pe-panel { padding: 28px 24px; }
+  .pe-offer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .pe-price-card { padding: 24px; }
+  .pe-final { padding: 40px 24px; }
+  .pe-final .btn { width: 100%; justify-content: center; white-space: normal; }
+  .pe-about { grid-template-columns: 1fr; gap: 28px; }
+  .pe-about-img { max-width: 260px; }
+  .pe-tip p { font-size: 22px; }
+}
+#cena { scroll-margin-top: calc(var(--nav-h) + 16px); }

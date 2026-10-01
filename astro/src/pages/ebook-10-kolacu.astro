@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import rolkyImg from '../assets/images/ebook-plateny/skoricove-rolky.jpeg';
+import rozkyImg from '../assets/images/ebook-plateny/kakaove-rozky.jpeg';
+import pletenceImg from '../assets/images/ebook-plateny/orechove-pletence.jpeg';
+import babovkaImg from '../assets/images/ebook-plateny/lotus-babovka.jpeg';
+import pistaciaImg from '../assets/images/ebook-plateny/pistaciovy-pletenec.jpeg';
+import slaneImg from '../assets/images/ebook-plateny/kolace-slane.jpeg';
+import freeEbookImg from '../assets/images/ebook-jedno-cesto-3-kolace.jpeg';
+import portretImg from '../assets/images/portret.jpeg';
+
+// Odkaz na platobnú bránu. Kým nie je hotová, tlačidlá vedú na sekciu s cenou.
+const CHECKOUT_URL = '#cena';
+
+// 10 koláčov z e-booku. Tie bez fotky majú farebnú plochu (paint-*), ako karty na blogu.
+const kolace = [
+  { name: 'Ovocný koláč na plech', paint: 'paint-jablka' },
+  { name: 'Škoricové rolky s jablkami a polevou', img: rolkyImg },
+  { name: 'Kakaové rohlíčky', img: rozkyImg },
+  { name: 'Orechové pletence s Nutellou', img: pletenceImg },
+  { name: 'Kysnutá Lotus bábovka', img: babovkaImg },
+  { name: 'Tvarohové šatôčky s lekvárom a makovou posýpkou', paint: 'paint-mak' },
+  { name: 'Pistáciový pletenec s bielou čokoládou', img: pistaciaImg },
+  { name: 'Slané koláče s bryndzou a slaninou', img: slaneImg },
+  { name: 'Syrovo-cesnakový trhací chlebík', paint: 'paint-cesnek' },
+  { name: 'Buchty s mäsovou náplňou', paint: 'paint-orechy' },
+];
+
+const recenzie = [
+  'Išla som presne podľa tvojich inštrukcií a dopadlo to nad moje očakávania. Nie som veľkým fanúšikom kysnutého cesta ale vždy som chcela takúto dobrotu upiecť.',
+  'Moc děkuji za recept. Dnes jsem zkusila a jsem nadšená. Konečně recept na měkkoučké těsto. Jako peřinka.',
+  'Skvelý recept, vyskúšala som. A nabudúce robím z dvojitej dávky.',
+  'Aj ja som vyskúšala a sú TOP-ka, už sa chystám upiecť ďalšie.',
+  'Ďakujem za recept, práve som dopiekla a vyrazilo mi dekel.',
+];
+---
+
+<BaseLayout
+  activeNav="ebooks"
+  title="Jedno cesto, 10 koláčov | Evka pečie"
+  description="V tejto knihe vychádzam z toho istého cesta a chcem ti ukázať, čo všetko sa dá z neho urobiť: nielen sladké, aj slané. Tradičné chute aj moderné kombinácie."
+>
+
+  <main class="pe-main">
+
+    <!-- HERO -->
+    <section class="container pe-hero">
+      <div class="pe-hero-text">
+        <div class="eyebrow">E-book</div>
+        <h1 class="pe-title">Jedno cesto, <em>10 koláčov</em></h1>
+        <p class="pe-lead">
+          Ak poznáš môj free ebook <a href="/ebook-zdarma">Jedno cesto, 3 koláče</a>, vieš, o akom ceste hovorím. V tejto knihe vychádzam z toho istého cesta a chcem ti ukázať, čo všetko sa dá z neho urobiť: nielen sladké, aj slané. Tradičné chute aj moderné kombinácie. V 10 rôznych tvaroch a chutiach. A keď sa naučíš princíp, nemusíš zostať ani pri týchto desiatich.
+        </p>
+        <div class="pe-cta">
+          <a class="btn btn-primary btn-large" href={CHECKOUT_URL}>Chcem ebook za 249 Kč</a>
+          <p class="pe-price-note">Prvých 7 dní za 249 Kč, potom 299 Kč.</p>
+        </div>
+      </div>
+
+      <div class="pe-hero-media">
+        <Image src={rozkyImg} alt="Kakaové rohlíčky" class="pe-collage-img pe-collage-a" widths={[480, 800, 1100]} sizes="(max-width: 768px) 100vw, 560px" />
+        <Image src={babovkaImg} alt="Kysnutá Lotus bábovka" class="pe-collage-img pe-collage-b" widths={[320, 560]} sizes="(max-width: 768px) 50vw, 280px" />
+        <Image src={slaneImg} alt="Slané koláče s bryndzou a slaninou" class="pe-collage-img pe-collage-c" widths={[320, 560]} sizes="(max-width: 768px) 50vw, 280px" />
+      </div>
+    </section>
+
+    <!-- MOŽNO TO POZNÁŠ -->
+    <section class="container pe-section pe-narrow">
+      <h2 class="pe-h2">Možno to poznáš</h2>
+      <p class="pe-text">
+        Chceš upiecť niečo dobré, otvoríš Instagram, potom Google, potom uložené recepty. A zrazu máš 17 receptov na kysnuté cesto, každý je trochu iný a pri každom si musíš znova zapamätať, koľko čoho ide. A keď máš doma tvaroh, pár jabĺk a trochu lekváru, stále vlastne nevieš: „Dobre. A čo z toho teraz upečiem?"
+      </p>
+      <p class="pe-text">
+        Preto som tento ebook nechcela publikovať ako zoznam receptov. Chcem, aby si si po prečítaní povedal/a:
+      </p>
+      <div class="tip pe-tip">
+        <p>Mám jedno cesto. Viem, čo s ním. <em>A viem si poradiť aj bez receptu.</em></p>
+      </div>
+    </section>
+
+    <!-- JEDNO CESTO, KTORÉ UŽ POZNÁŠ -->
+    <section class="container pe-section">
+      <div class="pe-known">
+        <a href="/ebook-zdarma" class="pe-known-media" aria-label="E-book zdarma Jedno cesto, 3 koláče">
+          <Image src={freeEbookImg} alt="Obálka e-booku Jedno cesto, 3 koláče" class="pe-known-img" width={360} />
+        </a>
+        <div>
+          <h2 class="pe-h2">Jedno cesto, ktoré už poznáš</h2>
+          <p class="pe-text">
+            Tento e-book nadväzuje na môj e-book <a href="/ebook-zdarma">Jedno cesto, tri koláče</a>.
+          </p>
+          <p class="pe-text">
+            Ak si už podľa neho piekla, nemusíš sa učiť nové cesto - použiješ ho znova, len zmeníš náplne. Na slané ti potom stačí upraviť len množstvo soli, takže nepotrebuješ zvlášť „cesto na sladké" a „cesto na slané".
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 KOLÁČOV -->
+    <section class="container pe-section">
+      <h2 class="pe-h2">Z tohto jedného cesta upečieš:</h2>
+      <ol class="pe-grid">
+        {kolace.map((k, i) => (
+          <li class="pe-card">
+            <div class={`pe-card-media ${k.paint ?? ''}`}>
+              {k.img && (
+                <Image src={k.img} alt={k.name} class="pe-card-img" widths={[320, 520]} sizes="(max-width: 768px) 50vw, 220px" />
+              )}
+              <span class="pe-card-num">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <p class="pe-card-name">{k.name}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="pe-hand">Každý z nich som sama upiekla a otestovala.</p>
+    </section>
+
+    <!-- SYSTÉM + DRUHÝ DEŇ -->
+    <section class="container pe-section">
+      <div class="pe-duo">
+        <div class="pe-panel">
+          <h2 class="pe-h3">Keď ich upečieš, môžeš začať skúšať vlastné</h2>
+          <p class="pe-text">
+            Tých 10 receptov v knihe nie je cieľ, sú to štartovacie kombinácie. Preto je v ebooku aj návod, ako si poskladať vlastný koláč, a zoznam náplní, posýpok a poliev, a návod, ako chute kombinovať. Nie je to len ďalší recept, je to systém, a na konci dňa je to naozaj veľmi jednoduché.
+          </p>
+        </div>
+        <div class="pe-panel">
+          <h2 class="pe-h3">A čo s koláčom na druhý deň?</h2>
+          <p class="pe-text">
+            Kysnuté koláče sú najlepšie čerstvé. Preto som pridala kapitolu o tom, ako načasovať pečenie tak, aby boli čo najčerstvejšie, ako udržať koláč dlhšie čerstvý a čo pripraviť zo zvyškov, aby neskončili v koši.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECENZIE -->
+    <section class="container pe-section">
+      <h2 class="pe-h2">Toto už nie je len teória</h2>
+      <p class="pe-text pe-sub">
+        Toto hovoria ľudia, ktorí už piekli podľa verejne dostupných receptov z tohto môjho cesta:
+      </p>
+      <div class="pe-quotes">
+        {recenzie.map((r) => (
+          <blockquote class="pe-quote"><p>„{r}"</p></blockquote>
+        ))}
+      </div>
+    </section>
+
+    <!-- ČO DOSTANEŠ + CENA -->
+    <section class="container pe-section" id="cena">
+      <div class="newsletter pe-offer">
+        <div class="pe-offer-inner">
+          <div>
+            <h2>Čo teda za 249 Kč dostaneš?</h2>
+            <ul class="pe-checks">
+              <li><strong>10 otestovaných receptov:</strong> od sladkých roliek a bábovky až po slané buchty a trhací chlebík.</li>
+              <li><strong>Jedno cesto na sladké aj slané:</strong> nemusíš sa učiť dva rôzne základy.</li>
+              <li><strong>Systém pečenia na dva dni:</strong> vrátane konkrétneho nočného harmonogramu kysnutia.</li>
+              <li><strong>Zoznam náplní, posýpok a poliev,</strong> ktoré môžeš s týmto cestom kombinovať.</li>
+              <li><strong>Návod na vlastný koláč:</strong> aby tých 10 receptov nebolo konečné číslo.</li>
+              <li><strong>Kapitolu „čo s koláčom na druhý deň":</strong> uchovanie čerstvosti a nápady na ďalšie využitie.</li>
+              <li><strong>PDF hneď po zaplatení:</strong> stiahneš si ho a môžeš piecť.</li>
+            </ul>
+          </div>
+          <div class="pe-price-card">
+            <p class="pe-price-label">Prvých 7 dní za 249 Kč</p>
+            <p class="pe-price"><span class="pe-price-now">249 Kč</span> <s class="pe-price-old">299 Kč</s></p>
+            <p class="pe-price-text">
+              Ebook práve vychádza, preto ho teraz dávam za 249 Kč, potom bude stáť 299 Kč. Je to jednorazová platba a odkaz na stiahnutie ti príde do e-mailu hneď po zaplatení. Potom je navždy tvoj.
+            </p>
+            <a class="btn btn-large pe-btn-light" href={CHECKOUT_URL}>Chcem ebook za 249 Kč</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRE KOHO -->
+    <section class="container pe-section pe-narrow">
+      <h2 class="pe-h2">Pre koho je?</h2>
+      <ul class="pe-arrows">
+        <li>piekla si podľa môjho free ebooku a chceš z jedného cesta viac než tri koláče</li>
+        <li>nechceš pri každom pečení začínať od nového receptu</li>
+        <li>chceš vedieť upiecť aj niečo slané</li>
+        <li>nechceš vstávať kvôli pečeniu alebo si ho chceš rozdeliť na dva dni</li>
+        <li>chceš sa časom naučiť vymýšľať vlastné kombinácie</li>
+      </ul>
+      <p class="pe-not-for">
+        Nie je pre teba, ak hľadáš torty, dezerty alebo zdobenie. Toto je kniha o kysnutom ceste, o tom, ako ho raz pochopiť a potom ho používať stále znova.
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container pe-section pe-narrow">
+      <h2 class="pe-h2">Časté otázky</h2>
+      <div class="pe-faq">
+        <details>
+          <summary>Nikdy som kysnuté nepiekla. Zvládnem to?</summary>
+          <p>Ak si úplný začiatočník, môžeš začať mojím ebookom <a href="/ebook-zdarma">Jedno cesto, 3 koláče</a>, kde sa naučíš samotný základ. Tento ebook je jeho pokračovanie.</p>
+        </details>
+        <details>
+          <summary>Je to rovnaké cesto ako v ebooku Jedno cesto, 3 koláče?</summary>
+          <p>Áno, a je to zámer. Ak ho už poznáš, nemusíš sa učiť nový základ, tentoraz sa naučíš, čo všetko sa z neho dá pripraviť.</p>
+        </details>
+        <details>
+          <summary>Ako ebook dostanem?</summary>
+          <p>Ako PDF, do e-mailu ti príde odkaz na stiahnutie hneď po zaplatení.</p>
+        </details>
+        <details>
+          <summary>Môžem platiť v Eurách?</summary>
+          <p>Áno - kartou, Apple Pay alebo Google Pay. Cena je v českých korunách a banka ti ju automaticky prepočíta na eurá. 249 Kč je približne 10 Eur.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ZÁVER -->
+    <section class="container pe-section">
+      <div class="about-dream pe-final">
+        <h2>Jedno cesto, 10 koláčov</h2>
+        <p>
+          Cieľom nie je, aby si mala ďalší ebook plný receptov. Cieľom je, aby si raz otvorila chladničku, pozrela sa, čo máš doma, a povedala: „Hmm. Z tohto by som mohla spraviť koláč." A budeš presne vedieť, ako na to.
+        </p>
+        <div class="pe-final-cta">
+          <a class="btn btn-large pe-btn-light" href={CHECKOUT_URL}>Chcem ebook za 249 Kč</a>
+          <p class="pe-final-note">Prvých 7 dní za 249 Kč, potom 299 Kč.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KTO SOM -->
+    <section class="container pe-section">
+      <div class="pe-about">
+        <Image src={portretImg} alt="Eva, autorka blogu Evka pečie" class="pe-about-img" width={400} />
+        <div>
+          <h2 class="pe-h2">Kto som?</h2>
+          <p class="pe-text">
+            Som Eva, veľa pečiem a na Instagrame a Facebooku @evkapecie ma sleduje, a podľa mojich receptov pečie, viac než 40 000 ľudí. Pečiem koláče z tradičného kysnutého cesta, a často ho u mňa nájdete aj v menej tradičnej podobe. Rada to občas prekladám aj modernými dezertami, tie na mojich stránkach nájdeš tiež, a o nich bude možno ďalšia kniha :)
+          </p>
+          <p class="pe-text">
+            Mám pocit, že tradičné koláče z kysnutého cesta sa z dnešných domácností trochu vytrácajú. Chcem ukázať, že ich príprava nemusí byť zložitá, pokiaľ sa dodrží pár základných princípov.
+          </p>
+          <p class="pe-signoff">Tak čo, ideš piecť so mnou?</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</BaseLayout>
