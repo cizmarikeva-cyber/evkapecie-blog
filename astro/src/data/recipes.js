@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "jak-na-tartaletky",
-  categories: ["Sladké", "Torty & dezerty"],
-  title:      "Ako na <em>tartaletky?</em>",
-  intro:      "Tartaletky z krehkého cesta vyzerajú náročne, ale dá sa to zvládnuť ak dodržíš pár pravidiel. Do tohto článku som spísala môj presný postup, a za mňa najzásadnejšia vec pri práci je teplota (cesto sa nesmie príliš zahrievať), a dobré pomôcky (perforovaná podložka a ráfky). Postup som rozdelila na tri časti tak, ako som ho ukazovala na Instagrame: cesto, tvarovanie, pečenie. Náplň si už potom môžeš vybrať podľa chuti - na mojom blogu nájdeš recepty napríklad na malinové s bielou čokoládou, alebo karamelovo-čokoládové. Z tohto množstva vyjde 20 ks malých (5 cm) alebo 12 ks veľkých (7 cm) tartaletiek.",
-  time:       "4 h",
-  servings:   "20 ks",
-  level:      "Náročné",
+  slug:       "lotus-rolky",
+  categories: ["Sladké"],
+  title:      "Lotus rolky",
+  intro:      "Mäkkučké rolky s Lotus Biscoff pomazánkou a trstinovým cukrom, ktoré im dodávajú jemný karamelový nádych. V ankete síce vyhrala škorica, ale tejto príchuti som jednoducho musela dať šancu. Postup je jednoduchý: cesto len rozvaľkáš, potrieš náplňou, zroluješ a nakrájaš, a kým sú rolky ešte horúce, potrieš ich polevou. Môžeš ešte posypať sušienkami a máš hotovo.",
+  time:       "2 h",
+  servings:   "12 ks, pekáč 24 × 20 cm",
+  level:      "Ľahké",
   paint:      "medovnik",
-  image:      "images/jak-na-tartaletky.jpeg",
+  image:      "images/lotus-rolky.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "lotus-rolky",
+    featured:    true,
+    categories:  ["Sladké"],
+    title:       "Lotus rolky",
+    time:        "2 h",
+    servings:    "12 ks, pekáč 24 × 20 cm",
+    level:       "Ľahké",
+    paint:       "medovnik",
+    image:       "images/lotus-rolky.jpeg",
+    detailImage: "images/lotus-rolky-detail.jpeg",
+  },
   {
     slug:        "jak-na-tartaletky",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "slany-cuketovy-kolac",
-    featured:    true,
     categories:  ["Slané", "Rýchle"],
     title:       "Slaný <em>cuketový</em> koláč",
     time:        "1 h",
@@ -411,6 +422,81 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "lotus-rolky": {
+    date: "9. 10. 2026",
+    instagram: "https://www.instagram.com/p/Dd6rfU4s_yE/",
+    intro: "Mäkkučké rolky s Lotus Biscoff pomazánkou a trstinovým cukrom, ktoré im dodávajú jemný karamelový nádych. V ankete síce vyhrala škorica, ale tejto príchuti som jednoducho musela dať šancu. Postup je jednoduchý: cesto len rozvaľkáš, potrieš náplňou, zroluješ a nakrájaš, a kým sú rolky ešte horúce, potrieš ich polevou. Môžeš ešte posypať sušienkami a máš hotovo.",
+    ingredients: [
+      {
+        group: "Cesto",
+        items: [
+          { amount: "300 g",  name: "hladkej múky" },
+          { amount: "130 ml", name: "vlažného mlieka" },
+          { amount: "12 g",   name: "čerstvého droždia (alebo 4 g sušeného)" },
+          { amount: "1",      name: "vajce" },
+          { amount: "30 g",   name: "kryštálového cukru" },
+          { amount: "40 g",   name: "zmäknutého masla" },
+          { amount: "2 g",    name: "soli" },
+        ],
+      },
+      {
+        group: "Náplň",
+        items: [
+          { amount: "60 g",     name: "rozpusteného masla" },
+          { amount: "30 g",     name: "trstinového cukru" },
+          { amount: "100 g",    name: "Lotus Biscoff pomazánky" },
+          { amount: "cca 8 ks", name: "Lotus sušienok na posypanie (nepovinné)" },
+        ],
+      },
+      {
+        group: "Na vrch",
+        items: [
+          { amount: "50 g", name: "krémového syru (napr. Philadelphia)" },
+          { amount: "40 g", name: "Lotus krému" },
+          { amount: "20 g", name: "zmäknutého masla" },
+          { amount: "4 ks", name: "Lotus sušienky na posypanie" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Cesto",
+        startAt: 1,
+        items: [
+          "Všetky ingrediencie na cesto okrem masla miesime asi <b>5 minút</b>.",
+          "Potom pridáme zmäknuté maslo a miesime ďalej, kým sa zapracuje.",
+          "Prikryjeme a necháme kysnúť <b>40 až 60 minút</b>, kým zdvojnásobí objem.",
+        ],
+      },
+      {
+        heading: "Náplň",
+        startAt: 4,
+        items: [
+          "Rozpustené maslo, cukor a Lotus pomazánku spolu zmiešame.",
+          "Ak je pomazánka príliš tuhá, môžeme ju trochu rozpustiť v mikrovlnke, kontrolujeme vždy po <b>10 až 15 sekundách</b>. Náplň ale nechceme úplne tekutú.",
+        ],
+      },
+      {
+        heading: "Tvarovanie",
+        startAt: 6,
+        items: [
+          "Vykysnuté cesto rozvaľkáme na obdĺžnik cca <b>30 × 40 cm</b> a potrieme náplňou.",
+          "Pre viac chrumkavosti môžeme pred zrolovaním náplň posypať rozdrvenými Lotus sušienkami.",
+          "Zrolujeme po dlhšej strane, nakrájame na <b>12 častí</b> a uložíme do vymasteného pekáča <b>24 × 20 cm</b>.",
+          "Necháme ešte <b>20 minút</b> vykysnúť pri izbovej teplote.",
+        ],
+      },
+      {
+        heading: "Pečenie a poleva",
+        startAt: 10,
+        items: [
+          "Pečieme na <b>200 °C</b> (horný a dolný ohrev) cca <b>20 minút</b>.",
+          "Kým sa pečú, zmiešame ingrediencie na polevu a upečené rolky ňou horúce potrieme.",
+        ],
+      },
+    ],
+  },
 
   "jak-na-tartaletky": {
     date: "22. 9. 2026",
