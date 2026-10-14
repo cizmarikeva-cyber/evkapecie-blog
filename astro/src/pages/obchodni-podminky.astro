@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PREDAJCA } from '../data/predajca.js';
+---
+
+<BaseLayout
+  title="Obchodní podmínky | Evka pečie"
+  description="Obchodní podmínky prodeje e-booků na blogu Evka pečie, Eva Čižmariková."
+>
+
+  <main>
+    <section class="container" style="padding-top:56px;padding-bottom:96px;max-width:780px">
+
+      <a class="back" href="/" style="display:inline-flex;align-items:center;gap:6px;margin-bottom:32px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12H3"/><path d="m11 19-8-7 8-7"/>
+        </svg>
+        Zpět na úvod
+      </a>
+
+      <h1 style="margin-bottom:8px">Obchodní podmínky</h1>
+      <p style="font-family:var(--font-body);font-size:13px;color:var(--popol);margin-bottom:40px">
+        Platné od: DOPLNIŤ · Prodávající: {PREDAJCA.meno}, <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>
+      </p>
+
+      <div class="privacy-body">
+
+        <h2>1. Prodávající</h2>
+        <p>
+          {PREDAJCA.meno}<br />
+          IČ: {PREDAJCA.ico}<br />
+          Místo podnikání: {PREDAJCA.adresa}<br />
+          Zapsána: {PREDAJCA.register}<br />
+          E-mail: <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a><br />
+          Telefon: <a href={`tel:${PREDAJCA.telefon.replace(/\s/g, '')}`}>{PREDAJCA.telefon}</a>
+        </p>
+        <p>Nejsem plátkyně DPH.</p>
+
+        <h2>2. Předmět a uzavření smlouvy</h2>
+        <p>Tyto obchodní podmínky upravují prodej elektronických knih (dále „e-book") prostřednictvím blogu evkapecie.cz spotřebitelům.</p>
+        <ul>
+          <li>E-book je digitální obsah ve formátu PDF. Nedodává se na hmotném nosiči.</li>
+          <li>Objednávka probíhá přes objednávkový formulář služby SimpleShop, na který vedou odkazy z blogu.</li>
+          <li>Smlouva je uzavřena zaplacením objednávky.</li>
+          <li>E-book je určen pro vaši osobní potřebu. Bez mého souhlasu ho nelze dále šířit, kopírovat pro jiné osoby ani zveřejňovat.</li>
+        </ul>
+
+        <h2>3. Cena a platba</h2>
+        <ul>
+          <li>Cena je uvedena u e-booku v českých korunách a je konečná. Nejsem plátkyně DPH, k ceně se tedy DPH nepřipočítává.</li>
+          <li>Neúčtuji žádné další poplatky, například za doručení.</li>
+          <li>Platit lze kartou, Apple Pay nebo Google Pay. Pokud platíte kartou vedenou v eurech, částku přepočítá vaše banka podle svého kurzu.</li>
+        </ul>
+        <p>
+          Online platby pro nás zajišťuje platební brána Comgate. Poskytovatel služby, společnost Comgate a.s. je licencovaná
+          Platební instituce působící pod dohledem České národní banky. Platby probíhající skrze platební bránu jsou plně
+          zabezpečeny a veškeré informace jsou šifrovány. Další informace a kontakty na
+          <a href="https://www.comgate.eu" target="_blank" rel="noopener noreferrer">www.comgate.eu</a>.
+        </p>
+
+        <h2>4. Doručení</h2>
+        <ul>
+          <li>Odkaz na stažení e-booku vám přijde na e-mail uvedený v objednávce ihned po zaplacení.</li>
+          <li>Pokud e-mail nepřišel, zkontrolujte prosím i složku se spamem. Pokud tam není, napište mi na <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a> nebo na <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">Instagram</a>. Ozvu se do 24 hodin a vyřešíme to.</li>
+          <li>E-booky prodávám zákazníkům v České republice a na Slovensku.</li>
+        </ul>
+
+        <h2>5. Odstoupení od smlouvy</h2>
+        <p>
+          E-book je digitální obsah, který není dodáván na hmotném nosiči. Před zaplacením výslovně souhlasíte s tím,
+          že vám e-book bude dodán ihned, tedy ještě před uplynutím 14denní lhůty pro odstoupení od smlouvy, a berete na vědomí,
+          že tím právo na odstoupení od smlouvy ztrácíte.
+        </p>
+
+        <h2>6. Reklamace</h2>
+        <p>Pokud je soubor s e-bookem poškozený, neúplný nebo se nedá otevřít, nebo vám odkaz nepřišel, napište mi na <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a> nebo zavolejte na <a href={`tel:${PREDAJCA.telefon.replace(/\s/g, '')}`}>{PREDAJCA.telefon}</a>.</p>
+        <ul>
+          <li>Uveďte prosím číslo objednávky nebo e-mail, na který jste nakupovali, a popište, co nefunguje.</li>
+          <li>Reklamaci vyřídím bez zbytečného odkladu, nejpozději do 30 dnů od jejího uplatnění. Obvykle vám pošlu nový funkční odkaz nebo soubor.</li>
+          <li>O vyřízení reklamace vás budu informovat e-mailem.</li>
+        </ul>
+
+        <h2>7. Ochrana osobních údajů</h2>
+        <p>Jak zpracovávám vaše osobní údaje při nákupu, najdete na stránce <a href="/ochrana-soukromi">Ochrana osobních údajů</a>.</p>
+
+        <h2>8. Mimosoudní řešení sporů</h2>
+        <p>
+          Pokud se nám spor nepodaří vyřešit dohodou, můžete se jako spotřebitel obrátit na Českou obchodní inspekci
+          (<a href="https://www.coi.cz/mimosoudni-reseni-spotrebitelskych-sporu-adr/" target="_blank" rel="noopener noreferrer">mimosoudní řešení spotřebitelských sporů, www.coi.cz</a>).
+        </p>
+
+        <h2>9. Závěrečná ustanovení</h2>
+        <p>Vztahy neupravené těmito obchodními podmínkami se řídí právním řádem České republiky, zejména občanským zákoníkem a zákonem o ochraně spotřebitele. Tyto obchodní podmínky mohu příležitostně aktualizovat. Pro každou objednávku platí znění účinné v den jejího zaplacení.</p>
+
+      </div>
+    </section>
+  </main>
+
+</BaseLayout>

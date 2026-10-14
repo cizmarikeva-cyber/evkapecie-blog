@@ -9,6 +9,7 @@ import pistaciaImg from '../assets/images/ebook-plateny/pistaciovy-pletenec.jpeg
 import slaneImg from '../assets/images/ebook-plateny/kolace-slane.jpeg';
 import freeEbookImg from '../assets/images/ebook-jedno-cesto-3-kolace.jpeg';
 import portretImg from '../assets/images/portret.jpeg';
+import { PREDAJCA } from '../data/predajca.js';
 
 // Odkaz na platobnú bránu. Kým nie je hotová, tlačidlá vedú na sekciu s cenou.
 const CHECKOUT_URL = '#cena';
@@ -205,6 +206,10 @@ const recenzie = [
         <details>
           <summary>Ako ebook dostanem?</summary>
           <p>Ako PDF, do e-mailu ti príde odkaz na stiahnutie hneď po zaplatení.</p>
+        </details>
+        <details>
+          <summary>Čo ak mi ebook nepríde?</summary>
+          <p>Skontroluj, prosím, aj priečinok so spamom, niekedy e-mail spadne tam. Ak ani tam nie je, napíš mi na <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a> alebo na <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">Instagram</a>. Ozvem sa ti do 24 hodín a vyriešime to.</p>
         </details>
         <details>
           <summary>Môžem platiť v eurách?</summary>
