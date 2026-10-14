@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import portretImg from '../assets/images/portret.jpeg';
+import { PREDAJCA } from '../data/predajca.js';
 ---
 
 <BaseLayout
@@ -25,21 +26,6 @@ import portretImg from '../assets/images/portret.jpeg';
               width={400}
               height={400}
             />
-          </div>
-          <div class="about-social">
-            <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
-                <circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>
-              </svg>
-              Instagram
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-              </svg>
-              Facebook
-            </a>
           </div>
         </div>
 
@@ -66,162 +52,39 @@ import portretImg from '../assets/images/portret.jpeg';
       </div>
     </section>
 
-    <!-- KONTAKTNÍ FORMULÁŘ -->
+    <!-- KONTAKT -->
     <section class="container contact-section" id="contact" style="padding-bottom:96px">
-      <h2 style="margin-bottom:40px">
-        Kontaktujte ma
+      <h2 style="margin-bottom:24px">
+        Napíšte mi
       </h2>
 
-      <div class="brevo-form-wrap">
-        <div id="sib-form-container" class="sib-form-container">
-          <div id="error-message" class="sib-form-message-panel" style="color:#661d1d;background-color:#ffeded;border-color:#ff4949;border-radius:8px;margin-bottom:16px;display:none">
-            <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Niečo sa pokazilo. Skúste to znova, prosím.</span></div>
-          </div>
-          <div id="success-message" class="sib-form-message-panel" style="color:#085229;background-color:#e7faf0;border-color:#13ce66;border-radius:8px;margin-bottom:16px;display:none">
-            <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Vaša správa bola odoslaná. Ozvem sa vám v najbližších dňoch!</span></div>
-          </div>
-          <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:left;background-color:transparent;border:none;direction:ltr">
-            <form id="sib-form" method="POST" action="https://1acb54ba.sibforms.com/serve/MUIFAKD3U0KiXEiEo-BAr6I7S_jCK_VThQqYLDbJVV-IP6nxtX1fiDR_g0bg3JpICXn3skPrhPvEQksWmWG588UdXBwYAL7pQUof-f35Yzxm0coeB2U1FrfgWYrGRO3IdJj_gLNh1oEwZw2tA9ARbJuilFRLopcVQeR619KSImXt6AtIUZoysWoIzvH53Fd6Zgmq8G8fmPnEktfzJw==" data-type="subscription">
-              <div style="padding:8px 0">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="EMAIL" data-required="*">E-mail</label>
-                      <div class="entry__field"><input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" data-required="true" required /></div>
-                    </div>
-                    <label id="email-error" style="display:none;color:#c0392b;font-family:var(--font-body);font-size:13px;margin-top:6px">Zadajte prosím e-mailovú adresu.</label>
-                  </div>
-                </div>
-              </div>
-              <div style="padding:8px 0">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="FIRSTNAME">Meno</label>
-                      <div class="entry__field"><input class="input" maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" /></div>
-                    </div>
-                    <label class="entry__error entry__error--primary"></label>
-                  </div>
-                </div>
-              </div>
-              <div style="padding:8px 0">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label class="entry__label" for="LASTNAME" data-required="*">Správa</label>
-                      <div class="entry__field"><textarea rows="7" class="input" maxlength="255" id="LASTNAME" name="LASTNAME" autocomplete="off" data-required="true" required></textarea></div>
-                    </div>
-                    <label id="message-error" style="display:none;color:#c0392b;font-family:var(--font-body);font-size:13px;margin-top:6px">Napíšte správu.</label>
-                  </div>
-                </div>
-              </div>
-              <div style="padding:8px 0">
-                <div class="sib-optin sib-form-block">
-                  <div class="form__entry entry_mcq">
-                    <div class="form__label-row">
-                      <div class="entry__choice">
-                        <label>
-                          <input type="checkbox" class="input_replaced" value="1" id="GDPR_CONSENT" name="GDPR_CONSENT" />
-                          <span class="checkbox checkbox_tick_positive"></span>
-                          <span>Súhlasím so spracovaním osobných údajov podľa <a href="/ochrana-soukromi" style="color:inherit;text-decoration:underline;">zásad ochrany osobných údajov</a>.</span>
-                        </label>
-                      </div>
-                    </div>
-                    <label id="gdpr-error" style="display:none;color:#c0392b;font-family:var(--font-body);font-size:13px;margin-top:6px">Prosím, potvrďte súhlas so spracovaním osobných údajov.</label>
-                  </div>
-                </div>
-              </div>
-              <div style="padding:4px 0 12px;font-size:12px;color:#687484;">
-                Na spracovanie formulára používam <a href="https://www.brevo.com" rel="nofollow">Brevo</a>. Odoslaním súhlasíte s prenosom dát podľa ich <a href="https://www.brevo.com/en/legal/privacypolicy/" rel="nofollow" target="_blank">zásad ochrany súkromia</a>.
-              </div>
-              <div style="padding:8px 0;text-align:left">
-                <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
-                  Odoslať správu
-                </button>
-              </div>
-              <input type="text" name="email_address_check" value="" class="input--hidden" />
-              <input type="hidden" name="locale" value="cs" />
-            </form>
-          </div>
-        </div>
+      <p class="about-intro" style="margin:0;display:flex;align-items:center;gap:10px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>
+        </svg>
+        <span>{PREDAJCA.email}</span>
+      </p>
+
+      <div class="about-social" style="margin-top:20px">
+        <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>
+          </svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+          Facebook
+        </a>
       </div>
     </section>
 
   </main>
 
   <script>
-    // Brevo form init
-    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
-    window.LOCALE = 'cs';
-    window.EMAIL_INVALID_MESSAGE = 'Zadaná adresa je v nesprávnom formáte. Skontrolujte ju, prosím.';
-    window.REQUIRED_ERROR_MESSAGE = 'Povinné pole.';
-    window.GENERIC_INVALID_MESSAGE = 'Zadané informácie sú v nesprávnom formáte. Skontrolujte ich, prosím.';
-    window.INVALID_NUMBER = 'Zadané informácie sú v nesprávnom formáte.';
-    window.INVALID_DATE = 'Zadajte prosím platný dátum.';
-    window.REQUIRED_MULTISELECT_MESSAGE = 'Vyberte prosím aspoň jednu možnosť.';
-    window.AUTOHIDE = Boolean(0);
-
-    // Load Brevo script
-    const s = document.createElement('script');
-    s.src = 'https://sibforms.com/forms/end-form/build/main.js';
-    document.body.appendChild(s);
-
-    // Intercept form submit
-    document.addEventListener('submit', function(e) {
-      const form = document.getElementById('sib-form');
-      if (!form || !form.contains(e.target) && e.target !== form) return;
-
-      e.preventDefault();
-      e.stopImmediatePropagation();
-
-      const emailEl   = document.getElementById('EMAIL');
-      const messageEl = document.getElementById('LASTNAME');
-      const checkbox  = document.getElementById('GDPR_CONSENT');
-      const emailErr   = document.getElementById('email-error');
-      const messageErr = document.getElementById('message-error');
-      const gdprErr    = document.getElementById('gdpr-error');
-
-      let valid = true;
-
-      if (!emailEl || !emailEl.value.trim()) {
-        if (emailErr) emailErr.style.display = 'block';
-        valid = false;
-      } else {
-        if (emailErr) emailErr.style.display = 'none';
-      }
-
-      if (!messageEl || !messageEl.value.trim()) {
-        if (messageErr) messageErr.style.display = 'block';
-        valid = false;
-      } else {
-        if (messageErr) messageErr.style.display = 'none';
-      }
-
-      if (!checkbox || !checkbox.checked) {
-        if (gdprErr) gdprErr.style.display = 'block';
-        valid = false;
-      } else {
-        if (gdprErr) gdprErr.style.display = 'none';
-      }
-
-      if (!valid) return;
-
-      const successEl = document.getElementById('success-message');
-      const errorEl = document.getElementById('error-message');
-      if (successEl) successEl.style.display = 'none';
-      if (errorEl) errorEl.style.display = 'none';
-
-      const data = new FormData(form);
-      fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' })
-        .then(() => {
-          if (successEl) successEl.style.display = 'block';
-          form.reset();
-        })
-        .catch(() => {
-          if (errorEl) errorEl.style.display = 'block';
-        });
-    }, true);
-
     // Scroll to contact if hash
     if (window.location.hash === '#contact') {
       setTimeout(() => {

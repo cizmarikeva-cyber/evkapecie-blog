@@ -1,4 +1,6 @@
 ---
+import { PREDAJCA } from '../data/predajca.js';
+
 export interface Props {
   title: string;
   description?: string;
@@ -81,7 +83,6 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
         <a class={`nav-link${activeNav === 'home' ? ' active' : ''}`} href="/">Domov</a>
         <a class={`nav-link${activeNav === 'recipes' ? ' active' : ''}`} href="/recepty">Recepty</a>
         <a class={`nav-link${activeNav === 'about' ? ' active' : ''}`} href="/o-mne">O mne</a>
-        <a class="nav-link" href="/o-mne#contact">Kontakt</a>
       </nav>
       <div class="nav-search">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -109,7 +110,6 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
     <a class={`nav-link${activeNav === 'home' ? ' active' : ''}`} href="/">Domov</a>
     <a class={`nav-link${activeNav === 'recipes' ? ' active' : ''}`} href="/recepty">Recepty</a>
     <a class={`nav-link${activeNav === 'about' ? ' active' : ''}`} href="/o-mne">O mne</a>
-    <a class="nav-link" href="/o-mne#contact">Kontakt</a>
   </div>
 
   <!-- Obsah stránky -->
@@ -131,13 +131,21 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
       <div class="footer-col">
         <h4>Blog</h4>
         <a href="/o-mne">O mne</a>
-        <a href="/o-mne#contact">Kontaktujte ma</a>
+      </div>
+      <div class="footer-col">
+        <h4>Nákup a súkromie</h4>
+        <a href="/obchodni-podminky">Obchodné podmienky</a>
+        <a href="/ochrana-soukromi">Ochrana súkromia</a>
       </div>
     </div>
     <div class="footer-meta">
-      <span>© 2026 Evka pečie · Tradičné recepty SK/CZ</span>
       <span>
-        <a href="/ochrana-soukromi" style="color:inherit">Ochrana súkromia</a>
+        © 2026 Evka pečie · {PREDAJCA.meno} · IČ: {PREDAJCA.ico} ·
+        <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>
+      </span>
+      <span class="footer-pay" aria-label="Prijímame platobné karty Visa a Mastercard">
+        <img src="/images/platby/visa.svg" alt="Visa" />
+        <img src="/images/platby/mastercard.svg" alt="Mastercard" />
       </span>
     </div>
   </footer>

@@ -383,6 +383,10 @@ a:hover { color: var(--lekvar-dark); }
   display: flex; justify-content: space-between; align-items: center;
   font-family: var(--font-body); font-size: 12px; color: var(--popol);
 }
+.footer-meta { gap: 16px 32px; flex-wrap: wrap; }
+.footer-meta a { color: inherit; text-underline-offset: 3px; }
+.footer-pay { display: flex; align-items: center; gap: 14px; }
+.footer-pay img { height: 22px; width: auto; display: block; }
 
 /* ---- stránka receptu -------------------------------------------- */
 .recipe-hero {
