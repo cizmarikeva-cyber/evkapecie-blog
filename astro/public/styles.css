@@ -1238,6 +1238,9 @@ a.hero-image {
 .pe-quote p {
   font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.4; color: var(--mak);
 }
+.pe-quote-name {
+  display: block; margin-top: 12px; font-style: normal; font-size: 15px; font-weight: 600; color: var(--lekvar);
+}
 
 /* ponuka + cena */
 .pe-offer-inner {
@@ -1303,6 +1306,8 @@ a.hero-image {
 }
 .pe-faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
 .pe-faq details p { padding: 0 0 22px; font-size: 17px; line-height: 1.65; color: var(--mak-soft); max-width: 62ch; }
+.pe-faq details .pe-arrows { margin: 0 0 16px; }
+.pe-faq details .pe-arrows li { font-size: 17px; }
 
 /* záver */
 .pe-final { margin: 0; text-align: center; padding: 56px 48px; }
@@ -1316,7 +1321,7 @@ a.hero-image {
 /* kto som */
 .pe-about { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; }
 .pe-about-img {
-  width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover;
+  width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 40%;
   border-radius: 20px; box-shadow: 0 12px 48px rgba(0,0,0,0.12);
 }
 .pe-signoff { margin-top: 24px; font-family: var(--font-display); font-style: italic; font-size: 26px; color: var(--lekvar); }
@@ -1344,3 +1349,32 @@ a.hero-image {
   .pe-tip p { font-size: 22px; }
 }
 #cena { scroll-margin-top: calc(var(--nav-h) + 16px); }
+
+.pe-lead-more { margin-top: 16px; font-size: 17px; }
+.pe-about + .pe-quotes { margin-top: 48px; }
+@media (max-width: 768px) {
+  /* na mobile nadpisy, krátke riadky a obrázky na stred; dlhé odseky ostávajú zarovnané vľavo kvôli čitateľnosti */
+  .pe-hero-text, .pe-main .pe-h2, .pe-offer h2, .pe-hand, .pe-signoff, .pe-price-note { text-align: center; }
+  .pe-hero-text .pe-lead { text-align: left; }
+  .pe-cta { align-items: center; }
+  .pe-about-img { margin-inline: auto; }
+  .pe-narrow > * { margin-inline: auto; }
+}
+
+.pe-hero-media { display: block; }
+.pe-hero-cover { width: 100%; height: auto; display: block; border-radius: var(--radius-4); box-shadow: var(--shadow-3); }
+@media (max-width: 768px) {
+  .pe-hero-text .eyebrow { display: flex; justify-content: flex-start; }
+}
+@media (max-width: 768px) {
+  /* mobil: E-book → titulná fotka → text; nadpis je skrytý len vizuálne (ostáva pre Google a čítačky) */
+  .pe-hero { row-gap: 0; }
+  .pe-hero-text { display: contents; }
+  .pe-hero-text > * { order: 3; }
+  .pe-hero-text .eyebrow { order: 1; margin-bottom: 16px; }
+  .pe-hero-media { order: 2; margin-bottom: 8px; }
+  .pe-hero .pe-title {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+  }
+}
