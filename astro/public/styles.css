@@ -1148,7 +1148,7 @@ a.hero-image {
 .pe-narrow > * { max-width: 760px; }
 .pe-h2 { font-size: var(--fs-h2); letter-spacing: -0.015em; }
 .pe-h3 { font-size: 28px; line-height: 1.15; }
-.pe-text { margin-top: 18px; font-size: 18px; line-height: 1.65; color: var(--mak-soft); max-width: 62ch; }
+.pe-text { margin-top: 18px; font-size: 16px; line-height: 1.65; color: var(--mak-soft); max-width: 62ch; }
 .pe-sub { margin-top: 12px; }
 
 /* hero */
@@ -1161,9 +1161,9 @@ a.hero-image {
   margin-top: 16px;
 }
 .pe-title em { font-style: italic; font-weight: 500; color: var(--lekvar); display: block; }
-.pe-lead { margin-top: 24px; max-width: 54ch; font-size: 19px; line-height: 1.6; color: var(--mak-soft); }
+.pe-lead { margin-top: 24px; max-width: 54ch; font-size: 16px; line-height: 1.6; color: var(--mak-soft); }
 .pe-cta { margin-top: 32px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
-.pe-price-note { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--ink-mute); }
+.pe-price-note { font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--ink-mute); }
 .pe-hero-media {
   display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 16px;
 }
@@ -1212,7 +1212,7 @@ a.hero-image {
   padding: 3px 10px; border-radius: var(--radius-pill);
 }
 .pe-card-name {
-  font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.25; color: var(--mak);
+  font-family: var(--font-display); font-weight: 600; font-size: 16px; line-height: 1.25; color: var(--mak);
 }
 .pe-hand {
   margin-top: 32px; font-family: var(--font-display); font-style: italic;
@@ -1280,7 +1280,7 @@ a.hero-image {
 
 /* pre koho */
 .pe-arrows { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
-.pe-arrows li { position: relative; padding-left: 32px; font-size: 18px; line-height: 1.55; color: var(--mak-soft); }
+.pe-arrows li { position: relative; padding-left: 32px; font-size: 16px; line-height: 1.55; color: var(--mak-soft); }
 .pe-arrows li::before {
   content: "→"; position: absolute; left: 0; top: 0;
   font-family: var(--font-display); font-weight: 600; color: var(--lekvar);
@@ -1305,9 +1305,9 @@ a.hero-image {
   transition: transform var(--dur-2) var(--ease-settle);
 }
 .pe-faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
-.pe-faq details p { padding: 0 0 22px; font-size: 17px; line-height: 1.65; color: var(--mak-soft); max-width: 62ch; }
+.pe-faq details p { padding: 0 0 22px; font-size: 16px; line-height: 1.65; color: var(--mak-soft); max-width: 62ch; }
 .pe-faq details .pe-arrows { margin: 0 0 16px; }
-.pe-faq details .pe-arrows li { font-size: 17px; }
+.pe-faq details .pe-arrows li { font-size: 16px; }
 
 /* záver */
 .pe-final { margin: 0; text-align: center; padding: 56px 48px; }
@@ -1350,7 +1350,7 @@ a.hero-image {
 }
 #cena { scroll-margin-top: calc(var(--nav-h) + 16px); }
 
-.pe-lead-more { margin-top: 16px; font-size: 17px; }
+.pe-lead-more { margin-top: 16px; font-size: 16px; }
 .pe-about + .pe-quotes { margin-top: 48px; }
 @media (max-width: 768px) {
   /* na mobile nadpisy, krátke riadky a obrázky na stred; dlhé odseky ostávajú zarovnané vľavo kvôli čitateľnosti */
