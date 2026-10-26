@@ -1253,6 +1253,13 @@ a.hero-image {
   font-weight: 700; color: var(--med-soft);
 }
 .pe-checks strong { color: var(--maslo); font-weight: 600; }
+.pe-form {
+  max-width: 900px; margin: var(--space-7) auto 0;
+  background: var(--paper-soft); border: 1px solid var(--paper-line);
+  border-radius: var(--radius-3); box-shadow: var(--shadow-1);
+  padding: 40px 48px;
+  scroll-margin-top: calc(var(--nav-h) + var(--space-4));
+}
 .pe-price-card {
   background: var(--maslo); color: var(--mak);
   border-radius: var(--radius-3); padding: 32px;
@@ -1329,6 +1336,7 @@ a.hero-image {
   .pe-panel { padding: 28px 24px; }
   .pe-offer-inner { grid-template-columns: 1fr; gap: 32px; }
   .pe-price-card { padding: 24px; }
+  .pe-form { padding: 24px 16px; }
   .pe-final { padding: 40px 24px; }
   .pe-final .btn { width: 100%; justify-content: center; white-space: normal; }
   .pe-about { grid-template-columns: 1fr; gap: 28px; }
