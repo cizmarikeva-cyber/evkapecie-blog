@@ -45,34 +45,54 @@ import { PREDAJCA } from '../data/predajca.js';
           <li>E-book je určen pro vaši osobní potřebu. Bez mého souhlasu ho nelze dále šířit, kopírovat pro jiné osoby ani zveřejňovat.</li>
         </ul>
 
-        <h2>3. Cena a platba</h2>
+        <h2 id="doprava-a-platba">3. Doprava a platba</h2>
         <ul>
           <li>Cena je uvedena u e-booku v českých korunách a je konečná. Nejsem plátkyně DPH, k ceně se tedy DPH nepřipočítává.</li>
           <li>Neúčtuji žádné další poplatky, například za doručení.</li>
-          <li>Platit lze kartou, Apple Pay nebo Google Pay. Pokud platíte kartou vedenou v eurech, částku přepočítá vaše banka podle svého kurzu.</li>
-        </ul>
-        <p>
-          Online platby pro nás zajišťuje platební brána Comgate. Poskytovatel služby, společnost Comgate a.s. je licencovaná
-          Platební instituce působící pod dohledem České národní banky. Platby probíhající skrze platební bránu jsou plně
-          zabezpečeny a veškeré informace jsou šifrovány. Další informace a kontakty na
-          <a href="https://www.comgate.eu" target="_blank" rel="noopener noreferrer">www.comgate.eu</a>.
-        </p>
-
-        <h2>4. Doručení</h2>
-        <ul>
-          <li>Odkaz na stažení e-booku vám přijde na e-mail uvedený v objednávce ihned po zaplacení.</li>
-          <li>Pokud e-mail nepřišel, zkontrolujte prosím i složku se spamem. Pokud tam není, napište mi na <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a> nebo na <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">Instagram</a>. Ozvu se do 24 hodin a vyřešíme to.</li>
           <li>E-booky prodávám zákazníkům v České republice a na Slovensku.</li>
         </ul>
 
-        <h2>5. Odstoupení od smlouvy</h2>
+        <h3>Doprava</h3>
+        <ul>
+          <li>E-book je digitální obsah ve formátu PDF. Nic se neposílá poštou, doprava je tedy zdarma.</li>
+          <li>Odkaz na stažení e-booku vám přijde na e-mail uvedený v objednávce ihned po zaplacení.</li>
+          <li>Pokud e-mail nepřišel, zkontrolujte prosím i složku se spamem. Pokud tam není, napište mi na <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a> nebo na <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">Instagram</a>. Ozvu se do 24 hodin a vyřešíme to.</li>
+        </ul>
+
+        <h3>Platba</h3>
+        <p>
+          Online platby pro mě zajišťuje platební brána
+          <a href="https://www.comgate.eu/cs/platebni-brana" target="_blank" rel="noopener noreferrer">Comgate</a>.
+          Poskytovatel služby, společnost Comgate, a.s. je licencovaná platební instituce působící pod dohledem České národní banky.
+          Platby probíhající skrze platební bránu jsou plně zabezpečeny a veškeré informace jsou šifrovány.
+        </p>
+
+        <p>Zaplatit můžete kartou Visa, Visa Electron, Mastercard nebo Maestro, případně přes Apple Pay nebo Google Pay.</p>
+        <ul>
+          <li>V objednávce zvolíte platbu kartou a budete přesměrováni na platební bránu Comgate.</li>
+          <li>Zadáte údaje o kartě a platbu potvrdíte, obvykle ještě v aplikaci vaší banky.</li>
+          <li>Po schválení platby se vrátíte zpět na web a odkaz na e-book vám přijde na e-mail.</li>
+        </ul>
+        <p>Pokud platíte kartou vedenou v eurech, částku přepočítá vaše banka podle svého kurzu. <a href="https://help.comgate.eu/v1/docs/cs/platby-kartou" target="_blank" rel="noopener noreferrer">Více o platbě kartou</a></p>
+
+        <h3>Reklamace a dotazy k platbám</h3>
+        <p>S dotazy nebo reklamací platby se můžete obrátit přímo na provozovatele platební brány:</p>
+        <p>
+          Comgate, a.s.<br />
+          Gočárova třída 1754 / 48b, Hradec Králové<br />
+          E-mail: <a href="mailto:podpora@comgate.cz">podpora@comgate.cz</a><br />
+          Tel: <a href="tel:+420228224267">+420 228 224 267</a>
+        </p>
+        <p>S reklamací e-booku se obraťte na mě, postup najdete v bodě 5.</p>
+
+        <h2>4. Odstoupení od smlouvy</h2>
         <p>
           E-book je digitální obsah, který není dodáván na hmotném nosiči. Před zaplacením výslovně souhlasíte s tím,
           že vám e-book bude dodán ihned, tedy ještě před uplynutím 14denní lhůty pro odstoupení od smlouvy, a berete na vědomí,
           že tím právo na odstoupení od smlouvy ztrácíte.
         </p>
 
-        <h2>6. Reklamace</h2>
+        <h2>5. Reklamace</h2>
         <p>Pokud je soubor s e-bookem poškozený, neúplný nebo se nedá otevřít, nebo vám odkaz nepřišel, napište mi na <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>.</p>
         <ul>
           <li>Uveďte prosím číslo objednávky nebo e-mail, na který jste nakupovali, a popište, co nefunguje.</li>
@@ -80,17 +100,17 @@ import { PREDAJCA } from '../data/predajca.js';
           <li>O vyřízení reklamace vás budu informovat e-mailem.</li>
         </ul>
 
-        <h2>7. Ochrana osobních údajů</h2>
+        <h2>6. Ochrana osobních údajů</h2>
         <p>Jak zpracovávám vaše osobní údaje při nákupu, najdete na stránce <a href="/ochrana-soukromi">Ochrana osobních údajů</a>.</p>
         <p>Po nákupu vám mohu e-mailem posílat tipy k e-booku a nabídky podobných produktů. Odhlásit se můžete kdykoliv odkazem v každém e-mailu.</p>
 
-        <h2>8. Mimosoudní řešení sporů</h2>
+        <h2>7. Mimosoudní řešení sporů</h2>
         <p>
           Pokud se nám spor nepodaří vyřešit dohodou, můžete se jako spotřebitel obrátit na Českou obchodní inspekci
           (<a href="https://www.coi.cz/mimosoudni-reseni-spotrebitelskych-sporu-adr/" target="_blank" rel="noopener noreferrer">mimosoudní řešení spotřebitelských sporů, www.coi.cz</a>).
         </p>
 
-        <h2>9. Závěrečná ustanovení</h2>
+        <h2>8. Závěrečná ustanovení</h2>
         <p>Vztahy neupravené těmito obchodními podmínkami se řídí právním řádem České republiky, zejména občanským zákoníkem a zákonem o ochraně spotřebitele. Tyto obchodní podmínky mohu příležitostně aktualizovat. Pro každou objednávku platí znění účinné v den jejího zaplacení.</p>
 
       </div>

@@ -387,6 +387,7 @@ a:hover { color: var(--lekvar-dark); }
 .footer-meta a { color: inherit; text-underline-offset: 3px; }
 .footer-pay { display: flex; align-items: center; gap: 14px; }
 .footer-pay img { height: 22px; width: auto; display: block; }
+.footer-pay .footer-pay-comgate { height: 16px; }
 
 /* ---- stránka receptu -------------------------------------------- */
 .recipe-hero {
@@ -868,6 +869,7 @@ a:hover { color: var(--lekvar-dark); }
 }
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
+  .footer { padding-bottom: 24px; }
   .nav-links { display: none; }
   .nav-search { display: none; }
   .nav-hamburger { display: flex; }

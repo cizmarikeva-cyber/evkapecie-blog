@@ -161,7 +161,8 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
         © 2026 Evka pečie · {PREDAJCA.meno} · IČ: {PREDAJCA.ico} ·
         <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>
       </span>
-      <span class="footer-pay" aria-label="Prijímame platobné karty Visa a Mastercard">
+      <span class="footer-pay" aria-label="Platby zabezpečuje Comgate, prijímame karty Visa a Mastercard">
+        <a href="https://www.comgate.eu" target="_blank" rel="noopener noreferrer"><img class="footer-pay-comgate" src="/images/platby/comgate.svg" alt="Comgate" /></a>
         <img src="/images/platby/visa.svg" alt="Visa" />
         <img src="/images/platby/mastercard.svg" alt="Mastercard" />
       </span>
