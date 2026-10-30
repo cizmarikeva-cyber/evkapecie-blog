@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import obalkaImg from '../assets/images/ebook-plateny/obalka-landing.jpg';
+import { PREDAJCA } from '../data/predajca.js';
+
+// Skrytá stránka pre waitlist: formulár SimpleShop za 199 Kč.
+// Odkaz je len v e-mailoch waitlistu. Comgate vyžaduje formulár na webe, odkaz na SimpleShop neakceptuje.
+// noindex, nie je v menu ani v sitemape. Cena 199 Kč platí do stredy 20:00, potom sa produkt v SimpleShope vypína.
+// Úvod, ponuka a FAQ sú prevzaté z landing page jedno-cesto-10-kolacov.astro, zmenené sú len údaje pre waitlist.
+const CHECKOUT_URL = '#objednavka';
+---
+
+<BaseLayout
+  activeNav="ebooks"
+  noindex
+  title="Jedno cesto, 10 koláčov | Evka pečie"
+  description="Systém, ako z jedného kysnutého cesta vytvárať vlastné sladké aj slané koláče. 10 otestovaných receptov, harmonogram pečenia na dva dni a tipy na čerstvosť."
+>
+
+  <main class="pe-main">
+
+    <!-- HERO -->
+    <section class="container pe-hero pe-hero--cta-hore">
+      <div class="pe-hero-text">
+        <div class="eyebrow">E-book</div>
+        <h1 class="pe-title">Jedno cesto, <em>10 koláčov</em></h1>
+        <p class="pe-lead">
+          Alebo systém, ako z jedného cesta vytvárať vlastné sladké aj slané recepty.
+        </p>
+        <p class="pe-lead pe-lead-more">
+          Podobne ako v mojom e-booku Jedno cesto, tri koláče využívam ako základ <strong>kysnuté cesto</strong>. Tu ťa však naučím celý môj systém, ako z neho vytvoriť <strong>nespočetné množstvo</strong> ďalších koláčov, či už slaných alebo sladkých. Naučíš sa, ako kombinovať chute, ktorá náplň sa hodí ku ktorému tvaru, a potom už nebudeš musieť recepty stále hľadať, ale <strong>začneš si ich skladať.</strong>
+        </p>
+        <p class="pe-lead pe-lead-more">
+          Navyše je v ebooku <strong>10 ukážkových receptov</strong>. Nájdeš v ňom aj rôzne tipy, napríklad ako si časovo zorganizovať pečenie, ako zachovať čerstvosť koláčov alebo ako im dodať nový život na druhý deň.
+        </p>
+        <div class="pe-cta">
+          <a class="btn btn-primary btn-large" href={CHECKOUT_URL}>Chcem ebook za 199 Kč</a>
+          <p class="pe-price-note">Cena platí do stredy 20:00.</p>
+        </div>
+      </div>
+
+      <div class="pe-hero-media">
+        <Image src={obalkaImg} alt="Jedno cesto, 10 koláčov: koláče z e-booku" class="pe-hero-cover" widths={[560, 1190]} sizes="(max-width: 768px) 100vw, 560px" />
+      </div>
+    </section>
+
+    <!-- ČO DOSTANEŠ + CENA -->
+    <section class="container pe-section" id="cena">
+      <div class="newsletter pe-offer">
+        <div class="pe-offer-inner">
+          <div>
+            <h2>Čo teda za 199 Kč dostaneš?</h2>
+            <ul class="pe-checks">
+              <li><strong>10 otestovaných receptov:</strong> od sladkých roliek a bábovky až po slané buchty a trhací chlebík.</li>
+              <li><strong>Jedno cesto na sladké aj slané:</strong> nemusíš sa učiť dva rôzne základy.</li>
+              <li><strong>Harmonogram pečenia na dva dni:</strong> konkrétny časový harmonogram - čo pripraviť večer, aby si ráno mohla už len piecť.</li>
+              <li><strong>Zoznam náplní, posýpok a poliev,</strong> ktoré môžeš s týmto cestom kombinovať.</li>
+              <li><strong>Návod na vlastný koláč:</strong> aby tých 10 receptov nebolo konečné číslo.</li>
+              <li><strong>Kapitolu „čo s koláčom na druhý deň":</strong> ako zachovať čerstvosť, alebo ako dodať koláčom druhý život.</li>
+              <li><strong>PDF hneď po zaplatení:</strong> stiahneš si ho a môžeš rovno piecť.</li>
+            </ul>
+          </div>
+          <div class="pe-price-card">
+            <p class="pe-price-label">Cena do stredy 20:00</p>
+            <p class="pe-price"><span class="pe-price-now">199 Kč</span> <s class="pe-price-old">299 Kč</s></p>
+            <p class="pe-price-text">
+              Pretože si sa prihlásil/a na zoznam, mám pre teba zvýhodnenú cenu 199 Kč. Ber to ako moje poďakovanie za tvoj záujem a dôveru. ❤️ Táto cena platí do stredy 20:00 a neskôr už ju nebudem ponúkať.
+            </p>
+            <p class="pe-price-text">
+              Platba je jednorazová a odkaz na stiahnutie ti príde do e-mailu hneď po zaplatení.
+            </p>
+            <a class="btn btn-large pe-btn-light" href={CHECKOUT_URL}>Chcem ebook za 199 Kč</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULÁR -->
+    <section class="container pe-section">
+      <!-- Objednávkový formulár SimpleShop (produkt za 199 Kč pre waitlist). Kód sa nemení, inak môže prestať fungovať. -->
+      <div class="pe-form" id="objednavka">
+        <!-- www.SimpleShop.cz form#160263 start -->
+        <div data-SimpleShopForm="YP0bz"><div>Prodejní formulář je vytvořen v systému <a href="https://www.simpleshop.cz/?utm_source=simpleshop&utm_medium=form&utm_campaign=106156" target="_blank">SimpleShop.cz</a>.</div></div>
+        <script is:inline>
+         (function(i, s, o, g, r, a, m){
+          i[r] = i[r] || function(){
+           (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+         })(window, document, "script", "https://form.simpleshop.cz/prj/js/SimpleShopService.js", "sss");
+         sss("createForm", "YP0bz");
+        </script>
+        <!-- www.SimpleShop.cz form#160263 end -->
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container pe-section pe-narrow">
+      <h2 class="pe-h2">Časté otázky</h2>
+      <div class="pe-faq">
+        <details>
+          <summary>Pre koho je tento ebook?</summary>
+          <ul class="pe-arrows">
+            <li>nechceš pri každom pečení začínať od nového receptu</li>
+            <li>chceš si vedieť vytvoriť vlastný koláč podľa toho, čo máš zrovna doma</li>
+            <li>chceš poznať univerzálne cesto, z ktorého sa dá upiecť sladké aj slané</li>
+            <li>piekla si podľa ebooku „Jedno cesto, tri koláče" a chceš z jedného cesta viac než len tri koláče</li>
+            <li>chceš vedieť, ako si pečenie rozdeliť na dva dni</li>
+          </ul>
+          <p>Nie je pre teba, ak hľadáš torty, dezerty alebo zdobenie. Táto kniha je o kysnutom ceste, o tom, ako ho raz pochopiť a potom ho používať stále znova.</p>
+        </details>
+        <details>
+          <summary>Je to rovnaké cesto ako v ebooku Jedno cesto, 3 koláče?</summary>
+          <p>V princípe áno, a je to zámer. Jediné, čo sa mení, je množstvo soli. Tentoraz sa naučíš, čo všetko sa z neho dá pripraviť a ako kombinovať jednotlivé náplne a tvary. Kniha obsahuje aj „ťahák" receptov na náplne, posýpky a polevy, s množstvami presne na dané množstvo cesta.</p>
+        </details>
+        <details>
+          <summary>Nikdy som kysnuté nepiekla. Zvládnem to?</summary>
+          <p>Ak si nie si istá, môžeš začať mojím ebookom <a href="/ebook-zdarma"><em>Jedno cesto, tri koláče</em></a>, kde si skúsiš a naučíš sa samotný základ. Tento ebook je jeho pokračovanie.</p>
+        </details>
+        <details>
+          <summary>Ako ebook dostanem?</summary>
+          <p>Ako PDF, do e-mailu ti príde odkaz na stiahnutie hneď po zaplatení.</p>
+        </details>
+        <details>
+          <summary>Čo mám robiť, ak mi ebook nepríde?</summary>
+          <p>Skontroluj, prosím, aj priečinok so spamom a reklamami, niekedy e-mail spadne tam. Ak ani tam nie je, napíš mi na <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>. Ozvem sa ti do 24 hodín a vyriešime to.</p>
+        </details>
+        <details>
+          <summary>Môžem platiť v eurách?</summary>
+          <p>Áno - kartou, Apple Pay alebo Google Pay. Cena je v českých korunách a banka ju automaticky prepočíta na eurá. 199 Kč je približne 8,15 €. Výsledná suma závisí od kurzu tvojej banky.</p>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+</BaseLayout>
