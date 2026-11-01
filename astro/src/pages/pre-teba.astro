@@ -1,6 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
+import rolkyImg from '../assets/images/ebook-plateny/skoricove-rolky.jpeg';
+import rozkyImg from '../assets/images/ebook-plateny/kakaove-rozky.jpeg';
+import pletenceImg from '../assets/images/ebook-plateny/orechove-pletence.jpeg';
+import babovkaImg from '../assets/images/ebook-plateny/lotus-babovka.jpeg';
+import pistaciaImg from '../assets/images/ebook-plateny/pistaciovy-pletenec.jpeg';
+import slaneImg from '../assets/images/ebook-plateny/kolace-slane.jpeg';
+import ovocnyImg from '../assets/images/ebook-plateny/ovocny-s-drobenkou.jpeg';
+import satockyImg from '../assets/images/ebook-plateny/tvarohove-satocky.jpeg';
+import chlebikImg from '../assets/images/ebook-plateny/trhaci-chlebik.jpeg';
+import buchtyImg from '../assets/images/ebook-plateny/slane-honzovy-buchty.jpeg';
 import obalkaImg from '../assets/images/ebook-plateny/obalka-landing.jpg';
 import portretImg from '../assets/images/portret2.jpeg';
 import { PREDAJCA } from '../data/predajca.js';
@@ -10,6 +20,20 @@ import { PREDAJCA } from '../data/predajca.js';
 // noindex, nie je v menu ani v sitemape. Cena 199 Kč platí do stredy 20:00, potom sa produkt v SimpleShope vypína.
 // Úvod, ponuka a FAQ sú prevzaté z landing page jedno-cesto-10-kolacov.astro, zmenené sú len údaje pre waitlist.
 const CHECKOUT_URL = '#objednavka';
+
+// 10 koláčov z e-booku.
+const kolace = [
+  { name: 'Ovocný koláč na plech', img: ovocnyImg },
+  { name: 'Škoricové rolky s jablkami a polevou', img: rolkyImg },
+  { name: 'Kakaové rohlíčky', img: rozkyImg },
+  { name: 'Orechové pletence s Nutellou', img: pletenceImg },
+  { name: 'Kysnutá Lotus bábovka', img: babovkaImg },
+  { name: 'Tvarohové šatôčky s lekvárom a makovou posýpkou', img: satockyImg },
+  { name: 'Pistáciový pletenec s bielou čokoládou', img: pistaciaImg },
+  { name: 'Slané koláče s bryndzou a slaninou', img: slaneImg },
+  { name: 'Syrovo-cesnakový trhací chlebík', img: chlebikImg },
+  { name: 'Buchty s mäsovou náplňou', img: buchtyImg },
+];
 
 // Recenzie v znení schválenom Evou (zdroj: knowledge/raw/projekty/2026-09-27-spatna-vazba-screenshoty.md), tu len prvé tri.
 const recenzie = [
@@ -53,12 +77,30 @@ const recenzie = [
       </div>
     </section>
 
+    <!-- 10 KOLÁČOV -->
+    <section class="container pe-section">
+      <h2 class="pe-h2">10 koláčov z jedného cesta</h2>
+      <ol class="pe-grid">
+        {kolace.map((k, i) => (
+          <li class="pe-card">
+            <div class={`pe-card-media ${k.paint ?? ''}`}>
+              {k.img && (
+                <Image src={k.img} alt={k.name} class="pe-card-img" widths={[320, 520]} sizes="(max-width: 768px) 50vw, 220px" />
+              )}
+              <span class="pe-card-num">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <p class="pe-card-name">{k.name}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
     <!-- ČO DOSTANEŠ + CENA -->
     <section class="container pe-section" id="cena">
       <div class="newsletter pe-offer">
         <div class="pe-offer-inner">
           <div>
-            <h2>Čo teda dostaneš?</h2>
+            <h2>Čo teda v ebooku nájdeš?</h2>
             <ul class="pe-checks">
               <li><strong>10 otestovaných receptov:</strong> od sladkých roliek a bábovky až po slané buchty a trhací chlebík.</li>
               <li><strong>Jedno cesto na sladké aj slané:</strong> nemusíš sa učiť dva rôzne základy.</li>
@@ -66,7 +108,6 @@ const recenzie = [
               <li><strong>Zoznam náplní, posýpok a poliev,</strong> ktoré môžeš s týmto cestom kombinovať.</li>
               <li><strong>Návod na vlastný koláč:</strong> aby tých 10 receptov nebolo konečné číslo.</li>
               <li><strong>Kapitolu „čo s koláčom na druhý deň":</strong> ako zachovať čerstvosť, alebo ako dodať koláčom druhý život.</li>
-              <li><strong>PDF hneď po zaplatení:</strong> stiahneš si ho a môžeš rovno piecť.</li>
             </ul>
           </div>
           <div class="pe-price-card">
