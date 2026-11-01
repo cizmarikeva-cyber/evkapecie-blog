@@ -1265,6 +1265,9 @@ a.hero-image {
   padding: 40px 48px;
   scroll-margin-top: calc(var(--nav-h) + var(--space-4));
 }
+/* formulár tesne pod ponukou: polovičná medzera */
+.pe-section.pe-section--tesne-hore { padding-top: 0; }
+.pe-section--tesne-hore .pe-form { margin-top: var(--space-5); }
 .pe-price-card {
   background: var(--maslo); color: var(--mak);
   border-radius: var(--radius-3); padding: 32px;
