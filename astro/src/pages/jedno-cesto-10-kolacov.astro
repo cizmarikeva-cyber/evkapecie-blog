@@ -51,7 +51,7 @@ const recenzie = [
   <main class="pe-main">
 
     <!-- HERO -->
-    <section class="container pe-hero">
+    <section class="container pe-hero pe-hero--cta-hore">
       <div class="pe-hero-text">
         <div class="eyebrow">E-book</div>
         <h1 class="pe-title">Jedno cesto, <em>10 koláčov</em></h1>
@@ -75,18 +75,6 @@ const recenzie = [
       </div>
     </section>
 
-    <!-- MOŽNO TO POZNÁŠ -->
-    <section class="container pe-section pe-narrow">
-      <h2 class="pe-h2">Je ti toto povedomé?</h2>
-      <p class="pe-text">
-        Chceš upiecť niečo dobré. Otvoríš Instagram, potom Google, potom uložené recepty, a zrazu máš 17 receptov, každý je trochu iný. A ešte k tomu musíš ísť do obchodu, lebo si zistila, že ti chýba jedna ingrediencia.
-      </p>
-      <p class="pe-text">
-        Preto som nechcela, aby bol tento ebook len ďalší zoznam receptov. Chcem, aby si si po prečítaní povedal/a:
-      </p>
-      <p class="pe-signoff">Mám doma tieto suroviny. Viem, akú náplň z nich urobím a do akého tvaru ju dám. A poznám recept na overené cesto.</p>
-    </section>
-
     <!-- 10 KOLÁČOV -->
     <section class="container pe-section">
       <h2 class="pe-h2">10 koláčov z jedného cesta</h2>
@@ -103,31 +91,6 @@ const recenzie = [
           </li>
         ))}
       </ol>
-    </section>
-
-    <!-- KTO SOM + RECENZIE -->
-    <section class="container pe-section">
-      <div class="pe-about">
-        <Image src={portretImg} alt="Eva, autorka blogu Evka pečie" class="pe-about-img" width={600} />
-        <div>
-          <h2 class="pe-h2">Ahoj! Som Evka,</h2>
-          <p class="pe-text">
-            veľa pečiem a jednou z mojich obľúbených tém sú tradičné koláče z kysnutého cesta. Mám pocit, že sa z dnešných domácností trochu vytrácajú. Aj touto knihou chcem ukázať, že ich príprava nemusí byť zložitá, ak sa dodrží pár základných princípov.
-          </p>
-          <p class="pe-text">
-            Klasiky z kysnutého cesta milujem, ale nájdete u mňa aj jeho variácie na moderný spôsob (pár z nich je aj v tomto ebooku), a napríklad aj moderné dezerty vhodné na sweetbar. O nich bude možno ďalšia kniha 👀
-          </p>
-          <p class="pe-text">
-            Na <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">Instagrame</a> a <a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">Facebooku</a> ma dohromady sleduje, a podľa mojich receptov pečie, viac ako 40 000 ľudí. Toto sú slová ľudí, ktorí už piekli z tohto cesta podľa verejne dostupných receptov:
-          </p>
-        </div>
-      </div>
-      <div class="pe-quotes">
-        {recenzie.map((r) => (
-          <blockquote class="pe-quote"><p>„{r.text}"</p><cite class="pe-quote-name">{r.meno}</cite></blockquote>
-        ))}
-      </div>
-      <p class="pe-signoff">Tak čo, ideš piecť so mnou?</p>
     </section>
 
     <!-- ČO DOSTANEŠ + CENA -->
@@ -178,6 +141,31 @@ const recenzie = [
         </script>
         <!-- www.SimpleShop.cz form#159215 end -->
       </div>
+    </section>
+
+    <!-- KTO SOM + RECENZIE -->
+    <section class="container pe-section">
+      <div class="pe-about">
+        <Image src={portretImg} alt="Eva, autorka blogu Evka pečie" class="pe-about-img" width={600} />
+        <div>
+          <h2 class="pe-h2">Ahoj! Som Evka,</h2>
+          <p class="pe-text">
+            veľa pečiem a jednou z mojich obľúbených tém sú tradičné koláče z kysnutého cesta. Mám pocit, že sa z dnešných domácností trochu vytrácajú. Aj touto knihou chcem ukázať, že ich príprava nemusí byť zložitá, ak sa dodrží pár základných princípov.
+          </p>
+          <p class="pe-text">
+            Klasiky z kysnutého cesta milujem, ale nájdete u mňa aj jeho variácie na moderný spôsob (pár z nich je aj v tomto ebooku), a napríklad aj moderné dezerty vhodné na sweetbar. O nich bude možno ďalšia kniha 👀
+          </p>
+          <p class="pe-text">
+            Na <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener noreferrer">Instagrame</a> a <a href="https://www.facebook.com/profile.php?id=61577433120544" target="_blank" rel="noopener noreferrer">Facebooku</a> ma dohromady sleduje, a podľa mojich receptov pečie, viac ako 40 000 ľudí. Toto sú slová ľudí, ktorí už z tohto cesta piekli:
+          </p>
+        </div>
+      </div>
+      <div class="pe-quotes">
+        {recenzie.map((r) => (
+          <blockquote class="pe-quote"><p>„{r.text}"</p><cite class="pe-quote-name">{r.meno}</cite></blockquote>
+        ))}
+      </div>
+      <p class="pe-signoff">Tak čo, ideš piecť so mnou?</p>
     </section>
 
     <!-- FAQ -->

@@ -873,6 +873,7 @@ a:hover { color: var(--lekvar-dark); }
   .nav-links { display: none; }
   .nav-search { display: none; }
   .nav-hamburger { display: flex; }
+  .nav-inner { gap: 16px; }
   .hero-inner { display: flex; flex-direction: column; gap: 24px; align-items: stretch; }
   .hero-text { display: contents; }
   .hero-text-top { order: 1; }
@@ -1344,8 +1345,11 @@ a.hero-image {
   .pe-card-name { font-size: 16px; }
   .pe-duo { grid-template-columns: 1fr; }
   .pe-panel { padding: 28px 24px; }
-  .pe-offer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .pe-offer-inner { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .pe-price-card { padding: 24px; }
+  .pe-price-card .pe-price { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .pe-price-now, .pe-price-old { white-space: nowrap; }
+  .pe-price-card .btn { width: 100%; justify-content: center; white-space: normal; text-align: center; }
   .pe-form { padding: 24px 16px; }
   .pe-final { padding: 40px 24px; }
   .pe-final .btn { width: 100%; justify-content: center; white-space: normal; }
@@ -1384,7 +1388,7 @@ a.hero-image {
   }
 }
 @media (max-width: 768px) {
-  /* stránka pre waitlist (/pre-teba/): na mobile tlačidlo hneď za prvou vetou, zvyšok úvodu až pod ním */
+  /* landing pages (/pre-teba/, /jedno-cesto-10-kolacov/): na mobile tlačidlo hneď za prvou vetou, zvyšok úvodu až pod ním */
   .pe-hero--cta-hore .pe-cta { order: 4; margin-bottom: 16px; }
   .pe-hero--cta-hore .pe-lead-more { order: 5; }
 }
