@@ -1167,6 +1167,13 @@ a.hero-image {
 .pe-lead { margin-top: 24px; max-width: 54ch; font-size: 16px; line-height: 1.6; color: var(--mak-soft); }
 .pe-cta { margin-top: 32px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 .pe-price-note { font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--ink-mute); }
+.pe-waitlist-oznam {
+  margin-top: 32px; padding: 20px 24px; border-radius: 16px;
+  background: var(--paper-deep); border: 1px solid var(--paper-line);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap;
+}
+#waitlist-oznam[hidden] { display: none; }
+.pe-waitlist-oznam p { flex: 1 1 32ch; font-size: 16px; line-height: 1.6; color: var(--ink); }
 .pe-hero-media {
   display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 16px;
 }
@@ -1388,7 +1395,7 @@ a.hero-image {
   }
 }
 @media (max-width: 768px) {
-  /* landing pages (/pre-teba/, /jedno-cesto-10-kolacov/): na mobile tlačidlo hneď za prvou vetou, zvyšok úvodu až pod ním */
+  /* landing page (/jedno-cesto-10-kolacov/): na mobile tlačidlo hneď za prvou vetou, zvyšok úvodu až pod ním */
   .pe-hero--cta-hore .pe-cta { order: 4; margin-bottom: 16px; }
   .pe-hero--cta-hore .pe-lead-more { order: 5; }
 }

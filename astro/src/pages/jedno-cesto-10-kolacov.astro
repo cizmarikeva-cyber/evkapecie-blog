@@ -49,6 +49,17 @@ const recenzie = [
 
   <main class="pe-main">
 
+    <!-- OZNAM PRE WAITLIST: ukáže sa len pri príchode z /pre-teba/ (?z=waitlist) -->
+    <section class="container" id="waitlist-oznam" hidden>
+      <div class="pe-waitlist-oznam">
+        <p>Cena 199 Kč už skončila. Ale ak si to nestihla (nestihol), ebook si stále môžeš kúpiť - prvých 7 dní je za uvádzaciu cenu 249 Kč, potom bude stáť 299 Kč.</p>
+        <a class="btn btn-primary" href={CHECKOUT_URL}>Chcem ebook</a>
+      </div>
+    </section>
+    <script is:inline>
+      if (new URLSearchParams(location.search).get('z') === 'waitlist') document.getElementById('waitlist-oznam').hidden = false;
+    </script>
+
     <!-- HERO -->
     <section class="container pe-hero pe-hero--cta-hore">
       <div class="pe-hero-text">
