@@ -1287,6 +1287,7 @@ a.hero-image {
 .pe-price-card .pe-price { margin-top: 10px; display: flex; align-items: baseline; gap: 14px; }
 .pe-price-now { font-family: var(--font-display); font-weight: 700; font-size: 56px; line-height: 1; color: var(--mak); }
 .pe-price-old { font-family: var(--font-display); font-size: 26px; color: var(--ink-mute); }
+.pe-price-card .pe-price-eur { margin-top: 8px; font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--mak-soft); }
 .newsletter .pe-price-text { color: var(--mak-soft); font-size: 15px; margin: 16px 0 24px; }
 .pe-price-card .pe-btn-light { background: var(--lekvar); color: var(--maslo); width: 100%; justify-content: center; }
 .pe-price-card .pe-btn-light:hover { background: var(--lekvar-dark); color: var(--maslo); }
