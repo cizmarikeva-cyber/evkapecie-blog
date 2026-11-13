@@ -3,19 +3,31 @@
 // ============================================================
 
 export const FEATURED = {
-  slug:       "lotus-rolky",
-  categories: ["Sladké"],
-  title:      "Lotus rolky",
-  intro:      "Mäkkučké rolky s Lotus Biscoff pomazánkou a trstinovým cukrom, ktoré im dodávajú jemný karamelový nádych. V ankete síce vyhrala škorica, ale tejto príchuti som jednoducho musela dať šancu. Postup je jednoduchý: cesto len rozvaľkáš, potrieš náplňou, zroluješ a nakrájaš, a kým sú rolky ešte horúce, potrieš ich polevou. Môžeš ešte posypať sušienkami a máš hotovo.",
+  slug:       "slane-rolky-s-kysanym-zelim-a-uzenym",
+  categories: ["Slané", "Tradičné"],
+  title:      "Slané rolky s <em>kyslou kapustou</em> a údeným",
+  intro:      "Tieto slané rolky s kyslou kapustou (zelím) a údeným sú taká klasická česká chuť, a za mňa sa perfektne hodí na toto zimné obdobie. V posledných dňoch som piekla veľa sladkého a mala som chuť už aj na niečo slané. Rolky boli extrémne dobré, len ten vizuál zaostáva za tým, ako dobre chutia - bolo by super, keby som s vami vedela zdieľať tú vôňu! :D Posledné slané recepty mali u vás veľký úspech, tak verím, že ani tento vás nesklame. Poďme na to.",
   time:       "2 h",
   servings:   "12 ks, pekáč 24 × 20 cm",
-  level:      "Ľahké",
-  paint:      "medovnik",
-  image:      "images/lotus-rolky.jpeg",
+  level:      "Stredne náročné",
+  paint:      "cesnek",
+  image:      "images/slane-rolky-s-kysanym-zelim-a-uzenym.jpeg",
 };
 
 export const RECIPES = [
   /* ---- Nejnovější (featured: true) --------------------------------- */
+  {
+    slug:        "slane-rolky-s-kysanym-zelim-a-uzenym",
+    featured:    true,
+    categories:  ["Slané", "Tradičné"],
+    title:       "Slané rolky s <em>kyslou kapustou</em> a údeným",
+    time:        "2 h",
+    servings:    "12 ks, pekáč 24 × 20 cm",
+    level:       "Stredne náročné",
+    paint:       "cesnek",
+    image:       "images/slane-rolky-s-kysanym-zelim-a-uzenym.jpeg",
+    detailImage: "images/slane-rolky-s-kysanym-zelim-a-uzenym-detail.jpeg",
+  },
   {
     slug:        "lotus-rolky",
     featured:    true,
@@ -42,7 +54,6 @@ export const RECIPES = [
   },
   {
     slug:        "skoricove-rolky-s-jablky-a-polevou",
-    featured:    true,
     categories:  ["Sladké", "Sezónne"],
     title:       "Škoricové rolky <em>s jablkami a polevou</em>",
     time:        "2 h",
@@ -422,6 +433,77 @@ export const CATEGORIES = [
 ];
 
 export const RECIPE_DATA = {
+
+  "slane-rolky-s-kysanym-zelim-a-uzenym": {
+    date: "13. 11. 2026",
+    intro: "Tieto slané rolky s kyslou kapustou (zelím) a údeným sú taká klasická česká chuť, a za mňa sa perfektne hodí na toto zimné obdobie. V posledných dňoch som piekla veľa sladkého a mala som chuť už aj na niečo slané. Rolky boli extrémne dobré, len ten vizuál zaostáva za tým, ako dobre chutia - bolo by super, keby som s vami vedela zdieľať tú vôňu! :D Posledné slané recepty mali u vás veľký úspech, tak verím, že ani tento vás nesklame. Poďme na to.",
+    ingredients: [
+      {
+        group: "Cesto",
+        items: [
+          { amount: "300 g",  name: "hladkej múky" },
+          { amount: "1 čl",   name: "soli (5 g)" },
+          { amount: "2 čl",   name: "cukru" },
+          { amount: "130 g",  name: "vody" },
+          { amount: "1",      name: "vajce" },
+          { amount: "14 g",   name: "droždia" },
+          { amount: "60 g",   name: "bravčovej masti" },
+        ],
+      },
+      {
+        group: "Náplň",
+        items: [
+          { amount: "1",           name: "cibuľa" },
+          { amount: "1 PL",        name: "oleja" },
+          { amount: "75 g",        name: "údeného mäsa" },
+          { amount: "220 g",       name: "kyslej kapusty" },
+          { amount: "pol čl",      name: "mletej rasce" },
+          { amount: "1 čl",        name: "majoránky" },
+          { amount: "1",           name: "malý zemiak" },
+          { amount: "cca 50 ml",   name: "vody" },
+          { amount: "podľa chuti", name: "soľ" },
+          { amount: "podľa chuti", name: "čierne korenie" },
+        ],
+      },
+      {
+        group: "Na vrch",
+        items: [
+          { amount: " ",    name: "maldonská soľ na posypanie" },
+          { amount: "20 g", name: "rozpustenej bravčovej masti na potretie" },
+        ],
+      },
+    ],
+    steps: [
+      {
+        heading: "Cesto",
+        startAt: 1,
+        items: [
+          "Všetky suroviny na cesto okrem masti miesime asi <b>5 minút</b>.",
+          "Pridáme masť a miesime, kým sa nezapracuje (<b>5–7 minút</b>).",
+          "Cesto prikryjeme a necháme kysnúť cca <b>60 minút</b>.",
+        ],
+      },
+      {
+        heading: "Náplň",
+        startAt: 4,
+        items: [
+          "Kým cesto kysne, pripravíme náplň. Cibuľu nakrájame nadrobno a údené mäso na kocky. Na panvici rozohrejeme olej, dáme naň cibuľu a orestujeme ju dosklovita. Potom pridáme údené mäso a mierne osolíme.",
+          "Na panvicu pridáme kapustu, majoránku, rascu, čierne korenie, soľ a vodu. Dusíme domäkka asi <b>10 minút</b>. Medzitým nastrúhame očistený surový zemiak najjemno. Potom pridáme zemiak a krátko povaríme do zhustnutia.",
+          "Hotovú náplň dáme chladiť, najlepšie na balkón alebo do chladničky - pred plnením musí byť <b>úplne vychladnutá</b>.",
+        ],
+      },
+      {
+        heading: "Tvarovanie a pečenie",
+        startAt: 7,
+        items: [
+          "Vykysnuté cesto rozvaľkáme na obdĺžnik <b>30 × 40 cm</b>, natrieme vychladnutou náplňou a zrolujeme.",
+          "Nakrájame na <b>12 rovnakých častí</b> a uložíme do vymasteného pekáča <b>24 × 20 cm</b>. Necháme ešte <b>20 minút</b> podkysnúť.",
+          "Rolky posypeme maldonskou soľou a pečieme pri <b>200 °C bez ventilátora</b> cca <b>30–35 minút</b>. Treba ich sledovať.",
+          "Hneď po upečení ich potrieme rozpustenou masťou.",
+        ],
+      },
+    ],
+  },
 
   "lotus-rolky": {
     date: "9. 10. 2026",
