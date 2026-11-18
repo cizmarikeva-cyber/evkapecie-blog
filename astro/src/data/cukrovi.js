@@ -88,7 +88,7 @@ export const ALERGENY = [
   'Alergeny u každého druhu na vyžádání.',
 ];
 
-export const UPOZORNENI = 'Upozornění: Objednávka je platná až po potvrzení a zaplacení. Pokud objednávka nebude uhrazena do 3 pracovních dnů od objednání, místo uvolňujeme dalšímu.';
+export const UPOZORNENI = 'Upozornění: Objednávka je platná až po zaplacení. Pokud objednávka nebude uhrazena do 3 pracovních dnů od objednání, bude zrušena a místo uvolníme dalšímu.';
 
 export const VYZDVIHNUTIE = {
   adresa:       'Údolní 34, Brno',

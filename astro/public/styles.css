@@ -1554,6 +1554,9 @@ textarea.ck-input { resize: vertical; }
 .ck-souhrn-radek, .ck-souhrn-celkem { display: flex; justify-content: space-between; gap: 16px; font-size: 15.5px; color: var(--mak-soft); }
 .ck-souhrn-celkem { font-size: 18px; color: var(--mak); font-weight: 600; align-items: baseline; }
 .ck-souhrn-celkem strong { font-family: var(--font-display); font-size: 32px; color: var(--lekvar); }
+.ck-platba-info { display: flex; flex-direction: column; gap: 8px; }
+.ck-platba-info p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--mak-soft); }
+.ck-platba-info strong { display: block; color: var(--mak); }
 .ck-upozorneni { font-size: 14.5px; line-height: 1.6; color: var(--mak-soft); margin: 0; }
 .ck-submit { align-self: flex-start; white-space: normal; text-align: left; }
 .ck-submit:disabled { opacity: 0.6; cursor: wait; }
@@ -1572,7 +1575,7 @@ textarea.ck-input { resize: vertical; }
 .ck-dekujeme h3 { font-family: var(--font-display); font-size: 30px; margin: 0; }
 .ck-dekujeme p { font-size: 17px; margin: 0; }
 .ck-dekujeme strong { color: var(--lekvar); }
-.ck-dekujeme .ck-placeholder { color: var(--vermillion); background: rgba(193,18,31,0.05); }
+.ck-dekujeme .ck-dalsi-krok { font-size: 16px; color: var(--mak-soft); }
 @media (max-width: 768px) {
   .ck-form, .ck-dekujeme { padding: 20px; }
   .ck-row { grid-template-columns: 1fr; }

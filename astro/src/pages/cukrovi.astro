@@ -53,7 +53,7 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
         <div class="eyebrow">Vánoce 2026</div>
         <h1 class="ck-title">Vánoční cukroví <em>na objednávku</em></h1>
         <p class="ck-lead">
-          Objednej si vánoční krabičku s 8 druhy cukroví. Vyzvedneš si ji v Brně na Údolní 34, nebo ti ji přivezu.
+          Objednejte si vánoční krabičku s 8 druhy cukroví. Vyzvednete si ji v Brně na Údolní 34, nebo vám ji přivezeme.
         </p>
         <div class="ck-cta">
           <a class="btn btn-primary btn-large" href={ORDER_URL} {...orderAttrs}>Objednat cukroví</a>
@@ -68,7 +68,7 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
     <!-- KRABIČKY -->
     <section class="container ck-section" id="krabicky">
       <div class="eyebrow">Krabičky</div>
-      <h2 class="ck-h2">Vyber si <em>velikost</em></h2>
+      <h2 class="ck-h2">Vyberte si <em>velikost</em></h2>
       <div class="ck-boxes">
         {KRABICE.map(k => (
           <div class={`ck-box ck-box--${FOTKY[k.id].length}`}>
@@ -110,9 +110,9 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
       <div class="eyebrow">Jak to funguje</div>
       <h2 class="ck-h2">Objednávka <em>ve 3 krocích</em></h2>
       <ol class="ck-kroky">
-        <li>Vyplníš objednávkový formulář. Vybereš krabičky a způsob vyzvednutí.</li>
-        <li>Zaplatíš celou částku převodem.</li>
-        <li>V domluvený termín si cukroví vyzvedneš, nebo ti ho přivezu.</li>
+        <li>Vyplníte objednávkový formulář. Vyberete krabičky a způsob vyzvednutí.</li>
+        <li>Zaplatíte celou částku převodem.</li>
+        <li>V domluvený termín si cukroví vyzvednete, nebo vám ho přivezeme.</li>
       </ol>
     </section>
 
@@ -128,7 +128,7 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
         </div>
         <div class="ck-panel">
           <h3>Rozvoz za {kc(VYZDVIHNUTIE.rozvozCena)}</h3>
-          <p>Přivezu ti cukroví v rámci Brna.</p>
+          <p>Přivezeme vám cukroví v rámci Brna.</p>
           <ul class="ck-terminy"><li>{TERMIN_ROZVOZ}</li></ul>
           <p>{ROZVOZ_POZNAMKA}</p>
         </div>
@@ -140,7 +140,7 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
       <div class="ck-objednavka">
         <div class="eyebrow" style="color:var(--vermillion-tint)">Objednávka</div>
         <div class="ck-objednavka-hlavicka" id="ck-hlavicka">
-          <h2 class="ck-h2">Objednej si <em>vánoční krabičku</em></h2>
+          <h2 class="ck-h2">Objednejte si <em>vánoční krabičku</em></h2>
           <p class="ck-text">Objednávky přijímám do {OBJEDNAVKY_DO}.</p>
         </div>
 
@@ -162,7 +162,7 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
               ))}
             </div>
             <p class="ck-hint">Maximálně {MAX_KRABIC} krabičky od každé velikosti na jednu objednávku.</p>
-            <p class="ck-error" data-error="krabicky" hidden>Vyber aspoň jednu krabičku.</p>
+            <p class="ck-error" data-error="krabicky" hidden>Vyberte aspoň jednu krabičku.</p>
           </fieldset>
 
           <fieldset class="ck-fieldset">
@@ -175,11 +175,11 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
                 </label>
               ))}
             </div>
-            <p class="ck-error" data-error="prevzeti" hidden>Vyber termín a způsob převzetí.</p>
+            <p class="ck-error" data-error="prevzeti" hidden>Vyberte termín a způsob převzetí.</p>
             <label class="ck-field" id="ck-adresa" hidden>
               <span class="ck-label">Adresa pro rozvoz *</span>
               <input type="text" name="adresa" class="ck-input" autocomplete="street-address" />
-              <span class="ck-error" data-error="adresa" hidden>Vyplň adresu pro rozvoz.</span>
+              <span class="ck-error" data-error="adresa" hidden>Vyplňte adresu pro rozvoz.</span>
             </label>
           </fieldset>
 
@@ -188,18 +188,18 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
             <label class="ck-field">
               <span class="ck-label">Jméno a příjmení *</span>
               <input type="text" name="meno" class="ck-input" autocomplete="name" />
-              <span class="ck-error" data-error="meno" hidden>Vyplň jméno a příjmení.</span>
+              <span class="ck-error" data-error="meno" hidden>Vyplňte jméno a příjmení.</span>
             </label>
             <div class="ck-row">
               <label class="ck-field">
                 <span class="ck-label">E-mail *</span>
                 <input type="email" name="email" class="ck-input" autocomplete="email" />
-                <span class="ck-error" data-error="email" hidden>Vyplň platný e-mail.</span>
+                <span class="ck-error" data-error="email" hidden>Vyplňte platný e-mail.</span>
               </label>
               <label class="ck-field">
                 <span class="ck-label">Telefon *</span>
                 <input type="tel" name="telefon" class="ck-input" autocomplete="tel" />
-                <span class="ck-error" data-error="telefon" hidden>Vyplň telefon.</span>
+                <span class="ck-error" data-error="telefon" hidden>Vyplňte telefon.</span>
               </label>
             </div>
             <label class="ck-field">
@@ -216,7 +216,11 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
             </div>
           </div>
 
-          <p class="ck-upozorneni">{UPOZORNENI}</p>
+          <div class="ck-platba-info">
+            <p><strong>Platba převodem na účet.</strong>
+            Údaje k platbě se zobrazí hned po odeslání objednávky a přijdou vám také e-mailem.</p>
+            <p class="ck-upozorneni">{UPOZORNENI}</p>
+          </div>
 
           <label class="ck-check">
             <input type="checkbox" name="souhlas" />
@@ -230,12 +234,12 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
           </div>
 
           <button type="submit" class="btn btn-primary btn-large ck-submit">Objednávka zavazující k platbě</button>
-          <p class="ck-error" data-error="odeslani" hidden>Objednávku se nepodařilo odeslat. Zkus to prosím znovu.</p>
+          <p class="ck-error" data-error="odeslani" hidden>Objednávku se nepodařilo odeslat. Zkuste to prosím znovu.</p>
         </form>
 
         <div class="ck-dekujeme" id="ck-dekujeme" hidden>
           <h3>Děkuji, objednávku jsem přijala.</h3>
-          <p>Objednávka je platná až po zaplacení. Zaplať prosím do 3 pracovních dnů.</p>
+          <p>Objednávka je platná až po zaplacení. Zaplaťte prosím do 3 pracovních dnů.</p>
 
           <div class="ck-platba">
             <dl class="ck-platba-udaje">
@@ -248,11 +252,11 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
               {PLATBA.iban
                 ? <div id="ck-qr"></div>
                 : <div class="ck-placeholder">DOPLNIŤ: IBAN (z neho sa vytvorí QR kód)</div>}
-              <figcaption>QR platba, naskenuj v aplikaci banky</figcaption>
+              <figcaption>QR platba, naskenujte v aplikaci banky</figcaption>
             </figure>
           </div>
 
-          <p class="ck-placeholder">DOPLNIŤ: čo sa deje ďalej (e-mail s potvrdením)</p>
+          <p class="ck-dalsi-krok">Po úspěšném zaplacení vám pošlu fakturu a potvrzení objednávky.</p>
         </div>
         <div id="ck-qr-data" data-iban={PLATBA.iban ?? ''} hidden></div>
       </div>
@@ -331,9 +335,9 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
 
       // Variabilný symbol = telefón bez predvoľby (posledných 9 číslic).
       const vsZTelefonu = (tel) => String(tel || '').replace(/\D/g, '').slice(-9);
-      // Zpráva pro příjemce: bez diakritiky, veľkými písmenami, max. 60 znakov (štandard QR Platba).
+      // Zpráva pro příjemce: „Cukrovi 2026“ + meno zákazníčky, bez diakritiky, veľkými písmenami, max. 60 znakov (štandard QR Platba).
       const zpravaPre = (meno) => `${formConfig.zprava} ${meno}`
-        .normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9 .,-]/g, '')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z0-9 .,-]/g, '')
         .toUpperCase().slice(0, 60);
 
       const zobrazDekujeme = (celkem, meno, telefon) => {
