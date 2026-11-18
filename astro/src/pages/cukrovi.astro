@@ -6,12 +6,26 @@ import velkaImg from '../assets/images/cukrovi/velka-krabica.jpeg';
 import malaDarekImg from '../assets/images/cukrovi/mala-krabica-darek.jpeg';
 import malaObsahImg from '../assets/images/cukrovi/mala-krabica-obsah.jpeg';
 import {
-  FORMULAR_URL, TERMINY, OBJEDNAVKY_DO, KRABICE, DRUHY, ALERGENY, UPOZORNENI, VYZDVIHNUTIE,
+  GOOGLE_FORM, MAX_KRABIC, PREVZETI, PLATBA,
+  TERMINY_VYZDVIHNUTIE, TERMIN_ROZVOZ, ROZVOZ_POZNAMKA, OBJEDNAVKY_DO, KRABICE, DRUHY, ALERGENY, UPOZORNENI, VYZDVIHNUTIE,
 } from '../data/cukrovi.js';
 
-// Kým nie je Google Formulár, tlačidlá vedú na sekciu objednávky.
-const ORDER_URL = FORMULAR_URL ?? '#objednavka';
-const orderAttrs = FORMULAR_URL ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+// Tlačidlá „Objednat“ vedú na formulár nižšie na stránke.
+const ORDER_URL = '#objednavka';
+const orderAttrs = {};
+
+const [velka, mala] = KRABICE;
+// Údaje pre skript formulára (ceny, ID polí Google Formulára).
+const formConfig = {
+  maxKrabic: MAX_KRABIC,
+  zprava: PLATBA.zprava,
+  action: GOOGLE_FORM.action,
+  entry: GOOGLE_FORM.entry,
+  cenaVelka: velka.cena,
+  cenaMala: mala.cena,
+  cenaRozvoz: VYZDVIHNUTIE.rozvozCena,
+  prevzeti: PREVZETI,
+};
 
 // Fotky ku krabičkám (orezané do štvorca cez CSS).
 const FOTKY = {
@@ -110,17 +124,14 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
         <div class="ck-panel">
           <h3>Osobní vyzvednutí</h3>
           <p>Na mé provozovně: {VYZDVIHNUTIE.adresa}.</p>
+          <ul class="ck-terminy">{TERMINY_VYZDVIHNUTIE.map(t => <li>{t}</li>)}</ul>
         </div>
         <div class="ck-panel">
           <h3>Rozvoz za {kc(VYZDVIHNUTIE.rozvozCena)}</h3>
           <p>Přivezu ti cukroví v rámci Brna.</p>
+          <ul class="ck-terminy"><li>{TERMIN_ROZVOZ}</li></ul>
+          <p>{ROZVOZ_POZNAMKA}</p>
         </div>
-      </div>
-      <div class="ck-terminy">
-        <h3 class="ck-druh-name">Termíny</h3>
-        {TERMINY.length > 0
-          ? <ul>{TERMINY.map(t => <li>{t}</li>)}</ul>
-          : <p class="ck-placeholder">DOPLNIŤ: termíny vyzdvihnutia a rozvozu</p>}
       </div>
     </section>
 
@@ -128,16 +139,288 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
     <section class="container" id="objednavka">
       <div class="ck-objednavka">
         <div class="eyebrow" style="color:var(--vermillion-tint)">Objednávka</div>
-        <h2 class="ck-h2">Objednej si <em>vánoční krabičku</em></h2>
-        {OBJEDNAVKY_DO
-          ? <p class="ck-text">Objednávky přijímám do {OBJEDNAVKY_DO}.</p>
-          : <p class="ck-placeholder">DOPLNIŤ: do kedy sa dá objednať</p>}
-        <p class="ck-text">{UPOZORNENI}</p>
-        {FORMULAR_URL
-          ? <a class="btn btn-primary btn-large" href={FORMULAR_URL} target="_blank" rel="noopener noreferrer">Otevřít objednávkový formulář</a>
-          : <p class="ck-placeholder">DOPLNIŤ: odkaz na Google Formulár</p>}
+        <div class="ck-objednavka-hlavicka" id="ck-hlavicka">
+          <h2 class="ck-h2">Objednej si <em>vánoční krabičku</em></h2>
+          <p class="ck-text">Objednávky přijímám do {OBJEDNAVKY_DO}.</p>
+        </div>
+
+        <form class="ck-form" id="ck-form" novalidate>
+
+          <fieldset class="ck-fieldset">
+            <legend class="ck-legend">Krabičky</legend>
+            <div class="ck-row">
+              {[['velke', velka], ['male', mala]].map(([name, k]) => (
+                <div class="ck-field">
+                  <span class="ck-label" id={`ck-label-${name}`}>{k.nazov} ({kc(k.cena)})</span>
+                  <div class="ck-stepper" role="group" aria-labelledby={`ck-label-${name}`}>
+                    <button type="button" class="ck-step" data-step="-1" data-for={name} aria-label="Ubrat jednu krabičku">−</button>
+                    <output class="ck-step-value" data-value-for={name} aria-live="polite">0 ks</output>
+                    <button type="button" class="ck-step" data-step="1" data-for={name} aria-label="Přidat jednu krabičku">+</button>
+                    <input type="hidden" name={name} value="0" />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p class="ck-hint">Maximálně {MAX_KRABIC} krabičky od každé velikosti na jednu objednávku.</p>
+            <p class="ck-error" data-error="krabicky" hidden>Vyber aspoň jednu krabičku.</p>
+          </fieldset>
+
+          <fieldset class="ck-fieldset">
+            <legend class="ck-legend">Převzetí</legend>
+            <div class="ck-radios">
+              {PREVZETI.map(p => (
+                <label class="ck-radio">
+                  <input type="radio" name="prevzeti" value={p.id} />
+                  <span>{p.text}{p.rozvoz && <strong> (+{kc(VYZDVIHNUTIE.rozvozCena)})</strong>}</span>
+                </label>
+              ))}
+            </div>
+            <p class="ck-error" data-error="prevzeti" hidden>Vyber termín a způsob převzetí.</p>
+            <label class="ck-field" id="ck-adresa" hidden>
+              <span class="ck-label">Adresa pro rozvoz *</span>
+              <input type="text" name="adresa" class="ck-input" autocomplete="street-address" />
+              <span class="ck-error" data-error="adresa" hidden>Vyplň adresu pro rozvoz.</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="ck-fieldset">
+            <legend class="ck-legend">Kontakt</legend>
+            <label class="ck-field">
+              <span class="ck-label">Jméno a příjmení *</span>
+              <input type="text" name="meno" class="ck-input" autocomplete="name" />
+              <span class="ck-error" data-error="meno" hidden>Vyplň jméno a příjmení.</span>
+            </label>
+            <div class="ck-row">
+              <label class="ck-field">
+                <span class="ck-label">E-mail *</span>
+                <input type="email" name="email" class="ck-input" autocomplete="email" />
+                <span class="ck-error" data-error="email" hidden>Vyplň platný e-mail.</span>
+              </label>
+              <label class="ck-field">
+                <span class="ck-label">Telefon *</span>
+                <input type="tel" name="telefon" class="ck-input" autocomplete="tel" />
+                <span class="ck-error" data-error="telefon" hidden>Vyplň telefon.</span>
+              </label>
+            </div>
+            <label class="ck-field">
+              <span class="ck-label">Poznámka</span>
+              <textarea name="poznamka" class="ck-input" rows="3"></textarea>
+            </label>
+          </fieldset>
+
+          <div class="ck-souhrn" aria-live="polite">
+            <div class="ck-souhrn-radky" id="ck-souhrn-radky"></div>
+            <div class="ck-souhrn-celkem">
+              <span>Celkem k úhradě</span>
+              <strong id="ck-celkem">0 Kč</strong>
+            </div>
+          </div>
+
+          <p class="ck-upozorneni">{UPOZORNENI}</p>
+
+          <label class="ck-check">
+            <input type="checkbox" name="souhlas" />
+            <span>Souhlasím s <a href="/obchodni-podminky" target="_blank">obchodními podmínkami</a> a se <a href="/ochrana-soukromi" target="_blank">zpracováním osobních údajů</a>. *</span>
+          </label>
+          <p class="ck-error" data-error="souhlas" hidden>Pro odeslání je potřeba souhlas.</p>
+
+          <!-- Skryté pole proti robotom: človek ho nevidí, robot ho vyplní. -->
+          <div class="ck-hp" aria-hidden="true">
+            <label>Web <input type="text" name="web" tabindex="-1" autocomplete="off" /></label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large ck-submit">Objednávka zavazující k platbě</button>
+          <p class="ck-error" data-error="odeslani" hidden>Objednávku se nepodařilo odeslat. Zkus to prosím znovu.</p>
+        </form>
+
+        <div class="ck-dekujeme" id="ck-dekujeme" hidden>
+          <h3>Děkuji, objednávku jsem přijala.</h3>
+          <p>Objednávka je platná až po zaplacení. Zaplať prosím do 3 pracovních dnů.</p>
+
+          <div class="ck-platba">
+            <dl class="ck-platba-udaje">
+              <div><dt>Částka</dt><dd id="ck-dekujeme-cena"></dd></div>
+              <div><dt>Číslo účtu</dt><dd>{PLATBA.cisloUctu ?? <span class="ck-placeholder">DOPLNIŤ: číslo účtu</span>}</dd></div>
+              <div><dt>Variabilní symbol</dt><dd id="ck-platba-vs"></dd></div>
+              <div><dt>Zpráva pro příjemce</dt><dd id="ck-platba-zprava"></dd></div>
+            </dl>
+            <figure class="ck-qr">
+              {PLATBA.iban
+                ? <div id="ck-qr"></div>
+                : <div class="ck-placeholder">DOPLNIŤ: IBAN (z neho sa vytvorí QR kód)</div>}
+              <figcaption>QR platba, naskenuj v aplikaci banky</figcaption>
+            </figure>
+          </div>
+
+          <p class="ck-placeholder">DOPLNIŤ: čo sa deje ďalej (e-mail s potvrdením)</p>
+        </div>
+        <div id="ck-qr-data" data-iban={PLATBA.iban ?? ''} hidden></div>
       </div>
     </section>
+
+    <script define:vars={{ formConfig }}>
+      const form = document.getElementById('ck-form');
+      const kcFmt = (n) => n.toLocaleString('cs-CZ') + ' Kč';
+      const adresaBox = document.getElementById('ck-adresa');
+
+      const data = () => {
+        const fd = new FormData(form);
+        const velke = Number(fd.get('velke') || 0);
+        const male = Number(fd.get('male') || 0);
+        const prevzeti = formConfig.prevzeti.find(p => p.id === fd.get('prevzeti'));
+        const rozvoz = prevzeti?.rozvoz ?? false;
+        const celkem = velke * formConfig.cenaVelka + male * formConfig.cenaMala + (rozvoz ? formConfig.cenaRozvoz : 0);
+        return { fd, velke, male, prevzeti, rozvoz, celkem };
+      };
+
+      const render = () => {
+        const { velke, male, rozvoz, celkem } = data();
+        const radky = [];
+        if (velke) radky.push([`Velká krabička × ${velke}`, velke * formConfig.cenaVelka]);
+        if (male) radky.push([`Malá krabička × ${male}`, male * formConfig.cenaMala]);
+        if (rozvoz) radky.push(['Rozvoz po Brně', formConfig.cenaRozvoz]);
+        document.getElementById('ck-souhrn-radky').innerHTML = radky
+          .map(([t, c]) => `<div class="ck-souhrn-radek"><span>${t}</span><span>${kcFmt(c)}</span></div>`).join('');
+        document.getElementById('ck-celkem').textContent = kcFmt(celkem);
+        adresaBox.hidden = !rozvoz;
+      };
+
+      const showError = (key, show) => {
+        form.querySelectorAll(`[data-error="${key}"]`).forEach(el => { el.hidden = !show; });
+      };
+
+      const validate = () => {
+        const { fd, velke, male, prevzeti, rozvoz } = data();
+        const txt = (k) => String(fd.get(k) || '').trim();
+        const checks = {
+          krabicky: velke + male > 0,
+          prevzeti: !!prevzeti,
+          adresa: !rozvoz || txt('adresa').length > 0,
+          meno: txt('meno').length > 0,
+          email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(txt('email')),
+          telefon: txt('telefon').replace(/\D/g, '').length >= 9,
+          souhlas: fd.get('souhlas') === 'on',
+        };
+        Object.entries(checks).forEach(([k, ok]) => showError(k, !ok));
+        return Object.values(checks).every(Boolean);
+      };
+
+      // Tlačidlá −/+ pri počte krabičiek (0 až maxKrabic).
+      const syncStepper = (name) => {
+        const input = form.elements[name];
+        const n = Number(input.value);
+        form.querySelector(`[data-value-for="${name}"]`).textContent = `${n} ks`;
+        form.querySelector(`[data-for="${name}"][data-step="-1"]`).disabled = n <= 0;
+        form.querySelector(`[data-for="${name}"][data-step="1"]`).disabled = n >= formConfig.maxKrabic;
+      };
+      form.querySelectorAll('.ck-step').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const input = form.elements[btn.dataset.for];
+          const n = Math.min(formConfig.maxKrabic, Math.max(0, Number(input.value) + Number(btn.dataset.step)));
+          input.value = String(n);
+          syncStepper(btn.dataset.for);
+          form.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+      });
+      ['velke', 'male'].forEach(syncStepper);
+
+      // Ochrana proti robotom: skryté pole musí ostať prázdne
+      // a od načítania stránky musia uplynúť aspoň 3 sekundy.
+      const nacitane = Date.now();
+      const jeRobot = () => String(new FormData(form).get('web') || '') !== '' || Date.now() - nacitane < 3000;
+
+      // Variabilný symbol = telefón bez predvoľby (posledných 9 číslic).
+      const vsZTelefonu = (tel) => String(tel || '').replace(/\D/g, '').slice(-9);
+      // Zpráva pro příjemce: bez diakritiky, veľkými písmenami, max. 60 znakov (štandard QR Platba).
+      const zpravaPre = (meno) => `${formConfig.zprava} ${meno}`
+        .normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9 .,-]/g, '')
+        .toUpperCase().slice(0, 60);
+
+      const zobrazDekujeme = (celkem, meno, telefon) => {
+        form.hidden = true;
+        document.getElementById('ck-hlavicka').hidden = true;
+        const vs = vsZTelefonu(telefon);
+        const zprava = zpravaPre(meno || '');
+        document.getElementById('ck-dekujeme-cena').textContent = kcFmt(celkem);
+        document.getElementById('ck-platba-vs').textContent = vs;
+        document.getElementById('ck-platba-zprava').textContent = zprava;
+        // QR kód vykreslí skript nižšie (window.ckQrPlatba), ak je vyplnený IBAN.
+        window.ckQrPlatba?.({ castka: celkem, vs, zprava });
+        const dk = document.getElementById('ck-dekujeme');
+        dk.hidden = false;
+        dk.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+
+      // Po prvom pokuse o odoslanie sa chyby aktualizujú priebežne.
+      let skusila = false;
+      const update = () => { render(); if (skusila) validate(); };
+      form.addEventListener('change', update);
+      form.addEventListener('input', update);
+      render();
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        skusila = true;
+        showError('odeslani', false);
+        if (!validate()) {
+          form.querySelector('.ck-error:not([hidden])')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+        const { fd, velke, male, prevzeti, rozvoz, celkem } = data();
+        // Robotovi sa tvárime, že prešiel, ale nič neodošleme.
+        if (jeRobot()) { zobrazDekujeme(celkem, fd.get('meno'), fd.get('telefon')); return; }
+        const e2 = formConfig.entry;
+        const body = new URLSearchParams();
+        body.append(e2.meno, String(fd.get('meno')).trim());
+        body.append(e2.email, String(fd.get('email')).trim());
+        body.append(e2.telefon, String(fd.get('telefon')).trim());
+        body.append(e2.velke, String(velke));
+        body.append(e2.male, String(male));
+        body.append(e2.prevzeti, prevzeti.text);
+        body.append(e2.adresa, rozvoz ? String(fd.get('adresa')).trim() : '');
+        body.append(e2.poznamka, String(fd.get('poznamka') || '').trim());
+        body.append(e2.cena, String(celkem));
+        body.append(e2.souhlas, 'Ano');
+
+        const btn = form.querySelector('.ck-submit');
+        btn.disabled = true;
+        btn.textContent = 'Odesílám…';
+        try {
+          // Google Formulár neposiela späť odpoveď (no-cors); úspech = request odišiel.
+          await fetch(formConfig.action, { method: 'POST', mode: 'no-cors', body });
+          zobrazDekujeme(celkem, String(fd.get('meno')).trim(), fd.get('telefon'));
+        } catch (err) {
+          showError('odeslani', true);
+          btn.disabled = false;
+          btn.textContent = 'Objednávka zavazující k platbě';
+        }
+      });
+    </script>
+
+    <script>
+      // QR Platba (český štandard SPD). Generuje sa priamo v prehliadači,
+      // údaje nikam neodchádzajú.
+      import qrcode from 'qrcode-generator';
+
+      const iban = (document.getElementById('ck-qr-data')?.dataset.iban || '').replace(/\s/g, '');
+
+      (window as any).ckQrPlatba = ({ castka, vs, zprava }: { castka: number; vs: string; zprava: string }) => {
+        const box = document.getElementById('ck-qr');
+        if (!iban || !box) return;
+        const spd = [
+          'SPD*1.0',
+          `ACC:${iban}`,
+          `AM:${castka.toFixed(2)}`,
+          'CC:CZK',
+          vs ? `X-VS:${vs}` : '',
+          zprava ? `MSG:${zprava}` : '',
+        ].filter(Boolean).join('*');
+        const qr = qrcode(0, 'M');
+        qr.addData(spd);
+        qr.make();
+        box.innerHTML = qr.createSvgTag({ cellSize: 6, margin: 2, scalable: true });
+      };
+    </script>
 
   </main>
 
