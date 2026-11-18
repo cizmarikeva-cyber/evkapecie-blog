@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/images/cukrovi/velka-detail1.jpeg';
+import velkaImg from '../assets/images/cukrovi/velka-krabica.jpeg';
+import malaDarekImg from '../assets/images/cukrovi/mala-krabica-darek.jpeg';
+import malaObsahImg from '../assets/images/cukrovi/mala-krabica-obsah.jpeg';
+import {
+  FORMULAR_URL, TERMINY, OBJEDNAVKY_DO, KRABICE, DRUHY, ALERGENY, UPOZORNENI, VYZDVIHNUTIE,
+} from '../data/cukrovi.js';
+
+// Kým nie je Google Formulár, tlačidlá vedú na sekciu objednávky.
+const ORDER_URL = FORMULAR_URL ?? '#objednavka';
+const orderAttrs = FORMULAR_URL ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+
+// Fotky ku krabičkám (orezané do štvorca cez CSS).
+const FOTKY = {
+  velka: [{ src: velkaImg, alt: 'Velká krabička cukroví shora, 8 druhů' }],
+  mala: [
+    { src: malaDarekImg, alt: 'Malá krabička v dárkovém balení s mašlí' },
+    { src: malaObsahImg, alt: 'Obsah malé krabičky cukroví' },
+  ],
+};
+
+const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
+---
+
+<BaseLayout
+  activeNav="cukrovi"
+  title="Vánoční cukroví na objednávku | Evka pečie"
+  description="Vánoční krabička cukroví z Brna: 8 druhů, velká krabička 1 kg nebo malá 16 ks. Vyzvednutí na Údolní 34 nebo rozvoz po Brně."
+>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="container ck-hero">
+      <div>
+        <div class="eyebrow">Vánoce 2026</div>
+        <h1 class="ck-title">Vánoční cukroví <em>na objednávku</em></h1>
+        <p class="ck-lead">
+          Objednej si vánoční krabičku s 8 druhy cukroví. Vyzvedneš si ji v Brně na Údolní 34, nebo ti ji přivezu.
+        </p>
+        <div class="ck-cta">
+          <a class="btn btn-primary btn-large" href={ORDER_URL} {...orderAttrs}>Objednat cukroví</a>
+          <a class="btn btn-secondary btn-large" href="#krabicky">Prohlédnout krabičky</a>
+        </div>
+      </div>
+      <div class="ck-foto ck-hero-foto">
+        <Image src={heroImg} alt="Vánoční cukroví ve velké krabičce" width={900} loading="eager" fetchpriority="high" />
+      </div>
+    </section>
+
+    <!-- KRABIČKY -->
+    <section class="container ck-section" id="krabicky">
+      <div class="eyebrow">Krabičky</div>
+      <h2 class="ck-h2">Vyber si <em>velikost</em></h2>
+      <div class="ck-boxes">
+        {KRABICE.map(k => (
+          <div class={`ck-box ck-box--${FOTKY[k.id].length}`}>
+            <div class="ck-box-fotky">
+              {FOTKY[k.id].map(f => (
+                <Image src={f.src} alt={f.alt} width={700} class="ck-box-foto" />
+              ))}
+            </div>
+            <div class="ck-box-text">
+              <h3 class="ck-box-name">{k.nazov}</h3>
+              <div class="ck-box-price">{kc(k.cena)}</div>
+              <p class="ck-box-obsah">{k.obsah}</p>
+              <a class="btn btn-primary" href={ORDER_URL} {...orderAttrs}>Objednat</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- DRUHY A ALERGENY -->
+    <section class="container ck-section">
+      <div class="ck-duo">
+        <div>
+          <div class="eyebrow">V krabičce</div>
+          <h2 class="ck-h2"><em>8 druhů</em> cukroví</h2>
+          <ul class="ck-list">
+            {DRUHY.map(d => <li>{d}</li>)}
+          </ul>
+        </div>
+        <div class="ck-panel ck-panel--top">
+          <h3>Alergeny</h3>
+          {ALERGENY.map(a => <p>{a}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- JAK TO FUNGUJE -->
+    <section class="container ck-section">
+      <div class="eyebrow">Jak to funguje</div>
+      <h2 class="ck-h2">Objednávka <em>ve 3 krocích</em></h2>
+      <ol class="ck-kroky">
+        <li>Vyplníš objednávkový formulář. Vybereš krabičky a způsob vyzvednutí.</li>
+        <li>Zaplatíš celou částku převodem.</li>
+        <li>V domluvený termín si cukroví vyzvedneš, nebo ti ho přivezu.</li>
+      </ol>
+    </section>
+
+    <!-- VYZVEDNUTÍ -->
+    <section class="container ck-section">
+      <div class="eyebrow">Vyzvednutí</div>
+      <h2 class="ck-h2">Osobně nebo <em>rozvoz</em></h2>
+      <div class="ck-duo">
+        <div class="ck-panel">
+          <h3>Osobní vyzvednutí</h3>
+          <p>Na mé provozovně: {VYZDVIHNUTIE.adresa}.</p>
+        </div>
+        <div class="ck-panel">
+          <h3>Rozvoz za {kc(VYZDVIHNUTIE.rozvozCena)}</h3>
+          <p>Přivezu ti cukroví v rámci Brna.</p>
+        </div>
+      </div>
+      <div class="ck-terminy">
+        <h3 class="ck-druh-name">Termíny</h3>
+        {TERMINY.length > 0
+          ? <ul>{TERMINY.map(t => <li>{t}</li>)}</ul>
+          : <p class="ck-placeholder">DOPLNIŤ: termíny vyzdvihnutia a rozvozu</p>}
+      </div>
+    </section>
+
+    <!-- OBJEDNÁVKA -->
+    <section class="container" id="objednavka">
+      <div class="ck-objednavka">
+        <div class="eyebrow" style="color:var(--vermillion-tint)">Objednávka</div>
+        <h2 class="ck-h2">Objednej si <em>vánoční krabičku</em></h2>
+        {OBJEDNAVKY_DO
+          ? <p class="ck-text">Objednávky přijímám do {OBJEDNAVKY_DO}.</p>
+          : <p class="ck-placeholder">DOPLNIŤ: do kedy sa dá objednať</p>}
+        <p class="ck-text">{UPOZORNENI}</p>
+        {FORMULAR_URL
+          ? <a class="btn btn-primary btn-large" href={FORMULAR_URL} target="_blank" rel="noopener noreferrer">Otevřít objednávkový formulář</a>
+          : <p class="ck-placeholder">DOPLNIŤ: odkaz na Google Formulár</p>}
+      </div>
+    </section>
+
+  </main>
+
+</BaseLayout>

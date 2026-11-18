@@ -1400,3 +1400,141 @@ a.hero-image {
   .pe-hero--cta-hore .pe-cta { order: 4; margin-bottom: 16px; }
   .pe-hero--cta-hore .pe-lead-more { order: 5; }
 }
+
+/* ---- cukroví: navigácia a pruh --------------------------------- */
+.nav-link.nav-link-cukrovi {
+  background: var(--lekvar); color: var(--maslo);
+  padding: 8px 16px; border-radius: var(--radius-pill);
+  margin-block: -8px 0; align-self: center;
+}
+.nav-link.nav-link-cukrovi:hover { background: var(--lekvar-dark); color: var(--maslo); }
+.nav-link.nav-link-cukrovi.active { background: var(--lekvar-dark); color: var(--maslo); }
+.nav-link.nav-link-cukrovi.active::after { display: none; }
+.nav-mobile .nav-link.nav-link-cukrovi {
+  background: none; color: var(--lekvar); font-weight: 700;
+  padding: 12px 0; margin: 0; border-radius: 0; align-self: stretch;
+}
+.cukrovi-strip {
+  display: flex; justify-content: center; align-items: center; gap: 10px;
+  padding: 11px 20px; background: var(--mak); color: var(--maslo);
+  font-family: var(--font-body); font-size: 14.5px; text-decoration: none; text-align: center;
+  transition: background var(--dur-2) var(--ease-settle);
+}
+.cukrovi-strip:hover { background: var(--lekvar); color: var(--maslo); }
+.cukrovi-strip strong { font-weight: 700; }
+.cukrovi-strip .arrow { font-family: var(--font-display); font-style: italic; font-size: 18px; }
+
+/* ---- cukroví: placeholdery (kým Eva nedodá fotky a údaje) ------- */
+.ck-placeholder {
+  border: 2px dashed var(--vermillion-tint); background: rgba(193,18,31,0.05);
+  color: var(--vermillion); border-radius: var(--radius-2);
+  padding: 14px 18px; font-size: 15px; font-style: italic;
+}
+.ck-foto {
+  position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+  color: rgba(253,240,213,0.9); font-family: var(--font-display); font-style: italic; font-size: 18px;
+  text-align: center; padding: 16px;
+}
+
+/* ---- cukroví: stránka /cukrovi ---------------------------------- */
+.ck-hero {
+  display: grid; grid-template-columns: 1.05fr 1fr; column-gap: 64px;
+  align-items: center; padding-block: 64px 56px; border-bottom: 1px solid var(--paper-line);
+}
+.ck-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2.75rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -0.025em; margin-top: 16px;
+}
+.ck-title em { font-style: italic; font-weight: 500; color: var(--lekvar); display: block; }
+.ck-lead { margin-top: 24px; max-width: 54ch; font-size: 17px; line-height: 1.6; color: var(--mak-soft); }
+.ck-cta { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
+.ck-hero-foto { aspect-ratio: 4 / 5; border-radius: var(--radius-4); box-shadow: var(--shadow-3); }
+.ck-hero-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.ck-section { padding-block: 64px 8px; }
+.ck-h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 700; letter-spacing: -0.015em; line-height: 1.1; margin: 8px 0 0; }
+.ck-h2 em { font-style: italic; color: var(--lekvar); }
+.ck-text { margin-top: 14px; font-size: 16px; line-height: 1.65; color: var(--mak-soft); max-width: 62ch; }
+
+.ck-boxes { margin-top: 32px; display: grid; gap: 24px; }
+.ck-box {
+  background: var(--smotana); border: 1px solid var(--paper-line); border-radius: var(--radius-3);
+  padding: 20px; box-shadow: var(--shadow-1); display: grid; gap: 32px; align-items: center;
+}
+.ck-box-name { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin: 0; }
+.ck-box-price { font-family: var(--font-display); font-size: 48px; font-weight: 700; line-height: 1; color: var(--lekvar); }
+.ck-box-obsah { font-size: 16px; color: var(--mak-soft); }
+.ck-box .btn { margin-top: 12px; align-self: flex-start; }
+.ck-box--1 { grid-template-columns: 300px 1fr; }
+.ck-box--2 { grid-template-columns: 616px 1fr; }
+.ck-box-fotky { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 16px; }
+.ck-box-foto { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius-2); display: block; }
+.ck-box-text { display: flex; flex-direction: column; gap: 10px; padding-right: 12px; }
+.ck-box-obsah { line-height: 1.6; margin: 0; }
+.ck-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+.ck-list li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.5; color: var(--mak); }
+.ck-list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 999px; background: var(--lekvar); }
+.ck-panel--top { align-self: start; }
+.ck-panel p + p { margin-top: 8px; }
+
+.ck-druh-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; line-height: 1.2; }
+
+.ck-kroky { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: krok; list-style: none; padding: 0; }
+.ck-kroky li {
+  counter-increment: krok; background: var(--smotana); border: 1px solid var(--paper-line);
+  border-radius: var(--radius-3); padding: 24px; font-size: 16px; line-height: 1.55; color: var(--mak-soft);
+}
+.ck-kroky li::before {
+  content: counter(krok); display: block; margin-bottom: 10px;
+  font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--lekvar); line-height: 1;
+}
+
+.ck-duo { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.ck-panel { background: var(--paper-deep); border-radius: var(--radius-3); padding: 28px; }
+.ck-panel h3 { font-family: var(--font-display); font-size: 24px; margin: 0 0 8px; }
+.ck-panel p { font-size: 16px; line-height: 1.6; color: var(--mak-soft); }
+.ck-terminy { margin-top: 24px; }
+.ck-terminy ul { margin: 12px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.8; color: var(--mak); }
+
+.ck-objednavka {
+  margin-top: 64px; background: var(--mak); color: var(--maslo); border-radius: var(--radius-4);
+  padding: 48px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px;
+}
+.ck-objednavka .ck-h2 { color: var(--maslo); }
+.ck-objednavka .ck-h2 em { color: var(--vermillion-tint); }
+.ck-objednavka .ck-text { color: rgba(250,244,236,0.85); }
+.ck-objednavka .ck-placeholder { color: var(--maslo); border-color: var(--vermillion-tint); background: rgba(255,255,255,0.06); }
+
+/* ---- hlavná stránka: pás s e-bookmi ----------------------------- */
+.eb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.eb-card {
+  display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: center;
+  background: var(--smotana); border: 1px solid var(--paper-line); border-radius: 14px;
+  padding: 20px; box-shadow: var(--shadow-1); text-decoration: none; color: inherit;
+  transition: transform var(--dur-2) var(--ease-settle), box-shadow var(--dur-2) var(--ease-settle);
+}
+.eb-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); color: inherit; }
+.eb-card-img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius-2); display: block; }
+.eb-card-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lekvar); }
+.eb-card-title { font-family: var(--font-display); font-size: 26px; font-weight: 700; line-height: 1.1; margin: 6px 0 0; color: var(--mak); }
+.eb-card-text { margin-top: 10px; font-size: 15px; line-height: 1.55; color: var(--mak-soft); }
+.eb-card-more { margin-top: 14px; display: inline-flex; gap: 8px; font-size: 14px; font-weight: 600; color: var(--lekvar); }
+.eb-card-more .arrow { font-family: var(--font-display); font-style: italic; }
+
+@media (max-width: 1024px) {
+  .ck-box--1 { grid-template-columns: 240px 1fr; }
+  .ck-box--2 { grid-template-columns: 496px 1fr; }
+  .eb-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .ck-hero { grid-template-columns: 1fr; row-gap: 32px; padding-block: 40px 40px; }
+  .ck-hero-foto { aspect-ratio: 3 / 2; }
+  .ck-duo { grid-template-columns: 1fr; }
+  .ck-box--1, .ck-box--2 { grid-template-columns: 1fr; gap: 20px; }
+  .ck-box-text { padding: 0 4px 4px; }
+  .ck-kroky { grid-template-columns: 1fr; }
+  .ck-objednavka { padding: 32px 24px; }
+  .ck-section { padding-block: 48px 0; }
+  .eb-card { grid-template-columns: 110px 1fr; gap: 16px; padding: 16px; }
+  .eb-card-title { font-size: 22px; }
+}

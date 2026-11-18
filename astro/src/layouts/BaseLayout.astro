@@ -1,5 +1,6 @@
 ---
 import { PREDAJCA } from '../data/predajca.js';
+import { SEZONA_CUKROVI } from '../data/cukrovi.js';
 
 export interface Props {
   title: string;
@@ -84,6 +85,7 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
       </a>
       <nav class="nav-links">
         <a class={`nav-link${activeNav === 'home' ? ' active' : ''}`} href="/">Domov</a>
+        {SEZONA_CUKROVI && <a class={`nav-link nav-link-cukrovi${activeNav === 'cukrovi' ? ' active' : ''}`} href="/cukrovi">Cukroví</a>}
         <a class={`nav-link${activeNav === 'recipes' ? ' active' : ''}`} href="/recepty">Recepty</a>
         <div class="nav-drop" id="nav-drop">
           <button type="button" class={`nav-link nav-drop-btn${activeNav === 'ebooks' ? ' active' : ''}`} id="nav-drop-btn" aria-expanded="false" aria-controls="nav-drop-menu">E-book <svg class="nav-drop-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
@@ -118,6 +120,7 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
       </button>
     </div>
     <a class={`nav-link${activeNav === 'home' ? ' active' : ''}`} href="/">Domov</a>
+    {SEZONA_CUKROVI && <a class={`nav-link nav-link-cukrovi${activeNav === 'cukrovi' ? ' active' : ''}`} href="/cukrovi">Cukroví</a>}
     <a class={`nav-link${activeNav === 'recipes' ? ' active' : ''}`} href="/recepty">Recepty</a>
     <details class="nav-mobile-drop" open={activeNav === 'ebooks'}>
       <summary class={`nav-link${activeNav === 'ebooks' ? ' active' : ''}`}>E-book <svg class="nav-drop-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -126,6 +129,14 @@ const canonical = new URL(pathname, 'https://evkapecie.cz').href;
     </details>
     <a class={`nav-link${activeNav === 'about' ? ' active' : ''}`} href="/o-mne">O mne</a>
   </div>
+
+  <!-- Pruh cukroví (len v sezóne; nie na hlavnej stránke, tam je cukroví v hero, a nie na stránke cukroví) -->
+  {SEZONA_CUKROVI && activeNav !== 'cukrovi' && activeNav !== 'home' && (
+    <a class="cukrovi-strip" href="/cukrovi">
+      <span>Objednaj si <strong>vianočnú krabičku cukroví</strong></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  )}
 
   <!-- Obsah stránky -->
   <slot />
