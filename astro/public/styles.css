@@ -1456,20 +1456,19 @@ a.hero-image {
 .ck-h2 em { font-style: italic; color: var(--lekvar); }
 .ck-text { margin-top: 14px; font-size: 16px; line-height: 1.65; color: var(--mak-soft); max-width: 62ch; }
 
-.ck-boxes { margin-top: 32px; display: grid; gap: 24px; }
+.ck-boxes { margin-top: 32px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: stretch; }
 .ck-box {
   background: var(--smotana); border: 1px solid var(--paper-line); border-radius: var(--radius-3);
-  padding: 20px; box-shadow: var(--shadow-1); display: grid; gap: 32px; align-items: center;
+  padding: 20px; box-shadow: var(--shadow-1); display: flex; flex-direction: column; gap: 24px;
 }
 .ck-box-name { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin: 0; }
 .ck-box-price { font-family: var(--font-display); font-size: 48px; font-weight: 700; line-height: 1; color: var(--lekvar); }
 .ck-box-obsah { font-size: 16px; color: var(--mak-soft); }
-.ck-box .btn { margin-top: 12px; align-self: flex-start; }
-.ck-box--1 { grid-template-columns: 300px 1fr; }
-.ck-box--2 { grid-template-columns: 616px 1fr; }
+.ck-box .btn { margin-top: auto; align-self: flex-start; }
+.ck-box-obsah strong { color: var(--mak); font-weight: 700; }
 .ck-box-fotky { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 16px; }
 .ck-box-foto { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius-2); display: block; }
-.ck-box-text { display: flex; flex-direction: column; gap: 10px; padding-right: 12px; }
+.ck-box-text { display: flex; flex-direction: column; gap: 10px; flex: 1; padding: 0 8px 8px; }
 .ck-box-obsah { line-height: 1.6; margin: 0; }
 .ck-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
 .ck-list li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.5; color: var(--mak); }
@@ -1558,6 +1557,7 @@ textarea.ck-input { resize: vertical; }
 .ck-platba-info p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--mak-soft); }
 .ck-platba-info strong { display: block; color: var(--mak); }
 .ck-upozorneni { font-size: 14.5px; line-height: 1.6; color: var(--mak-soft); margin: 0; }
+.ck-platba-info .ck-upozorneni strong { display: inline; color: var(--mak); }
 .ck-submit { align-self: flex-start; white-space: normal; text-align: left; }
 .ck-submit:disabled { opacity: 0.6; cursor: wait; }
 .ck-platba { display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: center;
@@ -1599,15 +1599,14 @@ textarea.ck-input { resize: vertical; }
 .eb-card-more .arrow { font-family: var(--font-display); font-style: italic; }
 
 @media (max-width: 1024px) {
-  .ck-box--1 { grid-template-columns: 240px 1fr; }
-  .ck-box--2 { grid-template-columns: 496px 1fr; }
   .eb-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
   .ck-hero { grid-template-columns: 1fr; row-gap: 32px; padding-block: 40px 40px; }
   .ck-hero-foto { aspect-ratio: 3 / 2; }
   .ck-duo { grid-template-columns: 1fr; }
-  .ck-box--1, .ck-box--2 { grid-template-columns: 1fr; gap: 20px; }
+  .ck-boxes { grid-template-columns: 1fr; }
+  .ck-box { gap: 20px; }
   .ck-box-text { padding: 0 4px 4px; }
   .ck-kroky { grid-template-columns: 1fr; }
   .ck-objednavka { padding: 32px 24px; }
@@ -1615,3 +1614,24 @@ textarea.ck-input { resize: vertical; }
   .eb-card { grid-template-columns: 110px 1fr; gap: 16px; padding: 16px; }
   .eb-card-title { font-size: 22px; }
 }
+
+/* Galéria cukroví pod „V krabičce": PC 3 stĺpce, mobil 2 stĺpce, všetko štvorce */
+.ck-galerie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.ck-galerie-img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 16px; display: block; }
+.ck-galerie-ig { text-align: center; color: var(--mak); font-family: var(--font-body); font-size: 17px; margin-top: 28px; }
+.ck-galerie-ig a { color: var(--lekvar); text-decoration: none; }
+.ck-galerie-ig a:hover { text-decoration: underline; }
+@media (max-width: 768px) {
+  .ck-galerie { grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 32px; }
+  .ck-galerie-img { border-radius: 14px; }
+  .ck-galerie-ig { font-size: 14px; margin-top: 18px; }
+}
+
+/* Úvod v troch odsekoch, poznámka pod fotkou krabičky */
+.ck-lead + .ck-lead { margin-top: 14px; }
+.ck-box-obsah + .ck-box-obsah { margin-top: 10px; }
+.ck-box-pozn { margin: 0; font-size: 13px; line-height: 1.5; color: var(--mak-soft); font-style: italic; }
+
+/* Alergeny ako obyčajný text pod zoznamom druhov */
+.ck-alergeny { margin-top: 20px; }
+.ck-alergeny p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--mak-soft); }

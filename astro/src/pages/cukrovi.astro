@@ -4,10 +4,24 @@ import { Image } from 'astro:assets';
 import heroImg from '../assets/images/cukrovi/velka-detail1.jpeg';
 import velkaImg from '../assets/images/cukrovi/velka-krabica.jpeg';
 import malaDarekImg from '../assets/images/cukrovi/mala-krabica-darek.jpeg';
-import malaObsahImg from '../assets/images/cukrovi/mala-krabica-obsah.jpeg';
+import galTartaletka from '../assets/images/cukrovi/detail-tartaletka.jpeg';
+import galRafaello from '../assets/images/cukrovi/detail-rafaello.jpeg';
+import galMedovnikove from '../assets/images/cukrovi/detail-medovnikove.jpeg';
+import galVosiHnizda from '../assets/images/cukrovi/detail-vosi-hnizda.jpeg';
+import galMilionarsky from '../assets/images/cukrovi/detail-milionarsky.jpeg';
+import galMix from '../assets/images/cukrovi/detail-mix.jpeg';
+
+const GALERIE = [
+  { src: galTartaletka,  alt: 'Tartaletky s malinami a bílou čokoládou' },
+  { src: galVosiHnizda,  alt: 'Pistáciové vosí hnízda s malinovým krémem' },
+  { src: galMilionarsky, alt: 'Milionářský řez' },
+  { src: galRafaello,    alt: 'Rafaello' },
+  { src: galMix,         alt: 'Linecké, tartaletky a vanilkové rohlíčky v krabičce' },
+  { src: galMedovnikove, alt: 'Medovníkové kuličky' },
+];
 import {
   GOOGLE_FORM, MAX_KRABIC, PREVZETI, PLATBA,
-  TERMINY_VYZDVIHNUTIE, TERMIN_ROZVOZ, ROZVOZ_POZNAMKA, OBJEDNAVKY_DO, KRABICE, DRUHY, ALERGENY, UPOZORNENI, VYZDVIHNUTIE,
+  TERMINY_VYZDVIHNUTIE, TERMIN_ROZVOZ, ROZVOZ_POZNAMKA, KRABICE, DRUHY, ALERGENY, UPOZORNENI, VYZDVIHNUTIE,
 } from '../data/cukrovi.js';
 
 // Tlačidlá „Objednat“ vedú na formulár nižšie na stránke.
@@ -32,7 +46,6 @@ const FOTKY = {
   velka: [{ src: velkaImg, alt: 'Velká krabička cukroví shora, 8 druhů' }],
   mala: [
     { src: malaDarekImg, alt: 'Malá krabička v dárkovém balení s mašlí' },
-    { src: malaObsahImg, alt: 'Obsah malé krabičky cukroví' },
   ],
 };
 
@@ -50,10 +63,16 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
     <!-- HERO -->
     <section class="container ck-hero">
       <div>
-        <div class="eyebrow">Vánoce 2026</div>
-        <h1 class="ck-title">Vánoční cukroví <em>na objednávku</em></h1>
+        <div class="eyebrow">Vánoční nabídka</div>
+        <h1 class="ck-title">Vánoční cukroví <em>z poctivých surovin</em></h1>
         <p class="ck-lead">
-          Objednejte si vánoční krabičku s 8 druhy cukroví. Vyzvednete si ji v Brně na Údolní 34, nebo vám ji přivezeme.
+          Letos jsem pro vás připravila krabičku vánočního cukroví s 8 druhy, které mám nejraději. Najdete v ní klasiku jako linecké a vanilkové rohlíčky podle naší rodinné receptury, ale i něco modernějšího, třeba malinové tartaletky s bílou čokoládou, takže si u stolu vybere opravdu každý.
+        </p>
+        <p class="ck-lead">
+          Peču z másla, kvalitní čokolády a z ořechů a džemů od lokálních dodavatelů. Nepoužívám žádné náhražky ani levné suroviny, aby cukroví chutnalo tak, jak má.
+        </p>
+        <p class="ck-lead">
+          Letos ho poprvé nabízím na objednávku, proto si na každé krabičce dávám o to víc záležet. Moc se těším, až ho upeču i pro vás!
         </p>
         <div class="ck-cta">
           <a class="btn btn-primary btn-large" href={ORDER_URL} {...orderAttrs}>Objednat cukroví</a>
@@ -71,16 +90,19 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
       <h2 class="ck-h2">Vyberte si <em>velikost</em></h2>
       <div class="ck-boxes">
         {KRABICE.map(k => (
-          <div class={`ck-box ck-box--${FOTKY[k.id].length}`}>
-            <div class="ck-box-fotky">
-              {FOTKY[k.id].map(f => (
-                <Image src={f.src} alt={f.alt} width={700} class="ck-box-foto" />
-              ))}
+          <div class="ck-box">
+            <div class="ck-box-media">
+              <div class="ck-box-fotky">
+                {FOTKY[k.id].map(f => (
+                  <Image src={f.src} alt={f.alt} width={700} class="ck-box-foto" />
+                ))}
+              </div>
             </div>
             <div class="ck-box-text">
               <h3 class="ck-box-name">{k.nazov}</h3>
               <div class="ck-box-price">{kc(k.cena)}</div>
-              <p class="ck-box-obsah">{k.obsah}</p>
+              {k.obsah.map(o => <p class="ck-box-obsah" set:html={o} />)}
+              {k.pozn && <p class="ck-box-pozn">{k.pozn}</p>}
               <a class="btn btn-primary" href={ORDER_URL} {...orderAttrs}>Objednat</a>
             </div>
           </div>
@@ -90,19 +112,23 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
 
     <!-- DRUHY A ALERGENY -->
     <section class="container ck-section">
-      <div class="ck-duo">
-        <div>
-          <div class="eyebrow">V krabičce</div>
-          <h2 class="ck-h2"><em>8 druhů</em> cukroví</h2>
-          <ul class="ck-list">
-            {DRUHY.map(d => <li>{d}</li>)}
-          </ul>
-        </div>
-        <div class="ck-panel ck-panel--top">
-          <h3>Alergeny</h3>
-          {ALERGENY.map(a => <p>{a}</p>)}
-        </div>
+      <div class="eyebrow">V krabičce</div>
+      <h2 class="ck-h2"><em>8 druhů</em> cukroví</h2>
+      <ul class="ck-list">
+        {DRUHY.map(d => <li>{d}</li>)}
+      </ul>
+      <div class="ck-alergeny">
+        {ALERGENY.map(a => <p>{a}</p>)}
       </div>
+
+      <div class="ck-galerie">
+        {GALERIE.map(g => (
+          <Image src={g.src} alt={g.alt} width={700} class="ck-galerie-img" loading="lazy" />
+        ))}
+      </div>
+      <p class="ck-galerie-ig">
+        Více ukázek najdete na mém <a href="https://www.instagram.com/evkapecie/" target="_blank" rel="noopener">Instagramu</a>
+      </p>
     </section>
 
     <!-- JAK TO FUNGUJE -->
@@ -119,7 +145,7 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
     <!-- VYZVEDNUTÍ -->
     <section class="container ck-section">
       <div class="eyebrow">Vyzvednutí</div>
-      <h2 class="ck-h2">Osobně nebo <em>rozvoz</em></h2>
+      <h2 class="ck-h2">Osobně nebo <em>rozvoz v Brně</em></h2>
       <div class="ck-duo">
         <div class="ck-panel">
           <h3>Osobní vyzvednutí</h3>
@@ -127,8 +153,8 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
           <ul class="ck-terminy">{TERMINY_VYZDVIHNUTIE.map(t => <li>{t}</li>)}</ul>
         </div>
         <div class="ck-panel">
-          <h3>Rozvoz za {kc(VYZDVIHNUTIE.rozvozCena)}</h3>
-          <p>Přivezeme vám cukroví v rámci Brna.</p>
+          <h3>Rozvoz v Brně</h3>
+          <p>V rámci Brna vám cukroví můžeme přivézt na vaši adresu. Cena dopravy je <strong>{kc(VYZDVIHNUTIE.rozvozCena)}</strong>.</p>
           <ul class="ck-terminy"><li>{TERMIN_ROZVOZ}</li></ul>
           <p>{ROZVOZ_POZNAMKA}</p>
         </div>
@@ -140,8 +166,7 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
       <div class="ck-objednavka">
         <div class="eyebrow" style="color:var(--vermillion-tint)">Objednávka</div>
         <div class="ck-objednavka-hlavicka" id="ck-hlavicka">
-          <h2 class="ck-h2">Objednejte si <em>vánoční krabičku</em></h2>
-          <p class="ck-text">Objednávky přijímám do {OBJEDNAVKY_DO}.</p>
+          <h2 class="ck-h2">Objednejte si <em>vánoční cukroví</em></h2>
         </div>
 
         <form class="ck-form" id="ck-form" novalidate>
@@ -219,7 +244,7 @@ const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
           <div class="ck-platba-info">
             <p><strong>Platba převodem na účet.</strong>
             Údaje k platbě se zobrazí hned po odeslání objednávky a přijdou vám také e-mailem.</p>
-            <p class="ck-upozorneni">{UPOZORNENI}</p>
+            <p class="ck-upozorneni" set:html={UPOZORNENI} />
           </div>
 
           <label class="ck-check">

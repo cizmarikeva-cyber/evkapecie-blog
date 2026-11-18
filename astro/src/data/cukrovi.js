@@ -57,18 +57,23 @@ export const ROZVOZ_POZNAMKA = 'Přesný čas upřesním e-mailem a SMS den pře
 export const OBJEDNAVKY_DO = '30. 11. 2026 nebo do vyprodání';
 
 // Texty na stránke /cukrovi sú v češtine (znenie od Evy, 18. 11. 2026).
+// obsah sa vypisuje ako HTML (<strong> = tučné množstvo).
 export const KRABICE = [
   {
     id:     'velka',
     nazov:  'Velká krabička',
     cena:   1490,
-    obsah:  'Obsah velké krabičky je cca 68 ks a její váha je 1 kg. Obsahuje 8 druhů cukroví, z každého druhu 8-9 kusů.',
+    obsah:  ['Velká krabička obsahuje 8 druhů cukroví, z každého druhu <strong>8-9 kusů</strong>. Váha cukroví je <strong>1 kg</strong>.'],
+    pozn:   'Fotografie má pouze ilustrační charakter, skutečný počet jednotlivých druhů se může lišit.',
   },
   {
     id:     'mala',
     nazov:  'Malá krabička',
     cena:   400,
-    obsah:  'Obsah malé krabičky je 16 ks, váha cca 230g. Obsahuje 8 druhů cukroví, z každého druhu 2 kusy. Vhodná jako dárek.',
+    obsah:  [
+      'Cukroví v malé dárkové krabičce převázané saténovou stuhou, takže ho můžete rovnou někomu darovat.',
+      'Malá krabička obsahuje 8 druhů cukroví, z každého druhu <strong>2 kousky</strong>. Váha cukroví je <strong>230 g</strong>.',
+    ],
   },
 ];
 
@@ -88,9 +93,10 @@ export const ALERGENY = [
   'Alergeny u každého druhu na vyžádání.',
 ];
 
-export const UPOZORNENI = 'Upozornění: Objednávka je platná až po zaplacení. Pokud objednávka nebude uhrazena do 3 pracovních dnů od objednání, bude zrušena a místo uvolníme dalšímu.';
+// Vypisuje sa ako HTML (<strong> = tučné).
+export const UPOZORNENI = '<strong>Objednávka je platná až po zaplacení.</strong> Pokud objednávka nebude uhrazena do 3 pracovních dnů od objednání, bude zrušena a místo uvolníme dalšímu.';
 
 export const VYZDVIHNUTIE = {
-  adresa:       'Údolní 34, Brno',
+  adresa:       'Údolní 34, Brno-střed',
   rozvozCena:   300,
 };
