@@ -1478,15 +1478,21 @@ a.hero-image {
 
 .ck-druh-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; line-height: 1.2; }
 
-.ck-kroky { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: krok; list-style: none; padding: 0; }
+.ck-kroky { margin-top: 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: krok; list-style: none; padding: 0; }
 .ck-kroky li {
   counter-increment: krok; background: var(--smotana); border: 1px solid var(--paper-line);
   border-radius: var(--radius-3); padding: 24px; font-size: 16px; line-height: 1.55; color: var(--mak-soft);
 }
-.ck-kroky li::before {
-  content: counter(krok); display: block; margin-bottom: 10px;
-  font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--lekvar); line-height: 1;
+.ck-kroky h3 {
+  display: flex; align-items: baseline; gap: 8px;
+  font-family: var(--font-display); font-size: 20px; line-height: 1.2; color: var(--mak); margin: 0 0 10px;
 }
+.ck-kroky h3::before {
+  content: counter(krok); flex: none;
+  font-weight: 700; color: var(--lekvar);
+}
+.ck-kroky p { margin: 0; }
+@media (max-width: 1100px) { .ck-kroky { grid-template-columns: repeat(2, 1fr); } }
 
 .ck-duo { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .ck-panel { background: var(--paper-deep); border-radius: var(--radius-3); padding: 28px; }
