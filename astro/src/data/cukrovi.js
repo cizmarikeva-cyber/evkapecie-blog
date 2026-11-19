@@ -91,6 +91,7 @@ export const DRUHY = [
 export const ALERGENY = [
   'Alergeny: lepek, mléko, vejce, ořechy, sója.',
   'Alergeny u každého druhu na vyžádání.',
+  'Podmínky uchování: Spotřebujte do 4 dnů od převzetí. Skladujte v chladu při teplotě do 5 °C.',
 ];
 
 // Vypisuje sa ako HTML (<strong> = tučné).

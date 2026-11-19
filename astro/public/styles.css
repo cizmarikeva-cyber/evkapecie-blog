@@ -1603,7 +1603,7 @@ textarea.ck-input { resize: vertical; }
 }
 @media (max-width: 768px) {
   .ck-hero { grid-template-columns: 1fr; row-gap: 32px; padding-block: 40px 40px; }
-  .ck-hero-foto { aspect-ratio: 3 / 2; }
+  .ck-hero-foto { display: none; } /* na mobile bez hero fotky (Eva, 19. 11. 2026) */
   .ck-duo { grid-template-columns: 1fr; }
   .ck-boxes { grid-template-columns: 1fr; }
   .ck-box { gap: 20px; }
