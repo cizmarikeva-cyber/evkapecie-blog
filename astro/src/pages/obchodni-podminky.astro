@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { PREDAJCA } from '../data/predajca.js';
+
+const tel = PREDAJCA.telefon.replace(/\s/g, '');
 ---
 
 <BaseLayout
   title="Obchodní podmínky | Evka pečie"
-  description="Obchodní podmínky prodeje e-booků na blogu Evka pečie, Eva Čižmariková."
+  description="Obchodní podmínky prodeje cukroví a e-booků na webu Evka pečie, Eva Čižmariková."
 >
 
   <main>
@@ -19,24 +21,155 @@ import { PREDAJCA } from '../data/predajca.js';
       </a>
 
       <h1 style="margin-bottom:8px">Obchodní podmínky</h1>
-      <p style="font-family:var(--font-body);font-size:13px;color:var(--popol);margin-bottom:40px">
-        Platné od: 30. října 2026 · Prodávající: {PREDAJCA.meno}, <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>
+      <p style="font-family:var(--font-body);font-size:13px;color:var(--popol);margin-bottom:24px">
+        Prodávající: {PREDAJCA.meno}, <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>
       </p>
 
       <div class="privacy-body">
 
-        <h2>1. Prodávající</h2>
+        <p>Obchodní podmínky mají dvě samostatné části:</p>
+        <ul>
+          <li><a href="#cukrovi">Část A: Prodej cukroví</a> (platné od 19. listopadu 2026)</li>
+          <li><a href="#e-booky">Část B: Prodej e-booků</a> (platné od 30. října 2026)</li>
+        </ul>
+
+        <!-- ============================================================
+             ČÁST A: CUKROVÍ
+             ============================================================ -->
+
+        <h2 id="cukrovi">Část A: Obchodní podmínky pro prodej cukroví prostřednictvím internetového obchodu</h2>
+
+        <h3>1. Úvodní ustanovení a identifikace prodávající</h3>
+        <p>1.1. Tyto obchodní podmínky upravují práva a povinnosti mezi prodávající a zákazníkem při prodeji cukroví prostřednictvím internetového obchodu na webových stránkách <a href="https://evkapecie.cz">https://evkapecie.cz</a>.</p>
+        <p>1.2. Prodávající:</p>
+        <ul>
+          <li>Jméno a příjmení: {PREDAJCA.meno}</li>
+          <li>Místo podnikání: {PREDAJCA.adresa}</li>
+          <li>IČO: {PREDAJCA.ico}</li>
+          <li>Zapsána {PREDAJCA.register}</li>
+          <li>E-mail: <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a></li>
+          <li>Telefon: <a href={`tel:${tel}`}>{PREDAJCA.telefon}</a></li>
+        </ul>
+        <p>(dále jen „prodávající“).</p>
+        <p>1.3. Zákazníkem je osoba, která prostřednictvím internetového obchodu objedná cukroví (dále jen „zákazník“).</p>
+        <p>1.4. Je-li zákazníkem spotřebitel, tedy fyzická osoba, která nejedná v rámci své podnikatelské činnosti nebo samostatného výkonu povolání, řídí se vztahy mezi prodávající a zákazníkem také příslušnými ustanoveními občanského zákoníku o spotřebitelských smlouvách.</p>
+
+        <h3>2. Nabídka a cena cukroví</h3>
+        <p>2.1. Prodávající nabízí k prodeji následující produkty:</p>
+        <ul>
+          <li>Velká krabička cukroví: přibližně 68 kusů, celková hmotnost 1 kg, 8 druhů cukroví, cena 1 490 Kč.</li>
+          <li>Malá krabička cukroví: přibližně 16 kusů, celková hmotnost 230 g, 8 druhů cukroví, cena 400 Kč.</li>
+        </ul>
+        <p>2.2. Přesné složení jednotlivých druhů cukroví a informace o alergenech jsou uvedeny na webové stránce <a href="/cukrovi">https://evkapecie.cz/cukrovi</a>.</p>
+        <p>2.3. Uvedená hmotnost krabiček je garantována. Počet kusů jednotlivých druhů cukroví se může mírně lišit.</p>
+        <p>2.4. Zákazník může v jedné objednávce objednat nejvýše 3 velké a 3 malé krabičky cukroví.</p>
+        <p>2.5. Všechny ceny jsou uvedeny v českých korunách (Kč) a jsou konečné. Prodávající není plátcem DPH.</p>
+        <p>2.6. Cena dopravy při rozvozu činí 300 Kč. Cena dopravy je zákazníkovi zobrazena před odesláním objednávky.</p>
+        <p>2.7. Objednávky lze uskutečnit do 30. 11. 2026 nebo do vyprodání kapacity, podle toho, co nastane dříve.</p>
+
+        <h3>3. Objednávka a uzavření kupní smlouvy</h3>
+        <p>3.1. Zákazník vytvoří objednávku prostřednictvím objednávkového formuláře v internetovém obchodě. Před odesláním objednávky má možnost zkontrolovat a upravit zadané údaje.</p>
+        <p>3.2. Objednávku zákazník odešle kliknutím na tlačítko označené „Objednávka zavazující k platbě“.</p>
+        <p>3.3. Bezprostředně po odeslání objednávky se zákazníkovi zobrazí platební údaje včetně QR kódu a čísla bankovního účtu. Stejné údaje obdrží také e-mailem na adresu uvedenou v objednávce.</p>
+        <p>3.4. E-mail odeslaný bezprostředně po objednání potvrzuje přijetí objednávky a obsahuje pokyny k platbě. Nejedná se ještě o potvrzení uzavření kupní smlouvy.</p>
+        <p>3.5. Kupní smlouva je uzavřena okamžikem, kdy prodávající po připsání celé částky na svůj bankovní účet odešle zákazníkovi e-mail s potvrzením přijetí objednávky a uzavření kupní smlouvy.</p>
+        <p>3.6. Zákazník je povinen uhradit celou cenu objednávky bankovním převodem do 3 pracovních dnů ode dne odeslání objednávky.</p>
+        <p>3.7. Prodávající zašle zákazníkovi také připomínkový e-mail 24 hodin před uplynutím lhůty pro zaplacení.</p>
+        <p>3.8. Nebude-li celá částka připsána na bankovní účet prodávající nejpozději do konce třetího pracovního dne od odeslání objednávky, prodávající objednávku zruší. O zrušení objednávky zákazníka informuje e-mailem.</p>
+        <p>3.9. Pokud zákazník uhradí objednávku až po uplynutí lhůty podle bodu 3.6, může prodávající platbu individuálně akceptovat a objednávku ponechat v platnosti, zejména s ohledem na aktuální výrobní kapacitu a dostupnost objednaného termínu. O akceptaci pozdní platby bude zákazník informován e-mailem. Pokud prodávající pozdní platbu neakceptuje, vrátí zákazníkovi přijatou částku bez zbytečného odkladu.</p>
+        <p>3.10. Prodávající zašle zákazníkovi potvrzení uzavřené kupní smlouvy e-mailem. Toto potvrzení spolu s těmito obchodními podmínkami tvoří dokumentaci k objednávce.</p>
+
+        <h3>4. Způsob a termín předání cukroví</h3>
+        <p>4.1. Zákazník si při objednávce zvolí jednu z následujících možností:</p>
+        <p><strong>Osobní odběr</strong></p>
+        <p>Osobní odběr je možný na adrese Údolní 34, Brno, v následujících termínech:</p>
+        <ul>
+          <li>20. 12. 2026, od 16:00 do 18:00,</li>
+          <li>22. 12. 2026, od 16:00 do 18:00.</li>
+        </ul>
+        <p><strong>Rozvoz</strong></p>
+        <p>Rozvoz je možný dne 21. 12. 2026 v čase od 16:00 do 21:00, a to pouze na území Brna-města. Cena rozvozu činí 300 Kč.</p>
+        <p>4.2. Konkrétní čas rozvozu bude zákazníkovi oznámen e-mailem nebo SMS zprávou nejpozději den před plánovaným rozvozem.</p>
+        <p>4.3. Pokud zákazník uvede adresu mimo oblast rozvozu, prodávající mu nabídne možnost osobního odběru. Pokud zákazník s osobním odběrem nebude souhlasit, objednávka bude po dohodě zrušena a již uhrazená částka bude zákazníkovi vrácena.</p>
+        <p>4.4. Zákazník je povinen při zvoleném způsobu předání zajistit převzetí objednávky v dohodnutém termínu a čase.</p>
+        <p>4.5. Cukroví je připravováno na sjednaný termín. Pokud si ho zákazník v tomto termínu nevyzvedne nebo nebude při rozvozu k zastižení, je v prodlení s převzetím. Prodávající se ho pokusí kontaktovat, náhradní termín předání však nenabízí. Vzhledem k rychlé zkáze může prodávající cukroví bez dalšího upozornění prodat jinému zájemci a částku, kterou za něj získá, zákazníkovi vrátí. Pokud cukroví prodat nelze, kupní cena se nevrací, protože prodávající svou povinnost řádně splnila.</p>
+        <p>4.6. Pokud prodávající nebude schopna objednávku ve sjednaném termínu předat, vrátí zákazníkovi celou zaplacenou částku do 14 dnů.</p>
+
+        <h3>5. Zrušení objednávky zákazníkem</h3>
+        <p>5.1. Zákazník může požádat o zrušení objednávky bez uvedení důvodu nejpozději 48 hodin před začátkem sjednaného termínu předání cukroví.</p>
+        <p>5.2. Pro jednotlivé termíny platí tyto nejzazší lhůty:</p>
+        <ul>
+          <li>Osobní odběr 20. 12. 2026: do 18. 12. 2026 do 16:00.</li>
+          <li>Rozvoz 21. 12. 2026: do 19. 12. 2026 do 16:00.</li>
+          <li>Osobní odběr 22. 12. 2026: do 20. 12. 2026 do 16:00.</li>
+        </ul>
+        <p>5.3. Žádost o zrušení objednávky musí zákazník zaslat na e-mail <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>. V žádosti uvede jméno, telefonní číslo a e-mail, na který byla objednávka vytvořena.</p>
+        <p>5.4. Pokud zákazník zruší objednávku ve lhůtě podle bodu 5.1, prodávající mu vrátí celou uhrazenou částku, a to nejpozději do 14 dnů od zrušení objednávky, zpravidla na bankovní účet, ze kterého byla platba odeslána.</p>
+        <p>5.5. Po uplynutí lhůty podle bodu 5.1 není možné zaručit zrušení objednávky bez finančních důsledků. Prodávající může žádost o pozdější zrušení individuálně posoudit podle fáze přípravy objednávky a již vynaložených nákladů.</p>
+        <p>5.6. Tímto ustanovením nejsou dotčena zákonná práva zákazníka, zejména práva z vadného plnění ani případné zákonné právo odstoupit od smlouvy.</p>
+
+        <h3>6. Skladování a doba spotřeby</h3>
+        <p>6.1. Cukroví je určeno k přímé spotřebě.</p>
+        <p>6.2. Cukroví musí být skladováno při teplotě do 5 °C.</p>
+        <p>6.3. Cukroví spotřebujte nejpozději do 4 dnů od převzetí. Přesné datum je uvedeno na obalu.</p>
+        <p>6.4. Konkrétní datum použitelnosti nebo minimální trvanlivosti a pokyny ke skladování jsou uvedeny na obalu výrobku.</p>
+        <p>6.5. Prodávající neodpovídá za vady nebo znehodnocení cukroví, které vznikly v důsledku nesprávného skladování, nevhodného zacházení nebo nedodržení pokynů po převzetí zákazníkem. Tím nejsou dotčena práva zákazníka z vad, které existovaly již při převzetí cukroví.</p>
+
+        <h3>7. Odstoupení od kupní smlouvy</h3>
+        <p>7.1. Podle § 1837 písm. e) občanského zákoníku nemůže spotřebitel odstoupit od smlouvy ve lhůtě 14 dnů v případě dodání zboží, které podléhá rychlé zkáze, nebo zboží s krátkou dobou spotřeby.</p>
+        <p>7.2. Prodávané cukroví je čerstvý potravinářský výrobek určený ke spotřebě v krátké době po převzetí. Z tohoto důvodu se na něj podle povahy konkrétního výrobku může vztahovat výjimka z práva na odstoupení od smlouvy podle § 1837 písm. e) občanského zákoníku.</p>
+        <p>7.3. Tím není dotčeno dobrovolné zrušení objednávky podle článku 5 těchto obchodních podmínek ani zákonná práva zákazníka z vadného plnění.</p>
+
+        <h3>8. Reklamace a práva z vadného plnění</h3>
+        <p>8.1. Prodávající odpovídá za to, že cukroví při převzetí odpovídá sjednanému popisu, druhu a množství a nemá vady, za které prodávající odpovídá podle právních předpisů.</p>
+        <p>8.2. Zákazník je oprávněn vytknout vadu cukroví, kterou zjistí po převzetí. Doporučujeme zákazníkovi oznámit zjevné vady co nejdříve po jejich zjištění, ideálně bezprostředně při převzetí.</p>
+        <p>8.3. Reklamaci lze uplatnit e-mailem na adrese <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>.</p>
+        <p>8.4. Pro rychlejší vyřízení reklamace doporučujeme uvést jméno, telefonní číslo a e-mail, na který byla objednávka vytvořena, popis vady a případně přiložit fotografii. Prodávající může zákazníka požádat o další informace potřebné k posouzení reklamace.</p>
+        <p>8.5. Prodávající neodpovídá za vady, které zákazník sám způsobil nesprávným skladováním, zacházením nebo nedodržením pokynů uvedených na obalu. To se nevztahuje na vady, které existovaly již při převzetí nebo vznikly z důvodů, za které odpovídá prodávající.</p>
+        <p>8.6. Reklamace bude vyřízena bez zbytečného odkladu, s ohledem na povahu výrobku a konkrétní okolnosti reklamace.</p>
+        <p>8.7. V případě oprávněné reklamace má zákazník práva stanovená příslušnými právními předpisy, zejména právo na odstranění vady, přiměřenou slevu nebo odstoupení od smlouvy v případech stanovených zákonem.</p>
+        <p>8.8. Prodávající informuje zákazníka o způsobu vyřízení reklamace e-mailem.</p>
+
+        <h3>9. Ochrana osobních údajů</h3>
+        <p>9.1. Informace o zpracování osobních údajů zákazníků, účelech zpracování, době uchování a právech zákazníků jsou uvedeny v samostatném dokumentu Zásady ochrany osobních údajů dostupném na webových stránkách <a href="/ochrana-soukromi">https://evkapecie.cz/ochrana-soukromi</a>.</p>
+
+        <h3>10. Mimosoudní řešení spotřebitelských sporů</h3>
+        <p>10.1. V případě, že mezi prodávající a zákazníkem, který je spotřebitelem, vznikne spotřebitelský spor, který se nepodaří vyřešit vzájemnou dohodou, může se zákazník obrátit na subjekt mimosoudního řešení spotřebitelských sporů.</p>
+        <p>10.2. Subjektem mimosoudního řešení spotřebitelských sporů je:</p>
+        <p>
+          Česká obchodní inspekce<br />
+          Ústřední inspektorát, oddělení ADR<br />
+          Gorazdova 1969/24<br />
+          120 00 Praha 2<br />
+          E-mail: <a href="mailto:adr@coi.gov.cz">adr@coi.gov.cz</a><br />
+          Web: <a href="https://coi.gov.cz/informace-o-adr/" target="_blank" rel="noopener noreferrer">https://coi.gov.cz/informace-o-adr/</a>
+        </p>
+
+        <h3>11. Závěrečná ustanovení</h3>
+        <p>11.1. Právní vztahy mezi prodávající a zákazníkem se řídí právním řádem České republiky, zejména zákonem č. 89/2012 Sb., občanským zákoníkem.</p>
+        <p>11.2. Tyto obchodní podmínky jsou platné a účinné od 19. 11. 2026.</p>
+        <p>11.3. Prodávající může obchodní podmínky do budoucna měnit nebo doplňovat. Pro konkrétní objednávku je rozhodující znění obchodních podmínek účinné v okamžiku uzavření kupní smlouvy.</p>
+        <p>11.4. Pokud se některé ustanovení těchto obchodních podmínek ukáže jako neplatné nebo neúčinné, nemá to vliv na platnost a účinnost ostatních ustanovení.</p>
+
+        <!-- ============================================================
+             ČÁST B: E-BOOKY (znenie platné od 30. 10. 2026, bez zmeny)
+             ============================================================ -->
+
+        <h2 id="e-booky" style="margin-top:64px">Část B: Obchodní podmínky pro prodej e-booků</h2>
+        <p>Platné od 30. října 2026.</p>
+
+        <h3>1. Prodávající</h3>
         <p>
           {PREDAJCA.meno}<br />
           IČ: {PREDAJCA.ico}<br />
           Místo podnikání: {PREDAJCA.adresa}<br />
           Zapsána: {PREDAJCA.register}<br />
           E-mail: <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a><br />
-          Telefon: <a href={`tel:${PREDAJCA.telefon.replace(/\s/g, '')}`}>{PREDAJCA.telefon}</a>
+          Telefon: <a href={`tel:${tel}`}>{PREDAJCA.telefon}</a>
         </p>
         <p>Nejsem plátkyně DPH.</p>
 
-        <h2>2. Předmět a uzavření smlouvy</h2>
+        <h3>2. Předmět a uzavření smlouvy</h3>
         <p>Tyto obchodní podmínky upravují prodej elektronických knih (dále „e-book") prostřednictvím blogu evkapecie.cz spotřebitelům.</p>
         <ul>
           <li>E-book je digitální obsah ve formátu PDF. Nedodává se na hmotném nosiči.</li>
@@ -45,21 +178,21 @@ import { PREDAJCA } from '../data/predajca.js';
           <li>E-book je určen pro vaši osobní potřebu. Bez mého souhlasu ho nelze dále šířit, kopírovat pro jiné osoby ani zveřejňovat.</li>
         </ul>
 
-        <h2 id="doprava-a-platba">3. Doprava a platba</h2>
+        <h3 id="doprava-a-platba">3. Doprava a platba</h3>
         <ul>
           <li>Cena je uvedena u e-booku v českých korunách a je konečná. Nejsem plátkyně DPH, k ceně se tedy DPH nepřipočítává.</li>
           <li>Neúčtuji žádné další poplatky, například za doručení.</li>
           <li>E-booky prodávám zákazníkům v České republice a na Slovensku.</li>
         </ul>
 
-        <h3>Doprava</h3>
+        <h4>Doprava</h4>
         <ul>
           <li>E-book je digitální obsah ve formátu PDF. Nic se neposílá poštou, doprava je tedy zdarma.</li>
           <li>Odkaz na stažení e-booku vám přijde na e-mail uvedený v objednávce ihned po zaplacení.</li>
           <li>Pokud e-mail nepřišel, zkontrolujte prosím i složku se spamem. Pokud tam není, napište mi na <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>. Ozvu se do 24 hodin a vyřešíme to.</li>
         </ul>
 
-        <h3>Platba</h3>
+        <h4>Platba</h4>
         <p>
           Online platby pro mě zajišťuje platební brána
           <a href="https://www.comgate.eu/cs/platebni-brana" target="_blank" rel="noopener noreferrer">Comgate</a>.
@@ -75,7 +208,7 @@ import { PREDAJCA } from '../data/predajca.js';
         </ul>
         <p>Pokud platíte kartou vedenou v eurech, částku přepočítá vaše banka podle svého kurzu. <a href="https://help.comgate.eu/v1/docs/cs/platby-kartou" target="_blank" rel="noopener noreferrer">Více o platbě kartou</a></p>
 
-        <h3>Reklamace a dotazy k platbám</h3>
+        <h4>Reklamace a dotazy k platbám</h4>
         <p>S dotazy nebo reklamací platby se můžete obrátit přímo na provozovatele platební brány:</p>
         <p>
           Comgate, a.s.<br />
@@ -85,14 +218,14 @@ import { PREDAJCA } from '../data/predajca.js';
         </p>
         <p>S reklamací e-booku se obraťte na mě, postup najdete v bodě 5.</p>
 
-        <h2>4. Odstoupení od smlouvy</h2>
+        <h3>4. Odstoupení od smlouvy</h3>
         <p>
           E-book je digitální obsah, který není dodáván na hmotném nosiči. Před zaplacením výslovně souhlasíte s tím,
           že vám e-book bude dodán ihned, tedy ještě před uplynutím 14denní lhůty pro odstoupení od smlouvy, a berete na vědomí,
           že tím právo na odstoupení od smlouvy ztrácíte.
         </p>
 
-        <h2>5. Reklamace</h2>
+        <h3>5. Reklamace</h3>
         <p>Pokud je soubor s e-bookem poškozený, neúplný nebo se nedá otevřít, nebo vám odkaz nepřišel, napište mi na <a href={`mailto:${PREDAJCA.email}`}>{PREDAJCA.email}</a>.</p>
         <ul>
           <li>Uveďte prosím číslo objednávky nebo e-mail, na který jste nakupovali, a popište, co nefunguje.</li>
@@ -100,17 +233,17 @@ import { PREDAJCA } from '../data/predajca.js';
           <li>O vyřízení reklamace vás budu informovat e-mailem.</li>
         </ul>
 
-        <h2>6. Ochrana osobních údajů</h2>
+        <h3>6. Ochrana osobních údajů</h3>
         <p>Jak zpracovávám vaše osobní údaje při nákupu, najdete na stránce <a href="/ochrana-soukromi">Ochrana osobních údajů</a>.</p>
         <p>Po nákupu vám mohu e-mailem posílat tipy k e-booku a nabídky podobných produktů. Odhlásit se můžete kdykoliv odkazem v každém e-mailu.</p>
 
-        <h2>7. Mimosoudní řešení sporů</h2>
+        <h3>7. Mimosoudní řešení sporů</h3>
         <p>
           Pokud se nám spor nepodaří vyřešit dohodou, můžete se jako spotřebitel obrátit na Českou obchodní inspekci
           (<a href="https://www.coi.cz/mimosoudni-reseni-spotrebitelskych-sporu-adr/" target="_blank" rel="noopener noreferrer">mimosoudní řešení spotřebitelských sporů, www.coi.cz</a>).
         </p>
 
-        <h2>8. Závěrečná ustanovení</h2>
+        <h3>8. Závěrečná ustanovení</h3>
         <p>Vztahy neupravené těmito obchodními podmínkami se řídí právním řádem České republiky, zejména občanským zákoníkem a zákonem o ochraně spotřebitele. Tyto obchodní podmínky mohu příležitostně aktualizovat. Pro každou objednávku platí znění účinné v den jejího zaplacení.</p>
 
       </div>
@@ -118,3 +251,10 @@ import { PREDAJCA } from '../data/predajca.js';
   </main>
 
 </BaseLayout>
+
+<style>
+  /* Dve časti (cukroví, e-booky): časť = h2, článok = h3, podnadpis = h4 */
+  .privacy-body h2 { font-size: 24px; scroll-margin-top: 24px; }
+  .privacy-body h3 { font-size: 18px; margin-top: 32px; }
+  .privacy-body h4 { font-size: 15px; margin: 20px 0 6px; color: var(--mak); }
+</style>
