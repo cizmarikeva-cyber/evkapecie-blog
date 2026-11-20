@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import heroImg from '../assets/images/cukrovi/velka-detail1.jpeg';
 import velkaImg from '../assets/images/cukrovi/velka-krabica.jpeg';
 import malaDarekImg from '../assets/images/cukrovi/mala-krabica-darek.jpeg';
@@ -50,11 +50,15 @@ const FOTKY = {
 };
 
 const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
+
+// Náhľad pri zdieľaní odkazu (Facebook, WhatsApp, Messenger): 1200x630, detail cukroví (hero fotka).
+const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 'cover', format: 'jpeg' });
 ---
 
 <BaseLayout
   activeNav="cukrovi"
   title="Vánoční cukroví na objednávku | Evka pečie"
+  image={ogObrazok.src}
   description="Vánoční krabička cukroví z Brna: 8 druhů, velká krabička 1 kg nebo malá 16 ks. Vyzvednutí na Údolní 34 nebo rozvoz po Brně."
 >
 
