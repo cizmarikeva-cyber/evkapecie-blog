@@ -35,8 +35,8 @@ export const PLATBA = {
   zprava:    'Cukrovi 2026',
 };
 
-// Maximum krabičiek jednej veľkosti na jednu objednávku (Eva, 18. 11. 2026).
-export const MAX_KRABIC = 3;
+// Maximum krabičiek jednej veľkosti na jednu objednávku (Eva, 20. 11. 2026: zvýšené z 3 na 10).
+export const MAX_KRABIC = 10;
 
 // Možnosti prevzatia vo formulári.
 export const PREVZETI = [
