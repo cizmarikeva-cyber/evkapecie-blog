@@ -21,7 +21,7 @@ const GALERIE = [
 ];
 import {
   GOOGLE_FORM, MAX_KRABIC, PREVZETI, PLATBA,
-  TERMINY_VYZDVIHNUTIE, TERMIN_ROZVOZ, ROZVOZ_POZNAMKA, KRABICE, DRUHY, ALERGENY, UPOZORNENI, VYZDVIHNUTIE,
+  TERMINY_VYZDVIHNUTIE, TERMIN_ROZVOZ, OBSAZENO, ROZVOZ_POZNAMKA, KRABICE, DRUHY, ALERGENY, UPOZORNENI, VYZDVIHNUTIE,
 } from '../data/cukrovi.js';
 
 // Tlačidlá „Objednat“ vedú na formulár nižšie na stránke.
@@ -29,6 +29,10 @@ const ORDER_URL = '#objednavka';
 const orderAttrs = {};
 
 const [velka, mala] = KRABICE;
+// Výber prevzatia: najprv spôsob (osobne / rozvoz), pri osobnom povinný termín.
+const terminyOsobne = TERMINY_VYZDVIHNUTIE;
+const osobneObsazeno = terminyOsobne.every(t => OBSAZENO[t.id]);
+const rozvozObsazeno = !!OBSAZENO[TERMIN_ROZVOZ.id];
 // Údaje pre skript formulára (ceny, ID polí Google Formulára).
 const formConfig = {
   maxKrabic: MAX_KRABIC,
@@ -39,6 +43,7 @@ const formConfig = {
   cenaMala: mala.cena,
   cenaRozvoz: VYZDVIHNUTIE.rozvozCena,
   prevzeti: PREVZETI,
+  rozvozId: TERMIN_ROZVOZ.id,
 };
 
 // Fotky ku krabičkám (orezané do štvorca cez CSS).
@@ -143,12 +148,12 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
         <div class="ck-panel">
           <h3>Osobní vyzvednutí</h3>
           <p>Na mé provozovně: {VYZDVIHNUTIE.adresa}.</p>
-          <ul class="ck-terminy">{TERMINY_VYZDVIHNUTIE.map(t => <li>{t}</li>)}</ul>
+          <ul class="ck-terminy">{TERMINY_VYZDVIHNUTIE.map(t => <li class={OBSAZENO[t.id] ? 'is-obsazeno' : undefined}>{t.text}{OBSAZENO[t.id] && ' (obsazeno)'}</li>)}</ul>
         </div>
         <div class="ck-panel">
           <h3>Rozvoz v Brně</h3>
           <p>V rámci Brna vám cukroví můžeme přivézt na vaši adresu. Cena dopravy je <strong>{kc(VYZDVIHNUTIE.rozvozCena)}</strong>.</p>
-          <ul class="ck-terminy"><li>{TERMIN_ROZVOZ}</li></ul>
+          <ul class="ck-terminy"><li class={OBSAZENO[TERMIN_ROZVOZ.id] ? 'is-obsazeno' : undefined}>{TERMIN_ROZVOZ.text}{OBSAZENO[TERMIN_ROZVOZ.id] && ' (obsazeno)'}</li></ul>
           <p>{ROZVOZ_POZNAMKA}</p>
         </div>
       </div>
@@ -185,15 +190,30 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
           <fieldset class="ck-fieldset">
             <legend class="ck-legend">Převzetí</legend>
             <div class="ck-radios">
-              {PREVZETI.map(p => (
-                <label class="ck-radio">
-                  <input type="radio" name="prevzeti" value={p.id} />
-                  <span>{p.text}{p.rozvoz && <strong> (+{kc(VYZDVIHNUTIE.rozvozCena)})</strong>}</span>
-                </label>
-              ))}
+              <label class={osobneObsazeno ? 'ck-radio is-obsazeno' : 'ck-radio'}>
+                <input type="radio" name="zpusob" value="osobne" disabled={osobneObsazeno} />
+                <span>Osobní vyzvednutí ({VYZDVIHNUTIE.adresa}){osobneObsazeno && ' (obsazeno)'}</span>
+              </label>
+              <label class={rozvozObsazeno ? 'ck-radio is-obsazeno' : 'ck-radio'}>
+                <input type="radio" name="zpusob" value="rozvoz" disabled={rozvozObsazeno} />
+                <span>Rozvoz v Brně <strong>(+{kc(VYZDVIHNUTIE.rozvozCena)})</strong>{rozvozObsazeno && ' (obsazeno)'}</span>
+              </label>
             </div>
-            <p class="ck-error" data-error="prevzeti" hidden>Vyberte termín a způsob převzetí.</p>
+            <p class="ck-error" data-error="zpusob" hidden>Vyberte způsob převzetí.</p>
+            <div class="ck-field" id="ck-termin" role="radiogroup" aria-labelledby="ck-label-termin" hidden>
+              <span class="ck-label" id="ck-label-termin">Termín vyzvednutí *</span>
+              <div class="ck-radios">
+                {terminyOsobne.map(t => (
+                  <label class={OBSAZENO[t.id] ? 'ck-radio is-obsazeno' : 'ck-radio'}>
+                    <input type="radio" name="termin" value={t.id} disabled={OBSAZENO[t.id]} />
+                    <span>{t.text}{OBSAZENO[t.id] && ' (obsazeno)'}</span>
+                  </label>
+                ))}
+              </div>
+              <span class="ck-error" data-error="termin" hidden>Vyberte termín vyzvednutí.</span>
+            </div>
             <label class="ck-field" id="ck-adresa" hidden>
+              <span class="ck-hint-termin">{TERMIN_ROZVOZ.text}</span>
               <span class="ck-label">Adresa pro rozvoz *</span>
               <input type="text" name="adresa" class="ck-input" autocomplete="street-address" />
               <span class="ck-error" data-error="adresa" hidden>Vyplňte adresu pro rozvoz.</span>
@@ -295,19 +315,22 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
       const form = document.getElementById('ck-form');
       const kcFmt = (n) => n.toLocaleString('cs-CZ') + ' Kč';
       const adresaBox = document.getElementById('ck-adresa');
+      const terminBox = document.getElementById('ck-termin');
 
       const data = () => {
         const fd = new FormData(form);
         const velke = Number(fd.get('velke') || 0);
         const male = Number(fd.get('male') || 0);
-        const prevzeti = formConfig.prevzeti.find(p => p.id === fd.get('prevzeti'));
-        const rozvoz = prevzeti?.rozvoz ?? false;
+        const zpusob = fd.get('zpusob');
+        const prevzetiId = zpusob === 'rozvoz' ? formConfig.rozvozId : zpusob === 'osobne' ? fd.get('termin') : null;
+        const prevzeti = formConfig.prevzeti.find(p => p.id === prevzetiId);
+        const rozvoz = zpusob === 'rozvoz';
         const celkem = velke * formConfig.cenaVelka + male * formConfig.cenaMala + (rozvoz ? formConfig.cenaRozvoz : 0);
-        return { fd, velke, male, prevzeti, rozvoz, celkem };
+        return { fd, velke, male, zpusob, prevzeti, rozvoz, celkem };
       };
 
       const render = () => {
-        const { velke, male, rozvoz, celkem } = data();
+        const { velke, male, zpusob, rozvoz, celkem } = data();
         const radky = [];
         if (velke) radky.push([`Velká krabička × ${velke}`, velke * formConfig.cenaVelka]);
         if (male) radky.push([`Malá krabička × ${male}`, male * formConfig.cenaMala]);
@@ -316,6 +339,7 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
           .map(([t, c]) => `<div class="ck-souhrn-radek"><span>${t}</span><span>${kcFmt(c)}</span></div>`).join('');
         document.getElementById('ck-celkem').textContent = kcFmt(celkem);
         adresaBox.hidden = !rozvoz;
+        terminBox.hidden = zpusob !== 'osobne';
       };
 
       const showError = (key, show) => {
@@ -323,11 +347,12 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
       };
 
       const validate = () => {
-        const { fd, velke, male, prevzeti, rozvoz } = data();
+        const { fd, velke, male, zpusob, prevzeti, rozvoz } = data();
         const txt = (k) => String(fd.get(k) || '').trim();
         const checks = {
           krabicky: velke + male > 0,
-          prevzeti: !!prevzeti,
+          zpusob: !!zpusob,
+          termin: zpusob !== 'osobne' || !!prevzeti,
           adresa: !rozvoz || txt('adresa').length > 0,
           meno: txt('meno').length > 0,
           email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(txt('email')),

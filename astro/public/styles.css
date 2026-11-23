@@ -1553,6 +1553,10 @@ textarea.ck-input { resize: vertical; }
   background: var(--maslo); border: 1px solid var(--paper-line); border-radius: var(--radius-2); padding: 12px 14px;
 }
 .ck-radio:has(input:checked) { border-color: var(--lekvar); box-shadow: 0 0 0 1px var(--lekvar); }
+.ck-radio.is-obsazeno { opacity: .5; cursor: not-allowed; }
+.ck-terminy .is-obsazeno { text-decoration: line-through; opacity: .6; }
+.ck-hint-termin { font-size: 15px; font-weight: 600; color: var(--mak); margin-bottom: 6px; }
+#ck-termin { margin-top: 4px; }
 .ck-radio input, .ck-check input { margin-top: 4px; accent-color: var(--lekvar); width: 18px; height: 18px; flex: none; }
 .ck-check a { color: var(--lekvar); }
 .ck-souhrn { border-top: 1px solid var(--paper-line); padding-top: 16px; display: flex; flex-direction: column; gap: 8px; }

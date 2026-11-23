@@ -38,8 +38,19 @@ export const PLATBA = {
 // Maximum krabičiek jednej veľkosti na jednu objednávku (Eva, 20. 11. 2026: zvýšené z 3 na 10).
 export const MAX_KRABIC = 10;
 
+// PREPÍNAČ KAPACITY: true = termín je plný. Vo formulári sa nedá vybrať
+// a pri termíne sa ukáže „(obsazeno)“. Kapacita Evy: max. 25 objednávok
+// na jeden deň (Eva, 23. 11. 2026). Počet si Eva sleduje v tabuľke.
+export const OBSAZENO = {
+  pa18: false,  // pátek 18. 12., osobně
+  ne20: false,  // neděle 20. 12., osobně
+  po21: false,  // pondělí 21. 12., rozvoz
+  ut22: false,  // úterý 22. 12., osobně
+};
+
 // Možnosti prevzatia vo formulári.
 export const PREVZETI = [
+  { id: 'pa18', text: 'Osobně, pátek 18. 12. 2026, 15:00-17:00 (Údolní 34, Brno)',  rozvoz: false },
   { id: 'ne20', text: 'Osobně, neděle 20. 12. 2026, 16:00-18:00 (Údolní 34, Brno)', rozvoz: false },
   { id: 'ut22', text: 'Osobně, úterý 22. 12. 2026, 16:00-18:00 (Údolní 34, Brno)',   rozvoz: false },
   { id: 'po21', text: 'Rozvoz po Brně, pondělí 21. 12. 2026, 16:00-21:00',            rozvoz: true },
@@ -47,10 +58,11 @@ export const PREVZETI = [
 
 // Termíny vyzdvihnutia a rozvozu (Eva, 18. 11. 2026).
 export const TERMINY_VYZDVIHNUTIE = [
-  'Neděle 20. 12. 2026, od 16:00 do 18:00',
-  'Úterý 22. 12. 2026, od 16:00 do 18:00',
+  { id: 'pa18', text: 'Pátek 18. 12. 2026, od 15:00 do 17:00' },
+  { id: 'ne20', text: 'Neděle 20. 12. 2026, od 16:00 do 18:00' },
+  { id: 'ut22', text: 'Úterý 22. 12. 2026, od 16:00 do 18:00' },
 ];
-export const TERMIN_ROZVOZ = 'Pondělí 21. 12. 2026, mezi 16:00 a 21:00';
+export const TERMIN_ROZVOZ = { id: 'po21', text: 'Pondělí 21. 12. 2026, mezi 16:00 a 21:00' };
 export const ROZVOZ_POZNAMKA = 'Přesný čas upřesním e-mailem a SMS den předem.';
 
 // Do kedy sa dá objednať. Kým je null, ukáže sa placeholder.
