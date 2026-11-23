@@ -1622,6 +1622,7 @@ textarea.ck-input { resize: vertical; }
 }
 
 /* Galéria cukroví pod „V krabičce": PC 3 stĺpce, mobil 2 stĺpce, všetko štvorce */
+.ck-section > .ck-galerie:first-child { margin-top: 0; }
 .ck-galerie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
 .ck-galerie-img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 16px; display: block; }
 .ck-galerie-ig { text-align: center; color: var(--mak); font-family: var(--font-body); font-size: 17px; margin-top: 28px; }
