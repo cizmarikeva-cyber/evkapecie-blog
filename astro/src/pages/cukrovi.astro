@@ -54,6 +54,9 @@ const FOTKY = {
   ],
 };
 
+// Text o surovinách: na PC v úvode, na mobile pod zoznamom druhov (jeden zdroj, dve miesta).
+const SUROVINY_TEXT = 'Peču z másla, kvalitní čokolády a z ořechů a džemů od lokálních dodavatelů. Nepoužívám žádné náhražky ani levné suroviny, aby cukroví chutnalo tak, jak má.';
+
 const kc = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
 
 // Náhľad pri zdieľaní odkazu (Facebook, WhatsApp, Messenger): 1200x630, detail cukroví (hero fotka).
@@ -67,23 +70,21 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
   description="Vánoční krabička cukroví z Brna: 8 druhů, velká krabička 1 kg nebo malá 16 ks. Vyzvednutí na Údolní 34 nebo rozvoz po Brně."
 >
 
-  <main>
+  <main class="ck-page">
 
-    <!-- HERO -->
+    <!-- HERO (na mobile z neho ostáva len nadpis h1, potom hneď krabičky) -->
     <section class="container ck-hero">
       <div>
-        <div class="eyebrow">Vánoční nabídka</div>
+        <div class="eyebrow ck-len-pc">Vánoční nabídka</div>
         <h1 class="ck-title">Vánoční cukroví <em>z poctivých surovin</em></h1>
-        <p class="ck-lead">
+        <p class="ck-lead ck-len-pc">
           Letos jsem pro vás připravila krabičku vánočního cukroví s 8 druhy, které mám nejraději. Najdete v ní klasiku jako linecké a vanilkové rohlíčky podle naší rodinné receptury, ale i něco modernějšího, třeba malinové tartaletky s bílou čokoládou, takže si u stolu vybere opravdu každý.
         </p>
-        <p class="ck-lead">
-          Peču z másla, kvalitní čokolády a z ořechů a džemů od lokálních dodavatelů. Nepoužívám žádné náhražky ani levné suroviny, aby cukroví chutnalo tak, jak má.
-        </p>
-        <p class="ck-lead">
+        <p class="ck-lead ck-len-pc">{SUROVINY_TEXT}</p>
+        <p class="ck-lead ck-len-pc">
           Moc se těším, až ho upeču i pro vás!
         </p>
-        <div class="ck-cta">
+        <div class="ck-cta ck-len-pc">
           <a class="btn btn-primary btn-large" href={ORDER_URL} {...orderAttrs}>Objednat cukroví</a>
           <a class="btn btn-secondary btn-large" href="#krabicky">Prohlédnout krabičky</a>
         </div>
@@ -93,8 +94,8 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
       </div>
     </section>
 
-    <!-- GALÉRIA -->
-    <section class="container ck-section">
+    <!-- GALÉRIA (na mobile až pod „V krabičce“) -->
+    <section class="container ck-section ck-sec-galerie">
       <div class="ck-galerie">
         {GALERIE.map(g => (
           <Image src={g.src} alt={g.alt} width={700} class="ck-galerie-img" loading="lazy" />
@@ -103,9 +104,9 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
     </section>
 
     <!-- KRABIČKY -->
-    <section class="container ck-section" id="krabicky">
-      <div class="eyebrow">Krabičky</div>
-      <h2 class="ck-h2">Vyberte si <em>velikost</em></h2>
+    <section class="container ck-section ck-sec-krabicky" id="krabicky">
+      <div class="eyebrow"><span class="ck-len-pc">Vánoční krabičky</span><span class="ck-len-mobil">Vyberte si velikost</span></div>
+      <h2 class="ck-h2 ck-len-pc">Vyberte si <em>velikost</em></h2>
       <div class="ck-boxes">
         {KRABICE.map(k => (
           <div class="ck-box">
@@ -129,19 +130,21 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
     </section>
 
     <!-- DRUHY A ALERGENY -->
-    <section class="container ck-section">
+    <section class="container ck-section ck-sec-druhy">
       <div class="eyebrow">V krabičce</div>
       <h2 class="ck-h2"><em>8 druhů</em> cukroví</h2>
       <ul class="ck-list">
         {DRUHY.map(d => <li>{d}</li>)}
       </ul>
+      <!-- Text o surovinách z úvodu: na mobile tu, na PC ostáva v hero. -->
+      <p class="ck-lead ck-suroviny-mobil">{SUROVINY_TEXT}</p>
       <div class="ck-alergeny">
         {ALERGENY.map(a => <p>{a}</p>)}
       </div>
     </section>
 
     <!-- VYZVEDNUTÍ -->
-    <section class="container ck-section">
+    <section class="container ck-section ck-sec-ostatne">
       <div class="eyebrow">Vyzvednutí</div>
       <h2 class="ck-h2">Osobně nebo <em>rozvoz v Brně</em></h2>
       <div class="ck-duo">
@@ -160,17 +163,14 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
     </section>
 
     <!-- OBJEDNÁVKA -->
-    <section class="container" id="objednavka">
+    <section class="container ck-sec-ostatne" id="objednavka">
       <div class="ck-objednavka">
         <div class="eyebrow" style="color:var(--vermillion-tint)">Objednávka</div>
-        <div class="ck-objednavka-hlavicka" id="ck-hlavicka">
-          <h2 class="ck-h2">Objednejte si <em>vánoční cukroví</em></h2>
-        </div>
 
         <form class="ck-form" id="ck-form" novalidate>
 
           <fieldset class="ck-fieldset">
-            <legend class="ck-legend">Krabičky</legend>
+            <legend class="ck-legend">Vánoční cukroví</legend>
             <div class="ck-row">
               {[['velke', velka], ['male', mala]].map(([name, k]) => (
                 <div class="ck-field">
@@ -300,7 +300,7 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
     </section>
 
     <!-- JAK TO FUNGUJE -->
-    <section class="container ck-section">
+    <section class="container ck-section ck-sec-ostatne">
       <div class="eyebrow">Jak to funguje</div>
       <h2 class="ck-h2">Objednávka <em>ve 4 krocích</em></h2>
       <ol class="ck-kroky">
@@ -396,7 +396,6 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
 
       const zobrazDekujeme = (celkem, meno, telefon) => {
         form.hidden = true;
-        document.getElementById('ck-hlavicka').hidden = true;
         const vs = vsZTelefonu(telefon);
         const zprava = zpravaPre(meno || '');
         document.getElementById('ck-dekujeme-cena').textContent = kcFmt(celkem);

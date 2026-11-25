@@ -1646,3 +1646,24 @@ textarea.ck-input { resize: vertical; }
 /* Alergeny ako obyčajný text pod zoznamom druhov */
 .ck-alergeny { margin-top: 20px; }
 .ck-alergeny p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--mak-soft); }
+
+/* Cukroví na mobile: začína ponukou (krabičky), potom „V krabičce“ + text o surovinách,
+   galéria a až potom zvyšok. Z úvodu (hero) ostáva na mobile len nadpis h1. (Eva, 25. 11. 2026) */
+.ck-suroviny-mobil, .ck-len-mobil { display: none; }
+@media (max-width: 768px) {
+  .ck-len-pc { display: none; }
+  .ck-len-mobil { display: inline; }
+  .ck-page { display: flex; flex-direction: column; }
+  .ck-page > .container { width: 100%; }
+  .ck-hero { padding-block: 32px 0; border-bottom: 0; }
+  .ck-hero .ck-title { margin-top: 0; }
+  .ck-sec-krabicky { order: 1; padding-top: 32px; }
+  .ck-sec-krabicky .ck-boxes { margin-top: 20px; }
+  .ck-sec-druhy    { order: 2; }
+  .ck-sec-galerie  { order: 3; }
+  .ck-sec-ostatne  { order: 4; }
+  .ck-suroviny-mobil { display: block; margin-top: 24px; }
+}
+
+/* Poznámka „Fotografie má ilustrační charakter…“: menšia a svetlejšia */
+.ck-box-pozn { font-size: 12px; opacity: .75; }

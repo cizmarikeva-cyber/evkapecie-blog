@@ -75,7 +75,10 @@ export const KRABICE = [
     id:     'velka',
     nazov:  'Velká krabička',
     cena:   1490,
-    obsah:  ['Velká krabička obsahuje 8 druhů cukroví, z každého druhu <strong>8-9 kusů</strong>. Váha cukroví je <strong>1 kg</strong>.'],
+    obsah:  [
+      'Cukroví pro celou rodinu.',
+      '8 druhů, z každého <strong>8-9 kusů</strong>, váha <strong>1 kg</strong>.',
+    ],
     pozn:   'Fotografie má ilustrační charakter, skutečný počet jednotlivých druhů se může lišit.',
   },
   {
