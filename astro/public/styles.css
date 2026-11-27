@@ -1791,3 +1791,17 @@ textarea.ck-input { resize: vertical; }
   .ck-submit { align-self: stretch; }
 }
 .ck-spat-dole { align-self: center; margin-top: -4px; }
+
+/* Na PC: objednávka vľavo (šírka ako karta „Osobní vyzvednutí“ nad ňou),
+   „Jak to funguje“ vpravo vedľa nej. Na mobile pod sebou ako predtým. (Eva, 27. 11. 2026) */
+.ck-jak { padding-top: 48px; }
+.ck-jak .ck-kroky { margin-top: 24px; }
+@media (min-width: 769px) {
+  .ck-obj-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; margin-top: 64px; }
+  .ck-obj-layout .ck-objednavka { margin-top: 0; padding: 32px; }
+  /* „Neviditeľná karta“: rovnaké odsadenie ako karta Rozvoz nad ňou (28 px), hore zarovnané s nápisom Objednávka v tmavom paneli */
+  .ck-jak { padding: 21px 28px 32px; position: sticky; top: calc(var(--nav-h) + 24px); }
+  .ck-jak .ck-kroky { grid-template-columns: 1fr; gap: 12px; }
+  .ck-jak .ck-kroky li { padding: 18px 20px; }
+  .ck-jak .ck-kroky h3 { font-size: 19px; margin-bottom: 6px; }
+}

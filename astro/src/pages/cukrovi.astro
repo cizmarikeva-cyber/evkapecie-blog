@@ -175,7 +175,8 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
     </section>
 
     <!-- OBJEDNÁVKA -->
-    <section class="container ck-sec-ostatne" id="objednavka">
+    <!-- OBJEDNÁVKA + JAK TO FUNGUJE: na PC vedľa seba, na mobile pod sebou (Eva, 27. 11. 2026) -->
+    <section class="container ck-sec-ostatne ck-obj-layout" id="objednavka">
       <div class="ck-objednavka">
         <div class="eyebrow" style="color:var(--vermillion-tint)">Objednávka</div>
 
@@ -349,10 +350,9 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
         </div>
         <div id="ck-qr-data" data-iban={PLATBA.iban ?? ''} hidden></div>
       </div>
-    </section>
 
-    <!-- JAK TO FUNGUJE -->
-    <section class="container ck-section ck-sec-ostatne">
+      <!-- JAK TO FUNGUJE -->
+      <div class="ck-jak">
       <div class="eyebrow">Jak to funguje</div>
       <h2 class="ck-h2">Objednávka <em>ve 4 krocích</em></h2>
       <ol class="ck-kroky">
@@ -361,6 +361,7 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
         <li><h3>Napeču to za vás</h3><p>Jakmile platba dorazí, pošlu vám potvrzení s fakturou. Od té chvíle máte cukroví jisté.</p></li>
         <li><h3>Převezmete cukroví</h3><p>Osobně na mé provozovně, nebo vám ho přivezeme po Brně.</p></li>
       </ol>
+      </div>
     </section>
 
     <script define:vars={{ formConfig }}>
@@ -518,8 +519,8 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
       });
 
       // ---- Voľné krabičky živo zo sheetu (Eva, 27. 11. 2026) ----
-      // Čeština: 1 velká, 2-4 velké, 5+ velkých.
-      const velkychText = (n) => n === 1 ? 'Zbývá 1 velká' : n >= 2 && n <= 4 ? `Zbývají ${n} velké` : `Zbývá ${n} velkých`;
+      // Čeština: 1 krabička, 2-4 krabičky, 5+ krabiček (Eva, 27. 11. 2026).
+      const zbyvaText = (n) => n === 1 ? 'Zbývá 1 krabička' : n >= 2 && n <= 4 ? `Zbývají ${n} krabičky` : `Zbývá ${n} krabiček`;
 
       const pouzijKapacitu = () => {
         form.querySelectorAll('[data-termin]').forEach(card => {
@@ -541,13 +542,15 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
           bar.hidden = false;
           bar.firstElementChild.style.width = t.max ? Math.max(6, Math.min(100, Math.round(t.zbyva / t.max * 100))) + '%' : '100%';
           card.classList.toggle('is-malo', t.zbyva <= 5);
-          zbyvaEl.textContent = velkychText(t.zbyva);
+          zbyvaEl.textContent = zbyvaText(t.zbyva);
         });
+        // Malé krabičky: počet sa neukazuje (Eva, 27. 11. 2026), limit zo sheetu však platí ďalej
+        // (tlačidlo + sa zastaví na počte, ktorý ostáva). Pri nule sa ukáže „Vyprodáno“.
         const maleEl = form.querySelector('[data-zbyva-male]');
         if (kap.male != null) {
-          maleEl.hidden = false;
-          maleEl.textContent = kap.male <= 0 ? 'Vyprodáno' : `Zbývá ${kap.male} ks`;
-          maleEl.classList.toggle('is-malo', kap.male <= 5);
+          maleEl.hidden = kap.male > 0;
+          maleEl.textContent = 'Vyprodáno';
+          maleEl.classList.add('is-malo');
           form.querySelector('[data-produkt="male"]').classList.toggle('is-obsazeno', kap.male <= 0);
           const input = form.elements.male;
           if (Number(input.value) > maxPre('male')) input.value = String(maxPre('male'));
