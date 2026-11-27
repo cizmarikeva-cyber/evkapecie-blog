@@ -1641,7 +1641,6 @@ textarea.ck-input { resize: vertical; }
 /* Úvod v troch odsekoch, poznámka pod fotkou krabičky */
 .ck-lead + .ck-lead { margin-top: 14px; }
 .ck-box-obsah + .ck-box-obsah { margin-top: 10px; }
-.ck-box-pozn { margin: 0; font-size: 13px; line-height: 1.5; color: var(--mak-soft); font-style: italic; }
 
 /* Alergeny ako obyčajný text pod zoznamom druhov */
 .ck-alergeny { margin-top: 20px; }
@@ -1665,24 +1664,16 @@ textarea.ck-input { resize: vertical; }
   .ck-suroviny-mobil { display: block; margin-top: 24px; }
 }
 
-/* Poznámka „Fotografie má ilustrační charakter…“: menšia a svetlejšia */
-.ck-box-pozn { font-size: 12px; opacity: .75; }
 
-/* Malá krabička na mobile: prvá v poradí, dve menšie fotky vedľa seba
-   (zabalená + otvorená). Na PC bez zmeny. (Eva, 26. 11. 2026) */
+/* Malá krabička na mobile: dve menšie fotky vedľa seba (zabalená + otvorená).
+   Poradie ako na PC: veľká prvá, malá pod ňou (Eva, 27. 11. 2026). Na PC bez zmeny. */
 .ck-box-foto-mobil { display: none; }
 @media (max-width: 768px) {
-  .ck-box-mala { order: -1; }
   .ck-box-mala .ck-box-fotky { gap: 12px; }
   .ck-box-foto-mobil { display: block; }
 }
 
 /* ---- cukroví: uzávierka + zjednodušený formulár v 2 krokoch (Eva, 27. 11. 2026) ---- */
-.ck-banner {
-  padding: 11px 20px; background: var(--lekvar); color: var(--maslo);
-  font-family: var(--font-body); font-size: 14.5px; line-height: 1.4; text-align: center;
-}
-.ck-banner strong { font-weight: 700; }
 
 .ck-form { scroll-margin-top: calc(var(--nav-h) + 16px); gap: 20px; }
 .ck-krok { display: flex; flex-direction: column; gap: 28px; }
@@ -1778,7 +1769,6 @@ textarea.ck-input { resize: vertical; }
 .ck-form .ck-platba-info strong { display: inline; }
 
 @media (max-width: 768px) {
-  .ck-banner { font-size: 14px; padding: 10px 16px; }
   .ck-form .ck-legend { font-size: 20px; }
   /* Menej vnoreného odsadenia, aby sa názvy a dátumy nelámali */
   .ck-objednavka { padding: 24px 10px 10px; }
@@ -1805,3 +1795,26 @@ textarea.ck-input { resize: vertical; }
   .ck-jak .ck-kroky li { padding: 18px 20px; }
   .ck-jak .ck-kroky h3 { font-size: 19px; margin-bottom: 6px; }
 }
+
+/* Pri krabičkách pod „Objednat“: uzávierka oddelená čiarou ako poznámka (Eva, 27. 11. 2026) */
+.ck-box-do { margin: 6px 0 0; padding-top: 10px; border-top: 1px solid var(--paper-line); font-size: 11.5px; line-height: 1.45; color: var(--mak-soft); }
+.ck-box-do strong { color: var(--mak); font-weight: 600; }
+
+/* Info ikona na fotke krabičky s tooltipom „Fotografie má ilustrační charakter…“ (Eva, 27. 11. 2026) */
+.ck-box-media { position: relative; }
+.ck-info { position: absolute; right: 10px; bottom: 10px; z-index: 2; }
+.ck-info-btn {
+  width: 28px; height: 28px; border-radius: 50%; border: 0; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.92); color: var(--mak); box-shadow: 0 1px 4px rgba(0,48,73,.2);
+  font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 16px; line-height: 1;
+}
+.ck-info-btn:focus-visible { outline: 2px solid var(--mak); outline-offset: 2px; }
+.ck-info-tip {
+  position: absolute; right: 0; bottom: calc(100% + 8px); width: 230px;
+  padding: 10px 12px; border-radius: 8px; background: var(--mak); color: var(--maslo);
+  font-size: 13px; line-height: 1.45; box-shadow: 0 4px 14px rgba(0,48,73,.2);
+  opacity: 0; visibility: hidden; transition: opacity var(--dur-2) var(--ease-settle), visibility var(--dur-2);
+}
+.ck-info.is-open .ck-info-tip, .ck-info-btn:focus-visible + .ck-info-tip { opacity: 1; visibility: visible; }
+@media (hover: hover) { .ck-info:hover .ck-info-tip { opacity: 1; visibility: visible; } }

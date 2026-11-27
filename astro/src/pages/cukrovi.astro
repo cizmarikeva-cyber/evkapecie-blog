@@ -81,9 +81,6 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
 
   <main class="ck-page">
 
-    <!-- PRUH S UZÁVIERKOU (jedna pre všetky termíny, Eva 27. 11. 2026) -->
-    <div class="ck-banner">Objednávky přijímám do <strong>{OBJEDNAVKY_DO}</strong> nebo do vyprodání.</div>
-
     <!-- HERO (na mobile z neho ostáva len nadpis h1, potom hneď krabičky) -->
     <section class="container ck-hero">
       <div>
@@ -128,13 +125,21 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
                   <Image src={f.src} alt={f.alt} width={700} class={f.lenMobil ? 'ck-box-foto ck-box-foto-mobil' : 'ck-box-foto'} />
                 ))}
               </div>
+              <!-- „Fotografie má ilustrační charakter…“ skryté v info ikone na fotke (Eva, 27. 11. 2026) -->
+              {k.pozn && (
+                <div class="ck-info">
+                  <button type="button" class="ck-info-btn" aria-label="Informace k fotografii" aria-expanded="false" aria-describedby={`ck-info-${k.id}`}>i</button>
+                  <span class="ck-info-tip" id={`ck-info-${k.id}`} role="tooltip">{k.pozn}</span>
+                </div>
+              )}
             </div>
             <div class="ck-box-text">
               <h3 class="ck-box-name">{k.nazov}</h3>
               <div class="ck-box-price">{kc(k.cena)}</div>
               {k.obsah.map(o => <p class="ck-box-obsah" set:html={o} />)}
-              {k.pozn && <p class="ck-box-pozn">{k.pozn}</p>}
               <a class="btn btn-primary" href={ORDER_URL} data-predvolit={k.id === 'velka' ? 'velke' : 'male'} {...orderAttrs}>Objednat</a>
+              <!-- Uzávierka pod tlačidlom ako poznámka pod čiarou, bez roku a bez medzier v dátume (6.12.), aby sa zmestila na 1 riadok (Eva, 27. 11. 2026) -->
+              <p class="ck-box-do">Objednávky přijímám do <strong>{OBJEDNAVKY_DO.replace(/\s*\d{4}$/, '').replace(/\s/g, '')}</strong> nebo do vyprodání.</p>
             </div>
           </div>
         ))}
@@ -517,6 +522,20 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
           spatNaKrok1();
         });
       });
+
+      // Info ikona na fotke krabičky: klik/ťuk otvorí a zavrie tooltip, klik inde ho zavrie.
+      const zavriInfo = () => document.querySelectorAll('.ck-info.is-open').forEach(i => {
+        i.classList.remove('is-open');
+        i.querySelector('.ck-info-btn').setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('.ck-info-btn').forEach(b => b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const otvor = !b.parentElement.classList.contains('is-open');
+        zavriInfo();
+        if (otvor) { b.parentElement.classList.add('is-open'); b.setAttribute('aria-expanded', 'true'); }
+      }));
+      document.addEventListener('click', zavriInfo);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') zavriInfo(); });
 
       // ---- Voľné krabičky živo zo sheetu (Eva, 27. 11. 2026) ----
       // Čeština: 1 krabička, 2-4 krabičky, 5+ krabiček (Eva, 27. 11. 2026).
