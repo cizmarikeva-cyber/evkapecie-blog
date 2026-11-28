@@ -1641,7 +1641,6 @@ textarea.ck-input { resize: vertical; }
 /* Úvod v troch odsekoch, poznámka pod fotkou krabičky */
 .ck-lead + .ck-lead { margin-top: 14px; }
 .ck-box-obsah + .ck-box-obsah { margin-top: 10px; }
-.ck-box-pozn { margin: 0; font-size: 13px; line-height: 1.5; color: var(--mak-soft); font-style: italic; }
 
 /* Alergeny ako obyčajný text pod zoznamom druhov */
 .ck-alergeny { margin-top: 20px; }
@@ -1665,5 +1664,168 @@ textarea.ck-input { resize: vertical; }
   .ck-suroviny-mobil { display: block; margin-top: 24px; }
 }
 
-/* Poznámka „Fotografie má ilustrační charakter…“: menšia a svetlejšia */
-.ck-box-pozn { font-size: 12px; opacity: .75; }
+
+/* Malá krabička na mobile: dve menšie fotky vedľa seba (zabalená + otvorená).
+   Poradie ako na PC: veľká prvá, malá pod ňou (Eva, 27. 11. 2026). Na PC bez zmeny. */
+.ck-box-foto-mobil { display: none; }
+@media (max-width: 768px) {
+  .ck-box-mala .ck-box-fotky { gap: 12px; }
+  .ck-box-foto-mobil { display: block; }
+}
+
+/* ---- cukroví: uzávierka + zjednodušený formulár v 2 krokoch (Eva, 27. 11. 2026) ---- */
+
+.ck-form { scroll-margin-top: calc(var(--nav-h) + 16px); gap: 20px; }
+.ck-krok { display: flex; flex-direction: column; gap: 28px; }
+.ck-form .ck-legend { font-size: 22px; margin-bottom: 2px; }
+.ck-form .ck-fieldset { gap: 12px; }
+.ck-vh { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+
+/* Krok X ze 2 */
+.ck-postup { display: flex; flex-direction: column; gap: 8px; }
+.ck-postup-pruh { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ck-postup-pruh span { height: 4px; border-radius: 99px; background: var(--paper-line); transition: background var(--dur-2) var(--ease-settle); }
+.ck-postup-pruh span.is-aktivny { background: var(--lekvar); }
+.ck-postup-text { margin: 0; font-size: 13.5px; color: var(--ink-mute); }
+.ck-postup-text strong { color: var(--mak); font-weight: 600; }
+
+/* Krabičky: jeden riadok = názov + cena vľavo, počet vpravo */
+.ck-produkty { display: flex; flex-direction: column; border: 1px solid var(--paper-line); border-radius: var(--radius-3); background: var(--maslo); }
+.ck-produkt { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 14px 14px 16px; }
+.ck-produkt + .ck-produkt { border-top: 1px solid var(--paper-line); }
+.ck-produkt-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ck-produkt-nazov { font-size: 16px; font-weight: 600; color: var(--mak); }
+.ck-produkt-meta { font-size: 14px; color: var(--mak-soft); }
+.ck-produkt.is-obsazeno .ck-produkt-nazov, .ck-produkt.is-obsazeno .ck-produkt-meta { opacity: .5; }
+.ck-form .ck-stepper { flex: none; gap: 4px; padding: 0; background: none; border: 0; }
+.ck-form .ck-step { width: 38px; height: 38px; border-radius: 50%; font-size: 20px; background: var(--smotana); }
+.ck-form .ck-step-value { min-width: 28px; text-align: center; font-size: 18px; font-weight: 700; color: var(--ink-mute); }
+.ck-produkt.is-vybrane .ck-step-value { color: var(--lekvar); }
+
+/* Spôsob prevzatia: riadky s krúžkom, termíny vnorené pod vybranou voľbou */
+.ck-volby { display: flex; flex-direction: column; }
+.ck-volba + .ck-volba { border-top: 1px solid var(--paper-line); }
+.ck-volba-riadok { display: flex; align-items: center; gap: 10px; padding: 12px 0; cursor: pointer; }
+.ck-volba-riadok input { width: 20px; height: 20px; margin: 0; flex: none; accent-color: var(--lekvar); }
+.ck-volba-nazov { font-size: 16px; font-weight: 700; color: var(--mak); }
+.ck-volba-cena { margin-left: auto; font-size: 15px; font-weight: 700; color: var(--lekvar); white-space: nowrap; }
+.ck-volba .ck-skupina { padding: 0 0 14px 30px; }
+
+/* Termíny zvoleného spôsobu: nízke karty pod sebou */
+.ck-skupina { display: flex; flex-direction: column; }
+.ck-skupina-pod { margin: -6px 0 8px; font-size: 13.5px; line-height: 1.45; color: var(--mak-soft); }
+.ck-skupina #ck-adresa { margin-top: 12px; }
+.ck-terminy-zoznam { display: flex; flex-direction: column; gap: 6px; }
+.ck-termin-karta {
+  position: relative; display: flex; flex-direction: column; gap: 3px; cursor: pointer;
+  padding: 8px 12px; background: var(--maslo); border: 1px solid var(--paper-line); border-radius: var(--radius-2);
+  transition: border-color var(--dur-2) var(--ease-settle), background var(--dur-2) var(--ease-settle);
+}
+.ck-termin-karta:has(input:checked) { border-color: var(--lekvar); box-shadow: 0 0 0 1px var(--lekvar); background: #fff; }
+.ck-termin-karta:has(input:focus-visible) { outline: 2px solid var(--mak); outline-offset: 2px; }
+.ck-termin-karta.is-obsazeno { opacity: .45; cursor: not-allowed; }
+.ck-termin-hlava { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.ck-termin-den { font-size: 15px; line-height: 1.35; font-weight: 700; color: var(--mak); white-space: nowrap; }
+.ck-termin-cas { font-size: 14px; line-height: 1.35; color: var(--mak); white-space: nowrap; }
+.ck-termin-stav { display: flex; align-items: center; gap: 12px; line-height: 1.3; }
+.ck-termin-stav .ck-bar { flex: 1; }
+.ck-termin-stav .ck-zbyva { white-space: nowrap; }
+.ck-termin-stav:has(> .ck-bar[hidden]):has(> .ck-zbyva:empty) { display: none; }
+
+.ck-bar { display: block; height: 4px; border-radius: 99px; background: var(--paper-line); overflow: hidden; }
+.ck-bar > span { display: block; height: 100%; border-radius: 99px; background: var(--lekvar); }
+.ck-zbyva { font-size: 12.5px; color: var(--ink-mute); }
+.ck-produkt .ck-zbyva { margin-top: 3px; }
+.ck-zbyva:empty { display: none; }
+.ck-termin-karta.is-malo .ck-bar > span { background: var(--vermillion); }
+.ck-termin-karta.is-malo .ck-zbyva, .ck-zbyva.is-malo { color: var(--vermillion); font-weight: 600; }
+
+/* Päta kroku 1: cena + tlačidlo */
+.ck-krok-pata { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 18px; border-top: 1px solid var(--paper-line); }
+.ck-pata-cena { display: flex; flex-direction: column; }
+.ck-pata-cena span { font-size: 13.5px; color: var(--mak-soft); }
+.ck-pata-cena strong { font-family: var(--font-display); font-size: 26px; color: var(--lekvar); line-height: 1.1; }
+
+/* Krok 2: súhrn objednávky ako tónovaný box hore */
+.ck-form .ck-souhrn { border-top: 0; padding: 16px; background: var(--paper-deep); border-radius: var(--radius-3); gap: 6px; }
+.ck-souhrn-hlava { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.ck-souhrn-nadpis { font-size: 13.5px; font-weight: 700; color: var(--mak); text-transform: uppercase; letter-spacing: .04em; }
+.ck-form .ck-souhrn-radek { font-size: 15px; color: var(--mak); }
+.ck-souhrn-termin { font-size: 14px; color: var(--mak-soft); }
+.ck-souhrn-termin:empty { display: none; }
+.ck-form .ck-souhrn-celkem { margin-top: 6px; padding-top: 10px; border-top: 1px solid var(--paper-line); font-size: 15.5px; align-items: center; }
+.ck-form .ck-souhrn-celkem strong { font-size: 24px; white-space: nowrap; }
+.ck-form .ck-souhrn-celkem span { white-space: nowrap; }
+.ck-pata-cena strong { white-space: nowrap; }
+.ck-spat {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--lekvar); text-decoration: underline;
+}
+
+
+/* Platobné info: menšie, sekundárne */
+.ck-form .ck-platba-info { gap: 6px; padding: 14px 16px; border-left: 3px solid var(--paper-line); }
+.ck-form .ck-platba-info p, .ck-form .ck-upozorneni { font-size: 13.5px; line-height: 1.55; }
+.ck-form .ck-platba-info strong { display: inline; }
+
+@media (max-width: 768px) {
+  .ck-form .ck-legend { font-size: 20px; }
+  /* Menej vnoreného odsadenia, aby sa názvy a dátumy nelámali */
+  .ck-objednavka { padding: 24px 10px 10px; }
+  .ck-objednavka > .eyebrow { padding-left: 10px; }
+  .ck-form { padding: 18px 16px; }
+  .ck-produkt { padding: 12px 10px 12px 14px; }
+  .ck-form .ck-step { width: 34px; height: 34px; }
+  .ck-krok-pata { position: sticky; bottom: 0; z-index: 5; margin: 0 -16px -18px; padding: 14px 16px calc(14px + env(safe-area-inset-bottom)); background: var(--smotana); border-radius: 0 0 var(--radius-3) var(--radius-3); box-shadow: 0 -6px 16px rgba(0,48,73,.06); }
+  .ck-dalej { padding-inline: 22px; }
+  .ck-submit { align-self: stretch; }
+}
+.ck-spat-dole { align-self: center; margin-top: -4px; }
+
+/* Na PC: objednávka vľavo (šírka ako karta „Osobní vyzvednutí“ nad ňou),
+   „Jak to funguje“ vpravo vedľa nej. Na mobile pod sebou ako predtým. (Eva, 27. 11. 2026) */
+.ck-jak { padding-top: 48px; }
+.ck-jak .ck-kroky { margin-top: 24px; }
+@media (min-width: 769px) {
+  .ck-obj-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; margin-top: 64px; }
+  .ck-obj-layout .ck-objednavka { margin-top: 0; padding: 32px; }
+  /* „Neviditeľná karta“: rovnaké odsadenie ako karta Rozvoz nad ňou (28 px), hore zarovnané s nápisom Objednávka v tmavom paneli */
+  .ck-jak { padding: 21px 28px 32px; position: sticky; top: calc(var(--nav-h) + 24px); }
+  .ck-jak .ck-kroky { grid-template-columns: 1fr; gap: 12px; }
+  .ck-jak .ck-kroky li { padding: 18px 20px; }
+  .ck-jak .ck-kroky h3 { font-size: 19px; margin-bottom: 6px; }
+}
+
+/* Pri krabičkách pod „Objednat“: uzávierka oddelená čiarou ako poznámka (Eva, 27. 11. 2026) */
+.ck-box-do { margin: 6px 0 0; padding-top: 10px; border-top: 1px solid var(--paper-line); font-size: 11.5px; line-height: 1.45; color: var(--mak-soft); }
+.ck-box-do strong { color: var(--mak); font-weight: 600; }
+
+/* Info ikona na fotke krabičky s tooltipom „Fotografie má ilustrační charakter…“ (Eva, 27. 11. 2026) */
+.ck-box-media { position: relative; }
+.ck-info { position: absolute; right: 10px; bottom: 10px; z-index: 2; }
+.ck-info-btn {
+  width: 28px; height: 28px; border-radius: 50%; border: 0; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.92); color: var(--mak); box-shadow: 0 1px 4px rgba(0,48,73,.2);
+  font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 16px; line-height: 1;
+}
+.ck-info-btn:focus-visible { outline: 2px solid var(--mak); outline-offset: 2px; }
+.ck-info-tip {
+  position: absolute; right: 0; bottom: calc(100% + 8px); width: 230px;
+  padding: 10px 12px; border-radius: 8px; background: var(--mak); color: var(--maslo);
+  font-size: 13px; line-height: 1.45; box-shadow: 0 4px 14px rgba(0,48,73,.2);
+  opacity: 0; visibility: hidden; transition: opacity var(--dur-2) var(--ease-settle), visibility var(--dur-2);
+}
+.ck-info.is-open .ck-info-tip, .ck-info-btn:focus-visible + .ck-info-tip { opacity: 1; visibility: visible; }
+@media (hover: hover) { .ck-info:hover .ck-info-tip { opacity: 1; visibility: visible; } }
+
+/* Vypredaná krabička na hlavnej karte (Eva, 28. 11. 2026) */
+.ck-box-stitok {
+  position: absolute; left: 10px; top: 10px; z-index: 2;
+  padding: 5px 12px; border-radius: 99px; background: var(--mak); color: var(--maslo);
+  font-size: 13px; font-weight: 700; letter-spacing: .02em;
+}
+.ck-box-stitok[hidden] { display: none; }
+.ck-box.is-vyprodano .ck-box-foto { filter: grayscale(.6); opacity: .7; }
+.ck-box.is-vyprodano .btn { background: var(--paper-line); color: var(--ink-mute); border-color: transparent; box-shadow: none; pointer-events: none; cursor: default; }
+.ck-box.is-vyprodano .ck-box-do { display: none; }

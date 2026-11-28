@@ -4,6 +4,7 @@ import { Image, getImage } from 'astro:assets';
 import heroImg from '../assets/images/cukrovi/velka-detail1.jpeg';
 import velkaImg from '../assets/images/cukrovi/velka-krabica.jpeg';
 import malaDarekImg from '../assets/images/cukrovi/mala-krabica-darek.jpeg';
+import malaObsahImg from '../assets/images/cukrovi/mala-krabica-obsah.jpeg';
 import galTartaletka from '../assets/images/cukrovi/detail-tartaletka.jpeg';
 import galRafaello from '../assets/images/cukrovi/detail-rafaello.jpeg';
 import galMedovnikove from '../assets/images/cukrovi/detail-medovnikove.jpeg';
@@ -20,7 +21,7 @@ const GALERIE = [
   { src: galMedovnikove, alt: 'Medovníkové kuličky' },
 ];
 import {
-  GOOGLE_FORM, MAX_KRABIC, PREVZETI, PLATBA,
+  GOOGLE_FORM, MAX_KRABIC, PREVZETI, PLATBA, OBJEDNAVKY_DO, KAPACITA_SHEET,
   TERMINY_VYZDVIHNUTIE, TERMIN_ROZVOZ, OBSAZENO, ROZVOZ_POZNAMKA, KRABICE, DRUHY, ALERGENY, UPOZORNENI, VYZDVIHNUTIE,
 } from '../data/cukrovi.js';
 
@@ -29,10 +30,15 @@ const ORDER_URL = '#objednavka';
 const orderAttrs = {};
 
 const [velka, mala] = KRABICE;
-// Výber prevzatia: najprv spôsob (osobne / rozvoz), pri osobnom povinný termín.
-const terminyOsobne = TERMINY_VYZDVIHNUTIE;
-const osobneObsazeno = terminyOsobne.every(t => OBSAZENO[t.id]);
-const rozvozObsazeno = !!OBSAZENO[TERMIN_ROZVOZ.id];
+
+// Ručný prepínač „obsazeno“. Voľné krabičky zo sheetu dopĺňa skript v prehliadači.
+const jeObsazeno = (id) => !!OBSAZENO[id];
+
+// Termíny vo formulári rozdelené na osobný odber a rozvoz (dve úrovne: spôsob → dátum).
+const SKUPINY_TERMINOV = [
+  { id: 'osobne', nazov: 'Osobní vyzvednutí', pod: VYZDVIHNUTIE.adresa, terminy: PREVZETI.filter(p => !p.rozvoz) },
+  { id: 'rozvoz', nazov: 'Rozvoz po Brně', cena: VYZDVIHNUTIE.rozvozCena, pod: ROZVOZ_POZNAMKA, terminy: PREVZETI.filter(p => p.rozvoz) },
+];
 // Údaje pre skript formulára (ceny, ID polí Google Formulára).
 const formConfig = {
   maxKrabic: MAX_KRABIC,
@@ -44,13 +50,16 @@ const formConfig = {
   cenaRozvoz: VYZDVIHNUTIE.rozvozCena,
   prevzeti: PREVZETI,
   rozvozId: TERMIN_ROZVOZ.id,
+  kapacitaSheet: KAPACITA_SHEET,
 };
 
 // Fotky ku krabičkám (orezané do štvorca cez CSS).
+// lenMobil: fotka sa ukáže len na mobile (malá krabička: zabalená + otvorená vedľa seba, Eva 26. 11. 2026).
 const FOTKY = {
   velka: [{ src: velkaImg, alt: 'Velká krabička cukroví shora, 8 druhů' }],
   mala: [
     { src: malaDarekImg, alt: 'Malá krabička v dárkovém balení s mašlí' },
+    { src: malaObsahImg, alt: 'Otevřená malá krabička s cukrovím', lenMobil: true },
   ],
 };
 
@@ -109,20 +118,30 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
       <h2 class="ck-h2 ck-len-pc">Vyberte si <em>velikost</em></h2>
       <div class="ck-boxes">
         {KRABICE.map(k => (
-          <div class="ck-box">
+          <div class={`ck-box ck-box-${k.id}`}>
             <div class="ck-box-media">
               <div class="ck-box-fotky">
                 {FOTKY[k.id].map(f => (
-                  <Image src={f.src} alt={f.alt} width={700} class="ck-box-foto" />
+                  <Image src={f.src} alt={f.alt} width={700} class={f.lenMobil ? 'ck-box-foto ck-box-foto-mobil' : 'ck-box-foto'} />
                 ))}
               </div>
+              <!-- Štítok na fotke, keď je krabička vypredaná (zapína skript zo sheetu, Eva 28. 11. 2026) -->
+              <span class="ck-box-stitok" hidden>Vyprodáno</span>
+              <!-- „Fotografie má ilustrační charakter…“ skryté v info ikone na fotke (Eva, 27. 11. 2026) -->
+              {k.pozn && (
+                <div class="ck-info">
+                  <button type="button" class="ck-info-btn" aria-label="Informace k fotografii" aria-expanded="false" aria-describedby={`ck-info-${k.id}`}>i</button>
+                  <span class="ck-info-tip" id={`ck-info-${k.id}`} role="tooltip">{k.pozn}</span>
+                </div>
+              )}
             </div>
             <div class="ck-box-text">
               <h3 class="ck-box-name">{k.nazov}</h3>
               <div class="ck-box-price">{kc(k.cena)}</div>
               {k.obsah.map(o => <p class="ck-box-obsah" set:html={o} />)}
-              {k.pozn && <p class="ck-box-pozn">{k.pozn}</p>}
-              <a class="btn btn-primary" href={ORDER_URL} {...orderAttrs}>Objednat</a>
+              <a class="btn btn-primary" href={ORDER_URL} data-predvolit={k.id === 'velka' ? 'velke' : 'male'} {...orderAttrs}>Objednat</a>
+              <!-- Uzávierka pod tlačidlom ako poznámka pod čiarou, bez roku a bez medzier v dátume (6.12.), aby sa zmestila na 1 riadok (Eva, 27. 11. 2026) -->
+              <p class="ck-box-do">Objednávky přijímám do <strong>{OBJEDNAVKY_DO.replace(/\s*\d{4}$/, '').replace(/\s/g, '')}</strong> nebo do vyprodání.</p>
             </div>
           </div>
         ))}
@@ -151,127 +170,168 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
         <div class="ck-panel">
           <h3>Osobní vyzvednutí</h3>
           <p>Na mé provozovně: {VYZDVIHNUTIE.adresa}.</p>
-          <ul class="ck-terminy">{TERMINY_VYZDVIHNUTIE.map(t => <li class={OBSAZENO[t.id] ? 'is-obsazeno' : undefined}>{t.text}{OBSAZENO[t.id] && ' (obsazeno)'}</li>)}</ul>
+          <ul class="ck-terminy">{TERMINY_VYZDVIHNUTIE.map(t => <li data-termin-info={t.id} class={jeObsazeno(t.id) ? 'is-obsazeno' : undefined}>{t.text}<span class="ck-obsazeno-txt">{jeObsazeno(t.id) && ' (vyprodáno)'}</span></li>)}</ul>
         </div>
         <div class="ck-panel">
           <h3>Rozvoz v Brně</h3>
           <p>V rámci Brna vám cukroví můžeme přivézt na vaši adresu. Cena dopravy je <strong>{kc(VYZDVIHNUTIE.rozvozCena)}</strong>.</p>
-          <ul class="ck-terminy"><li class={OBSAZENO[TERMIN_ROZVOZ.id] ? 'is-obsazeno' : undefined}>{TERMIN_ROZVOZ.text}{OBSAZENO[TERMIN_ROZVOZ.id] && ' (obsazeno)'}</li></ul>
+          <ul class="ck-terminy"><li data-termin-info={TERMIN_ROZVOZ.id} class={jeObsazeno(TERMIN_ROZVOZ.id) ? 'is-obsazeno' : undefined}>{TERMIN_ROZVOZ.text}<span class="ck-obsazeno-txt">{jeObsazeno(TERMIN_ROZVOZ.id) && ' (vyprodáno)'}</span></li></ul>
           <p>{ROZVOZ_POZNAMKA}</p>
         </div>
       </div>
     </section>
 
     <!-- OBJEDNÁVKA -->
-    <section class="container ck-sec-ostatne" id="objednavka">
+    <!-- OBJEDNÁVKA + JAK TO FUNGUJE: na PC vedľa seba, na mobile pod sebou (Eva, 27. 11. 2026) -->
+    <section class="container ck-sec-ostatne ck-obj-layout" id="objednavka">
       <div class="ck-objednavka">
         <div class="eyebrow" style="color:var(--vermillion-tint)">Objednávka</div>
 
         <form class="ck-form" id="ck-form" novalidate>
 
-          <fieldset class="ck-fieldset">
-            <legend class="ck-legend">Vánoční cukroví</legend>
-            <div class="ck-row">
-              {[['velke', velka], ['male', mala]].map(([name, k]) => (
-                <div class="ck-field">
-                  <span class="ck-label" id={`ck-label-${name}`}>{k.nazov} ({kc(k.cena)})</span>
-                  <div class="ck-stepper" role="group" aria-labelledby={`ck-label-${name}`}>
-                    <button type="button" class="ck-step" data-step="-1" data-for={name} aria-label="Ubrat jednu krabičku">−</button>
-                    <output class="ck-step-value" data-value-for={name} aria-live="polite">0 ks</output>
-                    <button type="button" class="ck-step" data-step="1" data-for={name} aria-label="Přidat jednu krabičku">+</button>
-                    <input type="hidden" name={name} value="0" />
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p class="ck-error" data-error="krabicky" hidden>Vyberte aspoň jednu krabičku.</p>
-          </fieldset>
+          <!-- Objednávka v 2 krokoch (Eva, 27. 11. 2026) -->
+          <div class="ck-postup" aria-live="polite">
+            <div class="ck-postup-pruh"><span class="is-aktivny" data-postup="1"></span><span data-postup="2"></span></div>
+            <p class="ck-postup-text">Krok <span id="ck-postup-cislo">1</span> ze 2: <strong id="ck-postup-nazov">Množství a termín</strong></p>
+          </div>
 
-          <fieldset class="ck-fieldset">
-            <legend class="ck-legend">Převzetí</legend>
-            <div class="ck-radios">
-              <label class={osobneObsazeno ? 'ck-radio is-obsazeno' : 'ck-radio'}>
-                <input type="radio" name="zpusob" value="osobne" disabled={osobneObsazeno} />
-                <span>Osobní vyzvednutí ({VYZDVIHNUTIE.adresa}){osobneObsazeno && ' (obsazeno)'}</span>
-              </label>
-              <label class={rozvozObsazeno ? 'ck-radio is-obsazeno' : 'ck-radio'}>
-                <input type="radio" name="zpusob" value="rozvoz" disabled={rozvozObsazeno} />
-                <span>Rozvoz v Brně <strong>(+{kc(VYZDVIHNUTIE.rozvozCena)})</strong>{rozvozObsazeno && ' (obsazeno)'}</span>
-              </label>
-            </div>
-            <p class="ck-error" data-error="zpusob" hidden>Vyberte způsob převzetí.</p>
-            <div class="ck-field" id="ck-termin" role="radiogroup" aria-labelledby="ck-label-termin" hidden>
-              <span class="ck-label" id="ck-label-termin">Termín vyzvednutí *</span>
-              <div class="ck-radios">
-                {terminyOsobne.map(t => (
-                  <label class={OBSAZENO[t.id] ? 'ck-radio is-obsazeno' : 'ck-radio'}>
-                    <input type="radio" name="termin" value={t.id} disabled={OBSAZENO[t.id]} />
-                    <span>{t.text}{OBSAZENO[t.id] && ' (obsazeno)'}</span>
-                  </label>
+          <!-- KROK 1: množstvo + termín -->
+          <div class="ck-krok" data-krok="1">
+
+            <fieldset class="ck-fieldset">
+              <legend class="ck-legend">Vyberte množství</legend>
+              <div class="ck-produkty">
+                {[['velke', velka], ['male', mala]].map(([name, k]) => (
+                  <div class="ck-produkt" data-produkt={name}>
+                    <div class="ck-produkt-text">
+                      <span class="ck-produkt-nazov" id={`ck-label-${name}`}>{k.nazov}</span>
+                      <span class="ck-produkt-meta">{k.vaha} · {kc(k.cena)}</span>
+                      <span class="ck-zbyva is-malo" data-vyprodano={name} hidden>Vyprodáno</span>
+                    </div>
+                    <div class="ck-stepper" role="group" aria-labelledby={`ck-label-${name}`}>
+                      <button type="button" class="ck-step" data-step="-1" data-for={name} aria-label="Ubrat jednu krabičku">−</button>
+                      <output class="ck-step-value" data-value-for={name} aria-live="polite">0</output>
+                      <button type="button" class="ck-step" data-step="1" data-for={name} aria-label="Přidat jednu krabičku">+</button>
+                      <input type="hidden" name={name} value="0" />
+                    </div>
+                  </div>
                 ))}
               </div>
-              <span class="ck-error" data-error="termin" hidden>Vyberte termín vyzvednutí.</span>
-            </div>
-            <label class="ck-field" id="ck-adresa" hidden>
-              <span class="ck-hint-termin">{TERMIN_ROZVOZ.text}</span>
-              <span class="ck-label">Adresa pro rozvoz *</span>
-              <input type="text" name="adresa" class="ck-input" autocomplete="street-address" />
-              <span class="ck-error" data-error="adresa" hidden>Vyplňte adresu pro rozvoz.</span>
-            </label>
-          </fieldset>
+              <p class="ck-error" data-error="krabicky" hidden>Vyberte aspoň jednu krabičku.</p>
+              <p class="ck-error" data-error="male" hidden></p>
+            </fieldset>
 
-          <fieldset class="ck-fieldset">
-            <legend class="ck-legend">Kontakt</legend>
-            <label class="ck-field">
-              <span class="ck-label">Jméno a příjmení *</span>
-              <input type="text" name="meno" class="ck-input" autocomplete="name" />
-              <span class="ck-error" data-error="meno" hidden>Vyplňte jméno a příjmení.</span>
-            </label>
-            <div class="ck-row">
+            <fieldset class="ck-fieldset">
+              <legend class="ck-legend">Vyberte termín</legend>
+              <!-- Spôsob prevzatia ako riadky s krúžkom; termíny sú vnorené pod vybranou voľbou.
+                   Osobný odber je predvolený. Jeden výber termínu (name="termin") cez obe voľby. (Eva, 27. 11. 2026) -->
+              <div class="ck-volby">
+                {SKUPINY_TERMINOV.map((s, i) => (
+                  <div class="ck-volba">
+                    <label class="ck-volba-riadok">
+                      <input type="radio" name="zpusob" value={s.id} checked={i === 0} />
+                      <span class="ck-volba-nazov">{s.nazov}</span>
+                      {s.cena && <span class="ck-volba-cena">+{kc(s.cena)}</span>}
+                    </label>
+                    <div class="ck-skupina" data-skupina={s.id} hidden={i !== 0}>
+                      <p class="ck-skupina-pod">{s.pod}</p>
+                      <div class="ck-terminy-zoznam">
+                        {s.terminy.map(t => (
+                          <label class={jeObsazeno(t.id) ? 'ck-termin-karta is-obsazeno' : 'ck-termin-karta'} data-termin={t.id}>
+                            <input type="radio" name="termin" value={t.id} disabled={jeObsazeno(t.id)} class="ck-vh" />
+                            <span class="ck-termin-hlava">
+                              <span class="ck-termin-den">{t.den}</span>
+                              <span class="ck-termin-cas">{t.cas}</span>
+                            </span>
+                            <span class="ck-termin-stav">
+                              <span class="ck-bar" aria-hidden="true" hidden><span></span></span>
+                              <span class="ck-zbyva">{jeObsazeno(t.id) && 'Vyprodáno'}</span>
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                      {s.id === 'rozvoz' && (
+                        <label class="ck-field" id="ck-adresa" hidden>
+                          <span class="ck-label">Adresa pro rozvoz</span>
+                          <input type="text" name="adresa" class="ck-input" autocomplete="street-address" />
+                          <span class="ck-error" data-error="adresa" hidden>Vyplňte adresu pro rozvoz.</span>
+                        </label>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p class="ck-error" data-error="termin" hidden>Vyberte termín.</p>
+              <p class="ck-error" data-error="kapacita" hidden></p>
+            </fieldset>
+
+            <div class="ck-krok-pata">
+              <div class="ck-pata-cena"><span>Celkem</span><strong class="ck-celkem">0 Kč</strong></div>
+              <button type="button" class="btn btn-primary btn-large ck-dalej" data-na-krok="2">Pokračovat →</button>
+            </div>
+
+          </div>
+
+          <!-- KROK 2: súhrn + kontakt + odoslanie -->
+          <div class="ck-krok" data-krok="2" hidden>
+
+            <div class="ck-souhrn" aria-live="polite">
+              <div class="ck-souhrn-hlava">
+                <span class="ck-souhrn-nadpis">Vaše objednávka</span>
+                <button type="button" class="ck-spat" data-na-krok="1">Upravit</button>
+              </div>
+              <div class="ck-souhrn-radky" id="ck-souhrn-radky"></div>
+              <div class="ck-souhrn-termin" id="ck-souhrn-termin"></div>
+              <div class="ck-souhrn-celkem">
+                <span>Celkem k úhradě</span>
+                <strong class="ck-celkem">0 Kč</strong>
+              </div>
+            </div>
+
+            <fieldset class="ck-fieldset">
+              <legend class="ck-legend">Kontakt</legend>
               <label class="ck-field">
-                <span class="ck-label">E-mail *</span>
-                <input type="email" name="email" class="ck-input" autocomplete="email" />
+                <span class="ck-label">Jméno a příjmení</span>
+                <input type="text" name="meno" class="ck-input" autocomplete="name" />
+                <span class="ck-error" data-error="meno" hidden>Vyplňte jméno a příjmení.</span>
+              </label>
+              <label class="ck-field">
+                <span class="ck-label">E-mail</span>
+                <input type="email" name="email" class="ck-input" autocomplete="email" inputmode="email" />
                 <span class="ck-error" data-error="email" hidden>Vyplňte platný e-mail.</span>
               </label>
               <label class="ck-field">
-                <span class="ck-label">Telefon *</span>
-                <input type="tel" name="telefon" class="ck-input" autocomplete="tel" />
+                <span class="ck-label">Telefon</span>
+                <input type="tel" name="telefon" class="ck-input" autocomplete="tel" inputmode="tel" />
                 <span class="ck-error" data-error="telefon" hidden>Vyplňte telefon.</span>
               </label>
+              <label class="ck-field">
+                <span class="ck-label">Poznámka (nepovinné)</span>
+                <textarea name="poznamka" class="ck-input" rows="3"></textarea>
+              </label>
+            </fieldset>
+
+            <div class="ck-platba-info">
+              <p><strong>Platba převodem na účet.</strong> Údaje k platbě se zobrazí hned po odeslání objednávky a přijdou vám také e-mailem.</p>
+              <p class="ck-upozorneni" set:html={UPOZORNENI} />
             </div>
-            <label class="ck-field">
-              <span class="ck-label">Poznámka</span>
-              <textarea name="poznamka" class="ck-input" rows="3"></textarea>
+
+            <label class="ck-check">
+              <input type="checkbox" name="souhlas" />
+              <span>Souhlasím s <a href="/obchodni-podminky#cukrovi" target="_blank">obchodními podmínkami</a> a se <a href="/ochrana-soukromi" target="_blank">zpracováním osobních údajů</a>.</span>
             </label>
-          </fieldset>
+            <p class="ck-error" data-error="souhlas" hidden>Pro odeslání je potřeba souhlas.</p>
 
-          <div class="ck-souhrn" aria-live="polite">
-            <div class="ck-souhrn-radky" id="ck-souhrn-radky"></div>
-            <div class="ck-souhrn-celkem">
-              <span>Celkem k úhradě</span>
-              <strong id="ck-celkem">0 Kč</strong>
+            <!-- Skryté pole proti robotom: človek ho nevidí, robot ho vyplní. -->
+            <div class="ck-hp" aria-hidden="true">
+              <label>Web <input type="text" name="web" tabindex="-1" autocomplete="off" /></label>
             </div>
+
+            <button type="submit" class="btn btn-primary btn-large ck-submit">Objednávka zavazující k platbě</button>
+            <p class="ck-error" data-error="odeslani" hidden>Objednávku se nepodařilo odeslat. Zkuste to prosím znovu.</p>
+            <button type="button" class="ck-spat ck-spat-dole" data-na-krok="1">← Zpět na množství a termín</button>
+
           </div>
-
-          <div class="ck-platba-info">
-            <p><strong>Platba převodem na účet.</strong>
-            Údaje k platbě se zobrazí hned po odeslání objednávky a přijdou vám také e-mailem.</p>
-            <p class="ck-upozorneni" set:html={UPOZORNENI} />
-          </div>
-
-          <label class="ck-check">
-            <input type="checkbox" name="souhlas" />
-            <span>Souhlasím s <a href="/obchodni-podminky#cukrovi" target="_blank">obchodními podmínkami</a> a se <a href="/ochrana-soukromi" target="_blank">zpracováním osobních údajů</a>. *</span>
-          </label>
-          <p class="ck-error" data-error="souhlas" hidden>Pro odeslání je potřeba souhlas.</p>
-
-          <!-- Skryté pole proti robotom: človek ho nevidí, robot ho vyplní. -->
-          <div class="ck-hp" aria-hidden="true">
-            <label>Web <input type="text" name="web" tabindex="-1" autocomplete="off" /></label>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-large ck-submit">Objednávka zavazující k platbě</button>
-          <p class="ck-error" data-error="odeslani" hidden>Objednávku se nepodařilo odeslat. Zkuste to prosím znovu.</p>
         </form>
 
         <div class="ck-dekujeme" id="ck-dekujeme" hidden>
@@ -297,10 +357,9 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
         </div>
         <div id="ck-qr-data" data-iban={PLATBA.iban ?? ''} hidden></div>
       </div>
-    </section>
 
-    <!-- JAK TO FUNGUJE -->
-    <section class="container ck-section ck-sec-ostatne">
+      <!-- JAK TO FUNGUJE -->
+      <div class="ck-jak">
       <div class="eyebrow">Jak to funguje</div>
       <h2 class="ck-h2">Objednávka <em>ve 4 krocích</em></h2>
       <ol class="ck-kroky">
@@ -309,78 +368,273 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
         <li><h3>Napeču to za vás</h3><p>Jakmile platba dorazí, pošlu vám potvrzení s fakturou. Od té chvíle máte cukroví jisté.</p></li>
         <li><h3>Převezmete cukroví</h3><p>Osobně na mé provozovně, nebo vám ho přivezeme po Brně.</p></li>
       </ol>
+      </div>
     </section>
 
     <script define:vars={{ formConfig }}>
       const form = document.getElementById('ck-form');
-      const kcFmt = (n) => n.toLocaleString('cs-CZ') + ' Kč';
+      const kcFmt = (n) => n.toLocaleString('cs-CZ') + ' Kč';
       const adresaBox = document.getElementById('ck-adresa');
-      const terminBox = document.getElementById('ck-termin');
+
+      // Voľné krabičky zo sheetu. null = nevieme alebo bez limitu.
+      const kap = { terminy: {}, male: null, vyprodane: { velke: false, male: false } };
+      const volneVelke = (id) => kap.terminy[id]?.zbyva ?? null;
+      const maxPre = (name) => kap.vyprodane[name] ? 0 : Math.max(0, Math.min(formConfig.maxKrabic, name === 'male' && kap.male != null ? kap.male : Infinity));
 
       const data = () => {
         const fd = new FormData(form);
         const velke = Number(fd.get('velke') || 0);
         const male = Number(fd.get('male') || 0);
-        const zpusob = fd.get('zpusob');
-        const prevzetiId = zpusob === 'rozvoz' ? formConfig.rozvozId : zpusob === 'osobne' ? fd.get('termin') : null;
-        const prevzeti = formConfig.prevzeti.find(p => p.id === prevzetiId);
-        const rozvoz = zpusob === 'rozvoz';
+        const prevzeti = formConfig.prevzeti.find(p => p.id === fd.get('termin'));
+        const rozvoz = !!prevzeti?.rozvoz;
         const celkem = velke * formConfig.cenaVelka + male * formConfig.cenaMala + (rozvoz ? formConfig.cenaRozvoz : 0);
-        return { fd, velke, male, zpusob, prevzeti, rozvoz, celkem };
+        return { fd, velke, male, prevzeti, rozvoz, celkem };
       };
 
       const render = () => {
-        const { velke, male, zpusob, rozvoz, celkem } = data();
+        const { velke, male, prevzeti, rozvoz, celkem } = data();
         const radky = [];
         if (velke) radky.push([`Velká krabička × ${velke}`, velke * formConfig.cenaVelka]);
         if (male) radky.push([`Malá krabička × ${male}`, male * formConfig.cenaMala]);
         if (rozvoz) radky.push(['Rozvoz po Brně', formConfig.cenaRozvoz]);
         document.getElementById('ck-souhrn-radky').innerHTML = radky
           .map(([t, c]) => `<div class="ck-souhrn-radek"><span>${t}</span><span>${kcFmt(c)}</span></div>`).join('');
-        document.getElementById('ck-celkem').textContent = kcFmt(celkem);
+        document.getElementById('ck-souhrn-termin').textContent = prevzeti ? prevzeti.text : '';
+        form.querySelectorAll('.ck-celkem').forEach(el => { el.textContent = kcFmt(celkem); });
         adresaBox.hidden = !rozvoz;
-        terminBox.hidden = zpusob !== 'osobne';
       };
 
-      const showError = (key, show) => {
-        form.querySelectorAll(`[data-error="${key}"]`).forEach(el => { el.hidden = !show; });
+      const showError = (key, show, text) => {
+        form.querySelectorAll(`[data-error="${key}"]`).forEach(el => {
+          el.hidden = !show;
+          if (text != null) el.textContent = text;
+        });
       };
 
-      const validate = () => {
-        const { fd, velke, male, zpusob, prevzeti, rozvoz } = data();
+      // Ktoré polia sa kontrolujú v ktorom kroku.
+      const POLIA = {
+        1: ['krabicky', 'male', 'termin', 'kapacita', 'adresa'],
+        2: ['meno', 'email', 'telefon', 'souhlas'],
+      };
+      // Kroky, v ktorých už zákazníčka skúsila pokračovať (tam sa chyby ukazujú priebežne).
+      const skusila = new Set();
+
+      const validate = (krok) => {
+        const { fd, velke, male, prevzeti, rozvoz } = data();
         const txt = (k) => String(fd.get(k) || '').trim();
+        const volne = prevzeti ? volneVelke(prevzeti.id) : null;
         const checks = {
           krabicky: velke + male > 0,
-          zpusob: !!zpusob,
-          termin: zpusob !== 'osobne' || !!prevzeti,
+          male: kap.male == null || male <= kap.male,
+          termin: !!prevzeti,
+          kapacita: volne == null || velke <= volne,
           adresa: !rozvoz || txt('adresa').length > 0,
           meno: txt('meno').length > 0,
           email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(txt('email')),
           telefon: txt('telefon').replace(/\D/g, '').length >= 9,
           souhlas: fd.get('souhlas') === 'on',
         };
-        Object.entries(checks).forEach(([k, ok]) => showError(k, !ok));
-        return Object.values(checks).every(Boolean);
+        const texty = {
+          male: `Volné malé krabičky: ${kap.male}.`,
+          kapacita: `Volné velké krabičky na tento termín: ${volne}. Zvolte jiný termín nebo méně krabiček.`,
+        };
+        POLIA[krok].forEach(k => showError(k, !checks[k], texty[k]));
+        return POLIA[krok].every(k => checks[k]);
       };
 
-      // Tlačidlá −/+ pri počte krabičiek (0 až maxKrabic).
+      const prvaChyba = () =>
+        form.querySelector('.ck-krok:not([hidden]) .ck-error:not([hidden])')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Prepínanie krokov 1 ↔ 2.
+      const NAZVY_KROKOV = { 1: 'Množství a termín', 2: 'Kontakt a platba' };
+      const ukazKrok = (krok) => {
+        form.querySelectorAll('.ck-krok').forEach(el => { el.hidden = el.dataset.krok !== String(krok); });
+        form.querySelectorAll('[data-postup]').forEach(el => {
+          el.classList.toggle('is-aktivny', Number(el.dataset.postup) <= krok);
+        });
+        document.getElementById('ck-postup-cislo').textContent = String(krok);
+        document.getElementById('ck-postup-nazov').textContent = NAZVY_KROKOV[krok];
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+      // Krok 2 má vlastný záznam v histórii prehliadača: tlačidlo Späť v prehliadači
+      // vráti na krok 1 (namiesto skoku inam na stránke). Posun stránky riadi ukazKrok.
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      const naKrok2 = () => {
+        skusila.add(1);
+        if (!validate(1)) { prvaChyba(); return; }
+        if (history.state?.ckKrok !== 2) history.pushState({ ckKrok: 2 }, '');
+        ukazKrok(2);
+      };
+      const spatNaKrok1 = () => {
+        if (history.state?.ckKrok === 2) history.back(); // popstate nižšie ukáže krok 1
+        else ukazKrok(1);
+      };
+      window.addEventListener('popstate', (e) => {
+        if (form.hidden) return; // po odoslaní objednávky už kroky neprepíname
+        ukazKrok(e.state?.ckKrok === 2 && validate(1) ? 2 : 1);
+      });
+      form.querySelectorAll('[data-na-krok]').forEach(btn => {
+        btn.addEventListener('click', () => (btn.dataset.naKrok === '2' ? naKrok2() : spatNaKrok1()));
+      });
+
+      // Prepínač Osobně / Rozvoz: ukáže termíny len zvoleného spôsobu.
+      // Termín z druhej skupiny sa zruší; keď má skupina jediný voľný termín (rozvoz), vyberie sa sám.
+      const ukazSkupinu = () => {
+        const z = form.querySelector('input[name="zpusob"]:checked')?.value || 'osobne';
+        form.querySelectorAll('[data-skupina]').forEach(el => { el.hidden = el.dataset.skupina !== z; });
+        const vybrany = form.querySelector('input[name="termin"]:checked');
+        if (vybrany && vybrany.closest('[data-skupina]').dataset.skupina !== z) vybrany.checked = false;
+        const volne = [...form.querySelectorAll(`[data-skupina="${z}"] input[name="termin"]:not(:disabled)`)];
+        if (volne.length === 1 && !form.querySelector('input[name="termin"]:checked')) volne[0].checked = true;
+      };
+      // Listener na prepínači beží skôr než 'change' na formulári, takže súhrn a cena sa prepočítajú až potom.
+      form.querySelectorAll('input[name="zpusob"]').forEach(r => r.addEventListener('change', ukazSkupinu));
+
+      // Tlačidlá −/+ pri počte krabičiek (0 až maxKrabic, pri malých najviac koľko ostáva).
       const syncStepper = (name) => {
         const input = form.elements[name];
         const n = Number(input.value);
-        form.querySelector(`[data-value-for="${name}"]`).textContent = `${n} ks`;
+        form.querySelector(`[data-value-for="${name}"]`).textContent = String(n);
         form.querySelector(`[data-for="${name}"][data-step="-1"]`).disabled = n <= 0;
-        form.querySelector(`[data-for="${name}"][data-step="1"]`).disabled = n >= formConfig.maxKrabic;
+        form.querySelector(`[data-for="${name}"][data-step="1"]`).disabled = n >= maxPre(name);
+        form.querySelector(`[data-produkt="${name}"]`).classList.toggle('is-vybrane', n > 0);
       };
       form.querySelectorAll('.ck-step').forEach(btn => {
         btn.addEventListener('click', () => {
-          const input = form.elements[btn.dataset.for];
-          const n = Math.min(formConfig.maxKrabic, Math.max(0, Number(input.value) + Number(btn.dataset.step)));
+          const name = btn.dataset.for;
+          const input = form.elements[name];
+          const n = Math.min(maxPre(name), Math.max(0, Number(input.value) + Number(btn.dataset.step)));
           input.value = String(n);
-          syncStepper(btn.dataset.for);
+          syncStepper(name);
           form.dispatchEvent(new Event('change', { bubbles: true }));
         });
       });
       ['velke', 'male'].forEach(syncStepper);
+
+      // „Objednat" pri krabičke: vo formulári predvolí 1 kus tej krabičky.
+      // Ak už zákazníčka má vybraté viac, počet nemeníme. (Eva, 26. 11. 2026)
+      document.querySelectorAll('[data-predvolit]').forEach(a => {
+        a.addEventListener('click', () => {
+          const name = a.dataset.predvolit;
+          const input = form.elements[name];
+          if (!input || Number(input.value) > 0 || maxPre(name) < 1) return;
+          input.value = '1';
+          syncStepper(name);
+          form.dispatchEvent(new Event('change', { bubbles: true }));
+          spatNaKrok1();
+        });
+      });
+
+      // Info ikona na fotke krabičky: klik/ťuk otvorí a zavrie tooltip, klik inde ho zavrie.
+      const zavriInfo = () => document.querySelectorAll('.ck-info.is-open').forEach(i => {
+        i.classList.remove('is-open');
+        i.querySelector('.ck-info-btn').setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('.ck-info-btn').forEach(b => b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const otvor = !b.parentElement.classList.contains('is-open');
+        zavriInfo();
+        if (otvor) { b.parentElement.classList.add('is-open'); b.setAttribute('aria-expanded', 'true'); }
+      }));
+      document.addEventListener('click', zavriInfo);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') zavriInfo(); });
+
+      // ---- Voľné krabičky živo zo sheetu (Eva, 27. 11. 2026) ----
+      // Čeština: 1 krabička, 2-4 krabičky, 5+ krabiček (Eva, 27. 11. 2026).
+      const zbyvaText = (n) => n === 1 ? 'Zbývá 1 krabička' : n >= 2 && n <= 4 ? `Zbývají ${n} krabičky` : `Zbývá ${n} krabiček`;
+
+      const pouzijKapacitu = () => {
+        form.querySelectorAll('[data-termin]').forEach(card => {
+          const id = card.dataset.termin;
+          const t = kap.terminy[id];
+          const input = card.querySelector('input');
+          if (!t || t.zbyva == null || input.disabled) return;
+          const zbyvaEl = card.querySelector('.ck-zbyva');
+          const bar = card.querySelector('.ck-bar');
+          if (t.zbyva <= 0) {
+            input.disabled = true;
+            input.checked = false;
+            card.classList.add('is-obsazeno');
+            card.classList.remove('is-malo');
+            bar.hidden = true;
+            zbyvaEl.textContent = 'Vyprodáno';
+            const li = document.querySelector(`[data-termin-info="${id}"]`);
+            if (li) { li.classList.add('is-obsazeno'); li.querySelector('.ck-obsazeno-txt').textContent = ' (vyprodáno)'; }
+            return;
+          }
+          bar.hidden = false;
+          bar.firstElementChild.style.width = t.max ? Math.max(6, Math.min(100, Math.round(t.zbyva / t.max * 100))) + '%' : '100%';
+          card.classList.toggle('is-malo', t.zbyva <= 5);
+          zbyvaEl.textContent = zbyvaText(t.zbyva);
+        });
+        // VYPREDANÉ KRABIČKY (Eva, 28. 11. 2026)
+        //  • malá = v sheete „Malé ostáva“ je 0 (počet sa inak neukazuje, limit však platí),
+        //  • veľká = nedá sa vybrať žiaden termín, ani rozvoz. Rozvoz je v sheete bez limitu,
+        //    takže veľká sa vypredá, až keď má aj rozvoz v stĺpci „Voľných“ 0 (alebo ručné „obsazeno“).
+        //  Bez voľného termínu sa nedá objednať nič, takže vtedy je vypredaná aj malá.
+        const ziadenTermin = [...form.querySelectorAll('input[name="termin"]')].every(i => i.disabled);
+        kap.vyprodane = { velke: ziadenTermin, male: ziadenTermin || (kap.male != null && kap.male <= 0) };
+        [['velke', 'velka'], ['male', 'mala']].forEach(([name, kartaId]) => {
+          const vyprodano = kap.vyprodane[name];
+          // Formulár: „Vyprodáno“ pri krabičke a stlmený riadok.
+          form.querySelector(`[data-vyprodano="${name}"]`).hidden = !vyprodano;
+          form.querySelector(`[data-produkt="${name}"]`).classList.toggle('is-obsazeno', vyprodano);
+          // Hlavná karta: štítok na fotke, tlačidlo „Vyprodáno“ bez akcie, poznámka o uzávierke sa skryje.
+          const karta = document.querySelector(`.ck-box-${kartaId}`);
+          if (karta) {
+            karta.classList.toggle('is-vyprodano', vyprodano);
+            karta.querySelector('.ck-box-stitok').hidden = !vyprodano;
+            const btn = karta.querySelector('.btn');
+            btn.textContent = vyprodano ? 'Vyprodáno' : 'Objednat';
+            if (vyprodano) { btn.setAttribute('aria-disabled', 'true'); btn.removeAttribute('href'); }
+            else { btn.removeAttribute('aria-disabled'); btn.setAttribute('href', '#objednavka'); }
+          }
+          const input = form.elements[name];
+          if (Number(input.value) > maxPre(name)) input.value = String(maxPre(name));
+        });
+        ['velke', 'male'].forEach(syncStepper);
+        form.dispatchEvent(new Event('change', { bubbles: true }));
+      };
+
+      // Jednoduchý CSV parser (úvodzovky, čiarky v texte).
+      const parseCsv = (txt) => {
+        const rows = []; let row = [], cell = '', q = false;
+        for (let i = 0; i < txt.length; i++) {
+          const c = txt[i];
+          if (q) { if (c === '"') { if (txt[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; }
+          else if (c === '"') q = true;
+          else if (c === ',') { row.push(cell); cell = ''; }
+          else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+          else if (c !== '\r') cell += c;
+        }
+        if (cell || row.length) { row.push(cell); rows.push(row); }
+        return rows;
+      };
+      const cislo = (v) => { const s = String(v ?? '').replace(/\s/g, '').replace(',', '.'); return s !== '' && !isNaN(Number(s)) ? Number(s) : null; };
+      const norm = (v) => String(v ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s/g, '');
+
+      window.ckNacitajKapacitu = (csv) => {
+        const rows = parseCsv(csv);
+        // Stĺpce hľadáme podľa nadpisov, aby nevadilo, keď Eva stĺpce posunie.
+        const hi = rows.findIndex(r => r.some(c => norm(c).startsWith('volnych')));
+        const head = hi >= 0 ? rows[hi].map(norm) : [];
+        const col = (zaciatok, inak) => { const i = head.findIndex(h => h.startsWith(zaciatok)); return i >= 0 ? i : inak; };
+        const cVolne = col('volnych', 3), cMax = col('maximalna', 2), cMale = col('maleostava', 7);
+        const telo = rows.slice(hi + 1);
+        formConfig.prevzeti.forEach(p => {
+          const r = telo.find(r => norm(r[0]).startsWith(p.sheet));
+          if (r) kap.terminy[p.id] = { zbyva: cislo(r[cVolne]), max: cislo(r[cMax]) };
+        });
+        const maleRiadok = telo.find(r => cislo(r[cMale]) != null);
+        kap.male = maleRiadok ? cislo(maleRiadok[cMale]) : null;
+        pouzijKapacitu();
+      };
+      if (formConfig.kapacitaSheet) {
+        fetch(formConfig.kapacitaSheet)
+          .then(r => r.ok ? r.text() : Promise.reject(r.status))
+          .then(window.ckNacitajKapacitu)
+          .catch(() => { /* sheet sa nenačítal: formulár funguje ďalej bez ukazovateľa */ });
+      }
 
       // Ochrana proti robotom: skryté pole musí ostať prázdne
       // a od načítania stránky musia uplynúť aspoň 3 sekundy.
@@ -408,21 +662,24 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
         dk.scrollIntoView({ behavior: 'smooth', block: 'start' });
       };
 
-      // Po prvom pokuse o odoslanie sa chyby aktualizujú priebežne.
-      let skusila = false;
-      const update = () => { render(); if (skusila) validate(); };
+      // Po prvom pokuse o pokračovanie/odoslanie sa chyby v danom kroku aktualizujú priebežne.
+      const update = () => { render(); skusila.forEach(k => validate(k)); };
       form.addEventListener('change', update);
       form.addEventListener('input', update);
       render();
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        skusila = true;
         showError('odeslani', false);
-        if (!validate()) {
-          form.querySelector('.ck-error:not([hidden])')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Enter v kroku 1 = „Pokračovat“, nie odoslanie.
+        if (form.querySelector('[data-krok="2"]').hidden) {
+          form.querySelector('.ck-dalej').click();
           return;
         }
+        skusila.add(1);
+        skusila.add(2);
+        if (!validate(1)) { spatNaKrok1(); setTimeout(prvaChyba, 400); return; }
+        if (!validate(2)) { prvaChyba(); return; }
         const { fd, velke, male, prevzeti, rozvoz, celkem } = data();
         // Robotovi sa tvárime, že prešiel, ale nič neodošleme.
         if (jeRobot()) { zobrazDekujeme(celkem, fd.get('meno'), fd.get('telefon')); return; }
