@@ -125,6 +125,8 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
                   <Image src={f.src} alt={f.alt} width={700} class={f.lenMobil ? 'ck-box-foto ck-box-foto-mobil' : 'ck-box-foto'} />
                 ))}
               </div>
+              <!-- Štítok na fotke, keď je krabička vypredaná (zapína skript zo sheetu, Eva 28. 11. 2026) -->
+              <span class="ck-box-stitok" hidden>Vyprodáno</span>
               <!-- „Fotografie má ilustrační charakter…“ skryté v info ikone na fotke (Eva, 27. 11. 2026) -->
               {k.pozn && (
                 <div class="ck-info">
@@ -168,12 +170,12 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
         <div class="ck-panel">
           <h3>Osobní vyzvednutí</h3>
           <p>Na mé provozovně: {VYZDVIHNUTIE.adresa}.</p>
-          <ul class="ck-terminy">{TERMINY_VYZDVIHNUTIE.map(t => <li data-termin-info={t.id} class={jeObsazeno(t.id) ? 'is-obsazeno' : undefined}>{t.text}<span class="ck-obsazeno-txt">{jeObsazeno(t.id) && ' (obsazeno)'}</span></li>)}</ul>
+          <ul class="ck-terminy">{TERMINY_VYZDVIHNUTIE.map(t => <li data-termin-info={t.id} class={jeObsazeno(t.id) ? 'is-obsazeno' : undefined}>{t.text}<span class="ck-obsazeno-txt">{jeObsazeno(t.id) && ' (vyprodáno)'}</span></li>)}</ul>
         </div>
         <div class="ck-panel">
           <h3>Rozvoz v Brně</h3>
           <p>V rámci Brna vám cukroví můžeme přivézt na vaši adresu. Cena dopravy je <strong>{kc(VYZDVIHNUTIE.rozvozCena)}</strong>.</p>
-          <ul class="ck-terminy"><li data-termin-info={TERMIN_ROZVOZ.id} class={jeObsazeno(TERMIN_ROZVOZ.id) ? 'is-obsazeno' : undefined}>{TERMIN_ROZVOZ.text}<span class="ck-obsazeno-txt">{jeObsazeno(TERMIN_ROZVOZ.id) && ' (obsazeno)'}</span></li></ul>
+          <ul class="ck-terminy"><li data-termin-info={TERMIN_ROZVOZ.id} class={jeObsazeno(TERMIN_ROZVOZ.id) ? 'is-obsazeno' : undefined}>{TERMIN_ROZVOZ.text}<span class="ck-obsazeno-txt">{jeObsazeno(TERMIN_ROZVOZ.id) && ' (vyprodáno)'}</span></li></ul>
           <p>{ROZVOZ_POZNAMKA}</p>
         </div>
       </div>
@@ -204,7 +206,7 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
                     <div class="ck-produkt-text">
                       <span class="ck-produkt-nazov" id={`ck-label-${name}`}>{k.nazov}</span>
                       <span class="ck-produkt-meta">{k.vaha} · {kc(k.cena)}</span>
-                      {name === 'male' && <span class="ck-zbyva" data-zbyva-male hidden></span>}
+                      <span class="ck-zbyva is-malo" data-vyprodano={name} hidden>Vyprodáno</span>
                     </div>
                     <div class="ck-stepper" role="group" aria-labelledby={`ck-label-${name}`}>
                       <button type="button" class="ck-step" data-step="-1" data-for={name} aria-label="Ubrat jednu krabičku">−</button>
@@ -243,7 +245,7 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
                             </span>
                             <span class="ck-termin-stav">
                               <span class="ck-bar" aria-hidden="true" hidden><span></span></span>
-                              <span class="ck-zbyva">{jeObsazeno(t.id) && 'Obsazeno'}</span>
+                              <span class="ck-zbyva">{jeObsazeno(t.id) && 'Vyprodáno'}</span>
                             </span>
                           </label>
                         ))}
@@ -375,9 +377,9 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
       const adresaBox = document.getElementById('ck-adresa');
 
       // Voľné krabičky zo sheetu. null = nevieme alebo bez limitu.
-      const kap = { terminy: {}, male: null };
+      const kap = { terminy: {}, male: null, vyprodane: { velke: false, male: false } };
       const volneVelke = (id) => kap.terminy[id]?.zbyva ?? null;
-      const maxPre = (name) => Math.max(0, Math.min(formConfig.maxKrabic, name === 'male' && kap.male != null ? kap.male : Infinity));
+      const maxPre = (name) => kap.vyprodane[name] ? 0 : Math.max(0, Math.min(formConfig.maxKrabic, name === 'male' && kap.male != null ? kap.male : Infinity));
 
       const data = () => {
         const fd = new FormData(form);
@@ -553,9 +555,11 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
             input.disabled = true;
             input.checked = false;
             card.classList.add('is-obsazeno');
-            zbyvaEl.textContent = 'Obsazeno';
+            card.classList.remove('is-malo');
+            bar.hidden = true;
+            zbyvaEl.textContent = 'Vyprodáno';
             const li = document.querySelector(`[data-termin-info="${id}"]`);
-            if (li) { li.classList.add('is-obsazeno'); li.querySelector('.ck-obsazeno-txt').textContent = ' (obsazeno)'; }
+            if (li) { li.classList.add('is-obsazeno'); li.querySelector('.ck-obsazeno-txt').textContent = ' (vyprodáno)'; }
             return;
           }
           bar.hidden = false;
@@ -563,17 +567,31 @@ const ogObrazok = await getImage({ src: heroImg, width: 1200, height: 630, fit: 
           card.classList.toggle('is-malo', t.zbyva <= 5);
           zbyvaEl.textContent = zbyvaText(t.zbyva);
         });
-        // Malé krabičky: počet sa neukazuje (Eva, 27. 11. 2026), limit zo sheetu však platí ďalej
-        // (tlačidlo + sa zastaví na počte, ktorý ostáva). Pri nule sa ukáže „Vyprodáno“.
-        const maleEl = form.querySelector('[data-zbyva-male]');
-        if (kap.male != null) {
-          maleEl.hidden = kap.male > 0;
-          maleEl.textContent = 'Vyprodáno';
-          maleEl.classList.add('is-malo');
-          form.querySelector('[data-produkt="male"]').classList.toggle('is-obsazeno', kap.male <= 0);
-          const input = form.elements.male;
-          if (Number(input.value) > maxPre('male')) input.value = String(maxPre('male'));
-        }
+        // VYPREDANÉ KRABIČKY (Eva, 28. 11. 2026)
+        //  • malá = v sheete „Malé ostáva“ je 0 (počet sa inak neukazuje, limit však platí),
+        //  • veľká = nedá sa vybrať žiaden termín, ani rozvoz. Rozvoz je v sheete bez limitu,
+        //    takže veľká sa vypredá, až keď má aj rozvoz v stĺpci „Voľných“ 0 (alebo ručné „obsazeno“).
+        //  Bez voľného termínu sa nedá objednať nič, takže vtedy je vypredaná aj malá.
+        const ziadenTermin = [...form.querySelectorAll('input[name="termin"]')].every(i => i.disabled);
+        kap.vyprodane = { velke: ziadenTermin, male: ziadenTermin || (kap.male != null && kap.male <= 0) };
+        [['velke', 'velka'], ['male', 'mala']].forEach(([name, kartaId]) => {
+          const vyprodano = kap.vyprodane[name];
+          // Formulár: „Vyprodáno“ pri krabičke a stlmený riadok.
+          form.querySelector(`[data-vyprodano="${name}"]`).hidden = !vyprodano;
+          form.querySelector(`[data-produkt="${name}"]`).classList.toggle('is-obsazeno', vyprodano);
+          // Hlavná karta: štítok na fotke, tlačidlo „Vyprodáno“ bez akcie, poznámka o uzávierke sa skryje.
+          const karta = document.querySelector(`.ck-box-${kartaId}`);
+          if (karta) {
+            karta.classList.toggle('is-vyprodano', vyprodano);
+            karta.querySelector('.ck-box-stitok').hidden = !vyprodano;
+            const btn = karta.querySelector('.btn');
+            btn.textContent = vyprodano ? 'Vyprodáno' : 'Objednat';
+            if (vyprodano) { btn.setAttribute('aria-disabled', 'true'); btn.removeAttribute('href'); }
+            else { btn.removeAttribute('aria-disabled'); btn.setAttribute('href', '#objednavka'); }
+          }
+          const input = form.elements[name];
+          if (Number(input.value) > maxPre(name)) input.value = String(maxPre(name));
+        });
         ['velke', 'male'].forEach(syncStepper);
         form.dispatchEvent(new Event('change', { bubbles: true }));
       };

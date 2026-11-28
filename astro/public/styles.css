@@ -1818,3 +1818,14 @@ textarea.ck-input { resize: vertical; }
 }
 .ck-info.is-open .ck-info-tip, .ck-info-btn:focus-visible + .ck-info-tip { opacity: 1; visibility: visible; }
 @media (hover: hover) { .ck-info:hover .ck-info-tip { opacity: 1; visibility: visible; } }
+
+/* Vypredaná krabička na hlavnej karte (Eva, 28. 11. 2026) */
+.ck-box-stitok {
+  position: absolute; left: 10px; top: 10px; z-index: 2;
+  padding: 5px 12px; border-radius: 99px; background: var(--mak); color: var(--maslo);
+  font-size: 13px; font-weight: 700; letter-spacing: .02em;
+}
+.ck-box-stitok[hidden] { display: none; }
+.ck-box.is-vyprodano .ck-box-foto { filter: grayscale(.6); opacity: .7; }
+.ck-box.is-vyprodano .btn { background: var(--paper-line); color: var(--ink-mute); border-color: transparent; box-shadow: none; pointer-events: none; cursor: default; }
+.ck-box.is-vyprodano .ck-box-do { display: none; }
